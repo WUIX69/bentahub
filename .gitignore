@@ -40,6 +40,8 @@ next-env.d.ts
 
 # others
 .agent
+.sixth
+
 /everything-claude-code
 everything-claude-code
 
