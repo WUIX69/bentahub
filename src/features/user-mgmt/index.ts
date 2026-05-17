@@ -8,5 +8,5 @@
  * Consumed by: src/app/admin/
  */
 
-// Export actions, components, hooks, and types as they are built
-export {}
+// Export components
+export * from "./components"
