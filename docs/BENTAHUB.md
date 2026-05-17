@@ -26,7 +26,7 @@ BENTAHUB/
 │   │   ├── centralized-monitoring/ # Real-time cross-branch stock & sales synchronization
 │   │   ├── qr-pos/                 # QR/Barcode generation, scanning, and checkout computation
 │   │   ├── reservations/           # Managing product reservations, GCash/Cash payments, & pickup status
-│   │   ├── analytics/              # Drill-down analytics and branch performance report generation
+│   │   ├── analytics/              # Data inventory analytics and branch performance report generation
 │   │   └── user-mgmt/              # Role-based access control and account management
 │   ├── lib/                        # Third-party library wrappers (e.g., clsx, tailwind-merge)
 │   └── types/                      # Global TypeScript definitions
@@ -70,9 +70,9 @@ The BentaHub system consolidates store operations into five core modules.
 
 ---
 
-## Drill-Down Analytics Module (`features/analytics/`)
+## Data Inventory Analytics Module (`features/analytics/`)
 
-- Interactive intelligence summaries breaking down high-level gross metrics into isolated branch, specific product, or transactional line-item historical audits.
+- Comprehensive data inventory analytics providing real-time stock level insights, product movement tracking, and branch-level inventory performance summaries with historical trend analysis.
 
 ---
 
