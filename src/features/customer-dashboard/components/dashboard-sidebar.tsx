@@ -1,0 +1,97 @@
+"use client"
+
+import Link from "next/link"
+import { 
+  LayoutDashboard, 
+  Store, 
+  Bookmark, 
+  Receipt, 
+  Settings,
+  Store as StoreIcon
+} from "lucide-react"
+import { APP_NAME } from "@/config"
+import { cn } from "@/lib/utils"
+
+interface DashboardSidebarProps {
+  activePath: string
+}
+
+export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
+  const navItems = [
+    {
+      label: "Home",
+      icon: LayoutDashboard,
+      path: "/customer",
+    },
+    {
+      label: "Browse Catalog",
+      icon: Store,
+      path: "/customer/catalog",
+    },
+    {
+      label: "My Reservations",
+      icon: Bookmark,
+      path: "/customer/reservations",
+    },
+    {
+      label: "Transaction History",
+      icon: Receipt,
+      path: "/customer/transactions",
+    },
+    {
+      label: "Profile & Settings",
+      icon: Settings,
+      path: "/customer/settings",
+    },
+  ]
+
+  return (
+    <aside className="hidden md:flex flex-col w-64 fixed left-0 top-0 bottom-0 bg-muted border-r border-border z-30">
+      {/* Logo & Header */}
+      <div className="h-16 flex items-center gap-2 px-6 border-b border-border">
+        <StoreIcon className="h-6 w-6 text-primary" />
+        <div>
+          <h1 className="font-bold text-lg tracking-tight">{APP_NAME}</h1>
+          <p className="text-xs text-muted-foreground">Customer Portal</p>
+        </div>
+      </div>
+
+      {/* Navigation Links */}
+      <nav className="flex-1 p-4 flex flex-col gap-1">
+        {navItems.map((item) => {
+          const isActive = activePath === item.path
+          const Icon = item.icon
+          
+          return (
+            <Link
+              key={item.path}
+              href={item.path}
+              className={cn(
+                "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
+                isActive
+                  ? "bg-primary text-primary-foreground font-bold"
+                  : "text-muted-foreground hover:bg-accent hover:text-foreground"
+              )}
+            >
+              <Icon className={cn("h-5 w-5", isActive ? "text-primary-foreground" : "text-muted-foreground")} />
+              {item.label}
+            </Link>
+          )
+        })}
+      </nav>
+
+      {/* Footer / User info could go here */}
+      <div className="p-4 border-t border-border">
+        <div className="flex items-center gap-3 px-2 py-1">
+          <div className="size-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-medium">
+            AR
+          </div>
+          <div className="overflow-hidden">
+            <p className="text-sm font-medium truncate">Alex Rivera</p>
+            <p className="text-xs text-muted-foreground truncate">alex@example.com</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  )
+}
