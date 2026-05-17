@@ -18,7 +18,7 @@ export default function LoginPage() {
   return (
     <div className="w-full max-w-[440px] animate-in fade-in slide-in-from-bottom-4 duration-700">
       <AuthHeader subtitle="Your trusted neighborhood partner." />
-      
+
       <Card className="border-border shadow-sm">
         <CardHeader className="pb-4">
           <CardTitle className="text-xl font-semibold">Sign In</CardTitle>
@@ -54,7 +54,7 @@ export default function LoginPage() {
             </div>
 
             <div className="pt-2">
-              <Button type="submit" className="w-full flex items-center justify-center gap-2">
+              <Button type="submit" className="w-full flex items-center justify-center gap-2 p-5">
                 Sign In
                 <LogIn className="size-4" />
               </Button>
