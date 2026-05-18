@@ -88,7 +88,7 @@ export function ProductCard({
           {weight && branch && <span> • </span>}
           {branch && <span>{branch}</span>}
         </div>
-        
+
         <div className="mt-auto space-y-3">
           <span className="text-lg font-bold text-primary block">
             {price}
