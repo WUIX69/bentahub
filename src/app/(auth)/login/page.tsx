@@ -3,7 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { LogIn, Mail } from "lucide-react"
-import { AuthHeader, PasswordInput, AuthDivider, SocialAuthButtons } from "@/features/user-mgmt"
+import { AuthHeader, PasswordInput } from "@/features/user-mgmt"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -17,7 +17,7 @@ export default function LoginPage() {
 
   return (
     <div className="w-full max-w-[440px] animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <AuthHeader subtitle="Your trusted neighborhood partner." />
+      <AuthHeader subtitle="Lourdes Sari-Sari Store" />
 
       <Card className="border-border shadow-sm">
         <CardHeader className="pb-4">
@@ -42,15 +42,26 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-1.5">
-              <div className="flex justify-between items-center">
-                <Label htmlFor="password" className="text-xs uppercase tracking-wider text-muted-foreground">
-                  Password
-                </Label>
-                <Link href="#" className="text-xs text-primary hover:underline">
-                  Forgot Password?
-                </Link>
-              </div>
+              <Label htmlFor="password" className="text-xs uppercase tracking-wider text-muted-foreground">
+                Password
+              </Label>
               <PasswordInput id="password" required />
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  id="remember"
+                  className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                />
+                <label htmlFor="remember" className="text-sm text-muted-foreground">
+                  Remember me
+                </label>
+              </div>
+              <Link href="#" className="text-sm text-primary hover:underline">
+                Forgot Password?
+              </Link>
             </div>
 
             <div className="pt-2">
@@ -61,10 +72,7 @@ export default function LoginPage() {
             </div>
           </form>
 
-          <AuthDivider />
-          <SocialAuthButtons />
-
-          <p className="text-center text-sm text-muted-foreground mt-4">
+          <p className="text-center text-sm text-muted-foreground mt-6">
             Don&apos;t have an account?{" "}
             <Link href="/register" className="text-primary font-bold hover:underline">
               Create an account
@@ -75,3 +83,4 @@ export default function LoginPage() {
     </div>
   )
 }
+

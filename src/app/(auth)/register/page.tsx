@@ -3,15 +3,13 @@
 import * as React from "react"
 import Link from "next/link"
 import { ArrowRight, Mail, Phone, User } from "lucide-react"
-import { AuthHeader, PasswordInput, RoleToggle, Role } from "@/features/user-mgmt"
+import { AuthHeader, PasswordInput } from "@/features/user-mgmt"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function RegisterPage() {
-  const [role, setRole] = React.useState<Role>("customer")
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Stub for now
@@ -21,12 +19,9 @@ export default function RegisterPage() {
     <div className="w-full max-w-[520px] animate-in fade-in slide-in-from-bottom-4 duration-700">
       <AuthHeader />
       
-      <Card className="border-border shadow-sm">
+      <Card className="border-border shadow-sm rounded-xl">
         <CardHeader className="pb-4">
           <CardTitle className="text-xl font-semibold">Create an account</CardTitle>
-          <CardDescription className="text-sm text-muted-foreground">
-            Join our neighborhood partner ecosystem today.
-          </CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -79,13 +74,6 @@ export default function RegisterPage() {
             </div>
 
             <div className="space-y-1.5">
-              <Label className="text-xs uppercase tracking-wider text-muted-foreground">
-                Role
-              </Label>
-              <RoleToggle value={role} onChange={setRole} />
-            </div>
-
-            <div className="space-y-1.5">
               <Label htmlFor="password" className="text-xs uppercase tracking-wider text-muted-foreground">
                 Password
               </Label>
@@ -114,3 +102,4 @@ export default function RegisterPage() {
     </div>
   )
 }
+
