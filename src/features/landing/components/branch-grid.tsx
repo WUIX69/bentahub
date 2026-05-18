@@ -8,27 +8,27 @@ import { Button } from "@/components/ui/button"
 const branches = [
   {
     id: 1,
-    name: "Main Branch - Sampaloc",
-    location: "Sampaloc, Manila",
-    manager: "Maria Santos",
+    name: "Lourdes Main Branch",
+    location: "C. De Guzman St., Poblacion, Sta. Maria, Bulacan",
+    manager: "Lourdes Gunio",
     stock: 92,
     image: "/images/landing/branch-1.png",
     open: true,
   },
   {
     id: 2,
-    name: "Branch 2 - Cubao",
-    location: "Cubao, Quezon City",
-    manager: "John Doe",
+    name: "Lourdes 2nd Branch",
+    location: "C. De Guzman St., Poblacion, Sta. Maria, Bulacan",
+    manager: "Lourdes Gunio",
     stock: 85,
     image: "/images/landing/branch-2.png",
     open: true,
   },
   {
     id: 3,
-    name: "Branch 3 - Makati",
-    location: "Makati City",
-    manager: "Jane Smith",
+    name: "Lourdes 3rd Branch",
+    location: "C. De Guzman St., Poblacion, Sta. Maria, Bulacan",
+    manager: "Lourdes Gunio",
     stock: 78,
     image: "/images/landing/branch-3.png",
     open: true,
@@ -93,12 +93,6 @@ export function BranchGrid() {
                   </div>
                 </div>
 
-                {/* CTA */}
-                <Button asChild className="w-full mt-auto">
-                  <Link href="/customer">
-                    View Live Catalog
-                  </Link>
-                </Button>
               </div>
             </div>
           ))}

@@ -1,6 +1,6 @@
 "use client"
 
-import { Network, Package, Clock } from "lucide-react"
+import { Store, Package, Clock } from "lucide-react"
 
 export function StatsBar() {
   return (
@@ -10,7 +10,7 @@ export function StatsBar() {
           {/* Card 1: Active Branches */}
           <div className="bg-card border border-border p-6 rounded-xl shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow">
             <div className="h-12 w-12 rounded-full bg-accent/20 flex items-center justify-center text-accent">
-              <Network className="h-6 w-6" />
+              <Store className="h-6 w-6" />
             </div>
             <div>
               <p className="text-sm font-medium text-muted-foreground">Active Branches</p>

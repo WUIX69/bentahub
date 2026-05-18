@@ -61,11 +61,11 @@ export function ProductGrid() {
               Essential Goods
             </h2>
             <p className="mt-2 text-muted-foreground">
-              Fast-moving items available for reservation.
+              Items available for reservation.
             </p>
           </div>
-          <Link 
-            href="/customer" 
+          <Link
+            href="/customer"
             className="text-primary font-medium flex items-center gap-1 hover:underline"
           >
             See all products
@@ -85,7 +85,7 @@ export function ProductGrid() {
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
                 />
-                
+
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <Button size="sm" className="gap-2">

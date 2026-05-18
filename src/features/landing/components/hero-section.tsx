@@ -24,19 +24,15 @@ export function HeroSection() {
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-2xl text-white">
-          {/* Badge Pill */}
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary/20 border border-primary/30 text-primary-foreground mb-6">
-            REVOLUTIONIZING LOCAL RETAIL
-          </span>
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-4">
-            Your Neighborhood Sari-Sari Store, <span className="text-accent">Now Digital</span>
+            Lourdes Sari-Sari Store, <span className="text-accent">Now Digital</span>
           </h1>
 
           {/* Subtitle */}
           <p className="text-lg text-gray-300 mb-8 max-w-xl">
-            BentaHub brings your local stores online. Browse real-time inventory, reserve items, and pick them up when ready. Fast, convenient, and strictly local.
+            BentaHub brings your local stores online. Browse real-time inventory, reserve items, and pick them up when ready. Convenient, and easy to use.
           </p>
 
           {/* CTAs */}
