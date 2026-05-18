@@ -26,7 +26,7 @@ export function Pagination() {
       <span className="text-muted-foreground">...</span>
       
       <button className="w-10 h-10 flex items-center justify-center rounded-lg text-sm font-medium border border-border hover:bg-muted text-foreground transition-colors">
-        12
+        24
       </button>
 
       {/* Next */}

@@ -1,129 +1,108 @@
 "use client"
 
-import { 
-  ShoppingBag, 
-  Truck, 
-  CircleCheck, 
-  RefreshCw, 
-  XCircle, 
-  ChevronRight, 
-  ChevronLeft 
-} from "lucide-react"
+import { FileText, MoreHorizontal, ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function TransactionTable() {
   const transactions = [
     {
-      id: "ORD-2026-001",
+      id: "#BH-0001",
       date: "May 15, 2026",
-      branch: "Main Branch",
-      method: "pickup",
-      total: "₱1,250.00",
-      status: "completed",
+      amount: "₱1,250.00",
+      status: "Successful",
+      method: "GCash",
     },
     {
-      id: "ORD-2026-002",
+      id: "#BH-0002",
       date: "May 12, 2026",
-      branch: "Pulong Buhangin",
-      method: "delivery",
-      total: "₱450.50",
-      status: "processing",
+      amount: "₱450.50",
+      status: "Successful",
+      method: "Cash on Pickup",
     },
     {
-      id: "ORD-2026-003",
+      id: "#BH-0003",
       date: "May 10, 2026",
-      branch: "Main Branch",
-      method: "pickup",
-      total: "₱890.00",
-      status: "completed",
+      amount: "₱890.00",
+      status: "Processing",
+      method: "GCash",
     },
     {
-      id: "ORD-2026-004",
+      id: "#BH-0004",
       date: "May 05, 2026",
-      branch: "Caypombo Branch",
-      method: "pickup",
-      total: "₱320.00",
-      status: "cancelled",
+      amount: "₱320.00",
+      status: "Failed",
+      method: "Credit Card",
     },
   ]
-
-  const statusIcons = {
-    completed: CircleCheck,
-    processing: RefreshCw,
-    cancelled: XCircle,
-  }
-
-  const statusColors = {
-    completed: "text-primary",
-    processing: "text-amber-500 dark:text-amber-400",
-    cancelled: "text-destructive",
-  }
 
   return (
     <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
       <div className="overflow-x-auto">
-        <table className="w-full text-sm">
+        <table className="w-full text-left border-collapse">
           <thead>
-            <tr className="text-left text-muted-foreground border-b border-border bg-muted/30">
-              <th className="px-4 md:px-6 py-3 font-medium">Order ID</th>
-              <th className="px-4 md:px-6 py-3 font-medium">Date</th>
-              <th className="px-4 md:px-6 py-3 font-medium">Branch</th>
-              <th className="px-4 md:px-6 py-3 font-medium">Method</th>
-              <th className="px-4 md:px-6 py-3 font-medium">Total</th>
-              <th className="px-4 md:px-6 py-3 font-medium">Status</th>
-              <th className="px-4 md:px-6 py-3 font-medium text-right">Action</th>
+            <tr className="border-b border-border bg-muted/50">
+              <th className="p-3 text-xs font-bold tracking-widest text-muted-foreground uppercase">
+                Transaction ID
+              </th>
+              <th className="p-3 text-xs font-bold tracking-widest text-muted-foreground uppercase">
+                Date
+              </th>
+              <th className="p-3 text-xs font-bold tracking-widest text-muted-foreground uppercase">
+                Amount
+              </th>
+              <th className="p-3 text-xs font-bold tracking-widest text-muted-foreground uppercase">
+                Payment Method
+              </th>
+              <th className="p-3 text-xs font-bold tracking-widest text-muted-foreground uppercase">
+                Status
+              </th>
+              <th className="p-3 text-xs font-bold tracking-widest text-muted-foreground uppercase text-right">
+                Actions
+              </th>
             </tr>
           </thead>
-          <tbody>
-            {transactions.map((tx) => {
-              const StatusIcon = statusIcons[tx.status as keyof typeof statusIcons]
-              
-              return (
-                <tr 
-                  key={tx.id}
-                  className="border-b border-border last:border-0 hover:bg-muted/50 transition-colors"
-                >
-                  <td className="px-4 md:px-6 py-4 font-mono text-sm font-bold text-primary">
-                    {tx.id}
-                  </td>
-                  <td className="px-4 md:px-6 py-4 text-muted-foreground">
-                    {tx.date}
-                  </td>
-                  <td className="px-4 md:px-6 py-4 text-foreground">
-                    {tx.branch}
-                  </td>
-                  <td className="px-4 md:px-6 py-4">
-                    <span className={cn(
-                      "inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium",
-                      tx.method === "pickup" ? "bg-accent text-accent-foreground" : "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
-                    )}>
-                      {tx.method === "pickup" ? <ShoppingBag className="h-3 w-3" /> : <Truck className="h-3 w-3" />}
-                      <span className="capitalize">{tx.method}</span>
-                    </span>
-                  </td>
-                  <td className="px-4 md:px-6 py-4 font-mono font-bold text-foreground">
-                    {tx.total}
-                  </td>
-                  <td className="px-4 md:px-6 py-4">
-                    <div className="flex items-center gap-1.5">
-                      <StatusIcon className={cn("h-4 w-4", statusColors[tx.status as keyof typeof statusColors], tx.status === "processing" && "animate-spin")} />
-                      <span className="capitalize text-foreground">{tx.status}</span>
-                    </div>
-                  </td>
-                  <td className="px-4 md:px-6 py-4 text-right">
-                    <button className="text-muted-foreground hover:text-foreground p-1 rounded-full hover:bg-muted">
-                      <ChevronRight className="h-5 w-5" />
-                    </button>
-                  </td>
-                </tr>
-              )
-            })}
+          <tbody className="divide-y divide-border">
+            {transactions.map((transaction) => (
+              <tr key={transaction.id} className="hover:bg-muted/50 transition-colors">
+                <td className="p-3 text-sm font-mono text-foreground">
+                  <div className="flex items-center gap-2">
+                    <FileText className="h-4 w-4 text-muted-foreground" />
+                    <span>{transaction.id}</span>
+                  </div>
+                </td>
+                <td className="p-3 text-sm text-muted-foreground">
+                  {transaction.date}
+                </td>
+                <td className="p-3 text-sm font-bold text-foreground">
+                  {transaction.amount}
+                </td>
+                <td className="p-3 text-sm text-muted-foreground">
+                  {transaction.method}
+                </td>
+                <td className="p-3 text-sm">
+                  <span className={cn(
+                    "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium",
+                    transaction.status === "Successful" && "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
+                    transaction.status === "Processing" && "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+                    transaction.status === "Failed" && "bg-destructive/10 text-destructive"
+                  )}>
+                    {transaction.status}
+                  </span>
+                </td>
+                <td className="p-3 text-sm text-right">
+                  <button className="text-muted-foreground hover:text-foreground p-1 rounded-full hover:bg-muted">
+                    <MoreHorizontal className="h-4 w-4" />
+                    <span className="sr-only">Actions</span>
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between px-4 md:px-6 py-4 border-t border-border bg-muted/30">
+      <div className="flex items-center justify-between px-4 py-3 border-t border-border bg-muted/30">
         <span className="text-sm text-muted-foreground">
           Showing <span className="font-medium text-foreground">4</span> of <span className="font-medium text-foreground">24</span>
         </span>
@@ -140,3 +119,4 @@ export function TransactionTable() {
     </div>
   )
 }
+

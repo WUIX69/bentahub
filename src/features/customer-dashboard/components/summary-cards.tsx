@@ -36,7 +36,7 @@ export function SummaryCards() {
             key={index}
             className="bg-card border border-border p-6 rounded-xl shadow-sm flex items-center gap-5 transition-all hover:shadow-md"
           >
-            <div className={`size-12 ${card.iconBg} rounded-full flex items-center justify-center`}>
+            <div className={`size-12 ${card.iconBg} rounded-lg flex items-center justify-center`}>
               <Icon className={`h-6 w-6 ${card.iconColor}`} />
             </div>
             <div>

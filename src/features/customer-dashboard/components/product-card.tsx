@@ -13,6 +13,7 @@ export interface ProductCardProps {
   image: string
   stockStatus: "in-stock" | "low-stock" | "out-of-stock"
   weight?: string
+  branch?: string
 }
 
 export function ProductCard({
@@ -22,12 +23,16 @@ export function ProductCard({
   image,
   stockStatus,
   weight,
+  branch = "Main Branch",
 }: ProductCardProps) {
   const isOutOfStock = stockStatus === "out-of-stock"
   const isLowStock = stockStatus === "low-stock"
 
   return (
-    <div className="group bg-card border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col h-full">
+    <div className={cn(
+      "group bg-card border border-border rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1 transition-all flex flex-col h-full",
+      isOutOfStock && "opacity-75"
+    )}>
       {/* Image Container */}
       <div className="relative aspect-square bg-muted">
         <Image
@@ -78,24 +83,26 @@ export function ProductCard({
         <h3 className="font-heading text-base font-bold text-foreground mb-1 line-clamp-1">
           {name}
         </h3>
-        {weight && (
-          <p className="text-xs text-muted-foreground mb-3">{weight}</p>
-        )}
+        <div className="text-xs text-muted-foreground mb-3">
+          {weight && <span>{weight}</span>}
+          {weight && branch && <span> • </span>}
+          {branch && <span>{branch}</span>}
+        </div>
         
-        <div className="mt-auto flex items-center justify-between gap-2">
-          <span className="text-lg font-bold text-foreground">
+        <div className="mt-auto space-y-3">
+          <span className="text-lg font-bold text-primary block">
             {price}
           </span>
 
           {isOutOfStock ? (
-            <Button size="sm" variant="outline" className="gap-1.5">
+            <Button size="sm" variant="outline" className="w-full gap-1.5" disabled>
               <Bell className="size-3.5" />
               Notify Me
             </Button>
           ) : (
-            <Button size="sm" className="gap-1.5">
+            <Button size="sm" className="w-full gap-1.5">
               <ShoppingCart className="size-3.5" />
-              Add
+              Add to Cart
             </Button>
           )}
         </div>
@@ -103,3 +110,4 @@ export function ProductCard({
     </div>
   )
 }
+

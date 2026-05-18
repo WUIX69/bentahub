@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Home, Store, Bookmark, Settings } from "lucide-react"
+import { Home, Store, Bookmark, User } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface DashboardMobileNavProps {
@@ -21,14 +21,14 @@ export function DashboardMobileNav({ activePath }: DashboardMobileNavProps) {
       path: "/customer/catalog",
     },
     {
-      label: "Reservations",
+      label: "Saved",
       icon: Bookmark,
-      path: "/customer/reservations",
+      path: "/customer/reservations", // Assuming reservations acts as saved for now
     },
     {
-      label: "Settings",
-      icon: Settings,
-      path: "/customer/settings",
+      label: "Profile",
+      icon: User,
+      path: "/customer/settings", // Assuming settings acts as profile for now
     },
   ]
 
@@ -43,13 +43,13 @@ export function DashboardMobileNav({ activePath }: DashboardMobileNavProps) {
             key={item.path}
             href={item.path}
             className={cn(
-              "flex flex-col items-center justify-center gap-1 w-full h-full text-xs font-medium transition-colors",
+              "flex flex-col items-center justify-center gap-1 w-full h-full text-[10px] font-medium transition-colors",
               isActive
                 ? "text-primary"
                 : "text-muted-foreground hover:text-foreground"
             )}
           >
-            <Icon className="h-5 w-5" />
+            <Icon className={cn("h-5 w-5", isActive && "fill-primary/10")} />
             <span>{item.label}</span>
           </Link>
         )
@@ -57,3 +57,4 @@ export function DashboardMobileNav({ activePath }: DashboardMobileNavProps) {
     </nav>
   )
 }
+

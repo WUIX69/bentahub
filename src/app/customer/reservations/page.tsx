@@ -11,47 +11,57 @@ export default function ReservationsPage() {
   const tabs = ["All", "Processing", "Ready", "Completed"]
   const activeTab = "All"
 
-  // Demo reservations
   const featuredReservation: ReservationData = {
-    id: "RES-2026-001",
-    title: "Monthly Grocery Stash",
+    id: "#BH-0001",
+    title: "Monthly Grocery Essentials",
+    description: "Bulk order for monthly supplies including rice, canned goods, and condiments.",
     status: "ready",
-    date: "May 18, 2026",
+    date: "May 20, 2026",
     location: "Main Branch",
     items: "12 items",
-    shipping: "In-Store Pickup",
-    image: "/images/landing/product-1.png",
+    shipping: "Standard Pickup",
+    image: "/images/dashboard/product-1.png",
   }
 
-  const compactReservations: ReservationData[] = [
+  const otherReservations: ReservationData[] = [
     {
-      id: "RES-2026-002",
-      title: "Weekly Fresh Produce",
-      description: "Apples, Bananas, and seasonal vegetables.",
+      id: "#BH-0002",
+      title: "Baking Supplies",
+      description: "Ingredients for weekend baking session.",
       status: "processing",
-      date: "May 20, 2026",
-      image: "/images/landing/product-2.png",
+      date: "May 22, 2026",
+      location: "Pulong Buhangin Branch",
+      items: "5 items",
+      shipping: "Standard Pickup",
+      image: "/images/dashboard/product-2.png",
     },
     {
-      id: "RES-2026-003",
-      title: "Baking Supplies",
-      description: "Flour, sugar, and yeast for weekend baking.",
-      status: "processing",
-      date: "May 21, 2026",
-      image: "/images/landing/product-3.png",
+      id: "#BH-0003",
+      title: "Quick Snacks",
+      description: "Assorted snacks and drinks.",
+      status: "completed",
+      date: "May 15, 2026",
+      location: "Caypombo Branch",
+      items: "8 items",
+      shipping: "Standard Pickup",
+      image: "/images/dashboard/product-3.png",
     },
   ]
 
   return (
     <div className="space-y-6">
-      {/* Page Header */}
-      <div>
-        <h1 className="font-heading text-2xl md:text-3xl font-bold text-foreground">
-          My Reservations
-        </h1>
-        <p className="text-muted-foreground mt-1">
-          Manage your active reservations and view pickup details.
-        </p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 className="font-heading text-2xl md:text-3xl font-bold text-foreground">
+            My Reservations
+          </h1>
+          <p className="text-muted-foreground mt-1">
+            Manage and track your reserved items for pickup.
+          </p>
+        </div>
+        <div className="text-sm text-muted-foreground">
+          Showing <span className="font-medium text-foreground">3</span> reservations
+        </div>
       </div>
 
       {/* Tabs */}
@@ -71,27 +81,31 @@ export default function ReservationsPage() {
         ))}
       </div>
 
-      {/* Bento Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-        {/* Featured Card */}
-        <ReservationCard variant="featured" data={featuredReservation} />
+      {/* Main Content Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        {/* Featured Reservation + Compact List */}
+        <div className="lg:col-span-8 space-y-6">
+          <h2 className="text-xs font-bold tracking-widest text-muted-foreground uppercase">
+            Active Reservation
+          </h2>
+          
+          <ReservationCard variant="featured" data={featuredReservation} />
+
+          <div className="pt-2">
+            <h2 className="text-xs font-bold tracking-widest text-muted-foreground uppercase mb-4">
+              Other Reservations
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {otherReservations.map((res) => (
+                <ReservationCard key={res.id} variant="compact" data={res} />
+              ))}
+            </div>
+          </div>
+        </div>
 
         {/* Summary Sidebar */}
-        <ReservationSummary />
-
-        {/* Compact Cards */}
-        {compactReservations.map((res) => (
-          <ReservationCard key={res.id} variant="compact" data={res} />
-        ))}
-
-        {/* Past Reservations Table (Placeholder or simple list) */}
-        <div className="md:col-span-12 bg-card border border-border rounded-xl p-6 shadow-sm">
-          <h3 className="font-heading text-lg font-bold text-foreground mb-4">
-            Past Reservations
-          </h3>
-          <p className="text-sm text-muted-foreground">
-            No past reservations to display.
-          </p>
+        <div className="lg:col-span-4">
+          <ReservationSummary />
         </div>
       </div>
     </div>

@@ -6,21 +6,21 @@ import { cn } from "@/lib/utils"
 export function RecentOrdersTable() {
   const orders = [
     {
-      id: "ORD-2026-001",
+      id: "#BH-0001",
       date: "May 15, 2026",
       total: "₱1,250.00",
       status: "Ready for Pickup",
       statusVariant: "primary",
     },
     {
-      id: "ORD-2026-002",
+      id: "#BH-0002",
       date: "May 12, 2026",
       total: "₱450.50",
       status: "Completed",
       statusVariant: "secondary",
     },
     {
-      id: "ORD-2026-003",
+      id: "#BH-0003",
       date: "May 10, 2026",
       total: "₱890.00",
       status: "Pending",

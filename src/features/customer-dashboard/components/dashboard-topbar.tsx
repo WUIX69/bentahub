@@ -9,22 +9,22 @@ export function DashboardTopbar() {
       {/* Search Bar - Hidden on small screens or adjust layout */}
       <div className="flex-1 max-w-md hidden md:block">
         <div className="relative">
-          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             type="search"
             placeholder="Search products, orders..."
-            className="pl-9 bg-muted/50 border-transparent focus-visible:border-border"
+            className="pl-10 bg-muted/50 border-transparent focus-visible:border-border rounded-lg"
           />
         </div>
       </div>
 
       {/* Mobile Search Icon placeholder or simple text */}
-      <div className="md:hidden font-bold text-lg">
+      <div className="md:hidden font-bold text-lg text-primary">
         BentaHub
       </div>
 
       {/* Right side actions */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
         {/* Notifications */}
         <button className="relative p-2 text-muted-foreground hover:text-foreground hover:bg-accent rounded-full transition-colors">
           <Bell className="h-5 w-5" />
@@ -32,14 +32,18 @@ export function DashboardTopbar() {
           <span className="sr-only">Notifications</span>
         </button>
 
+        {/* Vertical Separator */}
+        <div className="h-6 w-px bg-border mx-2" />
+
         {/* User Profile */}
         <div className="flex items-center gap-3">
-          <div className="size-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground">
-            <User className="h-4 w-4" />
+          <div className="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
+            AR
           </div>
-          <span className="text-sm font-medium hidden sm:inline-block">Alex Rivera</span>
+          <span className="text-sm font-medium hidden sm:inline-block text-foreground">Alex Rivera</span>
         </div>
       </div>
     </header>
   )
 }
+

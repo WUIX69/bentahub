@@ -36,7 +36,7 @@ export function NearbyBranches() {
       <div className="divide-y divide-border">
         {branches.map((branch, index) => (
           <div key={index} className="p-4 md:p-6 flex items-start gap-4">
-            <div className="size-10 bg-muted rounded-full flex items-center justify-center shrink-0">
+            <div className="size-10 bg-muted rounded-lg flex items-center justify-center shrink-0">
               <Store className="h-5 w-5 text-muted-foreground" />
             </div>
             <div className="flex-1 min-w-0">

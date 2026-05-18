@@ -4,12 +4,13 @@ import { cn } from "@/lib/utils"
 
 export function CategorySidebar() {
   const categories = [
-    { name: "All Products", count: 24, active: true },
-    { name: "Grains & Rice", count: 5, active: false },
-    { name: "Fresh Produce", count: 8, active: false },
-    { name: "Canned Goods", count: 6, active: false },
-    { name: "Dairy & Eggs", count: 3, active: false },
-    { name: "Snacks", count: 4, active: false },
+    { name: "All Products", count: 248, active: true },
+    { name: "Coffee", count: 12, active: false },
+    { name: "Condiments", count: 45, active: false },
+    { name: "Baking Ingredients", count: 28, active: false },
+    { name: "Canned Goods", count: 89, active: false },
+    { name: "Sauces", count: 35, active: false },
+    { name: "Household Supplies", count: 22, active: false },
   ]
 
   return (
@@ -33,7 +34,7 @@ export function CategorySidebar() {
               <span>{category.name}</span>
               <span className={cn(
                 "text-xs px-1.5 py-0.5 rounded-full",
-                category.active ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
+                category.active ? "bg-primary text-white" : "bg-muted text-muted-foreground"
               )}>
                 {category.count}
               </span>
@@ -41,54 +42,7 @@ export function CategorySidebar() {
           ))}
         </div>
       </div>
-
-      <div className="border-t border-border" />
-
-      {/* Availability */}
-      <div>
-        <h3 className="text-xs font-bold tracking-widest text-muted-foreground mb-3 uppercase">
-          Availability
-        </h3>
-        <div className="flex flex-col gap-3">
-          <label className="flex items-center gap-2 text-sm cursor-pointer">
-            <input 
-              type="checkbox" 
-              defaultChecked 
-              className="rounded text-primary focus:ring-primary h-4 w-4 border-border bg-background"
-            />
-            <span className="text-foreground">In Stock Only</span>
-          </label>
-          <label className="flex items-center gap-2 text-sm cursor-pointer">
-            <input 
-              type="checkbox" 
-              className="rounded text-primary focus:ring-primary h-4 w-4 border-border bg-background"
-            />
-            <span className="text-foreground">Fast Delivery</span>
-          </label>
-        </div>
-      </div>
-
-      <div className="border-t border-border" />
-
-      {/* Price Range placeholder */}
-      <div>
-        <h3 className="text-xs font-bold tracking-widest text-muted-foreground mb-3 uppercase">
-          Price Range
-        </h3>
-        <div className="flex items-center gap-2">
-          <input 
-            type="text" 
-            placeholder="Min" 
-            className="w-full h-8 text-sm border border-border rounded-lg px-2 bg-transparent"
-          />
-          <span className="text-muted-foreground">-</span>
-          <input 
-            type="text" 
-            placeholder="Max" 
-            className="w-full h-8 text-sm border border-border rounded-lg px-2 bg-transparent"
-          />
-        </div>
-      </div>
     </div>
   )
 }
+

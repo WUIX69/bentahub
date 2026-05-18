@@ -5,8 +5,7 @@ import {
   LayoutDashboard, 
   Store, 
   Bookmark, 
-  Receipt, 
-  Settings,
+  Receipt,
   Store as StoreIcon
 } from "lucide-react"
 import { APP_NAME } from "@/config"
@@ -38,11 +37,6 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
       icon: Receipt,
       path: "/customer/transactions",
     },
-    {
-      label: "Profile & Settings",
-      icon: Settings,
-      path: "/customer/settings",
-    },
   ]
 
   return (
@@ -52,7 +46,7 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
         <StoreIcon className="h-6 w-6 text-primary" />
         <div>
           <h1 className="font-bold text-lg tracking-tight">{APP_NAME}</h1>
-          <p className="text-xs text-muted-foreground">Customer Portal</p>
+          <p className="text-xs text-muted-foreground">Digital Sari-Sari</p>
         </div>
       </div>
 
@@ -69,29 +63,17 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
               className={cn(
                 "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                 isActive
-                  ? "bg-primary text-primary-foreground font-bold"
-                  : "text-muted-foreground hover:bg-accent hover:text-foreground"
+                  ? "bg-accent text-primary font-bold"
+                  : "text-muted-foreground hover:bg-accent/50 hover:text-foreground"
               )}
             >
-              <Icon className={cn("h-5 w-5", isActive ? "text-primary-foreground" : "text-muted-foreground")} />
+              <Icon className={cn("h-5 w-5", isActive ? "text-primary" : "text-muted-foreground")} />
               {item.label}
             </Link>
           )
         })}
       </nav>
-
-      {/* Footer / User info could go here */}
-      <div className="p-4 border-t border-border">
-        <div className="flex items-center gap-3 px-2 py-1">
-          <div className="size-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-sm font-medium">
-            AR
-          </div>
-          <div className="overflow-hidden">
-            <p className="text-sm font-medium truncate">Alex Rivera</p>
-            <p className="text-xs text-muted-foreground truncate">alex@example.com</p>
-          </div>
-        </div>
-      </div>
     </aside>
   )
 }
+

@@ -15,7 +15,7 @@ export function CatalogToolbar() {
       {/* Right side: Count & View Toggle */}
       <div className="flex items-center justify-between sm:justify-end gap-4">
         <span className="text-sm text-muted-foreground">
-          Showing <span className="font-medium text-foreground">24</span> products
+          Showing <span className="font-medium text-foreground">1-12</span> of <span className="font-medium text-foreground">248</span> products
         </span>
 
         <div className="flex items-center border border-border rounded-lg overflow-hidden bg-background">
