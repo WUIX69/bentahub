@@ -28,9 +28,20 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
+pnpm-workspace.yaml
+
 # env files
 .env*.local
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+# others
+.agent
+.sixth
+
+/everything-claude-code
+everything-claude-code
+
