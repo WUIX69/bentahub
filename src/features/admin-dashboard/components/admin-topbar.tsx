@@ -58,7 +58,6 @@ export function AdminTopbar({ title = "Dashboard Overview" }: AdminTopbarProps) 
           </div>
           <div className="flex flex-col items-start hidden sm:flex">
             <span className="text-sm font-medium text-foreground">Admin User</span>
-            <span className="text-xs text-muted-foreground">Super Admin</span>
           </div>
           <ChevronDown className="h-4 w-4 text-muted-foreground hidden sm:block" />
         </div>
