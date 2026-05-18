@@ -1,10 +1,10 @@
 "use client"
 
 import Link from "next/link"
-import { 
-  LayoutDashboard, 
-  Store, 
-  Bookmark, 
+import {
+  LayoutDashboard,
+  Store,
+  Bookmark,
   Receipt,
   Store as StoreIcon,
   LogOut
@@ -47,7 +47,7 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
         <StoreIcon className="h-6 w-6 text-primary" />
         <div>
           <h1 className="font-bold text-lg tracking-tight">{APP_NAME}</h1>
-          <p className="text-xs text-muted-foreground">Digital Sari-Sari</p>
+          <p className="text-xs text-muted-foreground">Lourdes Sari-Sari Store</p>
         </div>
       </div>
 
@@ -56,7 +56,7 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
         {navItems.map((item) => {
           const isActive = activePath === item.path
           const Icon = item.icon
-          
+
           return (
             <Link
               key={item.path}

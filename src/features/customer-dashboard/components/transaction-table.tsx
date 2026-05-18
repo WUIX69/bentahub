@@ -25,14 +25,7 @@ export function TransactionTable() {
       amount: "₱890.00",
       status: "Processing",
       method: "GCash",
-    },
-    {
-      id: "#BH-0004",
-      date: "May 05, 2026",
-      amount: "₱320.00",
-      status: "Failed",
-      method: "Credit Card",
-    },
+    }
   ]
 
   return (
@@ -106,7 +99,7 @@ export function TransactionTable() {
         <span className="text-sm text-muted-foreground">
           Showing <span className="font-medium text-foreground">4</span> of <span className="font-medium text-foreground">24</span>
         </span>
-        
+
         <div className="flex items-center gap-2">
           <button className="p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg border border-border disabled:opacity-50" disabled>
             <ChevronLeft className="h-4 w-4" />
