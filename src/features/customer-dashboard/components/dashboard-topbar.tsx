@@ -1,6 +1,6 @@
 "use client"
 
-import { Search, Bell, User } from "lucide-react"
+import { Search, Bell } from "lucide-react"
 import { Input } from "@/components/ui/input"
 
 export function DashboardTopbar() {

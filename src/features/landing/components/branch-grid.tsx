@@ -1,9 +1,7 @@
 "use client"
 
-import Link from "next/link"
 import Image from "next/image"
 import { MapPin } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 const branches = [
   {
