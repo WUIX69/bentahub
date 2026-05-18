@@ -6,7 +6,8 @@ import {
   Store, 
   Bookmark, 
   Receipt,
-  Store as StoreIcon
+  Store as StoreIcon,
+  LogOut
 } from "lucide-react"
 import { APP_NAME } from "@/config"
 import { cn } from "@/lib/utils"
@@ -73,6 +74,14 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
           )
         })}
       </nav>
+
+      {/* Logout */}
+      <div className="p-4 border-t border-border">
+        <button className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-accent/50 hover:text-foreground w-full text-left">
+          <LogOut className="h-5 w-5" />
+          Logout
+        </button>
+      </div>
     </aside>
   )
 }
