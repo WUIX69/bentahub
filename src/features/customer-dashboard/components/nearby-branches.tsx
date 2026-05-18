@@ -5,20 +5,20 @@ import { MapPin, Store } from "lucide-react"
 export function NearbyBranches() {
   const branches = [
     {
-      name: "Main Branch",
-      address: "Poblacion, Santa Maria, Bulacan",
+      name: "Lourdes Main Branch",
+      address: "C. De Guzman St., Poblacion, Sta. Maria, Bulacan",
       status: "open",
       statusText: "Open Now",
     },
     {
-      name: "Pulong Buhangin Branch",
-      address: "Pulong Buhangin, Santa Maria, Bulacan",
+      name: "Lourdes 2nd Branch",
+      address: "C. De Guzman St., Poblacion, Sta. Maria, Bulacan",
       status: "open",
       statusText: "Open Now",
     },
     {
-      name: "Caypombo Branch",
-      address: "Caypombo, Santa Maria, Bulacan",
+      name: "Lourdes 3rd Branch",
+      address: "C. De Guzman St., Poblacion, Sta. Maria, Bulacan",
       status: "closed",
       statusText: "Closed • Opens 8 AM",
     },
@@ -42,7 +42,7 @@ export function NearbyBranches() {
             <div className="flex-1 min-w-0">
               <h3 className="text-sm font-bold text-foreground truncate">{branch.name}</h3>
               <p className="text-xs text-muted-foreground truncate mb-2">{branch.address}</p>
-              
+
               <div className="flex items-center gap-1.5">
                 <span className={`size-2 rounded-full ${branch.status === "open" ? "bg-emerald-500" : "bg-destructive"}`} />
                 <span className={`text-xs font-medium ${branch.status === "open" ? "text-emerald-600 dark:text-emerald-400" : "text-destructive"}`}>

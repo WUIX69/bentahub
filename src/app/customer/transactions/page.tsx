@@ -20,11 +20,6 @@ export default function TransactionsPage() {
             View and download your past orders and payments.
           </p>
         </div>
-        
-        <Button className="gap-2 self-start sm:self-auto">
-          <Download className="h-4 w-4" />
-          Export PDF
-        </Button>
       </div>
 
       {/* Filters */}
