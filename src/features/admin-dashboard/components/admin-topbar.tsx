@@ -20,15 +20,20 @@ export function AdminTopbar({ pathname = "/admin" }: AdminTopbarProps) {
     title = "Sales Report"
     subtitle = "View daily sales and transaction records across all branches."
   } else if (pathname.includes("/admin/reservations")) {
-    title = "Reservations"
+    title = "Reservation Management"
+    subtitle = "Monitor and manage all customer reservations across branches with detailed tracking."
   } else if (pathname.includes("/admin/users")) {
     title = "User Management"
+    subtitle = "The admin allow to Add, Edit, Remove, and manage users"
   } else if (pathname.includes("/admin/payments")) {
-    title = "Payments"
+    title = "Payment Management"
+    subtitle = "Review and verify payments via cash and GCash"
   } else if (pathname.includes("/admin/history")) {
     title = "Transaction History"
+    subtitle = "Review all past transactions from every branch, ensuring accurate record tracking and verification of sales."
   } else if (pathname.includes("/admin/pickups")) {
-    title = "Pickups"
+    title = "Pickup Management"
+    subtitle = "Monitor and confirm pickups across all branches in real-time."
   } else if (pathname.includes("/admin/settings")) {
     title = "Settings"
   }

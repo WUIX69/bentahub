@@ -1,8 +1,13 @@
+import { HistoryMetrics, HistoryTable } from "@/features/admin-dashboard"
+
 export default function HistoryPage() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-foreground">Transaction History</h1>
-      <p className="text-muted-foreground">This is a placeholder for the transaction history page.</p>
+    <div className="flex flex-col gap-6 max-w-7xl mx-auto w-full pb-8">
+      {/* KPI Cards */}
+      <HistoryMetrics />
+
+      {/* All Branch Transactions Table */}
+      <HistoryTable />
     </div>
   )
 }

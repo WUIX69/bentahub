@@ -1,8 +1,13 @@
+import { PaymentMetrics, PaymentTable } from "@/features/admin-dashboard"
+
 export default function PaymentsPage() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-foreground">Payments</h1>
-      <p className="text-muted-foreground">This is a placeholder for the payments page.</p>
+    <div className="flex flex-col gap-6 max-w-7xl mx-auto w-full pb-8">
+      {/* Summary Cards */}
+      <PaymentMetrics />
+
+      {/* Payment Records Table */}
+      <PaymentTable />
     </div>
   )
 }

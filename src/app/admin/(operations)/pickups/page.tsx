@@ -1,8 +1,13 @@
+import { PickupMetrics, PickupTable } from "@/features/admin-dashboard"
+
 export default function PickupsPage() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold text-foreground">Pickups</h1>
-      <p className="text-muted-foreground">This is a placeholder for the pickups page.</p>
+    <div className="flex flex-col gap-6 max-w-7xl mx-auto w-full pb-8">
+      {/* Summary Cards */}
+      <PickupMetrics />
+
+      {/* Pending Pickups Table */}
+      <PickupTable />
     </div>
   )
 }
