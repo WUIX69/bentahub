@@ -1,4 +1,5 @@
 import { KPICard, SalesChart, StockTable } from "@/features/admin-dashboard"
+import { BranchStockOverview } from "@/features/analytics"
 import { CreditCard, Package, AlertTriangle } from "lucide-react"
 
 export default function AdminPage() {
@@ -35,15 +36,7 @@ export default function AdminPage() {
           <SalesChart />
         </div>
         <div className="lg:col-span-4">
-          <div className="bg-card border border-border rounded-xl p-6 flex flex-col gap-4">
-            <h3 className="font-bold text-foreground">Quick Actions</h3>
-            <div className="grid grid-cols-2 gap-2">
-              <button className="p-3 bg-accent hover:bg-accent/80 rounded-lg text-sm font-medium text-foreground transition-colors">Add Product</button>
-              <button className="p-3 bg-accent hover:bg-accent/80 rounded-lg text-sm font-medium text-foreground transition-colors">Transfer Stock</button>
-              <button className="p-3 bg-accent hover:bg-accent/80 rounded-lg text-sm font-medium text-foreground transition-colors">View Reports</button>
-              <button className="p-3 bg-accent hover:bg-accent/80 rounded-lg text-sm font-medium text-foreground transition-colors">Settings</button>
-            </div>
-          </div>
+          <BranchStockOverview />
         </div>
       </div>
 
