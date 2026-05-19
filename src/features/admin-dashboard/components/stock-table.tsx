@@ -1,9 +1,8 @@
 export function StockTable() {
   const branches = [
-    { name: "Lourdes Branch", total: 450, low: 5, status: "Healthy" },
-    { name: "San Jose Branch", total: 320, low: 12, status: "Warning" },
-    { name: "Sta. Cruz Branch", total: 280, low: 2, status: "Healthy" },
-    { name: "Poblacion Branch", total: 195, low: 14, status: "Critical" },
+    { name: "Lourdes Main Branch", total: 450, low: 5, status: "Healthy" },
+    { name: "Lourdes Second Branch", total: 320, low: 12, status: "Warning" },
+    { name: "Lourdes Third Branch", total: 280, low: 2, status: "Healthy" },
   ]
 
   return (
@@ -11,9 +10,8 @@ export function StockTable() {
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-lg font-bold text-foreground">Branch Stock Distribution</h2>
-          <p className="text-sm text-muted-foreground">Stock levels and inventory health by branch</p>
+          <p className="text-sm text-muted-foreground">Inventory stocks per branch</p>
         </div>
-        <button className="text-sm text-primary font-medium hover:underline">View All</button>
       </div>
 
       <div className="overflow-x-auto">

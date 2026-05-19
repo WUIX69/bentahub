@@ -10,17 +10,11 @@ interface AdminTopbarProps {
 }
 
 export function AdminTopbar({ title = "Dashboard Overview" }: AdminTopbarProps) {
-  // Use a static date or dynamic date. Dynamic date might cause hydration mismatch if not handled.
-  // Let's use a static string or handle it in useEffect.
-  // For now, let's use a static string to avoid hydration mismatch, or just omit the day name.
-  const currentDate = "Monday, May 19, 2025" // Matching prototype or I can use dynamic with mounted check.
-  
   return (
     <header className="sticky top-0 z-30 bg-background border-b border-border h-16 flex items-center justify-between px-6">
       {/* Left side */}
       <div className="flex items-center gap-4">
         <h1 className="text-xl font-bold text-foreground">{title}</h1>
-        <span className="text-sm text-muted-foreground hidden md:inline">{currentDate}</span>
       </div>
 
       {/* Right side */}
