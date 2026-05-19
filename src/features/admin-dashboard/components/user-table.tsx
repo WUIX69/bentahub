@@ -1,4 +1,8 @@
+"use client"
+
+import { useState } from "react"
 import { Search, SlidersHorizontal, Plus, Pencil, Trash2, ChevronLeft, ChevronRight } from "lucide-react"
+import { AddUserModal } from "./add-user-modal"
 
 interface User {
   name: string
@@ -60,6 +64,36 @@ const mockUsers: User[] = [
 ]
 
 export function UserTable() {
+  const [users, setUsers] = useState<User[]>(mockUsers)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const handleAddUser = (newUser: {
+    name: string
+    email: string
+    role: "Admin" | "Cashier" | "Staff" | "Customer"
+    branch: string
+  }) => {
+    const initials = newUser.name
+      .split(" ")
+      .map((n) => n[0])
+      .join("")
+      .substring(0, 2)
+      .toUpperCase() || "UN"
+
+    const createdUser: User = {
+      name: newUser.name,
+      initials,
+      avatarBg: "bg-primary/10",
+      avatarText: "text-primary",
+      email: newUser.email,
+      role: newUser.role,
+      branch: newUser.branch,
+      status: "Active",
+      joinDate: new Date().toISOString().split("T")[0],
+    }
+
+    setUsers((prev) => [createdUser, ...prev])
+  }
   return (
     <div className="flex flex-col gap-6">
       {/* Table Action Bar */}
@@ -77,7 +111,10 @@ export function UserTable() {
             <SlidersHorizontal className="h-[18px] w-[18px]" />
             Filters
           </button>
-          <button className="flex flex-1 sm:flex-initial items-center justify-center gap-2 h-12 px-8 bg-primary text-primary-foreground rounded-lg font-bold text-xs shadow-lg shadow-primary/20 hover:opacity-95 active:scale-[0.98] transition-all">
+          <button 
+            onClick={() => setIsModalOpen(true)}
+            className="flex flex-1 sm:flex-initial items-center justify-center gap-2 h-12 px-8 bg-primary text-primary-foreground rounded-lg font-bold text-xs shadow-lg shadow-primary/20 hover:opacity-95 active:scale-[0.98] transition-all"
+          >
             <Plus className="h-[18px] w-[18px]" />
             Add User
           </button>
@@ -114,7 +151,7 @@ export function UserTable() {
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
-              {mockUsers.map((user) => {
+              {users.map((user) => {
                 const roleStyles = (() => {
                   switch (user.role) {
                     case "Admin":
@@ -226,6 +263,11 @@ export function UserTable() {
           </div>
         </div>
       </div>
+      <AddUserModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onAdd={handleAddUser}
+      />
     </div>
   )
 }
