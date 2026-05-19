@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Search, SlidersHorizontal, Plus, Pencil, Trash2, ChevronLeft, ChevronRight } from "lucide-react"
 import { AddUserModal } from "./add-user-modal"
+import { EditUserModal } from "./edit-user-modal"
 
 interface User {
   name: string
@@ -66,6 +67,7 @@ const mockUsers: User[] = [
 export function UserTable() {
   const [users, setUsers] = useState<User[]>(mockUsers)
   const [isModalOpen, setIsModalOpen] = useState(false)
+  const [editingUser, setEditingUser] = useState<User | null>(null)
 
   const handleAddUser = (newUser: {
     name: string
@@ -93,6 +95,40 @@ export function UserTable() {
     }
 
     setUsers((prev) => [createdUser, ...prev])
+  }
+
+  const handleEditUser = (updatedUser: {
+    name: string
+    email: string
+    role: "Admin" | "Cashier" | "Staff" | "Customer"
+    branch: string
+  }) => {
+    if (!editingUser) return
+    setUsers((prev) =>
+      prev.map((u) => {
+        if (u.email === editingUser.email) {
+          const initials = updatedUser.name
+            .split(" ")
+            .map((n) => n[0])
+            .join("")
+            .substring(0, 2)
+            .toUpperCase() || "UN"
+          return {
+            ...u,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            role: updatedUser.role,
+            branch: updatedUser.branch,
+            initials,
+          }
+        }
+        return u
+      })
+    )
+  }
+
+  const handleDeleteUser = (email: string) => {
+    setUsers((prev) => prev.filter((u) => u.email !== email))
   }
   return (
     <div className="flex flex-col gap-6">
@@ -216,10 +252,16 @@ export function UserTable() {
                     </td>
                     <td className="px-6 py-4 text-right">
                       <div className="flex items-center justify-end gap-1">
-                        <button className="p-1.5 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded transition-colors">
+                        <button
+                          onClick={() => setEditingUser(user)}
+                          className="p-1.5 text-muted-foreground hover:text-primary hover:bg-primary/10 rounded transition-colors"
+                        >
                           <Pencil className="h-4 w-4" />
                         </button>
-                        <button className="p-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded transition-colors">
+                        <button
+                          onClick={() => handleDeleteUser(user.email)}
+                          className="p-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded transition-colors"
+                        >
                           <Trash2 className="h-4 w-4" />
                         </button>
                       </div>
@@ -267,6 +309,13 @@ export function UserTable() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onAdd={handleAddUser}
+      />
+      <EditUserModal
+        key={editingUser?.email || "none"}
+        isOpen={editingUser !== null}
+        onClose={() => setEditingUser(null)}
+        user={editingUser}
+        onSave={handleEditUser}
       />
     </div>
   )
