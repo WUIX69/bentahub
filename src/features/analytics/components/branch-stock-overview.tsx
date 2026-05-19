@@ -1,5 +1,4 @@
-import Link from "next/link"
-import { ArrowRight, AlertTriangle, CheckCircle, Flame } from "lucide-react"
+import { AlertTriangle, CheckCircle, Flame } from "lucide-react"
 
 export function BranchStockOverview() {
   const branches = [

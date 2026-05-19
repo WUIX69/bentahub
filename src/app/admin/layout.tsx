@@ -18,7 +18,7 @@ export default function AdminLayout({
       {/* Main Content Area */}
       <div className="ml-[280px] flex flex-col min-h-screen">
         {/* Topbar - Sticky */}
-        <AdminTopbar />
+        <AdminTopbar pathname={pathname} />
 
         {/* Page Content */}
         <main className="flex-1 p-6">

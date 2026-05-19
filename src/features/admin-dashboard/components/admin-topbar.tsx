@@ -1,20 +1,44 @@
 "use client"
 
-import { Search, Bell, ChevronDown } from "lucide-react"
+import { Search, Bell } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { ThemeToggle } from "@/components/theme-toggle"
 import Image from "next/image"
 
 interface AdminTopbarProps {
-  title?: string
+  pathname?: string
 }
 
-export function AdminTopbar({ title = "Dashboard Overview" }: AdminTopbarProps) {
+export function AdminTopbar({ pathname = "/admin" }: AdminTopbarProps) {
+  let title = "Dashboard Overview"
+  let subtitle = ""
+
+  if (pathname.includes("/admin/monitoring")) {
+    title = "Centralized Monitoring"
+    subtitle = "View inventory and sales across all branches in real-time"
+  } else if (pathname.includes("/admin/sales")) {
+    title = "Sales Report"
+    subtitle = "View daily sales and transaction records across all branches."
+  } else if (pathname.includes("/admin/reservations")) {
+    title = "Reservations"
+  } else if (pathname.includes("/admin/users")) {
+    title = "User Management"
+  } else if (pathname.includes("/admin/payments")) {
+    title = "Payments"
+  } else if (pathname.includes("/admin/history")) {
+    title = "Transaction History"
+  } else if (pathname.includes("/admin/pickups")) {
+    title = "Pickups"
+  } else if (pathname.includes("/admin/settings")) {
+    title = "Settings"
+  }
+
   return (
-    <header className="sticky top-0 z-30 bg-background border-b border-border h-16 flex items-center justify-between px-6">
+    <header className="sticky top-0 z-30 bg-background border-b border-border h-20 flex items-center justify-between px-6">
       {/* Left side */}
-      <div className="flex items-center gap-4">
-        <h1 className="text-xl font-bold text-foreground">{title}</h1>
+      <div className="flex flex-col justify-center">
+        <h1 className="text-xl font-bold text-foreground leading-tight">{title}</h1>
+        {subtitle && <p className="text-xs text-muted-foreground mt-0.5">{subtitle}</p>}
       </div>
 
       {/* Right side */}
