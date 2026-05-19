@@ -10,9 +10,9 @@ export function SalesFilters() {
         <div className="flex-1 min-w-[200px]">
           <label className="block text-xs font-bold mb-2 text-muted-foreground">Date</label>
           <div className="relative">
-            <input 
-              className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-primary focus:border-primary" 
-              type="date" 
+            <input
+              className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-primary focus:border-primary"
+              type="date"
               defaultValue="2024-03-22"
             />
           </div>
@@ -21,9 +21,9 @@ export function SalesFilters() {
           <label className="block text-xs font-bold mb-2 text-muted-foreground">Branch</label>
           <select className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-sm focus:ring-2 focus:ring-primary focus:border-primary">
             <option>All Branches</option>
-            <option>North Branch</option>
-            <option>South Branch</option>
-            <option>Main Hub</option>
+            <option>Lourdes Main Branch</option>
+            <option>Lourdes Second Branch</option>
+            <option>Lourdes Third Branch</option>
           </select>
         </div>
         <button className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-2.5 rounded-lg text-sm font-bold flex items-center gap-2 shadow-sm transition-all active:scale-95">
