@@ -129,9 +129,9 @@ export function EditUserModal({ isOpen, onClose, user, onSave }: EditUserModalPr
                     onChange={(e) => setBranch(e.target.value)}
                   >
                     <option value="All Branches">All Branches</option>
-                    <option value="Manila Central">Manila Central</option>
-                    <option value="Quezon City Hub">Quezon City Hub</option>
-                    <option value="Davao Regional">Davao Regional</option>
+                    <option value="Lourdes Main Branch">Lourdes Main Branch</option>
+                    <option value="Lourdes New Branch">Lourdes 2nd Branch</option>
+                    <option value="Lourdes 3rd Branch">Lourdes 3rd Branch</option>
                   </select>
                 </div>
               </div>
