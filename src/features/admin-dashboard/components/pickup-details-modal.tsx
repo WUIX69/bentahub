@@ -67,11 +67,10 @@ export function PickupDetailsModal({ isOpen, onClose, order }: PickupDetailsModa
           {/* Status Badge */}
           <div className="flex">
             <span
-              className={`inline-flex items-center gap-2 px-3 py-1 rounded-full font-bold text-xs border ${
-                isReady
-                  ? "bg-accent/50 text-primary border-primary/20"
-                  : "bg-muted text-muted-foreground border-border"
-              }`}
+              className={`inline-flex items-center gap-2 px-3 py-1 rounded-full font-bold text-xs border ${isReady
+                ? "bg-accent/50 text-primary border-primary/20"
+                : "bg-muted text-muted-foreground border-border"
+                }`}
             >
               <span className={`w-2 h-2 rounded-full ${isReady ? "bg-primary animate-pulse" : "bg-muted-foreground"}`} />
               {order.status}
@@ -135,20 +134,19 @@ export function PickupDetailsModal({ isOpen, onClose, order }: PickupDetailsModa
               <div className="relative flex flex-col">
                 <div className="absolute -left-[23px] top-1.5 w-3 h-3 rounded-full bg-muted-foreground/30" />
                 <p className="text-sm font-bold text-foreground leading-tight">Order Placed</p>
-                <p className="text-xs text-muted-foreground">Oct 20, 2023, 09:00 AM</p>
+                <p className="text-xs text-muted-foreground">Sep 20, 2026, 09:00 AM</p>
               </div>
               <div className="relative flex flex-col">
                 <div className="absolute -left-[23px] top-1.5 w-3 h-3 rounded-full bg-muted-foreground/30" />
                 <p className="text-sm font-bold text-foreground leading-tight">Payment Verified</p>
-                <p className="text-xs text-muted-foreground">Oct 20, 2023, 10:30 AM</p>
+                <p className="text-xs text-muted-foreground">Sep 21, 2026, 10:30 AM</p>
               </div>
               <div className="relative flex flex-col">
                 <div
-                  className={`absolute -left-[23px] top-1.5 w-3 h-3 rounded-full ${
-                    isReady
-                      ? "bg-primary ring-4 ring-primary/20"
-                      : "bg-muted-foreground/30"
-                  }`}
+                  className={`absolute -left-[23px] top-1.5 w-3 h-3 rounded-full ${isReady
+                    ? "bg-primary ring-4 ring-primary/20"
+                    : "bg-muted-foreground/30"
+                    }`}
                 />
                 <p className={`text-sm font-bold leading-tight ${isReady ? "text-primary" : "text-foreground"}`}>
                   Ready for Pickup
