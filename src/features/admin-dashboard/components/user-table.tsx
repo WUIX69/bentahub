@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Search, SlidersHorizontal, Plus, Pencil, Trash2, ChevronLeft, ChevronRight } from "lucide-react"
 import { AddUserModal } from "./add-user-modal"
 import { EditUserModal } from "./edit-user-modal"
+import { DeleteUserModal } from "./delete-user-modal"
 
 interface User {
   name: string
@@ -68,6 +69,7 @@ export function UserTable() {
   const [users, setUsers] = useState<User[]>(mockUsers)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [editingUser, setEditingUser] = useState<User | null>(null)
+  const [deletingUser, setDeletingUser] = useState<User | null>(null)
 
   const handleAddUser = (newUser: {
     name: string
@@ -129,6 +131,7 @@ export function UserTable() {
 
   const handleDeleteUser = (email: string) => {
     setUsers((prev) => prev.filter((u) => u.email !== email))
+    setDeletingUser(null)
   }
   return (
     <div className="flex flex-col gap-6">
@@ -259,7 +262,7 @@ export function UserTable() {
                           <Pencil className="h-4 w-4" />
                         </button>
                         <button
-                          onClick={() => handleDeleteUser(user.email)}
+                          onClick={() => setDeletingUser(user)}
                           className="p-1.5 text-muted-foreground hover:text-destructive hover:bg-destructive/10 rounded transition-colors"
                         >
                           <Trash2 className="h-4 w-4" />
@@ -316,6 +319,12 @@ export function UserTable() {
         onClose={() => setEditingUser(null)}
         user={editingUser}
         onSave={handleEditUser}
+      />
+      <DeleteUserModal
+        isOpen={deletingUser !== null}
+        onClose={() => setDeletingUser(null)}
+        userName={deletingUser?.name}
+        onConfirm={() => deletingUser && handleDeleteUser(deletingUser.email)}
       />
     </div>
   )
