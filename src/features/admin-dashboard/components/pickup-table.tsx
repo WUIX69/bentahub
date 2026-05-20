@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Search, SlidersHorizontal, CheckCircle2, Eye, ChevronLeft, ChevronRight } from "lucide-react"
 import { ConfirmPickupModal } from "./confirm-pickup-modal"
+import { PickupDetailsModal } from "./pickup-details-modal"
 
 interface PickupItem {
   name: string
@@ -53,6 +54,7 @@ const mockPickups: PickupOrder[] = [
 export function PickupTable() {
   const [pickups, setPickups] = useState<PickupOrder[]>(mockPickups)
   const [confirmingPickup, setConfirmingPickup] = useState<PickupOrder | null>(null)
+  const [viewingPickup, setViewingPickup] = useState<PickupOrder | null>(null)
 
   const handleConfirmPickup = (orderId: string) => {
     setPickups((prev) => prev.filter((p) => p.id !== orderId))
@@ -131,6 +133,7 @@ export function PickupTable() {
                           <CheckCircle2 className="h-[18px] w-[18px]" />
                         </button>
                         <button
+                          onClick={() => setViewingPickup(order)}
                           className="p-2 border border-border hover:bg-muted text-muted-foreground rounded-lg transition-all"
                           title="View Details"
                         >
@@ -164,11 +167,18 @@ export function PickupTable() {
       </div>
 
       <ConfirmPickupModal
-        key={confirmingPickup?.id || "none"}
+        key={confirmingPickup ? `confirm-${confirmingPickup.id}` : "confirm-closed"}
         isOpen={confirmingPickup !== null}
         onClose={() => setConfirmingPickup(null)}
         order={confirmingPickup}
         onConfirm={handleConfirmPickup}
+      />
+
+      <PickupDetailsModal
+        key={viewingPickup ? `details-${viewingPickup.id}` : "details-closed"}
+        isOpen={viewingPickup !== null}
+        onClose={() => setViewingPickup(null)}
+        order={viewingPickup}
       />
     </>
   )
