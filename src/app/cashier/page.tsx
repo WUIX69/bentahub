@@ -1,8 +1,19 @@
+"use client"
+
+import { ProductCatalog } from "@/features/cashier-dashboard/components/product-catalog"
+import { CartSidebar } from "@/features/cashier-dashboard/components/cart-sidebar"
+import { useCart } from "@/features/cashier-dashboard/hooks/use-cart"
+
 export default function CashierPage() {
+  const cart = useCart()
+
   return (
-    <div>
-      <h1 className="text-2xl font-bold">Cashier POS</h1>
-      <p>Scan barcodes to process transactions.</p>
+    <div className="flex flex-1 overflow-hidden h-full">
+      {/* Product Catalog Grid */}
+      <ProductCatalog onAddProduct={cart.addItem} />
+
+      {/* Cart Checkout Sidebar */}
+      <CartSidebar cart={cart} />
     </div>
   )
 }
