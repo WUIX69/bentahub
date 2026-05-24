@@ -44,7 +44,7 @@ export function ProductCatalog({ onAddProduct }: ProductCatalogProps) {
   }, [searchQuery, selectedCategory])
 
   return (
-    <div className="flex-1 flex flex-col overflow-hidden bg-slate-50 p-6">
+    <div className="flex-1 flex flex-col overflow-hidden bg-slate-50 p-4 md:p-6">
       {/* Search and Filter Panel */}
       <div className="flex flex-col gap-4 mb-6 sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 py-1">
         {/* Search Input */}
@@ -90,7 +90,7 @@ export function ProductCatalog({ onAddProduct }: ProductCatalogProps) {
             <span className="text-xs">Try adjusting your filters or search query</span>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 pb-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-4 pb-8">
             {filteredProducts.map((prod) => (
               <ProductCard key={prod.id} product={prod} onAdd={onAddProduct} />
             ))}

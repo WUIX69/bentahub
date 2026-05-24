@@ -1,16 +1,17 @@
 "use client"
 
 import { useEffect, useState, useCallback } from "react"
-import { ShoppingCart, QrCode, Coins, CheckCircle, Percent } from "lucide-react"
+import { ShoppingCart, QrCode, Coins, CheckCircle, Percent, X } from "lucide-react"
 import { CartItem } from "./cart-item"
 import { cn } from "@/lib/utils"
 import type { UseCartReturn } from "../hooks/use-cart"
 
 interface CartSidebarProps {
   cart: UseCartReturn
+  onClose?: () => void
 }
 
-export function CartSidebar({ cart }: CartSidebarProps) {
+export function CartSidebar({ cart, onClose }: CartSidebarProps) {
   const {
     items,
     removeItem,
@@ -72,7 +73,7 @@ export function CartSidebar({ cart }: CartSidebarProps) {
   }, [items, amountPaid, total, paymentMethod, completeSale, clearCart])
 
   return (
-    <aside className="w-[360px] bg-white border-l border-slate-200 flex flex-col z-20 overflow-hidden shadow-[-10px_0_30px_rgba(0,0,0,0.03)] h-full relative">
+    <aside className="w-full lg:w-[360px] bg-white border-l border-slate-200 flex flex-col z-20 overflow-hidden shadow-[-10px_0_30px_rgba(0,0,0,0.03)] h-full relative">
       {/* Checkout Toast overlay */}
       {checkoutSuccess && (
         <div className="absolute inset-0 bg-white/95 backdrop-blur-sm z-50 flex flex-col items-center justify-center p-6 text-center animate-fade-in">
@@ -96,9 +97,16 @@ export function CartSidebar({ cart }: CartSidebarProps) {
           <ShoppingCart className="w-4.5 h-4.5 text-blue-600 font-bold" />
           <h2 className="font-bold text-sm text-slate-800">Current Orders</h2>
         </div>
-        <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-100 rounded text-slate-500">
-          {items.length} Items
-        </span>
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] font-bold px-2 py-0.5 bg-slate-100 rounded text-slate-500">
+            {items.length} Items
+          </span>
+          {onClose && (
+            <button onClick={onClose} className="p-1 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors lg:hidden">
+              <X className="w-4 h-4" />
+            </button>
+          )}
+        </div>
       </div>
 
       {/* Cart Items List */}
