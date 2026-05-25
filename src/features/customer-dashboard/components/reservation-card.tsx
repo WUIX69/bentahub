@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 import { Calendar, MapPin, Package, Truck, MoreVertical } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -23,6 +24,7 @@ interface ReservationCardProps {
 }
 
 export function ReservationCard({ variant, data }: ReservationCardProps) {
+  const router = useRouter()
   const isFeatured = variant === "featured"
 
   const statusStyles = {
@@ -76,7 +78,10 @@ export function ReservationCard({ variant, data }: ReservationCardProps) {
                   {data.title}
                 </h3>
               </div>
-              <button className="text-muted-foreground hover:text-foreground p-1 rounded-full hover:bg-muted">
+              <button
+                onClick={() => {}}
+                className="text-muted-foreground hover:text-foreground p-1 rounded-full hover:bg-muted"
+              >
                 <MoreVertical className="h-4 w-4" />
                 <span className="sr-only">More Options</span>
               </button>
@@ -110,7 +115,7 @@ export function ReservationCard({ variant, data }: ReservationCardProps) {
             <span className="text-sm font-medium text-foreground">
               Full details available
             </span>
-            <Button size="sm">
+            <Button size="sm" onClick={() => router.push(`/customer/reservations`)}>
               View Pickup Pass
             </Button>
           </div>
@@ -168,7 +173,7 @@ export function ReservationCard({ variant, data }: ReservationCardProps) {
           <Calendar className="h-3.5 w-3.5" />
           <span>Expected: {data.date}</span>
         </div>
-        <Button size="sm" variant="outline">
+        <Button size="sm" variant="outline" onClick={() => router.push(`/customer/reservations`)}>
           Details
         </Button>
       </div>

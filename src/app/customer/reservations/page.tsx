@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { 
   ReservationCard, 
   ReservationSummary 
@@ -9,7 +10,7 @@ import { cn } from "@/lib/utils"
 
 export default function ReservationsPage() {
   const tabs = ["All", "Processing", "Ready", "Completed"]
-  const activeTab = "All"
+  const [activeTab, setActiveTab] = useState("All")
 
   const featuredReservation: ReservationData = {
     id: "#BH-0001",
@@ -69,6 +70,7 @@ export default function ReservationsPage() {
         {tabs.map((tab) => (
           <button
             key={tab}
+            onClick={() => setActiveTab(tab)}
             className={cn(
               "pb-3 text-sm font-medium transition-colors relative",
               activeTab === tab

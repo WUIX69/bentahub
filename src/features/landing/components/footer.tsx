@@ -31,7 +31,7 @@ export function Footer() {
           </div>
 
           {/* Links Columns */}
-          <div className="lg:col-span-5 grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-6">
             <div>
               <h4 className="text-sm text-white uppercase tracking-wider mb-4 font-bold">Shop</h4>
               <ul className="space-y-2 text-sm text-zinc-400">
