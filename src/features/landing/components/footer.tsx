@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Store, Globe, MessageCircle, Share2, ShieldCheck } from "lucide-react"
+import { Store, Globe, MessageCircle, Share2 } from "lucide-react"
 
 export function Footer() {
   return (
@@ -57,26 +57,6 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Newsletter Signup */}
-          <div className="lg:col-span-3">
-            <h4 className="text-sm text-white uppercase tracking-wider mb-4 font-bold">Newsletter</h4>
-            <p className="text-sm text-zinc-400 mb-4">
-              Get updates on new branches and exclusive deals.
-            </p>
-            <form className="space-y-2">
-              <input
-                className="w-full px-4 py-2 rounded-lg bg-zinc-800 border border-zinc-700 text-white placeholder:text-zinc-500 focus:outline-none focus:ring-1 focus:ring-primary text-sm"
-                placeholder="Your email address"
-                type="email"
-              />
-              <button
-                className="w-full bg-primary text-white py-2 rounded-lg text-sm font-bold hover:bg-primary/90 transition-all shadow-sm"
-                type="submit"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
         </div>
 
         {/* Bottom Bar */}
@@ -84,10 +64,6 @@ export function Footer() {
           <p className="text-xs text-zinc-500">
             © 2024 BentaHub. All rights reserved.
           </p>
-          <Link href="#" className="text-xs text-primary hover:underline flex items-center gap-1">
-            <ShieldCheck className="h-4 w-4" />
-            Merchant Login
-          </Link>
         </div>
       </div>
     </footer>
