@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation"
 import { Bell, Menu } from "lucide-react"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const ROUTE_TITLES: Record<string, string> = {
   "/staff": "Dashboard Overview",
@@ -20,7 +21,7 @@ export function StaffTopbar({ onToggleSidebar }: StaffTopbarProps) {
   const title = ROUTE_TITLES[pathname] || "Staff Dashboard"
 
   return (
-    <header className="bg-white border-b border-border px-4 md:px-6 sticky top-0 z-30 flex justify-between items-center h-[80px] w-full">
+    <header className="bg-card border-b border-border px-4 md:px-6 sticky top-0 z-30 flex justify-between items-center h-[80px] w-full">
       <div className="flex items-center gap-3 min-w-0">
         <button
           onClick={onToggleSidebar}
@@ -32,9 +33,12 @@ export function StaffTopbar({ onToggleSidebar }: StaffTopbarProps) {
         <h1 className="text-xl font-bold text-foreground truncate">{title}</h1>
       </div>
       <div className="flex items-center gap-4 md:gap-6">
+        {/* Theme Toggle */}
+        <ThemeToggle />
+
         <button className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary transition-colors border border-border relative flex-shrink-0">
           <Bell className="w-5 h-5" />
-          <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-white"></span>
+          <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-card"></span>
         </button>
 
         <div className="h-8 w-px bg-border hidden sm:block"></div>

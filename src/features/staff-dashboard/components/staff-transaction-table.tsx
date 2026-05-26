@@ -106,11 +106,11 @@ export function StaffTransactionTable({ transactions }: StaffTransactionTablePro
                     <td className="p-4 text-xs text-muted-foreground font-medium">{t.cashier}</td>
                     <td className="p-4 text-xs text-muted-foreground">{itemsCount} {itemsCount === 1 ? "item" : "items"}</td>
                     <td className="p-4 text-xs">
-                      <span className={cn("px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border", t.paymentMethod === "gcash" ? "bg-emerald-50 text-emerald-600 border-emerald-200" : "bg-amber-50 text-amber-600 border-amber-200")}>{t.paymentMethod}</span>
+                      <span className={cn("px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border", t.paymentMethod === "gcash" ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" : "bg-amber-500/10 text-amber-500 border-amber-500/20")}>{t.paymentMethod}</span>
                     </td>
                     <td className="p-4 text-sm font-mono font-bold text-foreground">₱{t.total.toFixed(2)}</td>
                     <td className="p-4">
-                      <span className={cn("inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border", t.status === "completed" ? "bg-emerald-50 text-emerald-700 border-emerald-200" : t.status === "voided" ? "bg-red-50 text-red-700 border-red-200" : "bg-slate-100 text-slate-700 border-slate-200")}>{t.status}</span>
+                      <span className={cn("inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold border", t.status === "completed" ? "bg-emerald-500/10 text-emerald-500 border-emerald-500/20" : t.status === "voided" ? "bg-red-500/10 text-red-500 border-red-500/20" : "bg-muted text-muted-foreground border-border")}>{t.status}</span>
                     </td>
                     <td className="p-4 text-right">
                       <button onClick={() => setSelectedTxn(t)} className="inline-flex items-center gap-1 text-xs font-bold text-primary hover:underline"><FileText className="w-3.5 h-3.5" /><span>View Receipt</span></button>
