@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { Search, Download, ChevronLeft, ChevronRight } from "lucide-react"
+import { Search, Download, ChevronLeft, ChevronRight, Package } from "lucide-react"
 import { products, getStockStatus } from "@/features/cashier-dashboard/data/products"
 import { cn } from "@/lib/utils"
 
@@ -153,9 +153,13 @@ export function StockTable() {
                     {/* Product visual pill */}
                     <td className="p-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded bg-slate-100 flex-shrink-0 overflow-hidden border border-slate-200/50">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                        <div className="w-12 h-12 rounded bg-slate-100 flex-shrink-0 overflow-hidden border border-slate-200/50 flex items-center justify-center">
+                          {p.image ? (
+                            /* eslint-disable-next-line @next/next/no-img-element */
+                            <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                          ) : (
+                            <Package className="w-6 h-6 text-slate-400 opacity-40" />
+                          )}
                         </div>
                         <div>
                           <p className="text-sm font-bold text-slate-800">{p.name}</p>

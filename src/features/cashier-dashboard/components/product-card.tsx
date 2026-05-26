@@ -1,6 +1,7 @@
 import type { Product } from "@/types/cashier"
 import { getStockStatus } from "@/features/cashier-dashboard/data/products"
 import { cn } from "@/lib/utils"
+import { Package } from "lucide-react"
 
 interface ProductCardProps {
   product: Product
@@ -23,13 +24,17 @@ export function ProductCard({ product, onAdd, disabled }: ProductCardProps) {
       )}
     >
       {/* Product Image Panel */}
-      <div className="aspect-square w-full rounded-lg overflow-hidden mb-3 bg-slate-100 relative">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
+      <div className="aspect-square w-full rounded-lg overflow-hidden mb-3 bg-slate-100 relative flex items-center justify-center">
+        {product.image ? (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        ) : (
+          <Package className="w-12 h-12 text-slate-400 opacity-40" />
+        )}
 
         {/* Stock Badge */}
         <span

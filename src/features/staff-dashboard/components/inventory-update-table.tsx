@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import { Search, ChevronLeft, ChevronRight, Edit3, Plus } from "lucide-react"
+import { Search, ChevronLeft, ChevronRight, Edit3, Plus, Package } from "lucide-react"
 import type { Product } from "@/types/cashier"
 import { getStockStatus } from "@/features/staff-dashboard/data/products"
 import { QuickStockModal } from "./quick-stock-modal"
@@ -13,7 +13,7 @@ const ITEMS_PER_PAGE = 6
 interface InventoryUpdateTableProps {
   products: Product[]
   onStockUpdate: (productId: string, newStock: number, newReorderLevel: number) => void
-  onAddProduct?: (product: { name: string; sku: string; category: string; stock: number; reorderLevel: number; unit: string; price: number }) => void
+  onAddProduct?: (product: { name: string; sku: string; category: string; stock: number; reorderLevel: number; unit: string; price: number; image?: string }) => void
 }
 
 export function InventoryUpdateTable({ products: initialProducts, onStockUpdate, onAddProduct }: InventoryUpdateTableProps) {
@@ -109,8 +109,12 @@ export function InventoryUpdateTable({ products: initialProducts, onStockUpdate,
                   <tr key={p.id} className={cn("hover:bg-muted/20 transition-colors", isOut && "bg-red-50/20", isLow && "bg-amber-50/10")}>
                     <td className="p-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-12 h-12 rounded bg-muted flex-shrink-0 overflow-hidden border border-border/50">
-                          <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                        <div className="w-12 h-12 rounded bg-muted flex-shrink-0 overflow-hidden border border-border/50 flex items-center justify-center">
+                          {p.image ? (
+                            <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                          ) : (
+                            <Package className="w-6 h-6 text-muted-foreground opacity-50" />
+                          )}
                         </div>
                         <div>
                           <p className="text-sm font-bold text-foreground">{p.name}</p>

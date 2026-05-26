@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from "react"
-import { X, Plus } from "lucide-react"
+import { useState, useRef } from "react"
+import { X, Plus, Image as ImageIcon, ImagePlus } from "lucide-react"
 
 interface ProductForm {
   name: string
@@ -11,6 +11,7 @@ interface ProductForm {
   reorderLevel: number
   unit: string
   price: number
+  image: string
 }
 
 interface AddStockModalProps {
@@ -23,16 +24,34 @@ const CATEGORIES = ["Groceries", "Beverages", "Household", "Pharmacy", "Snacks",
 
 export function AddStockModal({ isOpen, onClose, onSave }: AddStockModalProps) {
   const [form, setForm] = useState<ProductForm>({
-    name: "", sku: "", category: "Groceries", stock: 0, reorderLevel: 10, unit: "pcs", price: 0,
+    name: "", sku: "", category: "Groceries", stock: 0, reorderLevel: 10, unit: "pcs", price: 0, image: ""
   })
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   if (!isOpen) return null
 
   const handleSave = () => {
     if (!form.name.trim() || !form.sku.trim()) return
     onSave(form)
-    setForm({ name: "", sku: "", category: "Groceries", stock: 0, reorderLevel: 10, unit: "pcs", price: 0 })
+    setForm({ name: "", sku: "", category: "Groceries", stock: 0, reorderLevel: 10, unit: "pcs", price: 0, image: "" })
     onClose()
+  }
+
+  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    const reader = new FileReader()
+    reader.onload = (event) => {
+      const result = event.target?.result
+      if (typeof result === "string") {
+        setForm(f => ({ ...f, image: result }))
+      }
+    }
+    reader.readAsDataURL(file)
+
+    // Reset the input so the same file can be re-selected
+    e.target.value = ""
   }
 
   const isValid = form.name.trim() && form.sku.trim()
@@ -59,6 +78,55 @@ export function AddStockModal({ isOpen, onClose, onSave }: AddStockModalProps) {
                 className="w-full h-11 px-4 bg-background border border-border rounded-lg text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
               />
             </div>
+
+            {/* Product Photo Section */}
+            <div className="space-y-1.5 sm:col-span-2">
+              <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Product Photo</label>
+              <div className="flex flex-col sm:flex-row gap-4 items-center p-4 border border-dashed border-border rounded-xl bg-muted/10">
+                {/* Image Preview Box */}
+                <div className="w-24 h-24 rounded-lg bg-background border border-border overflow-hidden flex-shrink-0 flex items-center justify-center relative shadow-inner">
+                  {form.image ? (
+                    <>
+                      <img src={form.image} alt="Product preview" className="w-full h-full object-cover" />
+                      <button 
+                        type="button" 
+                        onClick={() => setForm(f => ({ ...f, image: "" }))} 
+                        className="absolute top-1 right-1 bg-black/60 hover:bg-black/80 text-white rounded-full p-1 transition-colors"
+                        title="Remove image"
+                      >
+                        <X className="w-3 h-3" />
+                      </button>
+                    </>
+                  ) : (
+                    <div className="text-center p-2 flex flex-col items-center justify-center text-muted-foreground">
+                      <ImageIcon className="w-6 h-6 opacity-40 mb-1" />
+                      <span className="text-[10px]">No Photo</span>
+                    </div>
+                  )}
+                </div>
+
+                {/* File Picker */}
+                <div className="flex-1 w-full space-y-2">
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileSelect}
+                    className="hidden"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="inline-flex items-center justify-center gap-1.5 h-10 px-4 bg-primary/10 hover:bg-primary/15 text-primary rounded-lg text-xs font-bold transition-all whitespace-nowrap w-full"
+                  >
+                    <ImagePlus className="w-4 h-4" />
+                    Add Image
+                  </button>
+                  <p className="text-[10px] text-muted-foreground">Click to choose an image file from your device.</p>
+                </div>
+              </div>
+            </div>
+
             <div className="space-y-1.5">
               <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">SKU</label>
               <input

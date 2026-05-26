@@ -33,7 +33,7 @@ export default function InventoryPage() {
     )
   }
 
-  const handleAddProduct = (data: { name: string; sku: string; category: string; stock: number; reorderLevel: number; unit: string; price: number }) => {
+  const handleAddProduct = (data: { name: string; sku: string; category: string; stock: number; reorderLevel: number; unit: string; price: number; image?: string }) => {
     const newProduct: Product = {
       id: `prod-${Date.now()}`,
       sku: data.sku,
@@ -42,7 +42,7 @@ export default function InventoryPage() {
       category: data.category as Product["category"],
       stock: data.stock,
       reorderLevel: data.reorderLevel,
-      image: "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&auto=format&fit=crop&q=80",
+      image: data.image || "",
       unit: data.unit,
     }
     setProducts((prev) => [...prev, newProduct])

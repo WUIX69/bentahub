@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react"
 import { StaffKpiCards } from "@/features/staff-dashboard/components/staff-kpi-cards"
 import { staffProducts, getStockStatus } from "@/features/staff-dashboard/data/products"
-import { AlertTriangle, Package, RefreshCw } from "lucide-react"
+import { AlertTriangle, Package } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { Product } from "@/types/cashier"
 
@@ -47,14 +47,14 @@ export default function StaffPage() {
             <span className="text-xs text-muted-foreground font-medium">{lowStockCount} items</span>
           </div>
           {lowStockItems.length === 0 ? (
-            <p className="text-xs text-muted-foreground">All products are sufficiently stocked.</p>
+            <p className="text-xs text-muted-foreground">All products are well stocked.</p>
           ) : (
             <div className="space-y-3">
               {lowStockItems.map((p) => (
                 <div key={p.id} className="flex items-center justify-between p-3 bg-red-50/50 border border-red-100 rounded-lg">
                   <div>
                     <p className="text-sm font-bold text-foreground">{p.name}</p>
-                    <p className="text-[10px] font-mono text-muted-foreground">SKU: {p.sku}</p>
+                    <p className="text-[10px] font-mono text-muted-foreground">Product Code: {p.sku}</p>
                   </div>
                   <div className="text-right">
                     <p className={cn("text-sm font-mono font-bold", p.stock === 0 ? "text-red-600" : "text-amber-600")}>
@@ -71,7 +71,7 @@ export default function StaffPage() {
         <div className="bg-card rounded-xl border border-border shadow-sm p-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-2">
-              <RefreshCw className="w-5 h-5 text-blue-500" />
+
               <h2 className="text-base font-bold text-foreground">Recent Stock Activity</h2>
             </div>
             <span className="text-xs text-muted-foreground font-medium">Today</span>
@@ -83,8 +83,12 @@ export default function StaffPage() {
               {recentChanges.map((p) => (
                 <div key={p.id} className="flex items-center justify-between p-3 bg-muted/20 border border-border rounded-lg">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded bg-muted overflow-hidden border border-border/50 flex-shrink-0">
-                      <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                    <div className="w-8 h-8 rounded bg-muted overflow-hidden border border-border/50 flex-shrink-0 flex items-center justify-center">
+                      {p.image ? (
+                        <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                      ) : (
+                        <Package className="w-4 h-4 text-muted-foreground opacity-50" />
+                      )}
                     </div>
                     <div>
                       <p className="text-sm font-bold text-foreground">{p.name}</p>

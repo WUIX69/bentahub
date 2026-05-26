@@ -1,6 +1,6 @@
 "use client"
 
-import { Plus, Minus, Trash2 } from "lucide-react"
+import { Plus, Minus, Trash2, Package } from "lucide-react"
 import type { CartItem as CartItemType } from "@/types/cashier"
 
 interface CartItemProps {
@@ -15,9 +15,13 @@ export function CartItem({ item, onUpdateQty, onRemove }: CartItemProps) {
   return (
     <div className="flex items-center gap-3 p-3 bg-white border border-slate-100 rounded-xl hover:shadow-sm transition-all duration-200">
       {/* Thumbnail */}
-      <div className="w-12 h-12 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200/50">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+      <div className="w-12 h-12 rounded-lg bg-slate-100 overflow-hidden flex-shrink-0 border border-slate-200/50 flex items-center justify-center">
+        {product.image ? (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+        ) : (
+          <Package className="w-6 h-6 text-slate-400 opacity-40" />
+        )}
       </div>
 
       {/* Info */}
