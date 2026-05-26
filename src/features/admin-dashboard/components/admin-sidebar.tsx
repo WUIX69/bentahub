@@ -4,6 +4,7 @@ import Link from "next/link"
 import {
   LayoutDashboard,
   Activity,
+  Bell,
   Tag,
   Calendar,
   Users,
@@ -35,6 +36,7 @@ export function AdminSidebar({ activePath, isOpen, onClose }: AdminSidebarProps)
       title: "Management",
       items: [
         { label: "Monitoring", icon: Activity, path: "/admin/monitoring" },
+        { label: "Notifications", icon: Bell, path: "/admin/notifications" },
         { label: "Sales", icon: Tag, path: "/admin/sales" },
         { label: "Reservations", icon: Calendar, path: "/admin/reservations" },
         { label: "User Management", icon: Users, path: "/admin/users" },

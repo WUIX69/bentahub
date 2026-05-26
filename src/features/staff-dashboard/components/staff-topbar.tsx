@@ -1,12 +1,13 @@
 "use client"
 
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Bell, Menu } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 const ROUTE_TITLES: Record<string, string> = {
   "/staff": "Dashboard Overview",
   "/staff/monitoring": "Transaction Monitoring",
+  "/staff/notifications": "Notifications",
   "/staff/inventory": "Inventory Updating",
   "/staff/history": "Transaction History",
   "/staff/pickup": "Payments & Pickup",
@@ -17,6 +18,7 @@ interface StaffTopbarProps {
 }
 
 export function StaffTopbar({ onToggleSidebar }: StaffTopbarProps) {
+  const router = useRouter()
   const pathname = usePathname()
   const title = ROUTE_TITLES[pathname] || "Staff Dashboard"
 
@@ -36,7 +38,7 @@ export function StaffTopbar({ onToggleSidebar }: StaffTopbarProps) {
         {/* Theme Toggle */}
         <ThemeToggle />
 
-        <button className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary transition-colors border border-border relative flex-shrink-0">
+        <button onClick={() => router.push("/staff/notifications")} className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary transition-colors border border-border relative flex-shrink-0">
           <Bell className="w-5 h-5" />
           <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-card"></span>
         </button>

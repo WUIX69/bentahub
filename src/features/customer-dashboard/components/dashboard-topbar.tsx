@@ -34,7 +34,7 @@ export function DashboardTopbar() {
 
         {/* Notifications */}
         <button
-          onClick={() => {}}
+          onClick={() => router.push("/customer/notifications")}
           className="relative p-2 text-muted-foreground hover:text-foreground hover:bg-accent rounded-full transition-colors"
         >
           <Bell className="h-5 w-5" />

@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutGrid, Activity, PackageSearch, History, CheckCircle2, User, LogOut, X } from "lucide-react"
+import { LayoutGrid, Activity, Bell, PackageSearch, History, CheckCircle2, User, LogOut, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const NAV_ITEMS = [
@@ -16,6 +16,7 @@ const NAV_ITEMS = [
     category: "Operations",
     links: [
       { href: "/staff/monitoring", label: "Live Monitoring", icon: Activity },
+      { href: "/staff/notifications", label: "Notifications", icon: Bell },
       { href: "/staff/inventory", label: "Inventory Stock", icon: PackageSearch },
       { href: "/staff/history", label: "Past History", icon: History },
       { href: "/staff/pickup", label: "Payments & Pickups", icon: CheckCircle2 },

@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   Store,
   Receipt,
+  Bell,
   Store as StoreIcon,
   ShoppingCart,
   LogOut
@@ -25,6 +26,11 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
       label: "Home",
       icon: LayoutDashboard,
       path: "/customer",
+    },
+    {
+      label: "Notifications",
+      icon: Bell,
+      path: "/customer/notifications",
     },
     {
       label: "Browse Catalog",
