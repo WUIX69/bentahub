@@ -88,9 +88,9 @@ export function AddStockModal({ isOpen, onClose, onSave }: AddStockModalProps) {
                   {form.image ? (
                     <>
                       <img src={form.image} alt="Product preview" className="w-full h-full object-cover" />
-                      <button 
-                        type="button" 
-                        onClick={() => setForm(f => ({ ...f, image: "" }))} 
+                      <button
+                        type="button"
+                        onClick={() => setForm(f => ({ ...f, image: "" }))}
                         className="absolute top-1 right-1 bg-black/60 hover:bg-black/80 text-white rounded-full p-1 transition-colors"
                         title="Remove image"
                       >
@@ -179,14 +179,6 @@ export function AddStockModal({ isOpen, onClose, onSave }: AddStockModalProps) {
               />
             </div>
             <div className="space-y-1.5">
-              <label className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Reorder Threshold</label>
-              <input
-                type="number"
-                min={0}
-                value={form.reorderLevel}
-                onChange={(e) => setForm((f) => ({ ...f, reorderLevel: Math.max(0, parseInt(e.target.value) || 0) }))}
-                className="w-full h-11 px-4 bg-background border border-border rounded-lg text-sm font-mono focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
-              />
             </div>
           </div>
         </div>
