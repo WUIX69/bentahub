@@ -4,9 +4,9 @@ import Link from "next/link"
 import {
   LayoutDashboard,
   Store,
-  Bookmark,
   Receipt,
   Store as StoreIcon,
+  ShoppingCart,
   LogOut
 } from "lucide-react"
 import { APP_NAME } from "@/config"
@@ -29,9 +29,9 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
       path: "/customer/catalog",
     },
     {
-      label: "My Reservations",
-      icon: Bookmark,
-      path: "/customer/reservations",
+      label: "Cart",
+      icon: ShoppingCart,
+      path: "/customer/cart",
     },
     {
       label: "Transaction History",

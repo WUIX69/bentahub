@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Home, Store, Bookmark, User } from "lucide-react"
+import { Home, Store, User, ShoppingCart } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface DashboardMobileNavProps {
@@ -21,9 +21,9 @@ export function DashboardMobileNav({ activePath }: DashboardMobileNavProps) {
       path: "/customer/catalog",
     },
     {
-      label: "Saved",
-      icon: Bookmark,
-      path: "/customer/reservations", // Assuming reservations acts as saved for now
+      label: "Cart",
+      icon: ShoppingCart,
+      path: "/customer/cart",
     },
     {
       label: "Profile",

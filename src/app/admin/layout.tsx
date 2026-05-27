@@ -1,13 +1,30 @@
+"use client"
+
+import { usePathname } from "next/navigation"
+import { AdminSidebar, AdminTopbar } from "@/features/admin-dashboard"
+
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const pathname = usePathname()
+
   return (
-    <div className="admin-layout">
-      {/* TODO: Add Admin-specific navigation/sidebar and role guard */}
-      <aside className="p-4 border-r">Admin Sidebar</aside>
-      <main className="flex-1 p-4">{children}</main>
+    <div className="min-h-screen bg-background">
+      {/* Sidebar - Fixed on desktop */}
+      <AdminSidebar activePath={pathname} />
+
+      {/* Main Content Area */}
+      <div className="ml-[280px] flex flex-col min-h-screen">
+        {/* Topbar - Sticky */}
+        <AdminTopbar pathname={pathname} />
+
+        {/* Page Content */}
+        <main className="flex-1 p-6">
+          {children}
+        </main>
+      </div>
     </div>
   )
 }

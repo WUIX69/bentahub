@@ -2,6 +2,7 @@
 
 import { Search, Bell } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export function DashboardTopbar() {
   return (
@@ -25,6 +26,9 @@ export function DashboardTopbar() {
 
       {/* Right side actions */}
       <div className="flex items-center gap-2">
+        {/* Theme Toggle */}
+        <ThemeToggle />
+
         {/* Notifications */}
         <button className="relative p-2 text-muted-foreground hover:text-foreground hover:bg-accent rounded-full transition-colors">
           <Bell className="h-5 w-5" />

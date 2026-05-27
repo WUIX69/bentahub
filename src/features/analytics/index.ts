@@ -9,4 +9,4 @@
  */
 
 // Export actions, components, hooks, and types as they are built
-export {}
+export { BranchStockOverview } from "./components/branch-stock-overview"
