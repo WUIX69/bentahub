@@ -50,7 +50,7 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
   ]
 
   const handleLogout = () => {
-    router.push("/")
+    router.push("/login")
   }
 
   return (

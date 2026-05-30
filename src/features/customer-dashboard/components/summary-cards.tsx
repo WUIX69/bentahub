@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ShoppingBag, Calendar, Award } from "lucide-react"
+import { ShoppingBag, Calendar } from "lucide-react"
 
 export function SummaryCards() {
   const cards = [
@@ -21,18 +21,10 @@ export function SummaryCards() {
       iconColor: "text-amber-600 dark:text-amber-400",
       href: "/customer/reservations",
     },
-    {
-      label: "Loyalty Points",
-      value: "1,250",
-      icon: Award,
-      iconBg: "bg-primary/10",
-      iconColor: "text-primary",
-      href: "/customer/settings",
-    },
   ]
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
       {cards.map((card, index) => {
         const Icon = card.icon
         return (

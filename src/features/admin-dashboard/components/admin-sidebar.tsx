@@ -125,10 +125,14 @@ export function AdminSidebar({ activePath, isOpen, onClose }: AdminSidebarProps)
               <Settings className="h-5 w-5" />
               <span>Settings</span>
             </Link>
-            <button className="flex items-center gap-3 px-4 py-2 rounded-lg text-destructive hover:bg-destructive/10 transition-all text-sm font-medium w-full text-left">
+            <Link
+              href="/login"
+              onClick={onClose}
+              className="flex items-center gap-3 px-4 py-2 rounded-lg text-destructive hover:bg-destructive/10 transition-all text-sm font-medium"
+            >
               <LogOut className="h-5 w-5" />
               <span>Logout</span>
-            </button>
+            </Link>
           </nav>
         </div>
       </aside>

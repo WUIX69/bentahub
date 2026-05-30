@@ -104,8 +104,7 @@ export function CashierSidebar({ isOpen, onClose }: CashierSidebarProps) {
               <span>Profile</span>
             </Link>
             <Link
-              href="#"
-              onClick={handleNav}
+              href="/login"
               className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-all duration-200"
             >
               <LogOut className="w-5 h-5" />
