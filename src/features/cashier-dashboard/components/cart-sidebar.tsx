@@ -74,7 +74,7 @@ export function CartSidebar({ cart, onClose }: CartSidebarProps) {
   }, [items, amountPaid, total, paymentMethod, completeSale, clearCart])
 
   return (
-    <aside className="w-full lg:w-96 bg-white border-l border-slate-200 flex flex-col z-20 overflow-hidden shadow-[-10px_0_30px_rgba(0,0,0,0.03)] h-full relative">
+    <aside className="w-full lg:w-[420px] bg-white border-l border-slate-200 flex flex-col z-20 overflow-hidden shadow-[-10px_0_30px_rgba(0,0,0,0.03)] h-full relative">
       {/* Checkout Toast overlay */}
       {checkoutSuccess && (
         <div className="absolute inset-0 bg-white/95 backdrop-blur-sm z-50 flex flex-col items-center justify-center p-6 text-center animate-fade-in">
