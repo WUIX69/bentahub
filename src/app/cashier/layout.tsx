@@ -12,10 +12,10 @@ export default function CashierLayout({
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex overflow-hidden">
+    <div className="h-screen bg-background text-foreground flex overflow-hidden">
       <CashierSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
 
-      <div className="flex-1 flex flex-col min-h-screen md:ml-[280px] overflow-hidden">
+      <div className="flex-1 flex flex-col h-screen md:ml-[280px] overflow-hidden">
         <CashierTopbar onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
         <main className="flex-1 overflow-hidden flex flex-col">
           {children}

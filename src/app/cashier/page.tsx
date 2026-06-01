@@ -24,12 +24,12 @@ export default function CashierPage() {
       )}
 
       {/* Product Catalog Grid */}
-      <div className="flex-1 min-w-0">
+      <div className="flex-1 min-w-0 flex flex-col h-full overflow-hidden">
         <ProductCatalog onAddProduct={cart.addItem} />
       </div>
 
       {/* Cart Sidebar - always visible on desktop, overlay on mobile */}
-      <div className={`${isCartOpen ? 'fixed inset-0 z-40 lg:static lg:inset-auto' : 'hidden lg:block'}`}>
+      <div className={`${isCartOpen ? 'fixed inset-0 z-40 lg:static lg:inset-auto' : 'hidden lg:block'} lg:h-full`}>
         {isCartOpen && (
           <div onClick={() => setIsCartOpen(false)} className="absolute inset-0 bg-black/50 lg:hidden" />
         )}
