@@ -16,7 +16,7 @@ export default function CashierPage() {
       {!isCartOpen && cart.items.length > 0 && (
         <button
           onClick={() => setIsCartOpen(true)}
-          className="fixed bottom-6 right-4 z-20 lg:hidden bg-blue-600 text-white p-4 rounded-full shadow-lg shadow-blue-600/30 hover:bg-blue-700 transition-all flex items-center gap-2"
+          className="fixed bottom-6 right-4 z-20 lg:hidden bg-primary text-primary-foreground p-4 rounded-full shadow-lg shadow-primary/30 hover:brightness-110 transition-all flex items-center gap-2"
         >
           <ShoppingCart className="w-5 h-5" />
           <span className="text-sm font-bold">{cart.items.length}</span>

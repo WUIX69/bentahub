@@ -71,7 +71,7 @@ export function ReceiptModal({ transaction, onClose }: ReceiptModalProps) {
               <span
                 className={cn(
                   "font-bold uppercase tracking-wider text-[10px]",
-                  isVoided ? "text-red-500" : "text-emerald-600"
+                  isVoided ? "text-red-500" : "text-green-600"
                 )}
               >
                 {transaction.status}
@@ -114,7 +114,7 @@ export function ReceiptModal({ transaction, onClose }: ReceiptModalProps) {
             )}
             <div className="flex justify-between items-baseline pt-2 text-sm font-black text-slate-800">
               <span>Total Bill</span>
-              <span className="font-mono text-blue-600 text-base">₱{transaction.total.toFixed(2)}</span>
+              <span className="font-mono text-primary text-base">₱{transaction.total.toFixed(2)}</span>
             </div>
           </div>
 
@@ -147,7 +147,7 @@ export function ReceiptModal({ transaction, onClose }: ReceiptModalProps) {
         <div className="p-4 bg-slate-50 border-t border-slate-200 flex gap-2">
           <button
             onClick={() => alert("Connecting to system receipt printer...")}
-            className="flex-1 bg-blue-600 text-white rounded-xl py-2 text-xs font-bold hover:bg-blue-700 transition-colors flex items-center justify-center gap-1.5 shadow-2xs"
+            className="flex-1 bg-primary text-primary-foreground rounded-xl py-2 text-xs font-bold hover:brightness-110 transition-colors flex items-center justify-center gap-1.5 shadow-lg shadow-primary/10"
           >
             <Printer className="w-4 h-4" />
             <span>Print Receipt</span>

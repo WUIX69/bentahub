@@ -44,19 +44,19 @@ export function ProductCatalog({ onAddProduct }: ProductCatalogProps) {
   }, [searchQuery, selectedCategory])
 
   return (
-    <div className="flex-1 flex flex-col overflow-hidden bg-slate-50 p-4 md:p-6">
+    <div className="flex-1 flex flex-col overflow-hidden bg-background p-4 md:p-6">
       {/* Search and Filter Panel */}
-      <div className="flex flex-col gap-4 mb-6 sticky top-0 bg-slate-50/95 backdrop-blur-md z-10 py-1">
+      <div className="flex flex-col gap-4 mb-6 sticky top-0 bg-background/95 backdrop-blur-md z-10 py-1">
         {/* Search Input */}
         <div className="relative group w-full">
-          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors w-5 h-5" />
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors w-5 h-5" />
           <input
             ref={searchInputRef}
             type="text"
             placeholder="Search products (Ctrl + K)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all outline-none text-sm shadow-sm"
+            className="w-full pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none text-sm shadow-sm"
           />
         </div>
 
@@ -71,8 +71,8 @@ export function ProductCatalog({ onAddProduct }: ProductCatalogProps) {
                 className={cn(
                   "px-5 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all shadow-sm border",
                   isActive
-                    ? "bg-blue-600 text-white border-blue-600 shadow-blue-600/20"
-                    : "bg-white text-slate-600 border-slate-200 hover:border-blue-600 hover:text-blue-600"
+                    ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20"
+                    : "bg-white text-slate-600 border-slate-200 hover:border-primary hover:text-primary"
                 )}
               >
                 {cat}
