@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutGrid, ClipboardList, Coins, History, User, LogOut, Monitor, X } from "lucide-react"
+import { LayoutGrid, ClipboardList, Coins, History, User, LogOut, Monitor, X, Bell } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const NAV_ITEMS = [
@@ -18,6 +18,7 @@ const NAV_ITEMS = [
       { href: "/cashier/stock-check", label: "Stock Check", icon: ClipboardList },
       { href: "/cashier/payments", label: "Payments", icon: Coins },
       { href: "/cashier/transactions", label: "Transaction History", icon: History },
+      { href: "/cashier/notifications", label: "Notifications", icon: Bell },
     ],
   },
 ]
