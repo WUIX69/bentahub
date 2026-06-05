@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Lora, JetBrains_Mono } from "next/font/google";
+import { Poppins, Lora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const fontSans = Inter({
+const fontSans = Poppins({
   subsets: ["latin"],
   variable: "--font-sans",
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
 const fontSerif = Lora({

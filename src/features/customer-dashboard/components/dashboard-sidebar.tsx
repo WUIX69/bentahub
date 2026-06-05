@@ -1,10 +1,12 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import {
   LayoutDashboard,
   Store,
   Receipt,
+  Bell,
   Store as StoreIcon,
   ShoppingCart,
   LogOut
@@ -17,11 +19,18 @@ interface DashboardSidebarProps {
 }
 
 export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
+  const router = useRouter()
+
   const navItems = [
     {
       label: "Home",
       icon: LayoutDashboard,
       path: "/customer",
+    },
+    {
+      label: "Notifications",
+      icon: Bell,
+      path: "/customer/notifications",
     },
     {
       label: "Browse Catalog",
@@ -39,6 +48,10 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
       path: "/customer/transactions",
     },
   ]
+
+  const handleLogout = () => {
+    router.push("/login")
+  }
 
   return (
     <aside className="hidden md:flex flex-col w-64 fixed left-0 top-0 bottom-0 bg-muted border-r border-border z-30">
@@ -77,7 +90,10 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
 
       {/* Logout */}
       <div className="p-4 border-t border-border">
-        <button className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-accent/50 hover:text-foreground w-full text-left">
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-muted-foreground hover:bg-accent/50 hover:text-foreground w-full text-left"
+        >
           <LogOut className="h-5 w-5" />
           Logout
         </button>

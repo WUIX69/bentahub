@@ -1,9 +1,6 @@
 "use client"
 
-import Link from "next/link"
 import Image from "next/image"
-import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 export function HeroSection() {
   return (
@@ -35,20 +32,6 @@ export function HeroSection() {
             BentaHub brings your local stores online. Browse real-time inventory, reserve items, and pick them up when ready. Convenient, and easy to use.
           </p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" asChild className="group">
-              <Link href="/customer">
-                Browse Catalog
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="text-white border-white/30 hover:bg-white/10 hover:text-white">
-              <Link href="#branches">
-                Our Branches
-              </Link>
-            </Button>
-          </div>
         </div>
       </div>
     </section>

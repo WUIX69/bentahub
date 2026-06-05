@@ -1,8 +1,11 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { MapPin, Store } from "lucide-react"
 
 export function NearbyBranches() {
+  const router = useRouter()
+
   const branches = [
     {
       name: "Lourdes Main Branch",
@@ -37,6 +40,7 @@ export function NearbyBranches() {
         {branches.map((branch, index) => (
           <button
             key={index}
+            onClick={() => router.push("/customer/catalog")}
             className="p-4 md:p-6 flex items-start gap-4 w-full text-left hover:bg-muted/50 transition-colors"
           >
             <div className="size-10 bg-muted rounded-lg flex items-center justify-center shrink-0">

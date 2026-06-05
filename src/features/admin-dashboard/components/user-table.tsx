@@ -12,7 +12,7 @@ interface User {
   avatarBg: string
   avatarText: string
   email: string
-  role: "Admin" | "Cashier" | "Staff" | "Customer"
+  role: "Admin" | "Cashier" | "Staff"
   branch: string
   status: "Active" | "Inactive"
   joinDate: string
@@ -52,17 +52,7 @@ const mockUsers: User[] = [
     status: "Inactive",
     joinDate: "2023-11-20",
   },
-  {
-    name: "Cathy Lim",
-    initials: "CL",
-    avatarBg: "bg-accent/40",
-    avatarText: "text-primary",
-    email: "clim88@yahoo.com",
-    role: "Customer",
-    branch: "N/A",
-    status: "Active",
-    joinDate: "2024-02-14",
-  },
+
 ]
 
 export function UserTable() {
@@ -74,7 +64,7 @@ export function UserTable() {
   const handleAddUser = (newUser: {
     name: string
     email: string
-    role: "Admin" | "Cashier" | "Staff" | "Customer"
+    role: "Admin" | "Cashier" | "Staff"
     branch: string
   }) => {
     const initials = newUser.name
@@ -102,7 +92,7 @@ export function UserTable() {
   const handleEditUser = (updatedUser: {
     name: string
     email: string
-    role: "Admin" | "Cashier" | "Staff" | "Customer"
+    role: "Admin" | "Cashier" | "Staff"
     branch: string
   }) => {
     if (!editingUser) return
@@ -199,8 +189,6 @@ export function UserTable() {
                       return "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20"
                     case "Staff":
                       return "bg-muted/80 text-muted-foreground border border-border"
-                    case "Customer":
-                      return "bg-accent/40 text-primary border border-primary/10"
                     default:
                       return "bg-muted text-muted-foreground"
                   }
