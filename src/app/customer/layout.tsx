@@ -1,6 +1,7 @@
 "use client"
 
 import { usePathname } from "next/navigation"
+import { useAuth } from "@/hooks/useAuth"
 import { 
   DashboardSidebar, 
   DashboardTopbar, 
@@ -13,6 +14,24 @@ export default function CustomerLayout({
   children: React.ReactNode
 }) {
   const pathname = usePathname()
+  const { isLoading, isAuthenticated } = useAuth()
+
+  // Show loading state while verifying authentication
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Verifying your session...</p>
+        </div>
+      </div>
+    )
+  }
+
+  // This component will not render if not authenticated (useAuth redirects)
+  if (!isAuthenticated) {
+    return null
+  }
 
   return (
     <div className="min-h-screen bg-background">
