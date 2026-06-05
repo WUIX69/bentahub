@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { LayoutGrid, ClipboardList, Coins, History, User, LogOut, Monitor, X } from "lucide-react"
+import { LayoutGrid, ClipboardList, Coins, History, User, LogOut, Monitor, X, Bell } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const NAV_ITEMS = [
@@ -18,6 +18,7 @@ const NAV_ITEMS = [
       { href: "/cashier/stock-check", label: "Stock Check", icon: ClipboardList },
       { href: "/cashier/payments", label: "Payments", icon: Coins },
       { href: "/cashier/transactions", label: "Transaction History", icon: History },
+      { href: "/cashier/notifications", label: "Notifications", icon: Bell },
     ],
   },
 ]
@@ -45,7 +46,7 @@ export function CashierSidebar({ isOpen, onClose }: CashierSidebarProps) {
       )}>
         {/* Brand Header */}
         <div className="px-6 py-8 flex items-center gap-3">
-          <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-blue-600/30 flex-shrink-0">
+          <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shadow-lg shadow-primary/30 flex-shrink-0">
             <LayoutGrid className="w-6 h-6 text-white" />
           </div>
           <div className="flex flex-col min-w-0 flex-1">
@@ -78,11 +79,11 @@ export function CashierSidebar({ isOpen, onClose }: CashierSidebarProps) {
                       className={cn(
                         "flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-200",
                         isActive
-                          ? "bg-blue-600/20 text-white font-semibold border-l-4 border-blue-600"
+                          ? "bg-primary/20 text-white font-semibold border-l-4 border-primary"
                           : "text-slate-400 hover:text-white hover:bg-slate-800/50"
                       )}
                     >
-                      <Icon className={cn("w-5 h-5", isActive ? "text-blue-500" : "text-slate-400")} />
+                      <Icon className={cn("w-5 h-5", isActive ? "text-primary" : "text-slate-400")} />
                       <span>{link.label}</span>
                     </Link>
                   )

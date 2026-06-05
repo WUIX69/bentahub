@@ -33,7 +33,7 @@ export function CartItem({ item, onUpdateQty, onRemove }: CartItemProps) {
           SKU: {product.sku}
         </span>
         <div className="flex justify-between items-center mt-1">
-          <p className="text-xs font-bold text-blue-600">
+          <p className="text-xs font-bold text-primary">
             ₱{product.price.toFixed(2)}
           </p>
         </div>
@@ -44,7 +44,7 @@ export function CartItem({ item, onUpdateQty, onRemove }: CartItemProps) {
         <div className="flex items-center bg-slate-100 rounded-lg p-0.5 border border-slate-200/40">
           <button
             onClick={() => onUpdateQty(quantity - 1)}
-            className="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-blue-600 transition-colors"
+            className="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-primary transition-colors"
           >
             <Minus className="w-3.5 h-3.5" />
           </button>
@@ -54,7 +54,7 @@ export function CartItem({ item, onUpdateQty, onRemove }: CartItemProps) {
           <button
             disabled={quantity >= product.stock}
             onClick={() => onUpdateQty(quantity + 1)}
-            className="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-blue-600 transition-colors disabled:opacity-30 disabled:hover:text-slate-500"
+            className="w-6 h-6 flex items-center justify-center text-slate-500 hover:text-primary transition-colors disabled:opacity-30 disabled:hover:text-slate-500"
           >
             <Plus className="w-3.5 h-3.5" />
           </button>

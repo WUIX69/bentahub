@@ -19,12 +19,12 @@ export function ProductCard({ product, onAdd, disabled }: ProductCardProps) {
       onClick={() => onAdd(product)}
       disabled={isOutOfStock || disabled}
       className={cn(
-        "flex flex-col bg-white rounded-xl p-3 border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-600 transition-all duration-200 group text-left w-full relative overflow-hidden",
+        "flex flex-col bg-white rounded-2xl p-3 border border-slate-200 shadow-sm hover:shadow-md hover:border-primary transition-all duration-200 group text-left w-full relative overflow-hidden",
         isOutOfStock && "opacity-60 cursor-not-allowed"
       )}
     >
       {/* Product Image Panel */}
-      <div className="aspect-square w-full rounded-lg overflow-hidden mb-3 bg-slate-100 relative flex items-center justify-center">
+      <div className="aspect-square w-full rounded-xl overflow-hidden mb-3 bg-slate-100 relative flex items-center justify-center">
         {product.image ? (
           /* eslint-disable-next-line @next/next/no-img-element */
           <img
@@ -43,8 +43,8 @@ export function ProductCard({ product, onAdd, disabled }: ProductCardProps) {
             isOutOfStock
               ? "bg-red-500/90"
               : isLowStock
-              ? "bg-amber-500/90"
-              : "bg-emerald-500/90"
+              ? "bg-orange-500/90"
+              : "bg-green-500/90"
           )}
         >
           {isOutOfStock
@@ -57,16 +57,13 @@ export function ProductCard({ product, onAdd, disabled }: ProductCardProps) {
 
       {/* Info */}
       <div className="flex-1 flex flex-col justify-between">
-        <h3 className="font-bold text-xs text-slate-800 line-clamp-2 leading-snug mb-2 group-hover:text-blue-600 transition-colors">
+        <h3 className="font-bold text-sm text-slate-800 line-clamp-2 leading-snug mb-2 group-hover:text-primary transition-colors">
           {product.name}
         </h3>
         <div className="flex justify-between items-end mt-auto">
-          <p className="text-blue-600 font-mono text-base font-black">
+          <p className="text-primary font-mono text-lg font-black">
             ₱{product.price.toFixed(2)}
           </p>
-          <span className="text-[10px] text-slate-400 font-medium px-1.5 py-0.5 bg-slate-100 rounded">
-            {product.sku}
-          </span>
         </div>
       </div>
     </button>

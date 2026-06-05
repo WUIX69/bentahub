@@ -62,7 +62,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-zinc-500">
-            © 2024 BentaHub. All rights reserved.
+            © 2026 BentaHub. All rights reserved.
           </p>
         </div>
       </div>
