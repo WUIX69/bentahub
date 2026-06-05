@@ -1,8 +1,11 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 
 export function ReservationSummary() {
+  const router = useRouter()
+
   return (
     <div className="space-y-6 md:col-span-4">
       {/* Summary Card */}
@@ -33,7 +36,7 @@ export function ReservationSummary() {
           </div>
         </div>
 
-        <Button className="w-full mt-4" variant="outline" size="sm">
+        <Button className="w-full mt-4" variant="outline" size="sm" onClick={() => router.push("/customer/transactions")}>
           View All History
         </Button>
       </div>

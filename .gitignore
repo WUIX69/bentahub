@@ -41,6 +41,8 @@ next-env.d.ts
 # others
 .agent
 .sixth
+.github
+.vscode
 
 /everything-claude-code
 everything-claude-code

@@ -1,6 +1,8 @@
 "use client"
 
 import Image from "next/image"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 import { Truck } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -16,6 +18,8 @@ interface ProductSidebarSectionProps {
 }
 
 export function ProductSidebarSection({ relatedProducts }: ProductSidebarSectionProps) {
+  const router = useRouter()
+
   return (
     <div className="flex flex-col gap-6">
       {/* Fast Pick-up Card */}
@@ -25,7 +29,7 @@ export function ProductSidebarSection({ relatedProducts }: ProductSidebarSection
         <p className="text-sm opacity-90 mb-6 leading-relaxed">
           Reserve now and pick up at your selected BentaHub branch within 2 hours. Fast, secure, and hassle-free.
         </p>
-        <Button variant="secondary" className="w-full bg-background text-primary hover:bg-background/90">
+        <Button variant="secondary" className="w-full bg-background text-primary hover:bg-background/90" onClick={() => router.push("/customer/catalog")}>
           Select Store
         </Button>
       </div>
@@ -35,7 +39,11 @@ export function ProductSidebarSection({ relatedProducts }: ProductSidebarSection
         <h3 className="text-lg font-bold text-foreground mb-4">Related Products</h3>
         <div className="flex flex-col gap-4">
           {relatedProducts.map((product) => (
-            <div key={product.id} className="flex items-center gap-4 group cursor-pointer">
+            <Link
+              key={product.id}
+              href={`/customer/catalog/${product.id}`}
+              className="flex items-center gap-4 group"
+            >
               <div className="w-16 h-16 rounded-lg bg-muted border border-border overflow-hidden flex-shrink-0">
                 <Image
                   src={product.image}
@@ -51,11 +59,11 @@ export function ProductSidebarSection({ relatedProducts }: ProductSidebarSection
                 </span>
                 <span className="text-sm font-bold text-primary">{product.price}</span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
         
-        <Button variant="outline" className="w-full mt-6">
+        <Button variant="outline" className="w-full mt-6" onClick={() => router.push("/customer/catalog")}>
           View All Staples
         </Button>
       </div>

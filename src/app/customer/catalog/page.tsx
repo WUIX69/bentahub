@@ -1,13 +1,14 @@
 "use client"
 
-import { 
-  CatalogToolbar, 
-  CategorySidebar, 
-  ProductCard, 
-  Pagination 
+import {
+  CatalogToolbar,
+  CategorySidebar,
+  ProductCard,
+  Pagination
 } from "@/features/customer-dashboard"
 import { ShoppingCart } from "lucide-react"
 import type { ProductCardProps } from "@/features/customer-dashboard/components/product-card"
+import Link from "next/link"
 
 export default function CatalogPage() {
   // Demo products
@@ -110,20 +111,16 @@ export default function CatalogPage() {
       </div>
 
       {/* FAB Cart Button */}
-      <button 
+      <Link
+        href="/customer/cart"
         className="fixed bottom-20 right-6 md:bottom-6 md:right-6 size-14 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-lg hover:bg-primary/90 transition-colors z-40"
-        onClick={() => {
-          if (confirm("You have 3 items in your cart. Proceed to payment?")) {
-            alert("Payment Successful! Your reservation is confirmed.");
-          }
-        }}
       >
         <ShoppingCart className="h-6 w-6" />
         <span className="absolute -top-1 -right-1 size-5 bg-destructive rounded-full flex items-center justify-center text-xs font-bold text-destructive-foreground">
           3
         </span>
         <span className="sr-only">View Cart</span>
-      </button>
+      </Link>
     </div>
   )
 }

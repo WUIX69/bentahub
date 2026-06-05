@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Minus, Plus, ShoppingBasket, Package, ShieldCheck } from "lucide-react"
 
@@ -11,6 +12,7 @@ interface ProductActionsProps {
 }
 
 export function ProductActions({ stockCount, sku, status }: ProductActionsProps) {
+  const router = useRouter()
   const [quantity, setQuantity] = useState(1)
 
   const handleIncrement = () => {
@@ -26,6 +28,10 @@ export function ProductActions({ stockCount, sku, status }: ProductActionsProps)
     if (!isNaN(value)) {
       setQuantity(Math.min(Math.max(value, 1), 99))
     }
+  }
+
+  const handleAddToReservation = () => {
+    router.push("/customer/cart")
   }
 
   return (
@@ -65,7 +71,7 @@ export function ProductActions({ stockCount, sku, status }: ProductActionsProps)
           </div>
 
           {/* Add to Reservation Button */}
-          <Button className="flex-grow h-11 gap-2 text-sm font-medium">
+          <Button className="flex-grow h-11 gap-2 text-sm font-medium" onClick={handleAddToReservation}>
             <ShoppingBasket className="h-4 w-4" />
             Add to Reservation
           </Button>

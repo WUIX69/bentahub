@@ -7,14 +7,15 @@ import { ProductActions } from "@/features/customer-dashboard/components/product
 import { ProductDetailsSection } from "@/features/customer-dashboard/components/product-details-section"
 import { ProductSidebarSection } from "@/features/customer-dashboard/components/product-sidebar-section"
 import { Heart } from "lucide-react"
-import { useState } from "react"
+import { useState, use } from "react"
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
+export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
   const [isFavorite, setIsFavorite] = useState(false)
 
   // Demo product data
   const product = {
-    id: params.id,
+    id,
     name: "Del Monte Tomato Sauce",
     category: "Pantry Essentials",
     price: "₱45.50",

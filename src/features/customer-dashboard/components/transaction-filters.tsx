@@ -1,12 +1,14 @@
 "use client"
 
+import { useState } from "react"
 import { Calendar, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 export function TransactionFilters() {
+  const [activeTab, setActiveTab] = useState("All")
+  const [dateFilter, setDateFilter] = useState("Last 30 Days")
   const tabs = ["All", "Successful", "Processing", "Failed"]
-  const activeTab = "All"
 
   return (
     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -15,6 +17,7 @@ export function TransactionFilters() {
         {tabs.map((tab) => (
           <button
             key={tab}
+            onClick={() => setActiveTab(tab)}
             className={cn(
               "pb-3 text-sm font-medium transition-colors relative whitespace-nowrap",
               activeTab === tab
@@ -38,9 +41,14 @@ export function TransactionFilters() {
           />
         </div>
         
-        <Button variant="outline" size="sm" className="gap-2 shrink-0">
+        <Button
+          variant="outline"
+          size="sm"
+          className="gap-2 shrink-0"
+          onClick={() => setDateFilter(dateFilter === "Last 30 Days" ? "All Time" : "Last 30 Days")}
+        >
           <Calendar className="h-4 w-4" />
-          <span>Last 30 Days</span>
+          <span>{dateFilter}</span>
         </Button>
       </div>
     </div>

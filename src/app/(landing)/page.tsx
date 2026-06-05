@@ -3,7 +3,8 @@ import {
   StatsBar, 
   BranchGrid, 
   ProductGrid, 
-  CtaBanner 
+  CtaBanner,
+  Footer
 } from "@/features/landing"
 
 export default function LandingPage() {
@@ -14,6 +15,7 @@ export default function LandingPage() {
       <BranchGrid />
       <ProductGrid />
       <CtaBanner />
+      <Footer />
     </>
   )
 }

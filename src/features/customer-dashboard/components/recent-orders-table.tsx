@@ -1,9 +1,12 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 
 export function RecentOrdersTable() {
+  const router = useRouter()
+
   const orders = [
     {
       id: "#BH-0001",
@@ -56,7 +59,8 @@ export function RecentOrdersTable() {
             {orders.map((order) => (
               <tr 
                 key={order.id}
-                className="border-b border-border last:border-0 hover:bg-muted/50 transition-colors"
+                onClick={() => router.push("/customer/transactions")}
+                className="border-b border-border last:border-0 hover:bg-muted/50 transition-colors cursor-pointer"
               >
                 <td className="px-4 md:px-6 py-4 font-mono text-sm text-foreground">
                   {order.id}
