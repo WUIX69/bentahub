@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { ShoppingCart, Bell } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
@@ -27,8 +28,13 @@ export function ProductCard({
   weight,
   branch = "Main Branch",
 }: ProductCardProps) {
+  const router = useRouter()
   const isOutOfStock = stockStatus === "out-of-stock"
   const isLowStock = stockStatus === "low-stock"
+
+  const handleAddToCart = () => {
+    router.push("/customer/cart")
+  }
 
   return (
     <div className={cn(
@@ -108,7 +114,7 @@ export function ProductCard({
               Notify Me
             </Button>
           ) : (
-            <Button size="sm" className="w-full gap-1.5">
+            <Button size="sm" className="w-full gap-1.5" onClick={handleAddToCart}>
               <ShoppingCart className="size-3.5" />
               Add to Cart
             </Button>

@@ -1,4 +1,8 @@
+"use client"
+
+import { useState } from "react"
 import { Search, Download, Eye, ChevronLeft, ChevronRight } from "lucide-react"
+import { TransactionHistoryModal } from "./transaction-history-modal"
 
 interface Transaction {
   date: string
@@ -6,6 +10,9 @@ interface Transaction {
   branch: string
   cashier: string
   items: string
+  itemsList: { name: string; qty: number; price: number }[]
+  subtotal: number
+  tax: number
   total: string
   payment: "CASH" | "GCASH"
   status: "Completed" | "Pending"
@@ -18,7 +25,13 @@ const mockTransactions: Transaction[] = [
     branch: "B001 - Makati",
     cashier: "Cashier 2",
     items: "1 items",
-    total: "₱35.00",
+    itemsList: [
+      { name: "Premium Jasmine Rice (5kg)", qty: 1, price: 345.00 },
+      { name: "Refined White Sugar (1kg)", qty: 2, price: 165.00 },
+    ],
+    subtotal: 510.00,
+    tax: 0,
+    total: "₱510.00",
     payment: "CASH",
     status: "Completed",
   },
@@ -28,6 +41,14 @@ const mockTransactions: Transaction[] = [
     branch: "B003 - Quezon City",
     cashier: "Cashier 1",
     items: "4 items",
+    itemsList: [
+      { name: "Fresh Milk (1L)", qty: 2, price: 120.00 },
+      { name: "Whole Wheat Bread", qty: 1, price: 85.00 },
+      { name: "Banana (per kg)", qty: 1, price: 60.00 },
+      { name: "Cheddar Cheese (200g)", qty: 1, price: 175.00 },
+    ],
+    subtotal: 560.00,
+    tax: 0,
     total: "₱1,240.00",
     payment: "GCASH",
     status: "Completed",
@@ -38,6 +59,12 @@ const mockTransactions: Transaction[] = [
     branch: "B001 - Makati",
     cashier: "Cashier 2",
     items: "2 items",
+    itemsList: [
+      { name: "Cooking Oil (1L)", qty: 1, price: 95.00 },
+      { name: "Dishwashing Liquid", qty: 2, price: 45.00 },
+    ],
+    subtotal: 185.00,
+    tax: 0,
     total: "₱520.00",
     payment: "CASH",
     status: "Pending",
@@ -45,7 +72,10 @@ const mockTransactions: Transaction[] = [
 ]
 
 export function HistoryTable() {
+  const [selectedTransaction, setSelectedTransaction] = useState<Transaction | null>(null)
+
   return (
+    <>
     <section className="bg-card rounded-xl border border-border shadow-sm overflow-hidden">
       <div className="px-6 py-3 bg-muted/20 border-b border-border flex flex-col sm:flex-row justify-between sm:items-center gap-4">
         <div>
@@ -112,7 +142,7 @@ export function HistoryTable() {
                     </span>
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <button className="p-1 hover:bg-muted rounded text-muted-foreground hover:text-foreground transition-colors">
+                    <button className="p-1 hover:bg-muted rounded text-muted-foreground hover:text-foreground transition-colors" onClick={() => setSelectedTransaction(txn)}>
                       <Eye className="h-5 w-5" />
                     </button>
                   </td>
@@ -139,5 +169,12 @@ export function HistoryTable() {
         </div>
       </div>
     </section>
+
+    <TransactionHistoryModal
+      isOpen={Boolean(selectedTransaction)}
+      onClose={() => setSelectedTransaction(null)}
+      transaction={selectedTransaction}
+    />
+    </>
   )
 }

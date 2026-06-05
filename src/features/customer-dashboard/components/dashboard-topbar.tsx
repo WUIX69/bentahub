@@ -1,10 +1,25 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { Search, Bell } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { useAuth } from "@/hooks/useAuth"
+
+function getInitials(fullName: string): string {
+  return fullName
+    .split(" ")
+    .map((name) => name.charAt(0).toUpperCase())
+    .join("")
+    .slice(0, 2)
+}
 
 export function DashboardTopbar() {
+  const router = useRouter()
+  const { user } = useAuth()
+  const displayName = user?.fullName || ""
+  const initials = displayName ? getInitials(displayName) : "U"
+
   return (
     <header className="sticky top-0 z-40 bg-background border-b border-border h-16 flex items-center justify-between px-4 md:px-6">
       {/* Search Bar - Hidden on small screens or adjust layout */}
@@ -30,7 +45,10 @@ export function DashboardTopbar() {
         <ThemeToggle />
 
         {/* Notifications */}
-        <button className="relative p-2 text-muted-foreground hover:text-foreground hover:bg-accent rounded-full transition-colors">
+        <button
+          onClick={() => router.push("/customer/notifications")}
+          className="relative p-2 text-muted-foreground hover:text-foreground hover:bg-accent rounded-full transition-colors"
+        >
           <Bell className="h-5 w-5" />
           <span className="absolute top-1.5 right-1.5 size-2 bg-destructive rounded-full" />
           <span className="sr-only">Notifications</span>
@@ -40,14 +58,16 @@ export function DashboardTopbar() {
         <div className="h-6 w-px bg-border mx-2" />
 
         {/* User Profile */}
-        <div className="flex items-center gap-3">
+        <button
+          onClick={() => router.push("/customer/settings")}
+          className="flex items-center gap-3 hover:opacity-80 transition-opacity"
+        >
           <div className="size-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
-            AR
+            {initials}
           </div>
-          <span className="text-sm font-medium hidden sm:inline-block text-foreground">Alex Rivera</span>
-        </div>
+          <span className="text-sm font-medium hidden sm:inline-block text-foreground">{displayName}</span>
+        </button>
       </div>
     </header>
   )
 }
-

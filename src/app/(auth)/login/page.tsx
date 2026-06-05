@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { LogIn, Mail } from "lucide-react"
 import { AuthHeader, PasswordInput } from "@/features/user-mgmt"
@@ -10,9 +11,48 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function LoginPage() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const router = useRouter()
+  const [email, setEmail] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  const [isLoading, setIsLoading] = React.useState(false)
+  const [error, setError] = React.useState("")
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Stub for now
+    setError("")
+    setIsLoading(true)
+
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", // Include cookies in request
+        body: JSON.stringify({ email, password }),
+      })
+
+      const data = await response.json()
+      console.log("Login response:", { status: response.status, data })
+
+      if (!response.ok) {
+        setError(data.message || "Login failed")
+        setIsLoading(false)
+        return
+      }
+
+      // Success - redirect to dashboard (cookie already set by API)
+      console.log("Login successful, redirecting to /customer")
+      
+      // Use window.location for full page redirect to ensure cookie is recognized
+      setTimeout(() => {
+        window.location.href = "/customer"
+      }, 500)
+    } catch (err) {
+      console.error("Login error:", err)
+      setError("An unexpected error occurred. Please try again.")
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -25,6 +65,12 @@ export default function LoginPage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
+            {error && (
+              <div className="p-3 bg-destructive/10 border border-destructive/30 rounded-lg">
+                <p className="text-sm text-destructive">{error}</p>
+              </div>
+            )}
+
             <div className="space-y-1.5">
               <Label htmlFor="email" className="text-xs uppercase tracking-wider text-muted-foreground">
                 Email Address
@@ -36,6 +82,9 @@ export default function LoginPage() {
                   type="email"
                   placeholder="name@company.com"
                   className="pl-10"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isLoading}
                   required
                 />
               </div>
@@ -45,7 +94,13 @@ export default function LoginPage() {
               <Label htmlFor="password" className="text-xs uppercase tracking-wider text-muted-foreground">
                 Password
               </Label>
-              <PasswordInput id="password" required />
+              <PasswordInput 
+                id="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={isLoading}
+                required 
+              />
             </div>
 
             <div className="flex items-center justify-between">
@@ -59,14 +114,14 @@ export default function LoginPage() {
                   Remember me
                 </label>
               </div>
-              <Link href="#" className="text-sm text-primary hover:underline">
+              <Link href="/forgot-password" className="text-sm text-primary hover:underline">
                 Forgot Password?
               </Link>
             </div>
 
             <div className="pt-2">
-              <Button type="submit" className="w-full flex items-center justify-center gap-2 p-5">
-                Sign In
+              <Button type="submit" className="w-full flex items-center justify-center gap-2 p-5" disabled={isLoading}>
+                {isLoading ? "Signing in..." : "Sign In"}
                 <LogIn className="size-4" />
               </Button>
             </div>

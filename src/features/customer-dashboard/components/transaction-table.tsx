@@ -1,9 +1,14 @@
 "use client"
 
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { FileText, MoreHorizontal, ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function TransactionTable() {
+  const router = useRouter()
+  const [page, setPage] = useState(1)
+
   const transactions = [
     {
       id: "#BH-0001",
@@ -56,7 +61,11 @@ export function TransactionTable() {
           </thead>
           <tbody className="divide-y divide-border">
             {transactions.map((transaction) => (
-              <tr key={transaction.id} className="hover:bg-muted/50 transition-colors">
+              <tr
+                key={transaction.id}
+                onClick={() => router.push("/customer/transactions")}
+                className="hover:bg-muted/50 transition-colors cursor-pointer"
+              >
                 <td className="p-3 text-sm font-mono text-foreground">
                   <div className="flex items-center gap-2">
                     <FileText className="h-4 w-4 text-muted-foreground" />
@@ -83,7 +92,10 @@ export function TransactionTable() {
                   </span>
                 </td>
                 <td className="p-3 text-sm text-right">
-                  <button className="text-muted-foreground hover:text-foreground p-1 rounded-full hover:bg-muted">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); }}
+                    className="text-muted-foreground hover:text-foreground p-1 rounded-full hover:bg-muted"
+                  >
                     <MoreHorizontal className="h-4 w-4" />
                     <span className="sr-only">Actions</span>
                   </button>
@@ -101,10 +113,17 @@ export function TransactionTable() {
         </span>
 
         <div className="flex items-center gap-2">
-          <button className="p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg border border-border disabled:opacity-50" disabled>
+          <button
+            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            disabled={page <= 1}
+            className="p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg border border-border disabled:opacity-50"
+          >
             <ChevronLeft className="h-4 w-4" />
           </button>
-          <button className="p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg border border-border">
+          <button
+            onClick={() => setPage((p) => p + 1)}
+            className="p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg border border-border"
+          >
             <ChevronRight className="h-4 w-4" />
           </button>
         </div>

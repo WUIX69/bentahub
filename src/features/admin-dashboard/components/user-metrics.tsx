@@ -38,7 +38,7 @@ export function UserMetrics() {
           <p className="text-[10px] font-black text-amber-600 dark:text-amber-400 uppercase tracking-widest mb-0.5">
             Role USERS
           </p>
-          <p className="text-3xl font-black text-foreground">4 Types</p>
+          <p className="text-3xl font-black text-foreground">3 Types</p>
         </div>
       </div>
     </div>

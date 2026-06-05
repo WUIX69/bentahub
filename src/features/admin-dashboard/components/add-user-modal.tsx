@@ -9,7 +9,7 @@ interface AddUserModalProps {
   onAdd?: (user: {
     name: string
     email: string
-    role: "Admin" | "Cashier" | "Staff" | "Customer"
+    role: "Admin" | "Cashier" | "Staff"
     branch: string
   }) => void
 }
@@ -19,7 +19,7 @@ export function AddUserModal({ isOpen, onClose, onAdd }: AddUserModalProps) {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [role, setRole] = useState<"Admin" | "Cashier" | "Staff" | "Customer">("Admin")
+  const [role, setRole] = useState<"Admin" | "Cashier" | "Staff">("Admin")
   const [branch, setBranch] = useState("All Branches")
 
   if (!isOpen) return null
@@ -115,12 +115,11 @@ export function AddUserModal({ isOpen, onClose, onAdd }: AddUserModalProps) {
                   <select
                     className="w-full h-11 px-4 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-sm"
                     value={role}
-                    onChange={(e) => setRole(e.target.value as "Admin" | "Cashier" | "Staff" | "Customer")}
+                    onChange={(e) => setRole(e.target.value as "Admin" | "Cashier" | "Staff")}
                   >
                     <option value="Admin">Admin</option>
                     <option value="Cashier">Cashier</option>
                     <option value="Staff">Staff</option>
-                    <option value="Customer">Customer</option>
                   </select>
                 </div>
                 <div className="space-y-1.5">

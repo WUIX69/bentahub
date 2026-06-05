@@ -1,13 +1,26 @@
+"use client"
+
+import { useState } from "react"
+import { CashierSidebar } from "@/features/cashier-dashboard/components/cashier-sidebar"
+import { CashierTopbar } from "@/features/cashier-dashboard/components/cashier-topbar"
+
 export default function CashierLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
   return (
-    <div className="cashier-layout">
-      {/* TODO: Add Branch-locked navigation and role guard */}
-      <header className="p-4 border-b">Cashier POS Header</header>
-      <main className="p-4">{children}</main>
+    <div className="h-screen bg-background text-foreground flex overflow-hidden">
+      <CashierSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+
+      <div className="flex-1 flex flex-col h-screen md:ml-[280px] overflow-hidden">
+        <CashierTopbar onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
+        <main className="flex-1 overflow-hidden flex flex-col">
+          {children}
+        </main>
+      </div>
     </div>
   )
 }
