@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": "1780760831684-dpm01ye29",
+      "email": "raichixiao21@gmail.com",
+      "password": "$2a$10$5W9vXz7iIjK0GqG3MmHjcu4CwoIGct56DHm7ckaFqFPVY2q3qyjju",
+      "fullName": "dave buemia",
+      "role": "customer"
+    },
+    {
+      "id": "test-id",
+      "email": "test@example.com",
+      "password": "hashedpassword",
+      "fullName": "Test User",
+      "role": "customer"
+    },
+    {
+      "id": "1780760939956-h2fqhrnng",
+      "email": "raichixiao21@gmail.com",
+      "password": "$2a$10$iMqBaNlT4qRQpuJDuRrUyOU/UqeC.OGG2YLePJRHqarWK0HK078fi",
+      "fullName": "dave buemia",
+      "role": "customer"
+    },
+    {
+      "id": "1780760951917-kvcclh5vo",
+      "email": "davebuemia211@gmail.com",
+      "password": "$2a$10$4yvjYxGtU7.cWVmIRZcaYOuxXszkkWO3GAuTO273EwAtLbKXjvIlK",
+      "fullName": "dave buemia",
+      "role": "customer"
+    },
+    {
+      "id": "1780761114028-txdd3ulys",
+      "email": "raichixiao21@gmail.com",
+      "password": "$2a$10$qju2yA9YgO46kcgN61XRfe6MFWU3A77HBVn.iaYS0DwMFYOHMd2Cq",
+      "fullName": "dave buemia",
+      "role": "customer"
+    }
+  ],
+  "email_verification_codes": [
+    {
+      "id": "1780760831687-ujh96ph1b",
+      "userId": "1780760831684-dpm01ye29",
+      "code": "562499",
+      "email": "raichixiao21@gmail.com",
+      "expiresAt": "2026-06-06T16:02:11.686Z"
+    },
+    {
+      "id": "1780760939959-2g3i4ugej",
+      "userId": "1780760939956-h2fqhrnng",
+      "code": "680596",
+      "email": "raichixiao21@gmail.com",
+      "expiresAt": "2026-06-06T16:03:59.959Z"
+    },
+    {
+      "id": "1780760951920-e8qo2hpoa",
+      "userId": "1780760951917-kvcclh5vo",
+      "code": "188306",
+      "email": "davebuemia211@gmail.com",
+      "expiresAt": "2026-06-06T16:04:11.920Z"
+    },
+    {
+      "id": "1780761114033-x4xe7nsna",
+      "userId": "1780761114028-txdd3ulys",
+      "code": "428660",
+      "email": "raichixiao21@gmail.com",
+      "expiresAt": "2026-06-06T16:06:54.033Z"
+    }
+  ],
+  "password_reset_tokens": []
+}

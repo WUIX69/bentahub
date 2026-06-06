@@ -2,11 +2,11 @@ import { NextRequest, NextResponse } from "next/server"
 
 const publicRoutes = ["/", "/login", "/register", "/verify-email", "/api/auth/register", "/api/auth/verify-email", "/api/auth/login"]
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname
   const token = request.cookies.get("auth_token")?.value
   
-  console.log(`[Middleware] Path: ${pathname}, Token present: ${!!token}`)
+  console.log(`[Proxy] Path: ${pathname}, Token present: ${!!token}`)
 
   // Allow public routes
   if (publicRoutes.includes(pathname)) {
@@ -26,13 +26,13 @@ export function middleware(request: NextRequest) {
   // Check token for protected routes
   if (!token) {
     // Redirect to login
-    console.log(`[Middleware] No token found for ${pathname}, redirecting to /login`)
+    console.log(`[Proxy] No token found for ${pathname}, redirecting to /login`)
     return NextResponse.redirect(new URL("/login", request.url))
   }
 
   // Token exists, allow access
   // Full verification will happen in the page component or API routes
-  console.log(`[Middleware] Token present for ${pathname}, allowing access`)
+  console.log(`[Proxy] Token present for ${pathname}, allowing access`)
   return NextResponse.next()
 }
 

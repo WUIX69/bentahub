@@ -120,98 +120,96 @@ export default function VerifyEmailPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center px-4 py-12">
-      <div className="w-full max-w-[440px] animate-in fade-in slide-in-from-bottom-4 duration-700">
-        <AuthHeader subtitle="Verify your email address" />
+    <div className="w-full max-w-[440px] animate-in fade-in slide-in-from-bottom-4 duration-700">
+      <AuthHeader subtitle="Verify your email address" />
 
-        <Card className="border-border shadow-sm">
-          <CardHeader className="pb-4">
-            <CardTitle className="text-xl font-semibold">Email Verification</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex justify-center mb-6">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-                <Mail className="h-8 w-8 text-primary" />
+      <Card className="border-border shadow-sm">
+        <CardHeader className="pb-4">
+          <CardTitle className="text-xl font-semibold">Email Verification</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="flex justify-center mb-6">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+              <Mail className="h-8 w-8 text-primary" />
+            </div>
+          </div>
+
+          <p className="text-center text-sm text-muted-foreground mb-6">
+            We've sent a verification code to <span className="font-medium text-foreground">{email}</span>
+          </p>
+
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {error && (
+              <div className="p-3 bg-destructive/10 border border-destructive/30 rounded-lg">
+                <p className="text-sm text-destructive">{error}</p>
               </div>
+            )}
+
+            {success && (
+              <div className="p-3 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-lg">
+                <p className="text-sm text-emerald-600 dark:text-emerald-400">{success}</p>
+              </div>
+            )}
+
+            <div className="space-y-1.5">
+              <Label htmlFor="code" className="text-xs uppercase tracking-wider text-muted-foreground">
+                Verification Code
+              </Label>
+              <Input
+                id="code"
+                type="text"
+                placeholder="000000"
+                className="text-center font-mono text-2xl tracking-widest"
+                maxLength={6}
+                value={code}
+                onChange={(e) => setCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                disabled={isLoading}
+                required
+              />
+              <p className="text-xs text-muted-foreground">Enter the 6-digit code from your email</p>
             </div>
 
-            <p className="text-center text-sm text-muted-foreground mb-6">
-              We've sent a verification code to <span className="font-medium text-foreground">{email}</span>
-            </p>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {error && (
-                <div className="p-3 bg-destructive/10 border border-destructive/30 rounded-lg">
-                  <p className="text-sm text-destructive">{error}</p>
-                </div>
-              )}
-
-              {success && (
-                <div className="p-3 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-lg">
-                  <p className="text-sm text-emerald-600 dark:text-emerald-400">{success}</p>
-                </div>
-              )}
-
-              <div className="space-y-1.5">
-                <Label htmlFor="code" className="text-xs uppercase tracking-wider text-muted-foreground">
-                  Verification Code
-                </Label>
-                <Input
-                  id="code"
-                  type="text"
-                  placeholder="000000"
-                  className="text-center font-mono text-2xl tracking-widest"
-                  maxLength={6}
-                  value={code}
-                  onChange={(e) => setCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
-                  disabled={isLoading}
-                  required
-                />
-                <p className="text-xs text-muted-foreground">Enter the 6-digit code from your email</p>
-              </div>
-
-              <div className="pt-2">
-                <Button type="submit" className="w-full" disabled={isLoading || code.length !== 6}>
-                  {isLoading ? (
-                    <>
-                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent mr-2" />
-                      Verifying...
-                    </>
-                  ) : (
-                    "Verify Email"
-                  )}
-                </Button>
-              </div>
-            </form>
-
-            <div className="mt-6 space-y-3 border-t border-border pt-4">
-              <p className="text-center text-sm text-muted-foreground">
-                Didn't receive the code?
-              </p>
-
-              <Button
-                variant="outline"
-                className="w-full"
-                onClick={handleResendCode}
-                disabled={!canResend || isLoading}
-              >
-                {resendCountdown > 0 ? (
-                  `Resend code in ${resendCountdown}s`
+            <div className="pt-2">
+              <Button type="submit" className="w-full" disabled={isLoading || code.length !== 6}>
+                {isLoading ? (
+                  <>
+                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-primary-foreground border-t-transparent mr-2" />
+                    Verifying...
+                  </>
                 ) : (
-                  "Resend Code"
+                  "Verify Email"
                 )}
               </Button>
-
-              <Link href="/register">
-                <Button variant="ghost" className="w-full gap-2">
-                  <ArrowLeft className="size-4" />
-                  Back to Registration
-                </Button>
-              </Link>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+          </form>
+
+          <div className="mt-6 space-y-3 border-t border-border pt-4">
+            <p className="text-center text-sm text-muted-foreground">
+              Didn't receive the code?
+            </p>
+
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={handleResendCode}
+              disabled={!canResend || isLoading}
+            >
+              {resendCountdown > 0 ? (
+                `Resend code in ${resendCountdown}s`
+              ) : (
+                "Resend Code"
+              )}
+            </Button>
+
+            <Link href="/register">
+              <Button variant="ghost" className="w-full gap-2">
+                <ArrowLeft className="size-4" />
+                Back to Registration
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }

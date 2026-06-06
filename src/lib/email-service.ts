@@ -15,8 +15,8 @@ const transporter = nodemailer.createTransport({
 
 export async function sendVerificationEmail(email: string, code: string, fullName: string): Promise<boolean> {
   try {
-    // For development, skip if credentials not set
-    if (!emailUser || !emailPassword) {
+    // For development, skip if credentials not set or set to placeholders
+    if (!emailUser || !emailPassword || emailUser === "your-email@gmail.com" || emailPassword === "your-app-password") {
       console.warn(`[DEV] Verification code for ${email}: ${code}`)
       return true
     }
@@ -55,7 +55,8 @@ export async function sendVerificationEmail(email: string, code: string, fullNam
 
 export async function sendPasswordResetEmail(email: string, resetLink: string, fullName: string): Promise<boolean> {
   try {
-    if (!emailUser || !emailPassword) {
+    // For development, skip if credentials not set or set to placeholders
+    if (!emailUser || !emailPassword || emailUser === "your-email@gmail.com" || emailPassword === "your-app-password") {
       console.warn(`[DEV] Password reset link for ${email}: ${resetLink}`)
       return true
     }
