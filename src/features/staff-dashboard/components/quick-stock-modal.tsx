@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { X, Plus, Minus, Package } from "lucide-react"
 import type { Product } from "@/types/cashier"
 import { cn } from "@/lib/utils"
@@ -39,7 +40,7 @@ export function QuickStockModal({ isOpen, onClose, product, onSave }: QuickStock
           <div className="flex items-center gap-4 p-4 bg-muted/20 rounded-lg border border-border">
             <div className="w-14 h-14 rounded-lg bg-muted overflow-hidden border border-border/50 flex-shrink-0 flex items-center justify-center">
               {product.image ? (
-                <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                <Image src={product.image} alt={product.name} width={56} height={56} className="w-full h-full object-cover" unoptimized />
               ) : (
                 <Package className="w-6 h-6 text-muted-foreground opacity-50" />
               )}

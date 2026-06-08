@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import {
-  Bell, ShoppingCart, AlertTriangle, Package, RefreshCw,
-  ChevronRight, Filter, Download, Clock, User, ListChecks
+  ShoppingCart, AlertTriangle, Package, RefreshCw,
+  ChevronRight, Filter, Download, Clock
 } from "lucide-react"
 
 interface StaffNotificationItem {

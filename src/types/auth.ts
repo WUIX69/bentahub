@@ -1,5 +1,9 @@
 import type { UserRole } from "@/config/constants"
 
+// ---------------------------------------------------------------------------
+// Database entity types
+// ---------------------------------------------------------------------------
+
 export interface User {
   id: string
   email: string
@@ -15,18 +19,31 @@ export interface Session {
   expiresAt: Date
 }
 
+// ---------------------------------------------------------------------------
+// Auth context (used by AuthProvider)
+// ---------------------------------------------------------------------------
+
 export interface AuthContext {
   userId: string
   email: string
-  role: UserRole
+  fullName: string
+  role: string
   isEmailVerified: boolean
 }
 
-export interface AuthResponse<T = any> {
+// ---------------------------------------------------------------------------
+// API response envelope
+// ---------------------------------------------------------------------------
+
+export interface AuthResponse<T = unknown> {
   success: boolean
   message: string
   data?: T
 }
+
+// ---------------------------------------------------------------------------
+// Request payloads
+// ---------------------------------------------------------------------------
 
 export interface RegisterPayload {
   email: string

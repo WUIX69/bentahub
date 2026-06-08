@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { drizzle } from "drizzle-orm/postgres-js"
 import postgres from "postgres"
 import * as schema from "../schemas"
@@ -70,13 +71,10 @@ function extractConditions(whereClause: any): Array<{ column: string; value: any
       if (isComparison) {
         let columnName = ""
         let targetValue: any = null
-        let foundEqual = false
 
         for (const chunk of chunks) {
           if (chunk && chunk.name) {
             columnName = chunk.name
-          } else if (chunk && chunk.value && typeof chunk.value[0] === "string" && chunk.value[0].includes("=")) {
-            foundEqual = true
           } else if (chunk !== null && (typeof chunk !== "object" || chunk instanceof Date)) {
             targetValue = chunk
           }
@@ -291,7 +289,7 @@ if (connectionString) {
         console.log(`✅ Connected to PostgreSQL database at ${host}:${port}`)
       }
     })
-  } catch (err) {
+  } catch {
     useMock = true
   }
 }

@@ -1,41 +1,84 @@
+import crypto from "crypto"
 import bcryptjs from "bcryptjs"
 import jwt from "jsonwebtoken"
-import type { User } from "@/servers/schemas"
 
-const SECRET = process.env.JWT_SECRET || "your-secret-key-change-in-production"
+// ---------------------------------------------------------------------------
+// Environment validation — fail fast if JWT_SECRET is not configured
+// ---------------------------------------------------------------------------
 
+function getJwtSecret(): string {
+  const secret = process.env.JWT_SECRET
+  if (!secret) {
+    throw new Error(
+      "FATAL: JWT_SECRET environment variable is not set. " +
+        "The application cannot start without a valid secret for signing tokens."
+    )
+  }
+  return secret
+}
+
+const JWT_SECRET: string = getJwtSecret()
+
+/** Number of bcrypt salt rounds used for password hashing. */
+const BCRYPT_SALT_ROUNDS = 10
+
+/** JWT token expiration time. */
+const TOKEN_EXPIRY = "7d"
+
+// ---------------------------------------------------------------------------
+// Token payload type
+// ---------------------------------------------------------------------------
+
+export interface TokenPayload {
+  userId: string
+  email: string
+  fullName: string
+  role: string
+}
+
+// ---------------------------------------------------------------------------
+// ID & code generation (cryptographically secure)
+// ---------------------------------------------------------------------------
+
+/** Generate a cryptographically secure UUID v4 for database record IDs. */
 export function generateId(): string {
-  // Using a simple UUID-like generation since crypto.randomUUID might not be available in all environments
-  return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
+  return crypto.randomUUID()
 }
 
+/** Generate a cryptographically secure 6-digit verification code. */
 export function generateVerificationCode(): string {
-  return Math.floor(100000 + Math.random() * 900000).toString()
+  return crypto.randomInt(100000, 999999).toString()
 }
 
+// ---------------------------------------------------------------------------
+// Password hashing & verification
+// ---------------------------------------------------------------------------
+
+/** Hash a plaintext password using bcrypt. */
 export async function hashPassword(password: string): Promise<string> {
-  const salt = await bcryptjs.genSalt(10)
+  const salt = await bcryptjs.genSalt(BCRYPT_SALT_ROUNDS)
   return bcryptjs.hash(password, salt)
 }
 
+/** Compare a plaintext password against a bcrypt hash. */
 export async function verifyPassword(password: string, hash: string): Promise<boolean> {
   return bcryptjs.compare(password, hash)
 }
 
-export function generateToken(userId: string, email: string, fullName: string): string {
-  return jwt.sign({ userId, email, fullName }, SECRET, { expiresIn: "7d" })
+// ---------------------------------------------------------------------------
+// JWT token management
+// ---------------------------------------------------------------------------
+
+/** Sign a new JWT containing the user's identity and role. */
+export function generateToken(payload: TokenPayload): string {
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: TOKEN_EXPIRY })
 }
 
-export function verifyToken(token: string): { userId: string; email: string; fullName: string } | null {
+/** Verify and decode a JWT. Returns the payload on success, `null` on failure. */
+export function verifyToken(token: string): TokenPayload | null {
   try {
-    const decoded = jwt.verify(token, SECRET) as { userId: string; email: string; fullName: string }
-    return decoded
-  } catch (error) {
-    console.error("[Auth] Token verification failed:", {
-      error: error instanceof Error ? error.message : String(error),
-      secretLength: SECRET.length,
-      tokenPreview: token.substring(0, 20),
-    })
+    return jwt.verify(token, JWT_SECRET) as unknown as TokenPayload
+  } catch {
     return null
   }
 }

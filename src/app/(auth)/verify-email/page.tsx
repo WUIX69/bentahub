@@ -19,19 +19,24 @@ export default function VerifyEmailPage() {
   const [isLoading, setIsLoading] = React.useState(false)
   const [error, setError] = React.useState("")
   const [success, setSuccess] = React.useState("")
-  const [canResend, setCanResend] = React.useState(false)
+  const [canResend, setCanResend] = React.useState(true)
   const [resendCountdown, setResendCountdown] = React.useState(0)
 
   // Countdown for resend button
   React.useEffect(() => {
     if (resendCountdown > 0) {
-      const timer = setTimeout(() => setResendCountdown(resendCountdown - 1), 1000)
+      const timer = setTimeout(() => {
+        setResendCountdown((prev) => {
+          if (prev <= 1) {
+            setCanResend(true)
+            return 0
+          }
+          return prev - 1
+        })
+      }, 1000)
       return () => clearTimeout(timer)
     }
-    if (resendCountdown === 0 && !canResend && success === "") {
-      setCanResend(true)
-    }
-  }, [resendCountdown, canResend, success])
+  }, [resendCountdown])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -135,7 +140,7 @@ export default function VerifyEmailPage() {
           </div>
 
           <p className="text-center text-sm text-muted-foreground mb-6">
-            We've sent a verification code to <span className="font-medium text-foreground">{email}</span>
+            We&apos;ve sent a verification code to <span className="font-medium text-foreground">{email}</span>
           </p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -185,7 +190,7 @@ export default function VerifyEmailPage() {
 
           <div className="mt-6 space-y-3 border-t border-border pt-4">
             <p className="text-center text-sm text-muted-foreground">
-              Didn't receive the code?
+              Didn&apos;t receive the code?
             </p>
 
             <Button

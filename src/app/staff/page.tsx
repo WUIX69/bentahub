@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import Image from "next/image"
 import { StaffKpiCards } from "@/features/staff-dashboard/components/staff-kpi-cards"
 import { staffProducts, getStockStatus } from "@/features/staff-dashboard/data/products"
 import { AlertTriangle, Package } from "lucide-react"
@@ -85,7 +86,7 @@ export default function StaffPage() {
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded bg-muted overflow-hidden border border-border/50 flex-shrink-0 flex items-center justify-center">
                       {p.image ? (
-                        <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                        <Image src={p.image} alt={p.name} width={32} height={32} className="w-full h-full object-cover" unoptimized />
                       ) : (
                         <Package className="w-4 h-4 text-muted-foreground opacity-50" />
                       )}
