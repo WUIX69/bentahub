@@ -41,6 +41,13 @@
       "password": "$2a$10$CNIMCRZWO4x5gjZAnNOc3upf.i8ytGqcIGSmCeZ9fnB3FN6v8YH4O",
       "fullName": "dave buemia",
       "role": "customer"
+    },
+    {
+      "id": "2f56c19d-fb85-42eb-bbc8-cdffa857e4a2",
+      "email": "raichixiao21@gmail.com",
+      "password": "$2a$10$5vNIpSWiY4F3sYkcp5p65euhv43/9awgPAVm9wWZFHM4bQe0DW6zm",
+      "fullName": "dave buemia",
+      "role": "customer"
     }
   ],
   "email_verification_codes": [
@@ -78,6 +85,13 @@
       "code": "883198",
       "email": "raichixiao21@gmail.com",
       "expiresAt": "2026-06-08T00:44:36.266Z"
+    },
+    {
+      "id": "1df2454c-63e3-4e37-a6e9-efa1ec26c20d",
+      "userId": "2f56c19d-fb85-42eb-bbc8-cdffa857e4a2",
+      "code": "769722",
+      "email": "raichixiao21@gmail.com",
+      "expiresAt": "2026-06-08T02:35:47.023Z"
     }
   ],
   "password_reset_tokens": []
