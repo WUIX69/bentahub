@@ -66,11 +66,8 @@ export function RegisterForm() {
         return
       }
 
-      // Store email for verification page
-      sessionStorage.setItem("pendingVerificationEmail", formData.email)
-
-      // Redirect to verification page
-      router.push(`/verify-email?email=${encodeURIComponent(formData.email)}`)
+      // Redirect to login page so user can sign in with their new account
+      router.push("/login?registered=true")
     } catch (err) {
       setError("An unexpected error occurred. Please try again.")
       console.error(err)

@@ -49,7 +49,12 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
     },
   ]
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" })
+    } catch {
+      // proceed
+    }
     router.push("/login")
   }
 

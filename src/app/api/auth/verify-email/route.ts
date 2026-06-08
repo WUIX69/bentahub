@@ -2,9 +2,8 @@ import { NextRequest, NextResponse } from "next/server"
 import { db } from "@/servers/db"
 import { users, emailVerificationCodes } from "@/servers/schemas"
 import { eq, and } from "drizzle-orm"
-import { generateId, generateToken, generateVerificationCode } from "@/lib/auth-utils"
+import { generateId, generateVerificationCode } from "@/lib/auth-utils"
 import { sendVerificationEmail } from "@/lib/email-service"
-import { buildAuthCookie } from "@/lib/cookie-utils"
 import type { AuthResponse, VerifyEmailPayload } from "@/types/auth"
 
 /** Maximum number of verification attempts before a new code must be requested. */
@@ -100,32 +99,13 @@ export async function POST(request: NextRequest): Promise<NextResponse<AuthRespo
       .delete(emailVerificationCodes)
       .where(eq(emailVerificationCodes.id, verification.id))
 
-    // --- Issue JWT (cookie only — never in the response body) ---------------
-
-    const token = generateToken({
-      userId: user.id,
-      email: user.email,
-      fullName: user.fullName,
-      role: user.role,
-    })
-
-    const response = NextResponse.json(
+    return NextResponse.json(
       {
         success: true,
-        message: "Email verified successfully",
-        data: {
-          userId: user.id,
-          email: user.email,
-          fullName: user.fullName,
-          role: user.role,
-        },
+        message: "Email verified successfully. Please log in to continue.",
       },
       { status: 200 }
     )
-
-    response.cookies.set(buildAuthCookie(token))
-
-    return response
   } catch (error) {
     console.error("Email verification error:", error)
     return NextResponse.json(
