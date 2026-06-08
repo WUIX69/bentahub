@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function VerifyEmailPage() {
+function VerifyEmailContent() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const email = searchParams.get("email") || sessionStorage.getItem("pendingVerificationEmail") || ""
@@ -218,3 +218,16 @@ export default function VerifyEmailPage() {
     </div>
   )
 }
+
+export default function VerifyEmailPage() {
+  return (
+    <React.Suspense fallback={
+      <div className="w-full max-w-[440px] flex items-center justify-center p-8">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+      </div>
+    }>
+      <VerifyEmailContent />
+    </React.Suspense>
+  )
+}
+

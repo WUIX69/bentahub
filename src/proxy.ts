@@ -4,7 +4,6 @@ import { NextRequest, NextResponse } from "next/server"
 // Route classification
 // ---------------------------------------------------------------------------
 
-
 const PROTECTED_PREFIXES = ["/admin", "/cashier", "/staff", "/customer", "/dashboard"]
 
 /** Auth API routes that should always pass through without token checks. */
@@ -23,7 +22,6 @@ const AUTH_COOKIE = "auth_token"
 // Helpers
 // ---------------------------------------------------------------------------
 
-
 function isProtectedRoute(pathname: string): boolean {
   return PROTECTED_PREFIXES.some((prefix) => pathname.startsWith(prefix))
 }
@@ -33,11 +31,11 @@ function isPublicAuthApi(pathname: string): boolean {
 }
 
 // ---------------------------------------------------------------------------
-// Middleware
+// Proxy (Edge Interceptor)
 // ---------------------------------------------------------------------------
 
 /**
- * Next.js middleware that enforces authentication on protected routes.
+ * Next.js proxy (formerly middleware) that enforces authentication on protected routes.
  *
  * Logic:
  *  - Public pages and auth API endpoints always pass through.
@@ -47,7 +45,7 @@ function isPublicAuthApi(pathname: string): boolean {
  *    redirected to /customer (or their role-based dashboard).
  *  - All other routes (static assets, public API, etc.) pass through.
  */
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
   const token = request.cookies.get(AUTH_COOKIE)?.value
 
