@@ -8,5 +8,5 @@ export default {
     connectionString: process.env.DATABASE_URL || "postgresql://postgres:password@localhost:5432/bentahub",
   },
   verbose: true,
-  strict: true,
+  strict: false,
 } satisfies Config
