@@ -1,7 +1,6 @@
 import { 
   MonitoringMetrics, 
   InventoryStatusTable, 
-  InventoryFlowTrend, 
   SystemAlerts 
 } from "@/features/admin-dashboard"
 import { Download } from "lucide-react"
@@ -37,15 +36,7 @@ export default function MonitoringPage() {
       {/* Inventory Status Table Section */}
       <InventoryStatusTable />
 
-      {/* Bottom Section: Flow Trend & System Alerts */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 pb-8">
-        <div className="lg:col-span-2">
-          <InventoryFlowTrend />
-        </div>
-        <div className="lg:col-span-1">
-          <SystemAlerts />
-        </div>
-      </div>
+      <SystemAlerts />
     </div>
   )
 }
