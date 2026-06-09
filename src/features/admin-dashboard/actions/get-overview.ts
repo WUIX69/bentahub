@@ -8,7 +8,7 @@ interface RawTransaction {
   totalAmount: string
   paymentMethod: string
   status: string
-  createdAt: string
+  createdAt: Date
 }
 
 interface RawInventory {
@@ -17,7 +17,7 @@ interface RawInventory {
   productId: string
   quantity: number
   lowStockThreshold: number
-  updatedAt: string
+  updatedAt: Date
 }
 
 interface RawBranch {
@@ -26,8 +26,8 @@ interface RawBranch {
   location: string | null
   capacity: number
   isActive: boolean
-  createdAt: string
-  updatedAt: string
+  createdAt: Date
+  updatedAt: Date
 }
 
 const MONTH_NAMES = [

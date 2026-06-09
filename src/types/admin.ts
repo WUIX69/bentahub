@@ -42,7 +42,7 @@ export interface InventoryStatusItem {
   totalQuantity: number
   reorderLevel: number
   status: "Active" | "Low Stock" | "Critical"
-  lastUpdated: string
+  lastUpdated: string | Date
 }
 
 export interface SystemAlertItem {
@@ -56,6 +56,37 @@ export interface MonitoringData {
   inventoryStatus: InventoryStatusItem[]
   alerts: SystemAlertItem[]
   branches: { id: string; name: string }[]
+}
+
+export interface SalesOverviewData {
+  totalSales: number
+  totalSalesDisplay: string
+  transactionCount: number
+  avgPerTransaction: number
+  avgPerTransactionDisplay: string
+  trend: string
+}
+
+export interface SalesTransactionRowData {
+  id: string
+  branchName: string
+  createdAt: Date
+  totalAmount: string
+  paymentMethod: string
+  status: string
+}
+
+export interface SalesTrendPointData {
+  month: string
+  revenue: number
+}
+
+export interface SalesApiData {
+  overview: SalesOverviewData
+  transactions: SalesTransactionRowData[]
+  totalCount: number
+  branches: { id: string; name: string }[]
+  salesTrend: SalesTrendPointData[]
 }
 
 export interface AdminApiResponse<T = unknown> {

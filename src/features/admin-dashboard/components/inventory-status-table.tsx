@@ -4,7 +4,7 @@ interface InventoryStatusTableProps {
   data: InventoryStatusItem[]
 }
 
-function formatDate(dateStr: string): string {
+function formatDate(dateStr: string | Date): string {
   const d = new Date(dateStr)
   return d.toLocaleDateString("en-PH", { month: "numeric", day: "numeric", year: "numeric" })
 }

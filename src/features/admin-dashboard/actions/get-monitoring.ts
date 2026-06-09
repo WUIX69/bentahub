@@ -23,13 +23,15 @@ interface RawInventory {
   productId: string
   quantity: number
   lowStockThreshold: number
-  updatedAt: string
+  updatedAt: Date
 }
 
 interface RawTransaction {
   id: string
+  totalAmount: string
+  paymentMethod: string
   status: string
-  createdAt: string
+  createdAt: Date
 }
 
 function formatCurrency(amount: number): string {
@@ -51,15 +53,15 @@ export async function getMonitoringData(): Promise<MonitoringData> {
   const productCategoryMap = new Map(allProducts.map((p: RawProduct) => [p.id, p.category || "Uncategorized"]))
 
   let totalValue = 0
-  const productAggregator = new Map<string, { totalQty: number; lastUpdated: string; thresholds: number[] }>()
+  const productAggregator = new Map<string, { totalQty: number; lastUpdated: Date; thresholds: number[] }>()
 
   for (const inv of allInventory) {
     const price = productPriceMap.get(inv.productId) || 0
     totalValue += price * inv.quantity
 
-    const existing = productAggregator.get(inv.productId) || { totalQty: 0, lastUpdated: "", thresholds: [] }
+    const existing = productAggregator.get(inv.productId) || { totalQty: 0, lastUpdated: new Date(0), thresholds: [] }
     existing.totalQty += inv.quantity
-    if (inv.updatedAt > existing.lastUpdated) existing.lastUpdated = inv.updatedAt
+    if (inv.updatedAt.getTime() > existing.lastUpdated.getTime()) existing.lastUpdated = inv.updatedAt
     existing.thresholds.push(inv.lowStockThreshold)
     productAggregator.set(inv.productId, existing)
   }
