@@ -29,6 +29,35 @@ export interface AdminOverviewData {
   branchStock: BranchStockData[]
 }
 
+export interface MonitoringMetricsData {
+  totalStockValue: { value: string; trend: string }
+  lowStockItems: { value: number; severity: string }
+  pendingReservations: { value: number; todayCount: number }
+}
+
+export interface InventoryStatusItem {
+  productId: string
+  productName: string
+  category: string
+  totalQuantity: number
+  reorderLevel: number
+  status: "Active" | "Low Stock" | "Critical"
+  lastUpdated: string
+}
+
+export interface SystemAlertItem {
+  type: "critical" | "warning" | "success"
+  title: string
+  description: string
+}
+
+export interface MonitoringData {
+  metrics: MonitoringMetricsData
+  inventoryStatus: InventoryStatusItem[]
+  alerts: SystemAlertItem[]
+  branches: { id: string; name: string }[]
+}
+
 export interface AdminApiResponse<T = unknown> {
   success: boolean
   message: string

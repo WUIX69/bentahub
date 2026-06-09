@@ -1,0 +1,46 @@
+import { NextRequest, NextResponse } from "next/server"
+import { verifyToken } from "@/lib/auth-utils"
+import { getMonitoringData } from "@/features/admin-dashboard/actions/get-monitoring"
+import type { AdminApiResponse, MonitoringData } from "@/types/admin"
+
+export async function GET(request: NextRequest): Promise<NextResponse<AdminApiResponse<MonitoringData>>> {
+  try {
+    const token = request.cookies.get("auth_token")?.value
+
+    if (!token) {
+      return NextResponse.json(
+        { success: false, message: "Authentication required" },
+        { status: 401 }
+      )
+    }
+
+    const payload = verifyToken(token)
+
+    if (!payload) {
+      return NextResponse.json(
+        { success: false, message: "Invalid or expired token" },
+        { status: 401 }
+      )
+    }
+
+    if (payload.role !== "admin") {
+      return NextResponse.json(
+        { success: false, message: "Admin access required" },
+        { status: 403 }
+      )
+    }
+
+    const data = await getMonitoringData()
+
+    return NextResponse.json(
+      { success: true, message: "Monitoring data retrieved successfully", data },
+      { status: 200 }
+    )
+  } catch (error) {
+    console.error("Admin monitoring error:", error)
+    return NextResponse.json(
+      { success: false, message: "An error occurred while fetching monitoring data" },
+      { status: 500 }
+    )
+  }
+}
