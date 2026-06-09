@@ -2,7 +2,7 @@
 import { drizzle } from "drizzle-orm/postgres-js"
 import postgres from "postgres"
 import * as schema from "../schemas"
-import { users, emailVerificationCodes, passwordResetTokens } from "../schemas"
+import { users, emailVerificationCodes, passwordResetTokens, branches, products, branchInventory, transactions } from "../schemas"
 import fs from "fs"
 import path from "path"
 import net from "net"
@@ -24,6 +24,10 @@ function loadData() {
             users: [],
             email_verification_codes: [],
             password_reset_tokens: [],
+            branches: [],
+            products: [],
+            branch_inventory: [],
+            transactions: [],
           },
           null,
           2
@@ -52,6 +56,10 @@ function getTableName(tableObj: any): string {
   if (tableObj === users) return "users"
   if (tableObj === emailVerificationCodes) return "email_verification_codes"
   if (tableObj === passwordResetTokens) return "password_reset_tokens"
+  if (tableObj === branches) return "branches"
+  if (tableObj === products) return "products"
+  if (tableObj === branchInventory) return "branch_inventory"
+  if (tableObj === transactions) return "transactions"
   return tableObj[Symbol.for("drizzle:Name")] || tableObj.config?.name || "unknown"
 }
 
@@ -132,33 +140,35 @@ function recordMatches(record: any, conditions: Array<{ column: string; value: a
   })
 }
 
+function makeMockQuery(tableName: string) {
+  return {
+    findFirst: async (options: any) => {
+      const data = loadData()
+      const conds = options && options.where ? extractConditions(options.where) : []
+      const records = data[tableName] || []
+      const found = records.find((r: any) => recordMatches(r, conds))
+      return found || null
+    },
+    findMany: async (options?: any) => {
+      const data = loadData()
+      const conds = options && options.where ? extractConditions(options.where) : []
+      const records = data[tableName] || []
+      if (conds.length === 0) return [...records]
+      return records.filter((r: any) => recordMatches(r, conds))
+    },
+  }
+}
+
 // In-Memory/JSON Mock Database implementation of Drizzle API
 const mockDb = {
   query: {
-    users: {
-      findFirst: async (options: any) => {
-        const data = loadData()
-        const conds = options && options.where ? extractConditions(options.where) : []
-        const found = data.users.find((u: any) => recordMatches(u, conds))
-        return found || null
-      },
-    },
-    emailVerificationCodes: {
-      findFirst: async (options: any) => {
-        const data = loadData()
-        const conds = options && options.where ? extractConditions(options.where) : []
-        const found = data.email_verification_codes.find((c: any) => recordMatches(c, conds))
-        return found || null
-      },
-    },
-    passwordResetTokens: {
-      findFirst: async (options: any) => {
-        const data = loadData()
-        const conds = options && options.where ? extractConditions(options.where) : []
-        const found = data.password_reset_tokens.find((t: any) => recordMatches(t, conds))
-        return found || null
-      },
-    },
+    users: makeMockQuery("users"),
+    emailVerificationCodes: makeMockQuery("email_verification_codes"),
+    passwordResetTokens: makeMockQuery("password_reset_tokens"),
+    branches: makeMockQuery("branches"),
+    products: makeMockQuery("products"),
+    branchInventory: makeMockQuery("branch_inventory"),
+    transactions: makeMockQuery("transactions"),
   },
   insert: (tableObj: any) => {
     const tableName = getTableName(tableObj)
