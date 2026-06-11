@@ -61,3 +61,15 @@ export interface LoginPayload {
   email: string
   password: string
 }
+
+/** Shape of the login response data (token + user info). */
+export interface LoginResponseData {
+  token: string
+  user: {
+    userId: string
+    email: string
+    fullName: string
+    role: string
+    isEmailVerified: boolean
+  }
+}

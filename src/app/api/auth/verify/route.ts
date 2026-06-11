@@ -2,27 +2,23 @@ import { NextRequest, NextResponse } from "next/server"
 import { db } from "@/servers/db"
 import { users } from "@/servers/schemas"
 import { eq } from "drizzle-orm"
-import { verifyToken } from "@/lib/auth-utils"
-import { AUTH_COOKIE_NAME } from "@/lib/cookie-utils"
+import { verifyToken, extractToken } from "@/lib/auth-utils"
 import type { AuthResponse } from "@/types/auth"
 
 /**
  * GET /api/auth/verify
  *
- * Validates the auth_token cookie and returns the current user's data.
- * Used by the frontend AuthProvider to hydrate session state on page load.
- *
- * Unlike the old version which only decoded the JWT, this now also fetches
- * the user from the database to ensure the account still exists and to
- * return up-to-date fields (role, verification status, etc.).
+ * Validates the JWT from the Authorization header and returns
+ * the current user's data. Used by the frontend AuthProvider to
+ * hydrate session state on page load.
  */
 export async function GET(request: NextRequest): Promise<NextResponse<AuthResponse>> {
   try {
-    const token = request.cookies.get(AUTH_COOKIE_NAME)?.value
+    const token = extractToken(request)
 
     if (!token) {
       return NextResponse.json(
-        { success: false, message: "No token found" },
+        { success: false, message: "No token provided" },
         { status: 401 }
       )
     }
@@ -33,7 +29,7 @@ export async function GET(request: NextRequest): Promise<NextResponse<AuthRespon
 
     if (!decoded) {
       return NextResponse.json(
-        { success: false, message: "Invalid token" },
+        { success: false, message: "Invalid or expired token" },
         { status: 401 }
       )
     }

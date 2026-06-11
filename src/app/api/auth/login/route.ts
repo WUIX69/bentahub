@@ -3,17 +3,15 @@ import { db } from "@/servers/db"
 import { users } from "@/servers/schemas"
 import { eq } from "drizzle-orm"
 import { verifyPassword, generateToken } from "@/lib/auth-utils"
-import { buildAuthCookie } from "@/lib/cookie-utils"
-import type { AuthResponse } from "@/types/auth"
+import type { AuthResponse, LoginResponseData } from "@/types/auth"
 
 /**
  * POST /api/auth/login
  *
- * Authenticates a customer with email + password.
- * On success, sets an httpOnly auth_token cookie — the token is NOT
- * returned in the response body to prevent XSS exposure.
+ * Authenticates a user with email + password.
+ * On success, returns the JWT token and user data in the response body.
  */
-export async function POST(request: NextRequest): Promise<NextResponse<AuthResponse>> {
+export async function POST(request: NextRequest): Promise<NextResponse<AuthResponse<LoginResponseData>>> {
   try {
     const body = await request.json()
     const { email, password } = body
@@ -60,7 +58,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<AuthRespo
       )
     }
 
-    // --- Issue JWT (cookie only — never in the response body) ---------------
+    // --- Issue JWT & return it in the response body ------------------------
 
     const token = generateToken({
       userId: user.id,
@@ -69,23 +67,23 @@ export async function POST(request: NextRequest): Promise<NextResponse<AuthRespo
       role: user.role,
     })
 
-    const response = NextResponse.json(
+    return NextResponse.json(
       {
         success: true,
         message: "Login successful",
         data: {
-          userId: user.id,
-          email: user.email,
-          fullName: user.fullName,
-          role: user.role,
+          token,
+          user: {
+            userId: user.id,
+            email: user.email,
+            fullName: user.fullName,
+            role: user.role,
+            isEmailVerified: user.isEmailVerified,
+          },
         },
       },
       { status: 200 }
     )
-
-    response.cookies.set(buildAuthCookie(token))
-
-    return response
   } catch (error) {
     console.error("Login error:", error)
     return NextResponse.json(

@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
-import { verifyToken } from "@/lib/auth-utils"
+import { verifyToken, extractToken } from "@/lib/auth-utils"
 import { getSalesData } from "@/features/admin-dashboard/actions/get-sales"
 import type { AdminApiResponse, SalesApiData } from "@/types/admin"
 
 export async function GET(request: NextRequest): Promise<NextResponse<AdminApiResponse<SalesApiData>>> {
   try {
-    const token = request.cookies.get("auth_token")?.value
+    const token = extractToken(request)
 
     if (!token) {
       return NextResponse.json(

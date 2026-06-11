@@ -2,18 +2,24 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { LogIn, Mail } from "lucide-react"
 import { AuthHeader, PasswordInput } from "@/features/user-mgmt"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { useAuth } from "@/components/auth-provider"
+
+const TOKEN_STORAGE_KEY = "bentahub_token"
 
 export default function LoginPage() {
+  const router = useRouter()
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
   const [isLoading, setIsLoading] = React.useState(false)
   const [error, setError] = React.useState("")
+  const { setToken } = useAuth()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -26,7 +32,6 @@ export default function LoginPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // Include cookies in request
         body: JSON.stringify({ email, password }),
       })
 
@@ -39,13 +44,17 @@ export default function LoginPage() {
         return
       }
 
-      // Success - redirect to dashboard (cookie already set by API)
+      // Save JWT token to localStorage and auth context
+      const token = data.data?.token
+      if (token) {
+        localStorage.setItem(TOKEN_STORAGE_KEY, token)
+        setToken(token)
+      }
+
+      // Success - client-side navigation to dashboard
+      // (router.push preserves the AuthProvider state so user data is ready immediately)
       console.log("Login successful, redirecting to /customer")
-      
-      // Use window.location for full page redirect to ensure cookie is recognized
-      setTimeout(() => {
-        window.location.href = "/customer"
-      }, 500)
+      router.push("/customer")
     } catch (err) {
       console.error("Login error:", err)
       setError("An unexpected error occurred. Please try again.")

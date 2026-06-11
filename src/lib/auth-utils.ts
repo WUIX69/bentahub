@@ -82,3 +82,19 @@ export function verifyToken(token: string): TokenPayload | null {
     return null
   }
 }
+
+// ---------------------------------------------------------------------------
+// Token extraction from NextRequest
+// ---------------------------------------------------------------------------
+
+/**
+ * Extract a Bearer token from a NextRequest's Authorization header.
+ * Returns `null` if the header is missing or malformed.
+ */
+export function extractToken(request: { headers: { get: (name: string) => string | null } }): string | null {
+  const header = request.headers.get("Authorization")
+  if (!header || !header.startsWith("Bearer ")) {
+    return null
+  }
+  return header.slice(7)
+}

@@ -4,6 +4,12 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 
 // ---------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------
+
+const TOKEN_STORAGE_KEY = "bentahub_token"
+
+// ---------------------------------------------------------------------------
 // Types
 // ---------------------------------------------------------------------------
 
@@ -15,6 +21,14 @@ interface AuthUser {
   isEmailVerified: boolean
 }
 
+/** Build headers with the JWT Bearer token for API calls. */
+function authHeaders(token: string): HeadersInit {
+  return {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Hook
 // ---------------------------------------------------------------------------
@@ -22,7 +36,8 @@ interface AuthUser {
 /**
  * Client-side authentication hook.
  *
- * On mount, calls GET /api/auth/verify to check the auth_token cookie.
+ * On mount, reads the JWT from localStorage and calls GET /api/auth/verify
+ * to validate it.
  * - If valid → populates `user` and sets `isAuthenticated = true`.
  * - If invalid/missing → redirects to /login.
  *
@@ -38,16 +53,28 @@ export function useAuth() {
     let cancelled = false
 
     async function verifyAuth() {
+      const storedToken = localStorage.getItem(TOKEN_STORAGE_KEY)
+
+      if (!storedToken) {
+        if (!cancelled) {
+          setIsAuthenticated(false)
+          setUser(null)
+          router.push("/login")
+        }
+        return
+      }
+
       try {
         const response = await fetch("/api/auth/verify", {
           method: "GET",
-          credentials: "include",
+          headers: authHeaders(storedToken),
         })
 
         if (!response.ok) {
           if (!cancelled) {
             setIsAuthenticated(false)
             setUser(null)
+            localStorage.removeItem(TOKEN_STORAGE_KEY)
             router.push("/login")
           }
           return
@@ -61,6 +88,7 @@ export function useAuth() {
         } else if (!cancelled) {
           setIsAuthenticated(false)
           setUser(null)
+          localStorage.removeItem(TOKEN_STORAGE_KEY)
           router.push("/login")
         }
       } catch (error) {
@@ -68,6 +96,7 @@ export function useAuth() {
         if (!cancelled) {
           setIsAuthenticated(false)
           setUser(null)
+          localStorage.removeItem(TOKEN_STORAGE_KEY)
           router.push("/login")
         }
       } finally {

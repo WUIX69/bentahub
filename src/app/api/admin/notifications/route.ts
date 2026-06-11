@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server"
-import { verifyToken } from "@/lib/auth-utils"
+import { verifyToken, extractToken } from "@/lib/auth-utils"
 import { getMonitoringData } from "@/features/admin-dashboard/actions/get-monitoring"
 import type { AdminApiResponse } from "@/types/admin"
 
 export async function GET(request: NextRequest): Promise<NextResponse<AdminApiResponse>> {
   try {
-    const token = request.cookies.get("auth_token")?.value
+    const token = extractToken(request)
 
     if (!token) {
       return NextResponse.json(
@@ -59,7 +59,7 @@ export async function GET(request: NextRequest): Promise<NextResponse<AdminApiRe
 
 export async function PATCH(request: NextRequest): Promise<NextResponse<AdminApiResponse>> {
   try {
-    const token = request.cookies.get("auth_token")?.value
+    const token = extractToken(request)
 
     if (!token) {
       return NextResponse.json(
