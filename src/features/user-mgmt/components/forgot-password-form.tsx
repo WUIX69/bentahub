@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Mail, ArrowLeft } from "lucide-react"
 import { AuthHeader } from "@/features/user-mgmt"
 import { Button } from "@/components/ui/button"
@@ -10,6 +11,7 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export function ForgotPasswordForm() {
+  const router = useRouter()
   const [email, setEmail] = React.useState("")
   const [isLoading, setIsLoading] = React.useState(false)
   const [error, setError] = React.useState("")
@@ -37,7 +39,8 @@ export function ForgotPasswordForm() {
         return
       }
 
-      setSubmitted(true)
+      sessionStorage.setItem("pendingResetEmail", email)
+      router.push(`/reset-password?email=${encodeURIComponent(email)}`)
     } catch (err) {
       console.error("Forgot password error:", err)
       setError("An unexpected error occurred. Please try again.")
@@ -137,7 +140,7 @@ export function ForgotPasswordForm() {
                 className="w-full flex items-center justify-center gap-2 p-5"
                 disabled={isLoading}
               >
-                {isLoading ? "Sending..." : "Send Reset Link"}
+                {isLoading ? "Sending..." : "Send Verification Code"}
                 <Mail className="size-4" />
               </Button>
             </div>

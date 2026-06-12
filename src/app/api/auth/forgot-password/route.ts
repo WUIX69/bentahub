@@ -10,10 +10,6 @@ import type { AuthResponse } from "@/types/auth"
 /** Reset token expiry in hours. */
 const RESET_TOKEN_EXPIRY_HOURS = 1
 
-/** Generate a cryptographically secure reset token (64 hex chars). */
-function generateResetToken(): string {
-  return crypto.randomBytes(32).toString("hex")
-}
 
 /**
  * POST /api/auth/forgot-password
@@ -49,7 +45,23 @@ export async function POST(request: NextRequest): Promise<NextResponse<AuthRespo
 
     // --- Generate & store reset token ---------------------------------------
 
-    const resetToken = generateResetToken()
+    // Delete any existing reset tokens for this user first
+    await db.delete(passwordResetTokens).where(eq(passwordResetTokens.userId, user.id))
+
+    let resetToken = ""
+    let isUnique = false
+    let attemptsToGenerate = 0
+    while (!isUnique && attemptsToGenerate < 10) {
+      resetToken = crypto.randomInt(100000, 999999).toString()
+      attemptsToGenerate++
+      const existing = await db.query.passwordResetTokens.findFirst({
+        where: eq(passwordResetTokens.token, resetToken),
+      })
+      if (!existing) {
+        isUnique = true
+      }
+    }
+
     const expiresAt = new Date(Date.now() + RESET_TOKEN_EXPIRY_HOURS * 60 * 60 * 1000)
 
     await db.insert(passwordResetTokens).values({
@@ -63,7 +75,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<AuthRespo
     // --- Send email (fail silently to avoid leaking account existence) ------
 
     const resetLink = `${process.env.NEXT_PUBLIC_APP_URL}/reset-password?token=${resetToken}`
-    const emailSent = await sendPasswordResetEmail(user.email, resetLink, user.fullName)
+    const emailSent = await sendPasswordResetEmail(user.email, resetToken, resetLink, user.fullName)
 
     if (!emailSent) {
       console.error("[Auth] Failed to send password reset email for user:", user.id)

@@ -53,11 +53,11 @@ export async function sendVerificationEmail(email: string, code: string, fullNam
   }
 }
 
-export async function sendPasswordResetEmail(email: string, resetLink: string, fullName: string): Promise<boolean> {
+export async function sendPasswordResetEmail(email: string, code: string, resetLink: string, fullName: string): Promise<boolean> {
   try {
     // For development, skip if credentials not set or set to placeholders
     if (!emailUser || !emailPassword || emailUser === "your-email@gmail.com" || emailPassword === "your-app-password") {
-      console.warn(`[DEV] Password reset link for ${email}: ${resetLink}`)
+      console.warn(`[DEV] Password reset code for ${email}: ${code} (Link: ${resetLink})`)
       return true
     }
 
@@ -72,7 +72,15 @@ export async function sendPasswordResetEmail(email: string, resetLink: string, f
             Hi ${fullName},
           </p>
           <p style="color: #666; font-size: 16px;">
-            Click the link below to reset your password:
+            You requested to reset your password. Use the verification code below to proceed:
+          </p>
+          <div style="background-color: #f0f0f0; padding: 20px; border-radius: 8px; text-align: center; margin: 20px 0;">
+            <p style="font-size: 32px; font-weight: bold; color: #007bff; letter-spacing: 5px; margin: 0;">
+              ${code}
+            </p>
+          </div>
+          <p style="color: #666; font-size: 16px;">
+            Or click the button below to go directly to the password reset page:
           </p>
           <div style="margin: 20px 0;">
             <a href="${resetLink}" style="background-color: #007bff; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; display: inline-block;">
@@ -80,7 +88,7 @@ export async function sendPasswordResetEmail(email: string, resetLink: string, f
             </a>
           </div>
           <p style="color: #666; font-size: 14px;">
-            This link will expire in 1 hour.
+            This code and link will expire in 1 hour.
           </p>
           <p style="color: #999; font-size: 12px;">
             If you did not request this, please ignore this email.
