@@ -20,42 +20,38 @@ To use the components in your app, import them as follows:
 import { Button } from "@/components/ui/button";
 ```
 
-## 🐳 Docker Setup
+## 🚀 Local Development Setup
 
-You can run the entire stack (Next.js frontend, PostgreSQL database, and migrations) using Docker.
+To run the application locally, you need a running PostgreSQL database.
 
 ### Prerequisites
-1. Install [Docker](https://www.docker.com/) and ensure the Docker daemon is running.
-2. Make sure you have created `.env.local` based on `.env.example`.
+1. Ensure you have [PostgreSQL](https://www.postgresql.org/) installed and running on your machine.
+2. Make sure you have created `.env.local` based on `.env.example` and configured the database connection credentials.
 
-### Running the Full Application Stack
-To build the images and start all services (database, migrations, and web app) in the foreground:
+### Getting Started
 
-```bash
-docker compose up --build
-```
+1. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+
+2. Push the schema to the database:
+   ```bash
+   pnpm db:push
+   ```
+
+3. Run the development server:
+   ```bash
+   pnpm dev
+   ```
 
 Once started, the application will be available at [http://localhost:3000](http://localhost:3000).
 
-### Running PostgreSQL Only (For Local Development)
-If you prefer to run Next.js on your host machine but want the database running in Docker:
-
-```bash
-docker compose up -d db
-```
-
-You can then run migrations and start the dev server locally:
-```bash
-pnpm install
-pnpm db:push
-pnpm dev
-```
-
 ### Seeding the Database
-To seed the database with initial administrative and branch data inside Docker (run this after a fresh installation or database wipe):
+To seed the database with initial administrative and branch data:
 
 ```bash
-docker compose run --rm db-migrate pnpm db:seed
+pnpm db:seed
 ```
 
 > [!WARNING]
