@@ -84,6 +84,7 @@ The BentaHub system consolidates store operations into five core modules.
 | Database | PostgreSQL |
 | ORM | Drizzle ORM |
 | Language | TypeScript |
+| Containerization | Docker |
 | Architecture | Feature-Sliced Design (FSD) |
 
 ---
