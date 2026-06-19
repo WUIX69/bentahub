@@ -1,17 +1,19 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { ShoppingCart, Bell } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { useCart } from "@/hooks/useCart"
 
 export interface ProductCardProps {
   id: string
   name: string
   category: string
-  price: string
+  price: string | number
   image: string
   stockStatus: "in-stock" | "low-stock" | "out-of-stock"
   weight?: string
@@ -29,11 +31,28 @@ export function ProductCard({
   branch = "Main Branch",
 }: ProductCardProps) {
   const router = useRouter()
+  const { addToCart, isLoading } = useCart()
+  const [error, setError] = useState<string | null>(null)
+
   const isOutOfStock = stockStatus === "out-of-stock"
   const isLowStock = stockStatus === "low-stock"
+  const numPrice = typeof price === "string" ? parseFloat(price.replace(/[^\d.]/g, "")) : price
 
-  const handleAddToCart = () => {
-    router.push("/customer/cart")
+  const handleAddToCart = async () => {
+    try {
+      setError(null)
+      const numericPrice = typeof price === "string" 
+        ? parseFloat(price.replace(/[^\d.]/g, "")) 
+        : price
+
+      await addToCart(id, 1, branch)
+      // Optionally navigate to cart to show item was added
+      // router.push("/customer/cart")
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Failed to add to cart"
+      setError(message)
+      console.error(message)
+    }
   }
 
   return (
@@ -114,10 +133,18 @@ export function ProductCard({
               Notify Me
             </Button>
           ) : (
-            <Button size="sm" className="w-full gap-1.5" onClick={handleAddToCart}>
+            <Button 
+              size="sm" 
+              className="w-full gap-1.5" 
+              onClick={handleAddToCart}
+              disabled={isLoading}
+            >
               <ShoppingCart className="size-3.5" />
-              Add to Cart
+              {isLoading ? "Adding..." : "Add to Cart"}
             </Button>
+          )}
+          {error && (
+            <p className="text-xs text-destructive mt-1">{error}</p>
           )}
         </div>
       </div>

@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1781002807334,
+      "tag": "0000_fast_psynapse",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1781015432040,
+      "tag": "0001_typical_maddog",
+      "breakpoints": true
+    }
+  ]
+}
