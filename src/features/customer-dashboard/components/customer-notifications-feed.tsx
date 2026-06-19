@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import {
-  CheckCircle, Wallet, Tag, AlertTriangle, Bell,
-  ArrowRight, ShoppingBag, Percent
+  CheckCircle, Wallet, AlertTriangle, Bell,
+  ArrowRight, Percent
 } from "lucide-react"
 
 type FilterTab = "all" | "orders" | "payments" | "offers"

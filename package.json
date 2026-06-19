@@ -11,9 +11,10 @@
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "typecheck": "tsc --noEmit",
     "validate": "npm run lint && npm run typecheck",
-    "db:generate": "drizzle-kit generate",
-    "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:generate": "drizzle-kit generate:pg",
+    "db:push": "drizzle-kit push:pg",
+    "db:studio": "drizzle-kit studio",
+    "db:seed": "npx tsx scripts/seed-admin-data.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

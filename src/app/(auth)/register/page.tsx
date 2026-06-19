@@ -1,10 +1,6 @@
 import { RegisterForm } from "@/features/user-mgmt/components/register-form"
 
 export default function RegisterPage() {
-  return (
-    <div className="flex min-h-screen items-center justify-center px-4 py-12">
-      <RegisterForm />
-    </div>
-  )
+  return <RegisterForm />
 }
 

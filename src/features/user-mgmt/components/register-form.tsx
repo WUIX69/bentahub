@@ -3,8 +3,8 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { LogIn, Mail, Lock, User } from "lucide-react"
-import { AuthHeader } from "@/features/user-mgmt"
+import { UserPlus, Mail, User } from "lucide-react"
+import { AuthHeader, PasswordInput } from "@/features/user-mgmt"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -66,11 +66,8 @@ export function RegisterForm() {
         return
       }
 
-      // Store email for verification page
-      sessionStorage.setItem("pendingVerificationEmail", formData.email)
-
-      // Redirect to verification page
-      router.push(`/verify-email?email=${encodeURIComponent(formData.email)}`)
+      // Redirect to login page so user can sign in with their new account
+      router.push("/login?registered=true")
     } catch (err) {
       setError("An unexpected error occurred. Please try again.")
       console.error(err)
@@ -84,7 +81,7 @@ export function RegisterForm() {
 
       <Card className="border-border shadow-sm">
         <CardHeader className="pb-4">
-          <CardTitle className="text-xl font-semibold">Register</CardTitle>
+          <CardTitle className="text-xl font-semibold">Create an account</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -141,20 +138,15 @@ export function RegisterForm() {
               <Label htmlFor="password" className="text-xs uppercase tracking-wider text-muted-foreground">
                 Password
               </Label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground size-5" />
-                <Input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="••••••••"
-                  className="pl-10"
-                  value={formData.password}
-                  onChange={handleInputChange}
-                  disabled={isLoading}
-                  required
-                />
-              </div>
+              <PasswordInput
+                id="password"
+                name="password"
+                placeholder="••••••••"
+                value={formData.password}
+                onChange={handleInputChange}
+                disabled={isLoading}
+                required
+              />
               <p className="text-xs text-muted-foreground">At least 8 characters</p>
             </div>
 
@@ -163,20 +155,15 @@ export function RegisterForm() {
               <Label htmlFor="confirmPassword" className="text-xs uppercase tracking-wider text-muted-foreground">
                 Confirm Password
               </Label>
-              <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground size-5" />
-                <Input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  placeholder="••••••••"
-                  className="pl-10"
-                  value={formData.confirmPassword}
-                  onChange={handleInputChange}
-                  disabled={isLoading}
-                  required
-                />
-              </div>
+              <PasswordInput
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="••••••••"
+                value={formData.confirmPassword}
+                onChange={handleInputChange}
+                disabled={isLoading}
+                required
+              />
             </div>
 
             <div className="pt-2">
@@ -189,7 +176,7 @@ export function RegisterForm() {
                 ) : (
                   <>
                     Register
-                    <LogIn className="size-4" />
+                    <UserPlus className="size-4" />
                   </>
                 )}
               </Button>

@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { LayoutGrid, ClipboardList, Coins, History, User, LogOut, Monitor, X, Bell } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -30,9 +30,19 @@ interface CashierSidebarProps {
 
 export function CashierSidebar({ isOpen, onClose }: CashierSidebarProps) {
   const pathname = usePathname()
+  const router = useRouter()
 
   const handleNav = () => {
     onClose()
+  }
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" })
+    } catch {
+      // proceed
+    }
+    router.push("/login")
   }
 
   return (
@@ -104,13 +114,13 @@ export function CashierSidebar({ isOpen, onClose }: CashierSidebarProps) {
               <User className="w-5 h-5" />
               <span>Profile</span>
             </Link>
-            <Link
-              href="/login"
-              className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-all duration-200"
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-red-400 hover:text-red-300 hover:bg-red-500/10 transition-all duration-200 w-full text-left"
             >
               <LogOut className="w-5 h-5" />
               <span>Logout</span>
-            </Link>
+            </button>
           </nav>
         </div>
       </aside>

@@ -1,31 +1,28 @@
 import { AlertTriangle, CheckCircle, Flame } from "lucide-react"
 
-export function BranchStockOverview() {
-  const branches = [
-    {
-      name: "Lourdes Main Branch",
-      total: 450,
-      capacity: 500,
-      status: "Healthy",
-      colorClass: "bg-emerald-500",
-      percentage: 90,
-    },
-    {
-      name: "Lourdes Second Branch",
-      total: 320,
-      capacity: 500,
-      status: "Warning",
-      colorClass: "bg-amber-500",
-      percentage: 64,
-    },
-    {
-      name: "Lourdes Third Branch",
-      total: 280,
-      capacity: 500,
-      status: "Healthy",
-      colorClass: "bg-emerald-500",
-      percentage: 56,
-    },
+interface BranchStockItem {
+  name: string
+  totalItems: number
+  capacity: number
+  percentage: number
+  status: "Healthy" | "Warning" | "Critical"
+}
+
+interface BranchStockOverviewProps {
+  data?: BranchStockItem[]
+}
+
+const STATUS_COLORS: Record<string, string> = {
+  Healthy: "bg-emerald-500",
+  Warning: "bg-amber-500",
+  Critical: "bg-rose-500",
+}
+
+export function BranchStockOverview({ data }: BranchStockOverviewProps) {
+  const branches = data ?? [
+    { name: "Lourdes Main Branch", totalItems: 450, capacity: 500, status: "Healthy" as const, percentage: 90 },
+    { name: "Lourdes Second Branch", totalItems: 320, capacity: 500, status: "Warning" as const, percentage: 64 },
+    { name: "Lourdes Third Branch", totalItems: 280, capacity: 500, status: "Healthy" as const, percentage: 56 },
   ]
 
   return (
@@ -52,14 +49,14 @@ export function BranchStockOverview() {
             <div key={branch.name} className="flex flex-col gap-2 group cursor-pointer">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className={`w-2 h-2 rounded-full ${branch.colorClass}`} />
+                  <div className={`w-2 h-2 rounded-full ${STATUS_COLORS[branch.status]}`} />
                   <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                     {branch.name}
                   </span>
                 </div>
                 <div className="flex items-center gap-3 text-xs">
                   <span className="text-muted-foreground font-medium">
-                    {branch.total} / {branch.capacity} items
+                    {branch.totalItems} / {branch.capacity} items
                   </span>
                   <span className={`flex items-center gap-1 px-2.5 py-0.5 rounded-full font-semibold ${branch.status === 'Healthy' ? 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400' :
                     branch.status === 'Warning' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400' :
@@ -71,7 +68,7 @@ export function BranchStockOverview() {
               </div>
               <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
                 <div
-                  className={`h-full ${branch.colorClass} rounded-full transition-all duration-500 group-hover:opacity-90`}
+                  className={`h-full ${STATUS_COLORS[branch.status]} rounded-full transition-all duration-500 group-hover:opacity-90`}
                   style={{ width: `${branch.percentage}%` }}
                 />
               </div>

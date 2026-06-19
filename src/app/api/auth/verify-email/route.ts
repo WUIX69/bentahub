@@ -2,51 +2,52 @@ import { NextRequest, NextResponse } from "next/server"
 import { db } from "@/servers/db"
 import { users, emailVerificationCodes } from "@/servers/schemas"
 import { eq, and } from "drizzle-orm"
-import { generateToken } from "@/lib/auth-utils"
+import { generateId, generateVerificationCode } from "@/lib/auth-utils"
+import { sendVerificationEmail } from "@/lib/email-service"
 import type { AuthResponse, VerifyEmailPayload } from "@/types/auth"
+
+/** Maximum number of verification attempts before a new code must be requested. */
+const MAX_VERIFICATION_ATTEMPTS = 5
+
+// ---------------------------------------------------------------------------
+// POST /api/auth/verify-email — Verify a 6-digit email code
+// ---------------------------------------------------------------------------
 
 export async function POST(request: NextRequest): Promise<NextResponse<AuthResponse>> {
   try {
     const body: VerifyEmailPayload = await request.json()
 
-    // Validation
+    // --- Input validation ---------------------------------------------------
+
     if (!body.email || !body.code) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "Email and verification code are required",
-        },
+        { success: false, message: "Email and verification code are required" },
         { status: 400 }
       )
     }
 
-    // Find the user
+    // --- Lookup user --------------------------------------------------------
+
     const user = await db.query.users.findFirst({
       where: eq(users.email, body.email),
     })
 
     if (!user) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "User not found",
-        },
+        { success: false, message: "User not found" },
         { status: 404 }
       )
     }
 
-    // Check if already verified
     if (user.isEmailVerified) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "Email already verified",
-        },
+        { success: false, message: "Email already verified" },
         { status: 400 }
       )
     }
 
-    // Find the verification code
+    // --- Find matching verification code ------------------------------------
+
     const verification = await db.query.emailVerificationCodes.findFirst({
       where: and(
         eq(emailVerificationCodes.userId, user.id),
@@ -57,180 +58,135 @@ export async function POST(request: NextRequest): Promise<NextResponse<AuthRespo
 
     if (!verification) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "Invalid verification code",
-        },
+        { success: false, message: "Invalid verification code" },
         { status: 400 }
       )
     }
 
-    // Check if code is expired
+    // --- Check expiry -------------------------------------------------------
+
     if (new Date() > verification.expiresAt) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "Verification code has expired",
-        },
+        { success: false, message: "Verification code has expired" },
         { status: 400 }
       )
     }
 
-    // Check attempt limit
-    if (verification.attempts >= 5) {
+    // --- Check & increment attempt counter ----------------------------------
+
+    if (verification.attempts >= MAX_VERIFICATION_ATTEMPTS) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "Too many attempts. Please request a new code.",
-        },
+        { success: false, message: "Too many attempts. Please request a new code." },
         { status: 400 }
       )
     }
 
-    // Verify email and update user
+    // Increment attempt count BEFORE checking validity so brute-force is bounded
+    await db
+      .update(emailVerificationCodes)
+      .set({ attempts: verification.attempts + 1 })
+      .where(eq(emailVerificationCodes.id, verification.id))
+
+    // --- Mark email as verified ---------------------------------------------
+
     await db
       .update(users)
-      .set({
-        isEmailVerified: true,
-      })
+      .set({ isEmailVerified: true })
       .where(eq(users.id, user.id))
 
-    // Delete used verification code
-    await db.delete(emailVerificationCodes).where(eq(emailVerificationCodes.id, verification.id))
+    // Clean up used verification code
+    await db
+      .delete(emailVerificationCodes)
+      .where(eq(emailVerificationCodes.id, verification.id))
 
-    // Generate auth token
-    const token = generateToken(user.id, user.email, user.fullName)
-
-    // Create response with cookie
-    const response = NextResponse.json(
+    return NextResponse.json(
       {
         success: true,
-        message: "Email verified successfully",
-        data: {
-          userId: user.id,
-          email: user.email,
-          fullName: user.fullName,
-          role: user.role,
-          token,
-        },
+        message: "Email verified successfully. Please log in to continue.",
       },
       { status: 200 }
     )
-
-    // Set HTTP-only cookie for token
-    response.cookies.set({
-      name: "auth_token",
-      value: token,
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 7 * 24 * 60 * 60, // 7 days
-      path: "/",
-    })
-
-    return response
   } catch (error) {
     console.error("Email verification error:", error)
     return NextResponse.json(
-      {
-        success: false,
-        message: "An error occurred during verification",
-      },
+      { success: false, message: "An error occurred during verification" },
       { status: 500 }
     )
   }
 }
 
-// Resend verification code
+// ---------------------------------------------------------------------------
+// PUT /api/auth/verify-email — Resend verification code
+// ---------------------------------------------------------------------------
+
 export async function PUT(request: NextRequest): Promise<NextResponse<AuthResponse>> {
   try {
     const body = await request.json()
 
     if (!body.email) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "Email is required",
-        },
+        { success: false, message: "Email is required" },
         { status: 400 }
       )
     }
 
-    // Find the user
+    // --- Lookup user --------------------------------------------------------
+
     const user = await db.query.users.findFirst({
       where: eq(users.email, body.email),
     })
 
     if (!user) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "User not found",
-        },
+        { success: false, message: "User not found" },
         { status: 404 }
       )
     }
 
     if (user.isEmailVerified) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "Email already verified",
-        },
+        { success: false, message: "Email already verified" },
         { status: 400 }
       )
     }
 
-    // Delete old verification codes
-    await db.delete(emailVerificationCodes).where(eq(emailVerificationCodes.userId, user.id))
+    // --- Invalidate old codes and issue a new one ---------------------------
 
-    // Generate new code
-    const verificationCode = Math.floor(100000 + Math.random() * 900000).toString()
-    const expiresAt = new Date(Date.now() + 15 * 60 * 1000)
+    await db
+      .delete(emailVerificationCodes)
+      .where(eq(emailVerificationCodes.userId, user.id))
 
-    const verificationId = generateId()
+    const code = generateVerificationCode()
+    const expiresAt = new Date(Date.now() + 15 * 60 * 1000) // 15 minutes
 
     await db.insert(emailVerificationCodes).values({
-      id: verificationId,
+      id: generateId(),
       userId: user.id,
-      code: verificationCode,
+      code,
       email: body.email,
       expiresAt,
     })
 
-    // Send email
-    const { sendVerificationEmail } = await import("@/lib/email-service")
-    const emailSent = await sendVerificationEmail(body.email, verificationCode, user.fullName)
+    // --- Send email ---------------------------------------------------------
+
+    const emailSent = await sendVerificationEmail(body.email, code, user.fullName)
 
     if (!emailSent) {
       return NextResponse.json(
-        {
-          success: false,
-          message: "Failed to send verification email",
-        },
+        { success: false, message: "Failed to send verification email" },
         { status: 500 }
       )
     }
 
     return NextResponse.json(
-      {
-        success: true,
-        message: "Verification code sent successfully",
-      },
+      { success: true, message: "Verification code sent successfully" },
       { status: 200 }
     )
   } catch (error) {
     console.error("Resend verification error:", error)
     return NextResponse.json(
-      {
-        success: false,
-        message: "An error occurred while resending verification code",
-      },
+      { success: false, message: "An error occurred while resending verification code" },
       { status: 500 }
     )
   }
-}
-
-function generateId(): string {
-  return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`
 }

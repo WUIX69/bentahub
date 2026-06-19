@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef } from "react"
+import Image from "next/image"
 import { X, Plus, Image as ImageIcon, ImagePlus } from "lucide-react"
 
 interface ProductForm {
@@ -87,7 +88,7 @@ export function AddStockModal({ isOpen, onClose, onSave }: AddStockModalProps) {
                 <div className="w-24 h-24 rounded-lg bg-background border border-border overflow-hidden flex-shrink-0 flex items-center justify-center relative shadow-inner">
                   {form.image ? (
                     <>
-                      <img src={form.image} alt="Product preview" className="w-full h-full object-cover" />
+                      <Image src={form.image} alt="Product preview" width={96} height={96} className="w-full h-full object-cover" unoptimized />
                       <button
                         type="button"
                         onClick={() => setForm(f => ({ ...f, image: "" }))}
