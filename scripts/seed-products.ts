@@ -693,10 +693,12 @@ const seedProducts = async () => {
     ];
 
     // Insert products
-    for (const productData of productData) {
+    for (const product of productData) {
       await db.insert(products).values({
+        ...product,
         id: generateId(),
-        ...productData,
+        price: product.price.toFixed(2),
+        bulkPrice: product.bulkPrice !== null ? product.bulkPrice.toFixed(2) : null,
         image: "/images/dashboard/kopiko-blanca-twin-v2.png", // Default image
       });
     }

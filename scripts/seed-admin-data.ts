@@ -112,6 +112,7 @@ async function seedData(): Promise<void> {
       sku: p.sku,
       price: p.price.toFixed(2),
       category: p.category,
+      branch: "Lourdes Main Branch",
       isActive: true,
       createdAt: new Date(now.getFullYear() - 1, 0, 1),
       updatedAt: now,

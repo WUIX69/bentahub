@@ -2,8 +2,8 @@ import { pgTable, timestamp, varchar, numeric, pgEnum } from "drizzle-orm/pg-cor
 import { branches } from "./branches"
 import { relations } from "drizzle-orm"
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
+import { paymentMethodEnum } from "./orders"
 
-export const paymentMethodEnum = pgEnum("payment_method", ["cash", "gcash"])
 export const transactionStatusEnum = pgEnum("transaction_status", ["completed", "pending", "cancelled"])
 
 export const transactions = pgTable("transactions", {

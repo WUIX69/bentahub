@@ -4,9 +4,9 @@ import { products } from "@/servers/schemas"
 import { eq } from "drizzle-orm"
 
 interface RouteParams {
-  params: {
+  params: Promise<{
     id: string
-  }
+  }>
 }
 
 /**
@@ -18,7 +18,7 @@ export async function GET(
   { params }: RouteParams
 ) {
   try {
-    const { id } = params
+    const { id } = await params
 
     const product = await db
       .select()

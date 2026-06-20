@@ -30,7 +30,7 @@ async function getUserIdFromToken(): Promise<string | null> {
  */
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { notificationId: string } }
+  { params }: { params: Promise<{ notificationId: string }> }
 ) {
   try {
     const userId = await getUserIdFromToken()
@@ -42,7 +42,7 @@ export async function PATCH(
       )
     }
 
-    const { notificationId } = params
+    const { notificationId } = await params
     const body = await request.json()
     const { isRead } = body
 

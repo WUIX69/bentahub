@@ -22,10 +22,10 @@ importers:
         version: 2.1.1
       drizzle-orm:
         specifier: ^0.30.10
-        version: 0.30.10(@types/react@19.2.14)(pg@8.21.0)(postgres@3.4.9)(react@19.2.6)
+        version: 0.30.10(@types/pg@8.20.0)(@types/react@19.2.14)(pg@8.21.0)(postgres@3.4.9)(react@19.2.6)
       drizzle-zod:
         specifier: ^0.5.1
-        version: 0.5.1(drizzle-orm@0.30.10(@types/react@19.2.14)(pg@8.21.0)(postgres@3.4.9)(react@19.2.6))(zod@3.25.76)
+        version: 0.5.1(drizzle-orm@0.30.10(@types/pg@8.20.0)(@types/react@19.2.14)(pg@8.21.0)(postgres@3.4.9)(react@19.2.6))(zod@3.25.76)
       jsonwebtoken:
         specifier: ^9.0.3
         version: 9.0.3
@@ -93,6 +93,9 @@ importers:
       '@types/nodemailer':
         specifier: ^6.4.14
         version: 6.4.23
+      '@types/pg':
+        specifier: ^8.20.0
+        version: 8.20.0
       '@types/react':
         specifier: ^19.2.14
         version: 19.2.14
@@ -1789,6 +1792,9 @@ packages:
 
   '@types/nodemailer@6.4.23':
     resolution: {integrity: sha512-aFV3/NsYFLSx9mbb5gtirBSXJnAlrusoKNuPbxsASWc7vrKLmIrTQRpdcxNcSFL3VW2A2XpeLEavwb2qMi6nlQ==}
+
+  '@types/pg@8.20.0':
+    resolution: {integrity: sha512-bEPFOaMAHTEP1EzpvHTbmwR8UsFyHSKsRisLIHVMXnpNefSbGA1bD6CVy+qKjGSqmZqNqBDV2azOBo8TgkcVow==}
 
   '@types/react-dom@19.2.3':
     resolution: {integrity: sha512-jp2L/eY6fn+KgVVQAOqYItbF0VY/YApe5Mz2F0aykSO8gx31bYCZyvSeYxCHKvzHG5eZjc+zyaS5BrBWya2+kQ==}
@@ -6087,6 +6093,12 @@ snapshots:
     dependencies:
       '@types/node': 25.8.0
 
+  '@types/pg@8.20.0':
+    dependencies:
+      '@types/node': 25.8.0
+      pg-protocol: 1.14.0
+      pg-types: 2.2.0
+
   '@types/react-dom@19.2.3(@types/react@19.2.14)':
     dependencies:
       '@types/react': 19.2.14
@@ -6664,16 +6676,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.30.10(@types/react@19.2.14)(pg@8.21.0)(postgres@3.4.9)(react@19.2.6):
+  drizzle-orm@0.30.10(@types/pg@8.20.0)(@types/react@19.2.14)(pg@8.21.0)(postgres@3.4.9)(react@19.2.6):
     optionalDependencies:
+      '@types/pg': 8.20.0
       '@types/react': 19.2.14
       pg: 8.21.0
       postgres: 3.4.9
       react: 19.2.6
 
-  drizzle-zod@0.5.1(drizzle-orm@0.30.10(@types/react@19.2.14)(pg@8.21.0)(postgres@3.4.9)(react@19.2.6))(zod@3.25.76):
+  drizzle-zod@0.5.1(drizzle-orm@0.30.10(@types/pg@8.20.0)(@types/react@19.2.14)(pg@8.21.0)(postgres@3.4.9)(react@19.2.6))(zod@3.25.76):
     dependencies:
-      drizzle-orm: 0.30.10(@types/react@19.2.14)(pg@8.21.0)(postgres@3.4.9)(react@19.2.6)
+      drizzle-orm: 0.30.10(@types/pg@8.20.0)(@types/react@19.2.14)(pg@8.21.0)(postgres@3.4.9)(react@19.2.6)
       zod: 3.25.76
 
   dunder-proto@1.0.1:

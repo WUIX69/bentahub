@@ -750,8 +750,10 @@ export async function POST(request: NextRequest) {
     // Insert all products
     const results = await db.insert(products).values(
       productData.map((p) => ({
-        id: generateId(),
         ...p,
+        id: generateId(),
+        price: p.price.toFixed(2),
+        bulkPrice: p.bulkPrice !== null ? p.bulkPrice.toFixed(2) : null,
       }))
     );
 

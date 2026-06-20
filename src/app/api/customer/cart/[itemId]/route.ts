@@ -30,7 +30,7 @@ async function getUserIdFromToken(): Promise<string | null> {
  */
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { itemId: string } }
+  { params }: { params: Promise<{ itemId: string }> }
 ) {
   try {
     const userId = await getUserIdFromToken()
@@ -42,7 +42,7 @@ export async function PUT(
       )
     }
 
-    const { itemId } = params
+    const { itemId } = await params
     const body = await request.json()
     const { quantity } = body
 
@@ -107,7 +107,7 @@ export async function PUT(
  */
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { itemId: string } }
+  { params }: { params: Promise<{ itemId: string }> }
 ) {
   try {
     const userId = await getUserIdFromToken()
@@ -119,7 +119,7 @@ export async function DELETE(
       )
     }
 
-    const { itemId } = params
+    const { itemId } = await params
 
     // Verify ownership before deleting
     const item = await db
