@@ -2,25 +2,36 @@ import { useCallback } from "react"
 import { useOrdersStore, type Order } from "@/stores/ordersStore"
 import { useAuth } from "./useAuth"
 
+function authHeaders(token: string): HeadersInit {
+  return {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  }
+}
+
 export function useOrders() {
-  const { user } = useAuth()
+  const { user, token } = useAuth()
   const ordersStore = useOrdersStore()
 
   /**
    * Fetch user's orders from backend
    */
   const fetchOrders = useCallback(async () => {
-    if (!user) return
+    if (!user || !token) return
+    if (ordersStore.isLoading) return
 
     try {
       ordersStore.setLoading(true)
       ordersStore.setError(null)
 
-      const response = await fetch("/api/customer/orders")
+      const response = await fetch("/api/customer/orders", {
+        method: "GET",
+        headers: authHeaders(token),
+      })
       if (!response.ok) throw new Error("Failed to fetch orders")
 
       const data = await response.json()
-      const orders: Order[] = data.map((o: any) => ({
+      const orders: Order[] = (data.data ?? []).map((o: any) => ({
         ...o,
         paidAt: o.paidAt ? new Date(o.paidAt) : null,
         createdAt: new Date(o.createdAt),
@@ -41,7 +52,7 @@ export function useOrders() {
     } finally {
       ordersStore.setLoading(false)
     }
-  }, [user, ordersStore])
+  }, [user, token])
 
   /**
    * Create a new order from cart
@@ -53,13 +64,15 @@ export function useOrders() {
     async (paymentMethod: "cash" | "gcash", branch: string, notes?: string) => {
       if (!user) throw new Error("User not authenticated")
 
+      if (!token) throw new Error("No authentication token found")
+
       try {
         ordersStore.setLoading(true)
         ordersStore.setError(null)
 
         const response = await fetch("/api/customer/orders", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: authHeaders(token),
           body: JSON.stringify({ paymentMethod, branch, notes }),
         })
 
@@ -71,12 +84,14 @@ export function useOrders() {
         }
 
         const data = await response.json()
+        const payload = data.data ?? {}
+        const orderPayload = payload.order ?? {}
         const order: Order = {
-          ...data,
-          paidAt: data.paidAt ? new Date(data.paidAt) : null,
-          createdAt: new Date(data.createdAt),
-          updatedAt: new Date(data.updatedAt),
-          items: data.items?.map((item: any) => ({
+          ...orderPayload,
+          paidAt: orderPayload.paidAt ? new Date(orderPayload.paidAt) : null,
+          createdAt: new Date(orderPayload.createdAt),
+          updatedAt: new Date(orderPayload.updatedAt),
+          items: orderPayload.items?.map((item: any) => ({
             ...item,
             createdAt: new Date(item.createdAt),
           })) || [],
@@ -93,7 +108,7 @@ export function useOrders() {
         ordersStore.setLoading(false)
       }
     },
-    [user, ordersStore]
+    [user, token, ordersStore]
   )
 
   /**
@@ -102,6 +117,7 @@ export function useOrders() {
   const cancelOrder = useCallback(
     async (orderId: string) => {
       if (!user) throw new Error("User not authenticated")
+      if (!token) throw new Error("No authentication token found")
 
       try {
         ordersStore.setLoading(true)
@@ -109,7 +125,7 @@ export function useOrders() {
 
         const response = await fetch(`/api/customer/orders/${orderId}`, {
           method: "PATCH",
-          headers: { "Content-Type": "application/json" },
+          headers: authHeaders(token ?? ""),
           body: JSON.stringify({ status: "cancelled" }),
         })
 
@@ -126,7 +142,7 @@ export function useOrders() {
         ordersStore.setLoading(false)
       }
     },
-    [user, ordersStore]
+    [user, token, ordersStore]
   )
 
   return {

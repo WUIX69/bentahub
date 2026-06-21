@@ -1,7 +1,6 @@
 "use client"
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useState, type ChangeEvent } from "react"
 import { Button } from "@/components/ui/button"
 import { Minus, Plus, ShoppingBasket, Package, ShieldCheck } from "lucide-react"
 
@@ -9,11 +8,19 @@ interface ProductActionsProps {
   stockCount: number
   sku: string
   status: string
+  isAdding?: boolean
+  onAddToCart: (quantity: number) => Promise<void>
 }
 
-export function ProductActions({ stockCount, sku, status }: ProductActionsProps) {
-  const router = useRouter()
+export function ProductActions({
+  stockCount,
+  sku,
+  status,
+  isAdding = false,
+  onAddToCart,
+}: ProductActionsProps) {
   const [quantity, setQuantity] = useState(1)
+  const [error, setError] = useState<string | null>(null)
 
   const handleIncrement = () => {
     setQuantity((prev) => Math.min(prev + 1, 99))
@@ -23,15 +30,21 @@ export function ProductActions({ stockCount, sku, status }: ProductActionsProps)
     setQuantity((prev) => Math.max(prev - 1, 1))
   }
 
-  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleQuantityChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value, 10)
     if (!isNaN(value)) {
       setQuantity(Math.min(Math.max(value, 1), 99))
     }
   }
 
-  const handleAddToReservation = () => {
-    router.push("/customer/cart")
+  const handleAddToCart = async () => {
+    setError(null)
+    try {
+      await onAddToCart(quantity)
+    } catch (error) {
+      const message = error instanceof Error ? error.message : "Failed to add to cart"
+      setError(message)
+    }
   }
 
   return (
@@ -42,7 +55,7 @@ export function ProductActions({ stockCount, sku, status }: ProductActionsProps)
           <span className="text-sm font-medium text-foreground">Select Quantity</span>
           <span className="text-sm font-medium text-primary">{stockCount} units in stock</span>
         </div>
-        
+
         <div className="flex gap-4">
           {/* Quantity Controls */}
           <div className="flex items-center border border-border rounded-lg bg-card overflow-hidden h-11">
@@ -50,6 +63,7 @@ export function ProductActions({ stockCount, sku, status }: ProductActionsProps)
               onClick={handleDecrement}
               className="px-3 h-full hover:bg-muted active:bg-accent transition-colors border-r border-border flex items-center justify-center"
               aria-label="Decrease quantity"
+              disabled={isAdding}
             >
               <Minus className="h-4 w-4" />
             </button>
@@ -60,22 +74,32 @@ export function ProductActions({ stockCount, sku, status }: ProductActionsProps)
               className="w-14 border-none text-center font-mono text-sm focus:ring-0 focus:outline-none bg-transparent"
               min="1"
               max="99"
+              disabled={isAdding}
             />
             <button
               onClick={handleIncrement}
               className="px-3 h-full hover:bg-muted active:bg-accent transition-colors border-l border-border flex items-center justify-center"
               aria-label="Increase quantity"
+              disabled={isAdding}
             >
               <Plus className="h-4 w-4" />
             </button>
           </div>
 
-          {/* Add to Reservation Button */}
-          <Button className="flex-grow h-11 gap-2 text-sm font-medium" onClick={handleAddToReservation}>
+          {/* Add to Cart Button */}
+          <Button
+            className="flex-grow h-11 gap-2 text-sm font-medium"
+            onClick={handleAddToCart}
+            disabled={isAdding || stockCount <= 0}
+          >
             <ShoppingBasket className="h-4 w-4" />
-            Add to Reservation
+            {isAdding ? "Adding..." : "Add to Cart"}
           </Button>
         </div>
+
+        {error && (
+          <p className="text-xs text-destructive mt-1">{error}</p>
+        )}
       </div>
 
       {/* Info Cards */}

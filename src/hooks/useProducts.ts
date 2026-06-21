@@ -10,6 +10,7 @@ export function useProducts() {
    */
   const fetchProducts = useCallback(
     async (filters?: { category?: string; branch?: string }) => {
+      if (productsStore.isLoading) return
       try {
         productsStore.setLoading(true)
         productsStore.setError(null)
@@ -25,7 +26,7 @@ export function useProducts() {
         if (!response.ok) throw new Error("Failed to fetch products")
 
         const data = await response.json()
-        const products: Product[] = data.map((p: any) => ({
+        const products: Product[] = (data.data ?? data ?? []).map((p: any) => ({
           ...p,
           createdAt: new Date(p.createdAt),
           updatedAt: new Date(p.updatedAt),
@@ -42,7 +43,7 @@ export function useProducts() {
         productsStore.setLoading(false)
       }
     },
-    [productsStore]
+    []
   )
 
   /**
@@ -50,6 +51,7 @@ export function useProducts() {
    */
   const fetchProductById = useCallback(
     async (id: string) => {
+      if (productsStore.isLoading) return
       try {
         productsStore.setLoading(true)
         productsStore.setError(null)
@@ -58,10 +60,11 @@ export function useProducts() {
         if (!response.ok) throw new Error("Failed to fetch product")
 
         const data = await response.json()
+        const payload = data.data ?? data
         const product: Product = {
-          ...data,
-          createdAt: new Date(data.createdAt),
-          updatedAt: new Date(data.updatedAt),
+          ...payload,
+          createdAt: new Date(payload.createdAt),
+          updatedAt: new Date(payload.updatedAt),
         }
 
         productsStore.setCurrentProduct(product)
@@ -75,7 +78,7 @@ export function useProducts() {
         productsStore.setLoading(false)
       }
     },
-    [productsStore]
+    []
   )
 
   /**
@@ -85,7 +88,7 @@ export function useProducts() {
     (id: string) => {
       return productsStore.getProductById(id)
     },
-    [productsStore]
+    []
   )
 
   return {

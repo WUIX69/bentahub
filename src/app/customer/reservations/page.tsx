@@ -54,8 +54,10 @@ export default function ReservationsPage() {
 
   // Fetch orders on component mount
   useEffect(() => {
-    fetchOrders()
-  }, [fetchOrders])
+    if (!isLoading && orders.length === 0) {
+      fetchOrders()
+    }
+  }, [fetchOrders, isLoading, orders.length])
 
   // Convert orders to reservation format
   const reservations: ReservationData[] = useMemo(() => {

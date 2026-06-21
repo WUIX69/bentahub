@@ -38,8 +38,10 @@ export function RecentOrdersTable() {
 
   // Fetch orders on component mount
   useEffect(() => {
-    fetchOrders()
-  }, [fetchOrders])
+    if (!isLoading && orders.length === 0) {
+      fetchOrders()
+    }
+  }, [fetchOrders, isLoading, orders.length])
 
   // Convert orders to display format
   const displayOrders = useMemo(() => {

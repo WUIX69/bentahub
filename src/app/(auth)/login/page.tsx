@@ -11,15 +11,13 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useAuth } from "@/components/auth-provider"
 
-const TOKEN_STORAGE_KEY = "bentahub_token"
-
 export default function LoginPage() {
   const router = useRouter()
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
   const [isLoading, setIsLoading] = React.useState(false)
   const [error, setError] = React.useState("")
-  const { setToken } = useAuth()
+  const { setToken, setUser } = useAuth()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,24 +33,50 @@ export default function LoginPage() {
         body: JSON.stringify({ email, password }),
       })
 
-      const data = await response.json()
-      console.log("Login response:", { status: response.status, data })
+      const contentType = response.headers.get("content-type") || ""
+      const text = await response.text()
+      let data: any = null
+
+      if (contentType.includes("application/json")) {
+        try {
+          data = JSON.parse(text)
+        } catch (jsonError) {
+          console.error("Login JSON parse failed", jsonError, text)
+          throw new Error("Received invalid JSON from login endpoint")
+        }
+      }
+
+      console.log("Login response:", {
+        status: response.status,
+        contentType,
+        data,
+        text: !data ? text.slice(0, 400) : undefined,
+      })
 
       if (!response.ok) {
-        setError(data.message || "Login failed")
+        const message = data?.message || text || "Login failed"
+        setError(typeof message === "string" ? message : "Login failed")
         setIsLoading(false)
         return
       }
 
-      // Save JWT token to localStorage and auth context
+      if (!data) {
+        setError("Login endpoint returned non-JSON response")
+        setIsLoading(false)
+        return
+      }
+
+      // Save JWT token and user to auth context
       const token = data.data?.token
+      const user = data.data?.user
       if (token) {
-        localStorage.setItem(TOKEN_STORAGE_KEY, token)
         setToken(token)
+      }
+      if (user) {
+        setUser(user)
       }
 
       // Success - client-side navigation to dashboard
-      // (router.push preserves the AuthProvider state so user data is ready immediately)
       console.log("Login successful, redirecting to /customer")
       router.push("/customer")
     } catch (err) {

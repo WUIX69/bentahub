@@ -8,9 +8,11 @@ import { ProductDetailsSection } from "@/features/customer-dashboard/components/
 import { ProductSidebarSection } from "@/features/customer-dashboard/components/product-sidebar-section"
 import { Heart } from "lucide-react"
 import { useState, use } from "react"
+import { useCart } from "@/hooks/useCart"
 
 export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
+  const { addToCart } = useCart()
   const [isFavorite, setIsFavorite] = useState(false)
 
   // Demo product data
@@ -25,6 +27,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
     stockCount: 85,
     sku: "DMT-250G-V01",
     status: "Available",
+    branch: "Main Branch",
     description: "Del Monte Tomato Sauce is the perfect base for your everyday dishes. Made with 100% real tomatoes, it contains no MSG and is naturally rich in Lycopene. Its rich, thick consistency and savory flavor make it ideal for pasta sauces, stews, and traditional Filipino recipes like Menudo and Afritada.",
     features: [
       "No Artificial Preservatives",
@@ -61,14 +64,14 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             <div>
               <h1 className="text-2xl font-bold text-foreground mb-1">{product.name}</h1>
               <span className="text-sm text-muted-foreground">{product.category}</span>
+              <button
+                onClick={() => setIsFavorite(!isFavorite)}
+                className="p-2 rounded-full hover:bg-muted transition-colors"
+                aria-label="Toggle favorite"
+              >
+                <Heart className={`h-6 w-6 ${isFavorite ? "fill-primary text-primary" : "text-muted-foreground"}`} />
+              </button>
             </div>
-            <button
-              onClick={() => setIsFavorite(!isFavorite)}
-              className="p-2 rounded-full hover:bg-muted transition-colors"
-              aria-label="Toggle favorite"
-            >
-              <Heart className={`h-6 w-6 ${isFavorite ? "fill-primary text-primary" : "text-muted-foreground"}`} />
-            </button>
           </div>
 
           <ProductPricing
@@ -81,6 +84,9 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
             stockCount={product.stockCount}
             sku={product.sku}
             status={product.status}
+            onAddToCart={async (quantity) => {
+              await addToCart(product.id, quantity, product.branch)
+            }}
           />
         </div>
       </div>

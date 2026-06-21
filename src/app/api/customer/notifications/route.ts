@@ -1,26 +1,22 @@
 import { NextRequest, NextResponse } from "next/server"
-import { cookies } from "next/headers"
-import * as jwt from "jsonwebtoken"
 import { db } from "@/servers/db"
 import { notifications } from "@/servers/schemas"
 import { eq, and, desc } from "drizzle-orm"
+import { extractToken, verifyToken } from "@/lib/auth-utils"
 
-const JWT_SECRET = process.env.JWT_SECRET || "dev-secret-key-change-in-production"
-
-async function getUserIdFromToken(): Promise<string | null> {
-  const cookieStore = await cookies()
-  const token = cookieStore.get("auth_token")?.value
+async function getUserIdFromToken(request: NextRequest): Promise<string | null> {
+  const token = extractToken(request)
 
   if (!token) {
     return null
   }
 
-  try {
-    const decoded = jwt.verify(token, JWT_SECRET) as { userId: string }
-    return decoded.userId
-  } catch (error) {
+  const decoded = verifyToken(token)
+  if (!decoded) {
     return null
   }
+
+  return decoded.userId
 }
 
 /**
@@ -30,7 +26,7 @@ async function getUserIdFromToken(): Promise<string | null> {
  */
 export async function GET(request: NextRequest) {
   try {
-    const userId = await getUserIdFromToken()
+    const userId = await getUserIdFromToken(request)
 
     if (!userId) {
       return NextResponse.json(

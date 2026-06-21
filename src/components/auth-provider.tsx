@@ -25,6 +25,8 @@ interface AuthContextValue {
   user: AuthUser | null
   /** True while the initial session check is in-flight. */
   isLoading: boolean
+  /** True when a valid user session exists. */
+  isAuthenticated: boolean
   /** Set or clear the current user (used after login / verify-email). */
   setUser: (user: AuthUser | null) => void
   /** Persist the JWT token (called after successful login). */
@@ -64,14 +66,7 @@ function authHeaders(token: string): HeadersInit {
 // Context
 // ---------------------------------------------------------------------------
 
-const AuthContext = createContext<AuthContextValue>({
-  user: null,
-  isLoading: true,
-  setUser: () => {},
-  setToken: () => {},
-  token: null,
-  logout: async () => {},
-})
+const AuthContext = createContext<AuthContextValue | null>(null)
 
 // ---------------------------------------------------------------------------
 // Provider
@@ -91,13 +86,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<AuthUser | null>(null)
   const [token, setTokenState] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const isAuthenticated = Boolean(user)
 
   // --- Hydrate session from stored token on mount --------------------------
 
   useEffect(() => {
     let cancelled = false
 
+    let isChecking = false
+
     async function checkSession() {
+      if (isChecking) return
+      isChecking = true
       const storedToken = getStoredToken()
 
       if (!storedToken) {
@@ -109,7 +109,26 @@ export function AuthProvider({ children }: AuthProviderProps) {
         const response = await fetch("/api/auth/verify", {
           headers: authHeaders(storedToken),
         })
-        const data = await response.json()
+
+        // If the server returned a non-OK status, avoid parsing as JSON
+        if (!response.ok) {
+          const text = await response.text().catch(() => "<unable to read response>")
+          console.error("/api/auth/verify returned non-OK status:", response.status, text)
+          clearStoredToken()
+          if (!cancelled) setIsLoading(false)
+          return
+        }
+
+        const data = await response.json().catch((err) => {
+          console.error("Failed to parse /api/auth/verify JSON:", err)
+          return null
+        })
+
+        if (!data) {
+          clearStoredToken()
+          if (!cancelled) setIsLoading(false)
+          return
+        }
 
         if (!cancelled && data.success && data.data) {
           setTokenState(storedToken)
@@ -118,7 +137,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
           // Token invalid or expired — clean up
           clearStoredToken()
         }
-      } catch {
+      } catch (err) {
+        console.error("Error during auth verification:", err)
         clearStoredToken()
       } finally {
         if (!cancelled) {
@@ -157,7 +177,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, setUser, setToken, token, logout }}>
+    <AuthContext.Provider value={{ user, isAuthenticated, isLoading, setUser, setToken, token, logout }}>
       {children}
     </AuthContext.Provider>
   )
@@ -171,7 +191,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 export function useAuth() {
   const context = useContext(AuthContext)
 
-  if (!context) {
+  if (context === null) {
     throw new Error("useAuth must be used within an AuthProvider")
   }
 

@@ -2,8 +2,15 @@ import { useCallback } from "react"
 import { useNotificationsStore, type Notification } from "@/stores/notificationsStore"
 import { useAuth } from "./useAuth"
 
+function authHeaders(token: string): HeadersInit {
+  return {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  }
+}
+
 export function useNotifications() {
-  const { user } = useAuth()
+  const { user, token } = useAuth()
   const notificationsStore = useNotificationsStore()
 
   /**
@@ -12,6 +19,8 @@ export function useNotifications() {
   const fetchNotifications = useCallback(
     async (unreadOnly: boolean = false) => {
       if (!user) return
+      if (!token) return
+      if (notificationsStore.isLoading) return
 
       try {
         notificationsStore.setLoading(true)
@@ -23,12 +32,17 @@ export function useNotifications() {
         if (unreadOnly) params.append("unreadOnly", "true")
 
         const response = await fetch(
-          `/api/customer/notifications?${params.toString()}`
+          `/api/customer/notifications?${params.toString()}`,
+          {
+            method: "GET",
+            headers: authHeaders(token),
+          }
         )
         if (!response.ok) throw new Error("Failed to fetch notifications")
 
         const data = await response.json()
-        const notifications: Notification[] = data.map((n: any) => ({
+        const payload = data.data ?? {}
+        const notifications: Notification[] = (payload.notifications ?? []).map((n: any) => ({
           ...n,
           readAt: n.readAt ? new Date(n.readAt) : null,
           createdAt: new Date(n.createdAt),
@@ -46,7 +60,7 @@ export function useNotifications() {
         notificationsStore.setLoading(false)
       }
     },
-    [user, notificationsStore]
+    [user, token]
   )
 
   /**
@@ -55,13 +69,14 @@ export function useNotifications() {
   const markAsRead = useCallback(
     async (notificationId: string) => {
       if (!user) return
+      if (!token) return
 
       try {
         const response = await fetch(
           `/api/customer/notifications/${notificationId}`,
           {
             method: "PATCH",
-            headers: { "Content-Type": "application/json" },
+            headers: authHeaders(token),
             body: JSON.stringify({ isRead: true }),
           }
         )
@@ -74,7 +89,7 @@ export function useNotifications() {
         throw error
       }
     },
-    [user, notificationsStore]
+    [user, token]
   )
 
   /**
@@ -90,7 +105,7 @@ export function useNotifications() {
       console.error("Failed to mark all notifications as read:", error)
       throw error
     }
-  }, [user, notificationsStore])
+  }, [user])
 
   return {
     // State

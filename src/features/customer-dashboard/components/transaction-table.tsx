@@ -12,8 +12,10 @@ export function TransactionTable() {
   const [page, setPage] = useState(1)
 
   useEffect(() => {
-    fetchOrders()
-  }, [fetchOrders])
+    if (!isLoading && orders.length === 0) {
+      fetchOrders()
+    }
+  }, [fetchOrders, isLoading, orders.length])
 
   // Demo transactions fallback
   const demoTransactions = [

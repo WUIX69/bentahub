@@ -14,7 +14,7 @@ import { useProducts } from "@/hooks/useProducts"
 import { useCart } from "@/hooks/useCart"
 
 export default function CatalogPage() {
-  const { products: fetchedProducts, isLoading, error } = useProducts()
+  const { products: fetchedProducts, fetchProducts, isLoading, error } = useProducts()
   const { itemCount } = useCart()
 
   // Demo products fallback
@@ -95,9 +95,10 @@ export default function CatalogPage() {
 
   // Fetch products on component mount
   useEffect(() => {
-    // Try to fetch real products from API
-    // Fallback to demo products if API is not ready
-  }, [])
+    fetchProducts().catch((error: unknown) => {
+      console.error("Failed to fetch products:", error)
+    })
+  }, [fetchProducts])
 
   // Convert fetched products to ProductCardProps format, or use demo products
   const displayProducts: ProductCardProps[] = useMemo(() => {

@@ -2,25 +2,36 @@ import { useCallback } from "react"
 import { useCartStore, type CartItem } from "@/stores/cartStore"
 import { useAuth } from "./useAuth"
 
+function authHeaders(token: string): HeadersInit {
+  return {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+  }
+  }
+
 export function useCart() {
-  const { user } = useAuth()
+  const { user, token } = useAuth()
   const cartStore = useCartStore()
 
   /**
    * Fetch cart from backend
    */
   const fetchCart = useCallback(async () => {
-    if (!user) return
+    if (!user || !token) return
+    if (cartStore.isLoading) return
 
     try {
       cartStore.setLoading(true)
       cartStore.setError(null)
 
-      const response = await fetch("/api/customer/cart")
+      const response = await fetch("/api/customer/cart", {
+        method: "GET",
+        headers: authHeaders(token),
+      })
       if (!response.ok) throw new Error("Failed to fetch cart")
 
       const data = await response.json()
-      const items: CartItem[] = data.items.map((item: any) => ({
+      const items: CartItem[] = data.data.items.map((item: any) => ({
         ...item,
         addedAt: new Date(item.addedAt),
         updatedAt: new Date(item.updatedAt),
@@ -34,14 +45,14 @@ export function useCart() {
     } finally {
       cartStore.setLoading(false)
     }
-  }, [user, cartStore])
+  }, [user, token])
 
   /**
    * Add item to cart
    */
   const addToCart = useCallback(
     async (productId: string, quantity: number, branch: string) => {
-      if (!user) return
+      if (!user || !token) return
 
       try {
         cartStore.setLoading(true)
@@ -49,17 +60,20 @@ export function useCart() {
 
         const response = await fetch("/api/customer/cart", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: authHeaders(token),
           body: JSON.stringify({ productId, quantity, branch }),
         })
 
-        if (!response.ok) throw new Error("Failed to add item to cart")
+        if (!response.ok) {
+          const errorData = await response.json().catch(() => null)
+          throw new Error(errorData?.message || "Failed to add item to cart")
+        }
 
         const data = await response.json()
         const item: CartItem = {
-          ...data,
-          addedAt: new Date(data.addedAt),
-          updatedAt: new Date(data.updatedAt),
+          ...data.data,
+          addedAt: new Date(data.data.addedAt),
+          updatedAt: new Date(data.data.updatedAt),
         }
 
         cartStore.addItem(item)
@@ -73,7 +87,7 @@ export function useCart() {
         cartStore.setLoading(false)
       }
     },
-    [user, cartStore]
+    [user, token]
   )
 
   /**
@@ -81,7 +95,7 @@ export function useCart() {
    */
   const updateCartItem = useCallback(
     async (itemId: string, quantity: number) => {
-      if (!user) return
+      if (!user || !token) return
 
       try {
         cartStore.setLoading(true)
@@ -89,7 +103,7 @@ export function useCart() {
 
         const response = await fetch(`/api/customer/cart/${itemId}`, {
           method: "PUT",
-          headers: { "Content-Type": "application/json" },
+          headers: authHeaders(token),
           body: JSON.stringify({ quantity }),
         })
 
@@ -97,8 +111,8 @@ export function useCart() {
 
         const data = await response.json()
         cartStore.updateItem(itemId, {
-          quantity: data.quantity,
-          subtotal: data.subtotal,
+          quantity: data.data.quantity,
+          subtotal: data.data.subtotal,
         })
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
@@ -109,7 +123,7 @@ export function useCart() {
         cartStore.setLoading(false)
       }
     },
-    [user, cartStore]
+    [user, token]
   )
 
   /**
@@ -117,7 +131,7 @@ export function useCart() {
    */
   const removeFromCart = useCallback(
     async (itemId: string) => {
-      if (!user) return
+      if (!user || !token) return
 
       try {
         cartStore.setLoading(true)
@@ -125,6 +139,7 @@ export function useCart() {
 
         const response = await fetch(`/api/customer/cart/${itemId}`, {
           method: "DELETE",
+          headers: authHeaders(token),
         })
 
         if (!response.ok) throw new Error("Failed to remove item from cart")
@@ -139,7 +154,7 @@ export function useCart() {
         cartStore.setLoading(false)
       }
     },
-    [user, cartStore]
+    [user, token]
   )
 
   return {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins, Lora, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AuthProvider } from "@/components/auth-provider";
 
 const fontSans = Poppins({
   subsets: ["latin"],
@@ -32,9 +33,11 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
 
