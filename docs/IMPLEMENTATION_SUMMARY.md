@@ -123,41 +123,44 @@ Logout user
 - Role-based access ready for implementation
 - Works with Next.js App Router
 
-### 7. **File Structure** (Following FSD Architecture)
+### 7. **File Structure** (FSD Alignment)
 
-```
+The implementation strictly follows the Feature-Sliced Design (FSD) architecture:
+
+```text
 src/
-├── app/
-│   ├── api/auth/
+├── app/                              # 🌐 [App Layer] Next.js pages & router
+│   ├── api/auth/                     # Auth routes
 │   │   ├── register/route.ts
 │   │   ├── verify-email/route.ts
 │   │   └── logout/route.ts
-│   └── (auth)/
+│   └── (auth)/                       # Shared auth layouts & portal pages
 │       ├── register/page.tsx
 │       └── verify-email/page.tsx
-├── components/
-│   └── auth-provider.tsx
-├── features/user-mgmt/
-│   ├── actions/
-│   │   └── register.ts (server action)
-│   ├── components/
-│   │   ├── auth-header.tsx
-│   │   ├── password-input.tsx
-│   │   └── register-form.tsx
-│   └── index.ts
-├── lib/
-│   ├── auth-utils.ts
-│   └── email-service.ts
-├── servers/
+├── features/                         # 🏗️ [Feature Layer] Isolated business modules
+│   └── user-mgmt/                    # Isolated feature domain for user authentication & signup
+│       ├── actions/
+│       │   └── register.ts           # Feature-specific server actions
+│       ├── components/
+│       │   ├── auth-header.tsx       # Feature-specific UI components
+│       │   ├── password-input.tsx
+│       │   └── register-form.tsx
+│       └── index.ts                  # Public entry point for other layers to consume
+├── components/                       # ✅ [Shared Layer] Global shared UI components
+│   └── auth-provider.tsx             # Global authentication context provider
+├── lib/                              # ✅ [Shared Layer] Global third-party wrapper configurations
+│   ├── auth-utils.ts                 # Security utilities (JWT, hashing, ID generation)
+│   └── email-service.ts              # Nodemailer wrappers and email templates
+├── servers/                          # ✅ [Shared Layer] Global shared database operations
 │   ├── db/
-│   │   └── index.ts
-│   └── schemas/
-│       ├── users.ts
-│       ├── email-verification.ts
-│       └── index.ts
-├── types/
-│   └── auth.ts
-└── middleware.ts
+│   │   └── index.ts                  # Database connection pool
+│   └── schemas/                      # Database schemas (Drizzle relations & types)
+│       ├── users.ts                  
+│       ├── email-verification.ts     
+│       └── index.ts                  
+├── types/                            # ✅ [Shared Layer] Ambient TypeScript types
+│   └── auth.ts                       # Shared type definitions
+└── middleware.ts                     # 🌐 [App Layer] Global route protection & RBAC checks
 ```
 
 ## 🚀 Quick Start Guide

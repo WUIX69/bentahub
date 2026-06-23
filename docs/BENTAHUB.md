@@ -162,20 +162,29 @@ npm run dev
 
 ## 2. Feature Development (FSD Rules)
 
-### Domain Separation
+All development must strictly adhere to the Feature-Sliced Design (FSD) architecture principles as specified in [FEATURE-SLICED-DESIGN.md](file:///c:/projects/bentahub/docs/FEATURE-SLICED-DESIGN.md):
 
-- Never mix domains.
-- Logic for reservations belongs strictly inside `features/reservations/`.
-- Pages inside the `app/` layer should only consume exposed boundaries from `features/` and `components/`.
+### Domain Isolation Principle
+
+- **Self-contained Modules**: Each directory in `src/features/` is a self-contained module representing a specific business domain (e.g., `user-mgmt`, `customer-dashboard`, `staff-dashboard`, `cashier-dashboard`, `admin-dashboard`, `reservations`, `qr-pos`, etc.).
+- **Features are NOT shareable**: Features cannot import from other features. Cross-feature imports are strictly forbidden to ensure low coupling.
+- **Shared Extraction**: If logic or UI components are needed by multiple features, extract them into global shared directories like `src/components/`, `src/hooks/`, `src/lib/`, `src/utils/`, or `src/types/`.
+
+### Import Rules
+
+- **Shared to Feature**: Features CAN import from global shared folders (e.g., `import { Button } from "@/components/ui/button"`).
+- **Within Feature**: Files within a feature CAN import other files from the SAME feature (e.g., `import { ProjectCard } from "@/features/projects/components/project-card"`).
+- **Feature to Feature**: Features CANNOT import from other features.
+- **App to Feature**: Pages inside `src/app/` should only consume clean exposed boundaries from `src/features/` and `src/components/`.
 
 ### Server Actions
 
-- Use Next.js Server Actions securely inside feature boundaries for database modifications.
+- Use Next.js Server Actions securely inside feature boundaries (e.g., `src/features/[feature-name]/servers/`) for database modifications.
 - Avoid unnecessary decoupled HTTP API route structures.
 
 ### UI Consistency
 
-- Use the shared atomic component layer inside `src/components/`.
+- Use the shared atomic component layer inside `src/components/` for reusable components.
 - Maintain styling consistency with Tailwind CSS and Shadcn UI primitives.
 
 ---

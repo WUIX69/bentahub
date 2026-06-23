@@ -161,33 +161,41 @@ See list above - prioritize by criticality (🔴 first, then 🟡, then 🟢)
 
 ---
 
-## 📚 ARCHITECTURE REFERENCE
+## 📚 ARCHITECTURE REFERENCE & FSD ALIGNMENT
 
-### File Structure for New Features
-```
+The customer dashboard leverages both FSD-isolated features and shared layers:
+
+### FSD Architecture Mapping
+
+```text
 src/
-├── app/customer/
-│   ├── catalog/[id]/page.tsx          ← Needs: useProducts hook
-│   ├── checkout/page.tsx              ✅ Complete
-│   ├── settings/page.tsx              ← Needs: user profile form
-│   └── ...
-├── hooks/
-│   ├── useCart.ts                     ✅ Ready
-│   ├── useProducts.ts                 ✅ Ready
-│   ├── useOrders.ts                   ✅ Ready
-│   ├── useNotifications.ts            ✅ Ready
-│   └── ...
-├── stores/
-│   ├── cartStore.ts                   ✅ Ready
-│   ├── productsStore.ts               ✅ Ready
-│   ├── ordersStore.ts                 ✅ Ready
-│   └── notificationsStore.ts          ✅ Ready
-└── app/api/customer/
-    ├── products/route.ts              ✅ Ready
-    ├── products/[id]/route.ts         ✅ Ready
-    ├── orders/route.ts                ✅ Ready (but needs order_items fix)
-    └── ...
+├── app/                              # 🌐 [App Layer] Next.js pages & router
+│   ├── customer/                     # Customer dashboard portal views
+│   │   ├── catalog/[id]/page.tsx     # Product details page (needs: useProducts hook)
+│   │   ├── checkout/page.tsx         # Checkout form
+│   │   ├── settings/page.tsx         # User settings page
+│   │   └── ...
+│   └── api/customer/                 # HTTP API endpoints serving the customer portal
+│       ├── products/route.ts         
+│       ├── products/[id]/route.ts    
+│       └── orders/route.ts           
+├── features/                         # 🏗️ [Feature Layer] Isolated business modules
+│   └── customer-dashboard/           # Self-contained customer dashboard components
+│       └── components/               # e.g., catalog-toolbar, categories-sidebar
+├── hooks/                            # ✅ [Shared Layer] Global shared React Hooks
+│   ├── useCart.ts                    # Hook wrapping cart state & logic
+│   ├── useProducts.ts                # Hook wrapping product operations
+│   ├── useOrders.ts                  # Hook wrapping reservation & order creation
+│   └── useNotifications.ts           # Hook wrapping notification updates
+├── stores/                           # ✅ [Shared Layer] Global shared Zustand state stores
+│   ├── cartStore.ts                  # Client-side cart state
+│   ├── productsStore.ts              # Local cache of catalog products
+│   ├── ordersStore.ts                # Local cache of client reservations
+│   └── notificationsStore.ts         # Local cache of user notifications
 ```
+
+> [!NOTE]
+> Under strict FSD rules, state management and custom hooks that are *exclusive* to a single dashboard interface should ideally reside within that feature's folder (e.g., `src/features/customer-dashboard/stores/` and `src/features/customer-dashboard/hooks/`). The current layout keeps them in the global shared `src/hooks/` and `src/stores/` directories. Developers must ensure that no other isolated feature (like `cashier-dashboard` or `staff-dashboard`) directly imports these customer-specific stores/hooks unless they are explicitly promoted to shared abstractions.
 
 ### How to Add a Feature
 

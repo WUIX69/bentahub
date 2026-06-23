@@ -203,30 +203,41 @@ The authentication middleware protects routes:
 
 To protect a route, place it outside the `(landing)` or `(auth)` groups.
 
-## File Structure
+## File Structure (FSD Alignment)
 
-```
+All directories in the codebase are structured according to the Feature-Sliced Design (FSD) architecture layers:
+
+```text
 src/
-├── app/
+├── app/                              # 🌐 [App Layer] Next.js App Router (Pages, Layouts, API Routes)
 │   └── api/auth/
-│       ├── register/route.ts        # User registration
-│       ├── verify-email/route.ts    # Email verification
-│       └── logout/route.ts          # Logout
-├── lib/
-│   ├── auth-utils.ts                # JWT, hashing, ID generation
-│   └── email-service.ts             # Email sending
-├── servers/
+│       ├── register/route.ts         # Authentication endpoints
+│       ├── verify-email/route.ts
+│       └── logout/route.ts
+├── features/                         # 🏗️ [Feature Layer] Self-contained business modules
+│   └── user-mgmt/                    # Isolated feature domain for user authentication & signup
+│       ├── actions/
+│       │   └── register.ts           # Feature-specific server actions
+│       ├── components/
+│       │   ├── auth-header.tsx       # Feature-specific UI components
+│       │   ├── password-input.tsx
+│       │   └── register-form.tsx
+│       └── index.ts                  # Clean public interface for app routes to import
+├── components/                       # ✅ [Shared Layer] Global shared UI components
+│   └── auth-provider.tsx             # Global authentication context provider
+├── lib/                              # ✅ [Shared Layer] Global third-party wrapper configurations
+│   ├── auth-utils.ts                 # Security utilities (JWT, hashing, ID generation)
+│   └── email-service.ts              # Nodemailer wrappers and email templates
+├── servers/                          # ✅ [Shared Layer] Global shared database operations
 │   ├── db/
-│   │   └── index.ts                 # Database connection
-│   └── schemas/
-│       ├── users.ts                 # Users table schema
-│       ├── email-verification.ts    # Verification codes schema
-│       └── index.ts                 # Schema exports
-├── types/
-│   └── auth.ts                      # Auth types
-├── components/
-│   └── auth-provider.tsx            # Auth context provider
-└── middleware.ts                    # Route protection middleware
+│   │   └── index.ts                  # Database connection pool
+│   └── schemas/                      # Database schemas (Drizzle relations & types)
+│       ├── users.ts                  
+│       ├── email-verification.ts     
+│       └── index.ts                  
+├── types/                            # ✅ [Shared Layer] Ambient TypeScript types
+│   └── auth.ts                       # Shared type definitions
+└── middleware.ts                     # 🌐 [App Layer] Global route protection & RBAC checks
 ```
 
 ## Testing

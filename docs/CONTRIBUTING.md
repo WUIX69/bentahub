@@ -40,8 +40,8 @@ The code is divided into global shared folders and isolated features:
 - `src/app/`: Next.js App Router (Pages, Layouts, API Routes)
 - `src/components/`: **Global shared components** (primitives, layout wrappers, theme UI)
 - `src/features/`: **Isolated business modules**. Each folder under `features/` is self-contained.
-- `src/server/`: **Global shared server operations** (actions, db helper)
-- `src/lib/`, `src/utils/`, `src/hooks/`, `src/types/`: Global shared utilities.
+- `src/servers/`: **Global shared server operations** (db operations, database schemas)
+- `src/lib/`, `src/utils/`, `src/hooks/`, `src/types/`, `src/config/`, `src/contexts/`, `src/data/`, `src/stores/`: Global shared utilities, contexts, configuration, and state stores.
 
 ### The Isolation Principle
 

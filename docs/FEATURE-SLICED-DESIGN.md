@@ -35,9 +35,9 @@ src/
 │   ├── schema.ts           # Drizzle schemas (e.g., User, Project, etc.)
 │   └── seed.ts             # Drizzle seeders (e.g., DB seeding scripts)
 ├── schemas/                # ✅ GLOBAL SHARED Zod schemas (Validation)
-├── server/                 # ✅ GLOBAL SHARED Server operations (Mutations, Actions, DB calls via Drizzle)
-│   ├── actions/            # Global Server Actions
-│   └── db/              	# Global Database Operations
+├── servers/                # ✅ GLOBAL SHARED Server operations (Mutations, Actions, DB calls via Drizzle)
+│   ├── db/              	# Global Database Operations
+│   └── schemas/            # Global Drizzle DB Schemas
 ├── features/               # 🏗️ FEATURE-SLICED DESIGN (FSD) ISOLATED DOMAINS, Feature-based business logic
 ├── hooks/                  # ✅ GLOBAL SHARED React Hooks
 ├── lib/                    # ✅ GLOBAL SHARED Library configurations, HEAVY THIRD-PARTY WRAPPERS, etc.
