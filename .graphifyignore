@@ -37,3 +37,4 @@ cypress/
 # Global UI Utilities
 # Removes the 'cn()' hairball node so the graph accurately reflects business logic flow
 src/lib/utils.ts
+src/components/ui/
