@@ -31,12 +31,16 @@ pnpm-debug.log*
 pnpm-workspace.yaml
 
 # env files
+.env
 .env*.local
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 
+# Graphify
+graphify-out/cost.json
+graphify-out/cache/
 
 # others
 .sixth
@@ -44,6 +48,5 @@ next-env.d.ts
 .vscode
 .claude
 .data
-
 ECC/
 
