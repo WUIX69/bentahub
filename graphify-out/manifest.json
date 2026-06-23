@@ -3215,34 +3215,19 @@
     "semantic_hash": "752aa83aa64361ac32860f882dcff932"
   },
   "README.md": {
-    "mtime": 1782224214.326406,
-    "ast_hash": "4b1f06ad35e255379cabb22caa0dd5e8",
-    "semantic_hash": "4b1f06ad35e255379cabb22caa0dd5e8"
+    "mtime": 1782228044.0224843,
+    "ast_hash": "4f32b32b4f17d6184fd04502ce3b5ab4",
+    "semantic_hash": "4f32b32b4f17d6184fd04502ce3b5ab4"
   },
   "docker-compose.yml": {
     "mtime": 1782224214.326406,
     "ast_hash": "667546c4c47dd504d75133566171c02f",
     "semantic_hash": "667546c4c47dd504d75133566171c02f"
   },
-  "docs/BACKEND_SETUP.md": {
-    "mtime": 1782227559.941782,
-    "ast_hash": "5df18b9b1cde1e149f65110e7eb3112a",
-    "semantic_hash": "5df18b9b1cde1e149f65110e7eb3112a"
-  },
   "docs/BENTAHUB.md": {
-    "mtime": 1782227556.8452942,
-    "ast_hash": "32f5204dd3c13d3c5acf7aadd3c5928b",
-    "semantic_hash": "32f5204dd3c13d3c5acf7aadd3c5928b"
-  },
-  "docs/CUSTOMER_SYSTEM_STATUS.md": {
-    "mtime": 1782227567.204256,
-    "ast_hash": "99d9c4d0e840bc46e47d86afd457db12",
-    "semantic_hash": "99d9c4d0e840bc46e47d86afd457db12"
-  },
-  "docs/IMPLEMENTATION_SUMMARY.md": {
-    "mtime": 1782227572.1638017,
-    "ast_hash": "8d11a31abfb5f2cb0ab251fa0a94f888",
-    "semantic_hash": "8d11a31abfb5f2cb0ab251fa0a94f888"
+    "mtime": 1782228055.4466324,
+    "ast_hash": "881e7822b4c9231f5b3a2a2c26d3bf3a",
+    "semantic_hash": "881e7822b4c9231f5b3a2a2c26d3bf3a"
   },
   "docs/CONTRIBUTING.md": {
     "mtime": 1782227643.3073688,

@@ -1,79 +1,100 @@
-# Next.js template
+# BentaHub — Centralized Inventory Management and POS System
 
-This is a Next.js template with shadcn/ui.
+Welcome to **BentaHub**, a unified digital platform built for the Lourdes Sari-Sari Store and its branches. This application replaces manual, paper-based business operations with a modern centralized system that tracks transactions, manages inventory, triggers low-stock alerts, and handles customer-facing product reservations in real time.
 
-## Adding components
+---
 
-To add components to your app, run the following command:
+## 🛠️ Technology Stack
 
-```bash
-npx shadcn@latest add button
-```
+| Category | Technology |
+|---|---|
+| **Framework** | Next.js 16 (App Router, Server Actions) |
+| **Styling & UI** | Tailwind CSS, Shadcn UI |
+| **Database** | PostgreSQL |
+| **ORM** | Drizzle ORM |
+| **Language** | TypeScript |
+| **Containerization** | Docker & Docker Compose |
+| **Architecture** | Feature-Sliced Design (FSD) |
 
-This will place the ui components in the `components` directory.
-
-## Using components
-
-To use the components in your app, import them as follows:
-
-```tsx
-import { Button } from "@/components/ui/button";
-```
+---
 
 ## 🚀 Local Development Setup
 
-To run the application locally, you need a running PostgreSQL database.
+To run the application locally, you will need a running PostgreSQL database.
 
-### Prerequisites
-1. Ensure you have [PostgreSQL](https://www.postgresql.org/) installed and running on your machine.
-2. Make sure you have created `.env.local` based on `.env.example` and configured the database connection credentials.
+### 1. Prerequisites
+- Ensure you have **Node.js 18+** installed.
+- Ensure you have **PostgreSQL 12+** installed and running on your machine.
 
-### Getting Started
-
-1. Install dependencies:
-   ```bash
-   pnpm install
-   ```
-
-2. Push the schema to the database:
-   ```bash
-   pnpm db:push
-   ```
-
-3. Run the development server:
-   ```bash
-   pnpm dev
-   ```
-
-Once started, the application will be available at [http://localhost:3000](http://localhost:3000).
-
-### Seeding the Database
-To seed the database with initial administrative and branch data:
-
+### 2. Configure Environment Variables
+Copy `.env.example` to `.env` (or `.env.local`) and configure your database connection credentials and secrets:
 ```bash
+cp .env.example .env
+```
+
+### 3. Install Dependencies
+```bash
+pnpm install
+```
+
+### 4. Database Setup
+You can push the schema and seed initial data automatically or manually:
+
+#### Option A: Using the Setup Scripts
+```bash
+# On macOS/Linux:
+bash scripts/setup-db.sh
+
+# On Windows (PowerShell):
+powershell -ExecutionPolicy Bypass -File scripts/setup-db.ps1
+```
+
+#### Option B: Manual Setup
+```bash
+# Push the schema definitions to PostgreSQL
+pnpm db:push
+
+# Seed the database with default administrative users, branches, and mock products
 pnpm db:seed
 ```
 
-## Docker Support
+### 5. Run the Development Server
+```bash
+pnpm dev
+```
+Once started, the application will be available at [http://localhost:3000](http://localhost:3000).
 
-This project now includes a `Dockerfile` and `docker-compose.yml` for local development.
+---
 
-1. Start the app and Postgres:
+## 🐳 Docker Support
+
+You can also spin up the application and database instantly using Docker:
+
+1. **Build and Run Containers**:
    ```bash
-   docker compose up --build
+   docker-compose up -d --build
    ```
-
-2. The Next.js app will be available at `http://localhost:3000`.
-
-3. The Postgres service is configured with:
+2. The Next.js application will be exposed at [http://localhost:3000](http://localhost:3000).
+3. The database container is pre-configured with:
    - `POSTGRES_USER=postgres`
    - `POSTGRES_PASSWORD=postgres`
    - `POSTGRES_DB=bentahub`
-
-4. To clean up and remove the database volume:
+4. **Teardown & Clean Volumes**:
    ```bash
-   docker compose down -v
+   docker-compose down -v
    ```
 
 > [!WARNING]
-> Running the seed script will clear all existing tables (branches, products, inventory, transactions) before insert! Only run this on a fresh database.
+> Running the seed script will clear all existing tables (branches, products, inventory, transactions) before inserting fresh mock data. Only run this on a fresh database.
+
+---
+
+## 📚 Project Documentation
+
+Explore the sub-documentations to understand code conventions, setups, and workflows:
+
+- 📖 [**BentaHub Developer Manual** (docs/BENTAHUB.md)](file:///c:/projects/bentahub/docs/BENTAHUB.md) — Unified reference for permission workflows, API routes, database schemas, security features, and implementation status.
+- 📐 [**Feature-Sliced Design Rules** (docs/FEATURE-SLICED-DESIGN.md)](file:///c:/projects/bentahub/docs/FEATURE-SLICED-DESIGN.md) — Folder isolation rules, import boundaries, and architectural guidelines.
+- 🤝 [**Contributing Guide** (docs/CONTRIBUTING.md)](file:///c:/projects/bentahub/docs/CONTRIBUTING.md) — Local contribution setup, pre-commit code style checks, and PR checklist.
+- ⚙️ [**Environment Variables** (docs/ENV.md)](file:///c:/projects/bentahub/docs/ENV.md) — Full list of active environment configurations.
+- 📋 [**Operations Runbook** (docs/RUNBOOK.md)](file:///c:/projects/bentahub/docs/RUNBOOK.md) — Deployment, troubleshooting, and rollback procedures.
