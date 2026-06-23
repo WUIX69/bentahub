@@ -39,11 +39,11 @@ next-env.d.ts
 
 
 # others
-.agent
 .sixth
 .github
 .vscode
+.claude
+.data
 
-/everything-claude-code
-everything-claude-code
+ECC/
 
