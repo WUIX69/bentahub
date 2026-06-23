@@ -28,6 +28,11 @@ playwright.config.ts
 vitest.config.ts
 cypress/
 
+# Misc
+.agent
+.agents
+.data
+.opencode
 
 # Global UI Utilities
 # Removes the 'cn()' hairball node so the graph accurately reflects business logic flow
