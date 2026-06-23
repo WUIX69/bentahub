@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useMemo } from "react"
 import {
   CatalogToolbar,
   CategorySidebar,
@@ -9,10 +10,15 @@ import {
 import { ShoppingCart } from "lucide-react"
 import type { ProductCardProps } from "@/features/customer-dashboard/components/product-card"
 import Link from "next/link"
+import { useProducts } from "@/hooks/useProducts"
+import { useCart } from "@/hooks/useCart"
 
 export default function CatalogPage() {
-  // Demo products
-  const products: ProductCardProps[] = [
+  const { products: fetchedProducts, fetchProducts, isLoading, error } = useProducts()
+  const { itemCount } = useCart()
+
+  // Demo products fallback
+  const demoProducts: ProductCardProps[] = [
     {
       id: "1",
       name: "Kopiko Blanca TWIN",
@@ -87,6 +93,30 @@ export default function CatalogPage() {
     },
   ]
 
+  // Fetch products on component mount
+  useEffect(() => {
+    fetchProducts().catch((error: unknown) => {
+      console.error("Failed to fetch products:", error)
+    })
+  }, [fetchProducts])
+
+  // Convert fetched products to ProductCardProps format, or use demo products
+  const displayProducts: ProductCardProps[] = useMemo(() => {
+    if (fetchedProducts.length > 0) {
+      return fetchedProducts.map((p) => ({
+        id: p.id,
+        name: p.name,
+        category: p.category,
+        price: `₱${Number(p.price).toFixed(2)}`,
+        image: p.image || "/images/dashboard/kopiko-blanca-twin-v2.png",
+        stockStatus: p.stockStatus,
+        weight: p.weight,
+        branch: p.branch,
+      }))
+    }
+    return demoProducts
+  }, [fetchedProducts])
+
   return (
     <div className="flex flex-col h-full -m-4 md:-m-6">
       {/* Toolbar */}
@@ -99,8 +129,18 @@ export default function CatalogPage() {
 
         {/* Product Grid Area */}
         <div className="flex-1 p-4 md:p-6 overflow-auto">
+          {isLoading && !demoProducts.length && (
+            <div className="flex items-center justify-center h-64">
+              <p className="text-muted-foreground">Loading products...</p>
+            </div>
+          )}
+          {error && (
+            <div className="mb-4 p-3 bg-amber-50 dark:bg-amber-950 border border-amber-200 dark:border-amber-800 rounded text-sm text-amber-800 dark:text-amber-200">
+              {error}
+            </div>
+          )}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-            {products.map((product) => (
+            {displayProducts.map((product) => (
               <ProductCard key={product.id} {...product} />
             ))}
           </div>
@@ -116,9 +156,11 @@ export default function CatalogPage() {
         className="fixed bottom-20 right-6 md:bottom-6 md:right-6 size-14 bg-primary text-primary-foreground rounded-full flex items-center justify-center shadow-lg hover:bg-primary/90 transition-colors z-40"
       >
         <ShoppingCart className="h-6 w-6" />
-        <span className="absolute -top-1 -right-1 size-5 bg-destructive rounded-full flex items-center justify-center text-xs font-bold text-destructive-foreground">
-          3
-        </span>
+        {itemCount > 0 && (
+          <span className="absolute -top-1 -right-1 size-5 bg-destructive rounded-full flex items-center justify-center text-xs font-bold text-destructive-foreground">
+            {itemCount > 9 ? "9+" : itemCount}
+          </span>
+        )}
         <span className="sr-only">View Cart</span>
       </Link>
     </div>

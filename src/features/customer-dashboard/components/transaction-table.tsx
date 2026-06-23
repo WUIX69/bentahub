@@ -1,15 +1,24 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { FileText, MoreHorizontal, ChevronLeft, ChevronRight } from "lucide-react"
+import { FileText, MoreHorizontal, ChevronLeft, ChevronRight, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useOrders } from "@/hooks/useOrders"
 
 export function TransactionTable() {
   const router = useRouter()
+  const { orders, fetchOrders, isLoading } = useOrders()
   const [page, setPage] = useState(1)
 
-  const transactions = [
+  useEffect(() => {
+    if (!isLoading && orders.length === 0) {
+      fetchOrders()
+    }
+  }, [fetchOrders, isLoading, orders.length])
+
+  // Demo transactions fallback
+  const demoTransactions = [
     {
       id: "#BH-0001",
       date: "May 15, 2026",
@@ -32,6 +41,32 @@ export function TransactionTable() {
       method: "GCash",
     }
   ]
+
+  // Convert orders to transaction format
+  const transactions = orders.length > 0 ? orders.map((order) => ({
+    id: order.id.substring(0, 20),
+    date: new Date(order.createdAt).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric"
+    }),
+    amount: `₱${Number(order.totalAmount).toFixed(2)}`,
+    status: order.status.charAt(0).toUpperCase() + order.status.slice(1),
+    method: order.paymentMethod === "cash" ? "Cash on Pickup" : "GCash",
+  })) : demoTransactions
+
+  const itemsPerPage = 10
+  const startIdx = (page - 1) * itemsPerPage
+  const paginatedTransactions = transactions.slice(startIdx, startIdx + itemsPerPage)
+  const totalPages = Math.ceil(transactions.length / itemsPerPage)
+
+  if (isLoading && orders.length === 0) {
+    return (
+      <div className="bg-card border border-border rounded-xl shadow-sm p-12 flex items-center justify-center">
+        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+      </div>
+    )
+  }
 
   return (
     <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
@@ -60,7 +95,7 @@ export function TransactionTable() {
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
-            {transactions.map((transaction) => (
+            {paginatedTransactions.map((transaction) => (
               <tr
                 key={transaction.id}
                 onClick={() => router.push("/customer/transactions")}
@@ -84,9 +119,10 @@ export function TransactionTable() {
                 <td className="p-3 text-sm">
                   <span className={cn(
                     "inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium",
-                    transaction.status === "Successful" && "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
-                    transaction.status === "Processing" && "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-                    transaction.status === "Failed" && "bg-destructive/10 text-destructive"
+                    transaction.status === "Completed" && "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
+                    (transaction.status === "Successful" || transaction.status === "Ready") && "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
+                    (transaction.status === "Processing" || transaction.status === "Pending") && "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
+                    transaction.status === "Cancelled" && "bg-destructive/10 text-destructive"
                   )}>
                     {transaction.status}
                   </span>
@@ -109,7 +145,7 @@ export function TransactionTable() {
       {/* Footer */}
       <div className="flex items-center justify-between px-4 py-3 border-t border-border bg-muted/30">
         <span className="text-sm text-muted-foreground">
-          Showing <span className="font-medium text-foreground">4</span> of <span className="font-medium text-foreground">24</span>
+          Showing <span className="font-medium text-foreground">{Math.min(itemsPerPage, paginatedTransactions.length)}</span> of <span className="font-medium text-foreground">{transactions.length}</span>
         </span>
 
         <div className="flex items-center gap-2">
@@ -121,8 +157,9 @@ export function TransactionTable() {
             <ChevronLeft className="h-4 w-4" />
           </button>
           <button
-            onClick={() => setPage((p) => p + 1)}
-            className="p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg border border-border"
+            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+            disabled={page >= totalPages}
+            className="p-1.5 text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg border border-border disabled:opacity-50"
           >
             <ChevronRight className="h-4 w-4" />
           </button>

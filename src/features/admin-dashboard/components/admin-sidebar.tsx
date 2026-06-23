@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import {
   LayoutDashboard,
   Activity,
@@ -25,6 +26,17 @@ interface AdminSidebarProps {
 }
 
 export function AdminSidebar({ activePath, isOpen, onClose }: AdminSidebarProps) {
+  const router = useRouter()
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" })
+    } catch {
+      // Proceed even if API call fails
+    }
+    router.push("/login")
+  }
+
   const sections = [
     {
       title: "Dashboard",
@@ -125,14 +137,13 @@ export function AdminSidebar({ activePath, isOpen, onClose }: AdminSidebarProps)
               <Settings className="h-5 w-5" />
               <span>Settings</span>
             </Link>
-            <Link
-              href="/login"
-              onClick={onClose}
-              className="flex items-center gap-3 px-4 py-2 rounded-lg text-destructive hover:bg-destructive/10 transition-all text-sm font-medium"
+            <button
+              onClick={() => { handleLogout(); onClose(); }}
+              className="flex items-center gap-3 px-4 py-2 rounded-lg text-destructive hover:bg-destructive/10 transition-all text-sm font-medium w-full text-left"
             >
               <LogOut className="h-5 w-5" />
               <span>Logout</span>
-            </Link>
+            </button>
           </nav>
         </div>
       </aside>

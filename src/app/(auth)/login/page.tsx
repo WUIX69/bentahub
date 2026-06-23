@@ -2,17 +2,88 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { LogIn, Mail } from "lucide-react"
 import { AuthHeader, PasswordInput } from "@/features/user-mgmt"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { useAuth } from "@/components/auth-provider"
 
 export default function LoginPage() {
-  const handleSubmit = (e: React.FormEvent) => {
+  const router = useRouter()
+  const [email, setEmail] = React.useState("")
+  const [password, setPassword] = React.useState("")
+  const [isLoading, setIsLoading] = React.useState(false)
+  const [error, setError] = React.useState("")
+  const { setToken, setUser } = useAuth()
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Stub for now
+    setError("")
+    setIsLoading(true)
+
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
+
+      const contentType = response.headers.get("content-type") || ""
+      const text = await response.text()
+      let data: any = null
+
+      if (contentType.includes("application/json")) {
+        try {
+          data = JSON.parse(text)
+        } catch (jsonError) {
+          console.error("Login JSON parse failed", jsonError, text)
+          throw new Error("Received invalid JSON from login endpoint")
+        }
+      }
+
+      console.log("Login response:", {
+        status: response.status,
+        contentType,
+        data,
+        text: !data ? text.slice(0, 400) : undefined,
+      })
+
+      if (!response.ok) {
+        const message = data?.message || text || "Login failed"
+        setError(typeof message === "string" ? message : "Login failed")
+        setIsLoading(false)
+        return
+      }
+
+      if (!data) {
+        setError("Login endpoint returned non-JSON response")
+        setIsLoading(false)
+        return
+      }
+
+      // Save JWT token and user to auth context
+      const token = data.data?.token
+      const user = data.data?.user
+      if (token) {
+        setToken(token)
+      }
+      if (user) {
+        setUser(user)
+      }
+
+      // Success - client-side navigation to dashboard
+      console.log("Login successful, redirecting to /customer")
+      router.push("/customer")
+    } catch (err) {
+      console.error("Login error:", err)
+      setError("An unexpected error occurred. Please try again.")
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -25,6 +96,12 @@ export default function LoginPage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
+            {error && (
+              <div className="p-3 bg-destructive/10 border border-destructive/30 rounded-lg">
+                <p className="text-sm text-destructive">{error}</p>
+              </div>
+            )}
+
             <div className="space-y-1.5">
               <Label htmlFor="email" className="text-xs uppercase tracking-wider text-muted-foreground">
                 Email Address
@@ -36,6 +113,9 @@ export default function LoginPage() {
                   type="email"
                   placeholder="name@company.com"
                   className="pl-10"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={isLoading}
                   required
                 />
               </div>
@@ -45,7 +125,13 @@ export default function LoginPage() {
               <Label htmlFor="password" className="text-xs uppercase tracking-wider text-muted-foreground">
                 Password
               </Label>
-              <PasswordInput id="password" required />
+              <PasswordInput 
+                id="password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={isLoading}
+                required 
+              />
             </div>
 
             <div className="flex items-center justify-between">
@@ -59,14 +145,14 @@ export default function LoginPage() {
                   Remember me
                 </label>
               </div>
-              <Link href="#" className="text-sm text-primary hover:underline">
+              <Link href="/forgot-password" className="text-sm text-primary hover:underline">
                 Forgot Password?
               </Link>
             </div>
 
             <div className="pt-2">
-              <Button type="submit" className="w-full flex items-center justify-center gap-2 p-5">
-                Sign In
+              <Button type="submit" className="w-full flex items-center justify-center gap-2 p-5" disabled={isLoading}>
+                {isLoading ? "Signing in..." : "Sign In"}
                 <LogIn className="size-4" />
               </Button>
             </div>

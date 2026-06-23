@@ -1,13 +1,18 @@
 "use client"
 
+import { useEffect, useMemo } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { useOrders } from "@/hooks/useOrders"
+import { Loader2 } from "lucide-react"
 
 export function RecentOrdersTable() {
   const router = useRouter()
+  const { orders, fetchOrders, isLoading } = useOrders()
 
-  const orders = [
+  // Demo orders fallback
+  const demoOrders = [
     {
       id: "#BH-0001",
       date: "May 15, 2026",
@@ -31,6 +36,38 @@ export function RecentOrdersTable() {
     },
   ]
 
+  // Fetch orders on component mount
+  useEffect(() => {
+    if (!isLoading && orders.length === 0) {
+      fetchOrders()
+    }
+  }, [fetchOrders, isLoading, orders.length])
+
+  // Convert orders to display format
+  const displayOrders = useMemo(() => {
+    if (orders.length > 0) {
+      return orders.slice(0, 3).map((order) => ({
+        id: order.id.substring(0, 20),
+        date: new Date(order.createdAt).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "numeric"
+        }),
+        total: `₱${Number(order.totalAmount).toFixed(2)}`,
+        status: 
+          order.status === "ready" ? "Ready for Pickup" :
+          order.status === "completed" ? "Completed" :
+          order.status === "cancelled" ? "Cancelled" :
+          "Processing",
+        statusVariant: 
+          order.status === "ready" ? "primary" :
+          order.status === "completed" ? "secondary" :
+          "warning" as "primary" | "secondary" | "warning",
+      }))
+    }
+    return demoOrders
+  }, [orders])
+
   return (
     <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
       {/* Header */}
@@ -44,50 +81,55 @@ export function RecentOrdersTable() {
         </Link>
       </div>
 
-      {/* Table */}
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="text-left text-muted-foreground border-b border-border bg-muted/30">
-              <th className="px-4 md:px-6 py-3 font-medium">Order ID</th>
-              <th className="px-4 md:px-6 py-3 font-medium">Date</th>
-              <th className="px-4 md:px-6 py-3 font-medium">Total</th>
-              <th className="px-4 md:px-6 py-3 font-medium">Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders.map((order) => (
-              <tr 
-                key={order.id}
-                onClick={() => router.push("/customer/transactions")}
-                className="border-b border-border last:border-0 hover:bg-muted/50 transition-colors cursor-pointer"
-              >
-                <td className="px-4 md:px-6 py-4 font-mono text-sm text-foreground">
-                  {order.id}
-                </td>
-                <td className="px-4 md:px-6 py-4 text-muted-foreground">
-                  {order.date}
-                </td>
-                <td className="px-4 md:px-6 py-4 font-bold text-foreground">
-                  {order.total}
-                </td>
-                <td className="px-4 md:px-6 py-4">
-                  <span 
-                    className={cn(
-                      "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium",
-                      order.statusVariant === "primary" && "bg-primary/15 text-primary",
-                      order.statusVariant === "secondary" && "bg-muted text-muted-foreground",
-                      order.statusVariant === "warning" && "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
-                    )}
-                  >
-                    {order.status}
-                  </span>
-                </td>
+      {isLoading && displayOrders === demoOrders ? (
+        <div className="flex items-center justify-center h-40">
+          <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
+        </div>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="text-left text-muted-foreground border-b border-border bg-muted/30">
+                <th className="px-4 md:px-6 py-3 font-medium">Order ID</th>
+                <th className="px-4 md:px-6 py-3 font-medium">Date</th>
+                <th className="px-4 md:px-6 py-3 font-medium">Total</th>
+                <th className="px-4 md:px-6 py-3 font-medium">Status</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {displayOrders.map((order) => (
+                <tr 
+                  key={order.id}
+                  onClick={() => router.push("/customer/transactions")}
+                  className="border-b border-border last:border-0 hover:bg-muted/50 transition-colors cursor-pointer"
+                >
+                  <td className="px-4 md:px-6 py-4 font-mono text-sm text-foreground">
+                    {order.id}
+                  </td>
+                  <td className="px-4 md:px-6 py-4 text-muted-foreground">
+                    {order.date}
+                  </td>
+                  <td className="px-4 md:px-6 py-4 font-bold text-foreground">
+                    {order.total}
+                  </td>
+                  <td className="px-4 md:px-6 py-4">
+                    <span 
+                      className={cn(
+                        "inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium",
+                        order.statusVariant === "primary" && "bg-primary/15 text-primary",
+                        order.statusVariant === "secondary" && "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400",
+                        order.statusVariant === "warning" && "bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400"
+                      )}
+                    >
+                      {order.status}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   )
 }

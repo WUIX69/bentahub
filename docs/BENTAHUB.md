@@ -30,7 +30,6 @@ BENTAHUB/
 │   │   └── user-mgmt/              # Role-based access control and account management
 │   ├── lib/                        # Third-party library wrappers (e.g., clsx, tailwind-merge)
 │   └── types/                      # Global TypeScript definitions
-├── docker-compose.yml              # Docker configuration for PostgreSQL
 └── drizzle.config.ts               # Drizzle ORM configuration
 ```
 
@@ -84,8 +83,8 @@ The BentaHub system consolidates store operations into five core modules.
 | Styling & UI | Tailwind CSS, Shadcn UI |
 | Database | PostgreSQL |
 | ORM | Drizzle ORM |
-| Containerization | Docker |
 | Language | TypeScript |
+| Containerization | Docker |
 | Architecture | Feature-Sliced Design (FSD) |
 
 ---
@@ -210,13 +209,9 @@ _or_
 yarn install
 ```
 
-### Start PostgreSQL via Docker
+### Start PostgreSQL
 
-Ensure Docker is running, then execute:
-
-```bash
-docker-compose up -d
-```
+Ensure you have a PostgreSQL instance running locally.
 
 ### Configure Environment Variables
 

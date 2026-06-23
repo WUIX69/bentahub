@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
+import Image from "next/image"
 import { Search, ChevronLeft, ChevronRight, Edit3, Plus, Package } from "lucide-react"
 import type { Product } from "@/types/cashier"
 import { getStockStatus } from "@/features/staff-dashboard/data/products"
@@ -111,7 +112,7 @@ export function InventoryUpdateTable({ products: initialProducts, onStockUpdate,
                       <div className="flex items-center gap-3">
                         <div className="w-12 h-12 rounded bg-muted flex-shrink-0 overflow-hidden border border-border/50 flex items-center justify-center">
                           {p.image ? (
-                            <img src={p.image} alt={p.name} className="w-full h-full object-cover" />
+                            <Image src={p.image} alt={p.name} width={48} height={48} className="w-full h-full object-cover" unoptimized />
                           ) : (
                             <Package className="w-6 h-6 text-muted-foreground opacity-50" />
                           )}

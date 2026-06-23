@@ -1,8 +1,19 @@
-export function StockTable() {
-  const branches = [
-    { name: "Lourdes Main Branch", total: 450, low: 5, status: "Healthy" },
-    { name: "Lourdes Second Branch", total: 320, low: 12, status: "Warning" },
-    { name: "Lourdes Third Branch", total: 280, low: 2, status: "Healthy" },
+interface BranchStockRow {
+  name: string
+  totalItems: number
+  lowStockItems: number
+  status: "Healthy" | "Warning" | "Critical"
+}
+
+interface StockTableProps {
+  data?: BranchStockRow[]
+}
+
+export function StockTable({ data }: StockTableProps) {
+  const branches = data ?? [
+    { name: "Lourdes Main Branch", totalItems: 450, lowStockItems: 5, status: "Healthy" as const },
+    { name: "Lourdes Second Branch", totalItems: 320, lowStockItems: 12, status: "Warning" as const },
+    { name: "Lourdes Third Branch", totalItems: 280, lowStockItems: 2, status: "Healthy" as const },
   ]
 
   return (
@@ -36,8 +47,8 @@ export function StockTable() {
               return (
                 <tr key={branch.name} className="border-b border-border last:border-0 hover:bg-accent/50 transition-colors">
                   <td className="py-4 font-medium text-foreground">{branch.name}</td>
-                  <td className="py-4 text-muted-foreground">{branch.total}</td>
-                  <td className="py-4 text-muted-foreground">{branch.low}</td>
+                  <td className="py-4 text-muted-foreground">{branch.totalItems}</td>
+                  <td className="py-4 text-muted-foreground">{branch.lowStockItems}</td>
                   <td className="py-4">
                     <span className={`px-2.5 py-0.5 rounded-full text-xs font-medium ${statusColor}`}>
                       {branch.status}

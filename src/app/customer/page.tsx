@@ -1,5 +1,6 @@
 "use client"
 
+import { useAuth } from "@/hooks/useAuth"
 import { 
   SummaryCards, 
   RecentOrdersTable, 
@@ -7,12 +8,15 @@ import {
 } from "@/features/customer-dashboard"
 
 export default function CustomerPage() {
+  const { user } = useAuth()
+  const displayName = user?.fullName || "Welcome"
+
   return (
     <div className="space-y-6">
       {/* Welcome Header */}
       <div>
         <h1 className="font-heading text-2xl md:text-3xl font-bold text-foreground">
-          Hello, Alex Rivera!
+          Hello, {displayName}!
         </h1>
         <p className="text-muted-foreground mt-1">
           Welcome back to your dashboard. Here&apos;s what&apos;s happening with your account.
