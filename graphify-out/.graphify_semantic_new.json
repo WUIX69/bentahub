@@ -1,0 +1,540 @@
+{
+  "nodes": [
+    {
+      "id": "agents_graphify_rules",
+      "label": "Graphify Knowledge Graph Rules",
+      "file_type": "rationale",
+      "source_file": "C:\\projects\\bentahub\\AGENTS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "rationale": "Specifies how codebase/architecture questions query the graph, skip conditions, and auto-updating practices."
+    },
+    {
+      "id": "readme_setup",
+      "label": "Local Development Setup",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "readme_docker",
+      "label": "Docker Support",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\README.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docker_compose_db_service",
+      "label": "Postgres Database Service (Docker)",
+      "file_type": "code",
+      "source_file": "C:\\projects\\bentahub\\docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docker_compose_app_service",
+      "label": "Next.js App Service (Docker)",
+      "file_type": "code",
+      "source_file": "C:\\projects\\bentahub\\docker-compose.yml",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_backend_setup_instructions",
+      "label": "Backend Setup Instructions",
+      "file_type": "document",
+      "source_file": "C:\\projects\\bentahub\\docs\\BACKEND_SETUP.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_backend_setup_users_table",
+      "label": "Users Database Table Schema",
+      "file_type": "code",
+      "source_file": "C:\\projects\\bentahub\\docs\\BACKEND_SETUP.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_backend_setup_verification_table",
+      "label": "Email Verification Codes Table Schema",
+      "file_type": "code",
+      "source_file": "C:\\projects\\bentahub\\docs\\BACKEND_SETUP.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_bentahub_fsd",
+      "label": "Feature-Sliced Design (FSD) Architecture",
+      "file_type": "rationale",
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "BentaHub Development Team",
+      "contributor": null,
+      "rationale": "Strictly follows FSD architectural pattern to ensure scalability, maintainability, and clear separation of concerns across the multi-user platform."
+    },
+    {
+      "id": "docs_bentahub_centralized_monitoring",
+      "label": "Centralized Monitoring Module",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "BentaHub Development Team",
+      "contributor": null
+    },
+    {
+      "id": "docs_bentahub_qr_pos",
+      "label": "QR & Point of Sale (POS) Module",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "BentaHub Development Team",
+      "contributor": null
+    },
+    {
+      "id": "docs_bentahub_reservations",
+      "label": "Payment & Pick-Up Module",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "BentaHub Development Team",
+      "contributor": null
+    },
+    {
+      "id": "docs_bentahub_analytics",
+      "label": "Data Inventory Analytics Module",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "BentaHub Development Team",
+      "contributor": null
+    },
+    {
+      "id": "docs_bentahub_admin_flow",
+      "label": "Admin User Workflow",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "BentaHub Development Team",
+      "contributor": null
+    },
+    {
+      "id": "docs_bentahub_cashier_flow",
+      "label": "Cashier User Workflow",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "BentaHub Development Team",
+      "contributor": null
+    },
+    {
+      "id": "docs_bentahub_staff_flow",
+      "label": "Staff User Workflow",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "BentaHub Development Team",
+      "contributor": null
+    },
+    {
+      "id": "docs_bentahub_customer_flow",
+      "label": "Customer User Workflow",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "BentaHub Development Team",
+      "contributor": null
+    },
+    {
+      "id": "docs_bentahub_rules",
+      "label": "System Rules & Constraints",
+      "file_type": "rationale",
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": "BentaHub Development Team",
+      "contributor": null,
+      "rationale": "Strict walk-ins/pickup only, Cash/GCash payments only, and branch-locked security bounds."
+    },
+    {
+      "id": "docs_customer_system_status_zustand",
+      "label": "Zustand Stores State Management",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\docs\\CUSTOMER_SYSTEM_STATUS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_customer_system_status_hooks",
+      "label": "Customer API Custom Hooks",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\docs\\CUSTOMER_SYSTEM_STATUS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_customer_system_status_shortcomings",
+      "label": "Remaining Customer System Shortcomings",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\docs\\CUSTOMER_SYSTEM_STATUS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_implementation_summary_auth",
+      "label": "Implemented Authentication & Security",
+      "file_type": "concept",
+      "source_file": "C:\\projects\\bentahub\\docs\\IMPLEMENTATION_SUMMARY.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_implementation_summary_users_table",
+      "label": "Implemented Users Table Schema",
+      "file_type": "code",
+      "source_file": "C:\\projects\\bentahub\\docs\\IMPLEMENTATION_SUMMARY.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_implementation_summary_email_verification_codes_table",
+      "label": "Implemented Email Verification Codes Table Schema",
+      "file_type": "code",
+      "source_file": "C:\\projects\\bentahub\\docs\\IMPLEMENTATION_SUMMARY.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "docs_implementation_summary_middleware",
+      "label": "Route Protection Middleware",
+      "file_type": "code",
+      "source_file": "C:\\projects\\bentahub\\docs\\IMPLEMENTATION_SUMMARY.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "readme_setup",
+      "target": "docker_compose_db_service",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\projects\\bentahub\\README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_docker",
+      "target": "docker_compose_db_service",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "readme_docker",
+      "target": "docker_compose_app_service",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\README.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_backend_setup_instructions",
+      "target": "docs_backend_setup_users_table",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\docs\\BACKEND_SETUP.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_backend_setup_instructions",
+      "target": "docs_backend_setup_verification_table",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\docs\\BACKEND_SETUP.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_bentahub_fsd",
+      "target": "docs_bentahub_centralized_monitoring",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_bentahub_fsd",
+      "target": "docs_bentahub_qr_pos",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_bentahub_fsd",
+      "target": "docs_bentahub_reservations",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_bentahub_fsd",
+      "target": "docs_bentahub_analytics",
+      "relation": "rationale_for",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_bentahub_admin_flow",
+      "target": "docs_bentahub_analytics",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_bentahub_cashier_flow",
+      "target": "docs_bentahub_qr_pos",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_bentahub_staff_flow",
+      "target": "docs_bentahub_centralized_monitoring",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_bentahub_customer_flow",
+      "target": "docs_bentahub_reservations",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_bentahub_rules",
+      "target": "docs_bentahub_reservations",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_customer_system_status_zustand",
+      "target": "docs_customer_system_status_hooks",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\docs\\CUSTOMER_SYSTEM_STATUS.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_customer_system_status_hooks",
+      "target": "docs_bentahub_customer_flow",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\projects\\bentahub\\docs\\CUSTOMER_SYSTEM_STATUS.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_implementation_summary_auth",
+      "target": "docs_backend_setup_instructions",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "C:\\projects\\bentahub\\docs\\IMPLEMENTATION_SUMMARY.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_implementation_summary_users_table",
+      "target": "docs_backend_setup_users_table",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "C:\\projects\\bentahub\\docs\\IMPLEMENTATION_SUMMARY.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_implementation_summary_email_verification_codes_table",
+      "target": "docs_backend_setup_verification_table",
+      "relation": "semantically_similar_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "C:\\projects\\bentahub\\docs\\IMPLEMENTATION_SUMMARY.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "docs_implementation_summary_middleware",
+      "target": "docs_implementation_summary_auth",
+      "relation": "conceptually_related_to",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\docs\\IMPLEMENTATION_SUMMARY.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agents_graphify_rules",
+      "target": "docs_bentahub_fsd",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "C:\\projects\\bentahub\\AGENTS.md",
+      "source_location": null,
+      "weight": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "bentahub_user_workflows",
+      "label": "BentaHub User Workflows",
+      "nodes": [
+        "docs_bentahub_admin_flow",
+        "docs_bentahub_cashier_flow",
+        "docs_bentahub_staff_flow",
+        "docs_bentahub_customer_flow"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md"
+    },
+    {
+      "id": "bentahub_core_modules",
+      "label": "BentaHub Core Modules",
+      "nodes": [
+        "docs_bentahub_centralized_monitoring",
+        "docs_bentahub_qr_pos",
+        "docs_bentahub_reservations",
+        "docs_bentahub_analytics"
+      ],
+      "relation": "form",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "C:\\projects\\bentahub\\docs\\BENTAHUB.md"
+    },
+    {
+      "id": "bentahub_db_schema",
+      "label": "BentaHub Database Schema Elements",
+      "nodes": [
+        "docs_backend_setup_users_table",
+        "docs_backend_setup_verification_table",
+        "docs_implementation_summary_users_table",
+        "docs_implementation_summary_email_verification_codes_table"
+      ],
+      "relation": "implement",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "C:\\projects\\bentahub\\docs\\IMPLEMENTATION_SUMMARY.md"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

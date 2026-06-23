@@ -1,0 +1,7 @@
+C:\projects\bentahub\AGENTS.md
+C:\projects\bentahub\README.md
+C:\projects\bentahub\docker-compose.yml
+C:\projects\bentahub\docs\BACKEND_SETUP.md
+C:\projects\bentahub\docs\BENTAHUB.md
+C:\projects\bentahub\docs\CUSTOMER_SYSTEM_STATUS.md
+C:\projects\bentahub\docs\IMPLEMENTATION_SUMMARY.md
