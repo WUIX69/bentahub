@@ -48,5 +48,7 @@ graphify-out/cache/
 .vscode
 .claude
 .data
+
 ECC/
+temp/
 
