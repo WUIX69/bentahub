@@ -1,13 +1,12 @@
 import fs from "fs"
 import path from "path"
-import { db } from "../src/servers/db"
+import { db } from "./db"
 import {
   branches,
   products,
   branchInventory,
   transactions,
-} from "../src/servers/schemas"
-import { sql } from "drizzle-orm"
+} from "./schema"
 
 const envPath = path.resolve(process.cwd(), ".env.local")
 if (fs.existsSync(envPath)) {
@@ -40,8 +39,6 @@ const BRANCHES = [
   { name: "Lourdes Second Branch", location: "456 Oak Ave, Lourdes", capacity: 400 },
   { name: "Lourdes Third Branch", location: "789 Pine Rd, Lourdes", capacity: 350 },
 ]
-
-const CATEGORIES = ["Beverages", "Snacks", "Canned Goods", "Rice & Noodles", "Personal Care", "Household", "Dairy", "Frozen"]
 
 const PRODUCTS: Array<{ name: string; sku: string; price: number; category: string }> = [
   { name: "Coca-Cola 1.5L", sku: "BEV-001", price: 55.00, category: "Beverages" },
@@ -165,7 +162,6 @@ async function seedData(): Promise<void> {
         const day = Math.floor(Math.random() * 28) + 1
         const hour = Math.floor(Math.random() * 12) + 8
         const minute = Math.floor(Math.random() * 60)
-        const amount = Math.floor(Math.random() * 800 + 50) + Math.random()
 
         const transactionDate = new Date(now.getFullYear(), now.getMonth() - 11 + month, day, hour, minute)
 

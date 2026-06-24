@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { db } from "@/servers/db"
-import { passwordResetTokens } from "@/servers/schemas"
+import { db } from "@/drizzle/db"
+import { passwordResetTokens } from "@/drizzle/schema"
 import { eq, and } from "drizzle-orm"
 import type { AuthResponse } from "@/types/auth"
 

@@ -1,5 +1,5 @@
-import { db } from "@/servers/db";
-import { products } from "@/servers/schemas";
+import { db } from "@/drizzle/db";
+import { products } from "@/drizzle/schema";
 import { generateId } from "@/lib/auth-utils";
 
 const seedProducts = async () => {

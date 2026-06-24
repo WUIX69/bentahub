@@ -38,6 +38,17 @@ services:
       - /app/node_modules
     command: pnpm dev --hostname 0.0.0.0
 
+  adminer:
+    image: adminer:latest
+    container_name: bentahub-adminer
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+
+
 volumes:
   db-data:
     name: bentahub-db-data

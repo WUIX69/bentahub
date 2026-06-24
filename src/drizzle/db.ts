@@ -1,8 +1,10 @@
-import { defineConfig } from "drizzle-kit"
+import { drizzle } from "drizzle-orm/postgres-js"
+import postgres from "postgres"
+import * as schema from "./schema"
 import fs from "fs"
 import path from "path"
 
-// Load env variables from .env.local
+// Load env variables from .env.local in development / scripting environment
 const envPath = path.resolve(process.cwd(), ".env.local")
 if (fs.existsSync(envPath)) {
   const envFile = fs.readFileSync(envPath, "utf-8")
@@ -16,19 +18,20 @@ if (fs.existsSync(envPath)) {
         if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
           val = val.slice(1, -1)
         }
-        process.env[key] = val
+        if (!process.env[key]) process.env[key] = val
       }
     }
   }
 }
 
-export default defineConfig({
-  schema: "./src/drizzle/schema.ts",
-  out: "./src/drizzle/migrations",
-  dialect: "postgresql",
-  dbCredentials: {
-    url: process.env.DATABASE_URL || "postgresql://postgres:postgres@localhost:5432/bentahub",
-  },
-  verbose: true,
-  strict: false,
+
+const connectionString = process.env.DATABASE_URL || "postgresql://postgres:postgres@localhost:5432/bentahub"
+
+const client = postgres(connectionString, {
+  max: 10,
+  connect_timeout: 5,
 })
+
+export const db = drizzle(client, { schema })
+
+export type Database = typeof db

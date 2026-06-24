@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { db } from "@/servers/db"
-import { users } from "@/servers/schemas"
+import { db } from "@/drizzle/db"
+import { users } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { verifyToken, extractToken } from "@/lib/auth-utils"
 import type { AuthResponse } from "@/types/auth"
