@@ -2965,8 +2965,8 @@
     "semantic_hash": "4f32b32b4f17d6184fd04502ce3b5ab4"
   },
   "docker-compose.yml": {
-    "mtime": 1782309333.868896,
-    "ast_hash": "e0389589f2fb5a461bc035ae2fc90243",
+    "mtime": 1782311710.6305752,
+    "ast_hash": "10ff16bb62a1b38a276588d041013306",
     "semantic_hash": ""
   },
   "docs/BENTAHUB.md": {

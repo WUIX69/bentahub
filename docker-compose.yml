@@ -17,27 +17,6 @@ services:
       timeout: 5s
       retries: 5
 
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: bentahub-app
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-    depends_on:
-      db:
-        condition: service_healthy
-    environment:
-      DATABASE_URL: postgresql://postgres:postgres@db:5432/bentahub
-      JWT_SECRET: "supersecret"
-      NEXT_PUBLIC_APP_URL: "http://localhost:3000"
-      NODE_ENV: development
-    volumes:
-      - ./:/app
-      - /app/node_modules
-    command: pnpm dev --hostname 0.0.0.0
-
   adminer:
     image: adminer:latest
     container_name: bentahub-adminer
