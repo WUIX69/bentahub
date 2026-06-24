@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
-import { db } from "@/servers/db"
-import { users } from "@/servers/schemas"
+import { cookies } from "next/headers"
+import { db } from "@/drizzle/db"
+import { users } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { verifyPassword, generateToken } from "@/lib/auth-utils"
 import type { AuthResponse, LoginResponseData } from "@/types/auth"
@@ -65,6 +66,15 @@ export async function POST(request: NextRequest): Promise<NextResponse<AuthRespo
       email: user.email,
       fullName: user.fullName,
       role: user.role,
+    })
+
+    const cookieStore = await cookies()
+    cookieStore.set("auth_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60, // 7 days in seconds
+      path: "/",
     })
 
     return NextResponse.json(

@@ -1,8 +1,8 @@
 "use server"
 
 import { z } from "zod"
-import { db } from "@/servers/db"
-import { users, emailVerifications } from "@/servers/schemas"
+import { db } from "@/drizzle/db"
+import { users, emailVerifications } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { generateId, generateVerificationCode, hashPassword, hashVerificationCode } from "@/lib/auth-utils"
 import { sendVerificationEmail } from "@/lib/email-service"

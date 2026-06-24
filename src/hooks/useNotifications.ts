@@ -42,8 +42,29 @@ export function useNotifications() {
 
         const data = await response.json()
         const payload = data.data ?? {}
-        const notifications: Notification[] = (payload.notifications ?? []).map((n: any) => ({
-          ...n,
+        interface ApiNotification {
+          id: string
+          userId: string
+          type: Notification["type"]
+          title: string
+          message: string
+          relatedOrderId?: string
+          relatedProductId?: string
+          isRead: boolean
+          readAt: string | null
+          createdAt: string
+          expiresAt: string | null
+        }
+
+        const notifications: Notification[] = (payload.notifications ?? []).map((n: ApiNotification) => ({
+          id: n.id,
+          userId: n.userId,
+          type: n.type,
+          title: n.title,
+          message: n.message,
+          relatedOrderId: n.relatedOrderId,
+          relatedProductId: n.relatedProductId,
+          isRead: n.isRead,
           readAt: n.readAt ? new Date(n.readAt) : null,
           createdAt: new Date(n.createdAt),
           expiresAt: n.expiresAt ? new Date(n.expiresAt) : null,

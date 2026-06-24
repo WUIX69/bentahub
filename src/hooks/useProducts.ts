@@ -25,9 +25,39 @@ export function useProducts() {
         const response = await fetch(url)
         if (!response.ok) throw new Error("Failed to fetch products")
 
+        interface ApiProduct {
+          id: string
+          name: string
+          description: string
+          category: string
+          price: string | number
+          bulkPrice?: string | number
+          weight: string
+          image: string
+          stockStatus: Product["stockStatus"]
+          quantity: number
+          branch: string
+          sku: string
+          isActive: boolean
+          createdAt: string
+          updatedAt: string
+        }
+
         const data = await response.json()
-        const products: Product[] = (data.data ?? data ?? []).map((p: any) => ({
-          ...p,
+        const products: Product[] = (data.data ?? data ?? []).map((p: ApiProduct) => ({
+          id: p.id,
+          name: p.name,
+          description: p.description,
+          category: p.category,
+          price: Number(p.price),
+          bulkPrice: p.bulkPrice ? Number(p.bulkPrice) : undefined,
+          weight: p.weight,
+          image: p.image,
+          stockStatus: p.stockStatus,
+          quantity: Number(p.quantity),
+          branch: p.branch,
+          sku: p.sku,
+          isActive: p.isActive,
           createdAt: new Date(p.createdAt),
           updatedAt: new Date(p.updatedAt),
         }))

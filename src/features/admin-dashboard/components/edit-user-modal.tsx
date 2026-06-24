@@ -6,7 +6,7 @@ import { User, X, Eye, EyeOff } from "lucide-react"
 interface UserData {
   name: string
   email: string
-  role: "Admin" | "Cashier" | "Staff"
+  role: "Admin" | "Employee"
   branch: string
 }
 
@@ -22,7 +22,7 @@ export function EditUserModal({ isOpen, onClose, user, onSave }: EditUserModalPr
   const [name, setName] = useState(user?.name ?? "")
   const [email, setEmail] = useState(user?.email ?? "")
   const [password, setPassword] = useState("password123") // placeholder default from template
-  const [role, setRole] = useState<"Admin" | "Cashier" | "Staff">(user?.role ?? "Admin")
+  const [role, setRole] = useState<"Admin" | "Employee">(user?.role ?? "Admin")
   const [branch, setBranch] = useState(user?.branch ?? "All Branches")
 
 
@@ -113,11 +113,10 @@ export function EditUserModal({ isOpen, onClose, user, onSave }: EditUserModalPr
                   <select
                     className="w-full h-11 px-4 rounded-lg border border-border bg-background focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all text-sm"
                     value={role}
-                    onChange={(e) => setRole(e.target.value as "Admin" | "Cashier" | "Staff")}
+                    onChange={(e) => setRole(e.target.value as "Admin" | "Employee")}
                   >
                     <option value="Admin">Admin</option>
-                    <option value="Cashier">Cashier</option>
-                    <option value="Staff">Staff</option>
+                    <option value="Employee">Employee</option>
                   </select>
                 </div>
                 <div className="space-y-1.5">

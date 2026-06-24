@@ -1,5 +1,4 @@
-import { db } from "@/servers/db"
-import { branches, branchInventory, transactions } from "@/servers/schemas"
+import { db } from "@/drizzle/db"
 import type { AdminOverviewData, BranchStockData, SalesTrendData } from "@/types/admin"
 
 interface RawTransaction {

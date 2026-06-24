@@ -35,7 +35,19 @@ export default function LoginPage() {
 
       const contentType = response.headers.get("content-type") || ""
       const text = await response.text()
-      let data: any = null
+      let data: {
+        message?: string
+        data?: {
+          token: string
+          user: {
+            userId: string
+            fullName: string
+            email: string
+            role: "admin" | "employee" | "customer"
+            isEmailVerified: boolean
+          }
+        }
+      } | null = null
 
       if (contentType.includes("application/json")) {
         try {
@@ -77,8 +89,16 @@ export default function LoginPage() {
       }
 
       // Success - client-side navigation to dashboard
-      console.log("Login successful, redirecting to /customer")
-      router.push("/customer")
+      if (user?.role === "admin") {
+        console.log("Login successful, redirecting to /admin")
+        router.push("/admin")
+      } else if (user?.role === "employee") {
+        console.log("Login successful, redirecting to /employee")
+        router.push("/employee")
+      } else {
+        console.log("Login successful, redirecting to /customer")
+        router.push("/customer")
+      }
     } catch (err) {
       console.error("Login error:", err)
       setError("An unexpected error occurred. Please try again.")

@@ -1,6 +1,6 @@
 export const APP_NAME = "BentaHub" as const
 
-export const USER_ROLES = ["admin", "cashier", "staff", "customer"] as const
+export const USER_ROLES = ["admin", "employee", "customer"] as const
 export type UserRole = (typeof USER_ROLES)[number]
 
 export const PAYMENT_METHODS = ["cash", "gcash"] as const

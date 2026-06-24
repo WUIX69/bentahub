@@ -1,5 +1,4 @@
-import { db } from "@/servers/db"
-import { branches, branchInventory, products, transactions } from "@/servers/schemas"
+import { db } from "@/drizzle/db"
 import type { MonitoringData, InventoryStatusItem, SystemAlertItem } from "@/types/admin"
 
 interface RawBranch {
@@ -68,7 +67,6 @@ export async function getMonitoringData(): Promise<MonitoringData> {
 
   // --- Low Stock Items ---
   const lowStockRecords = allInventory.filter((i: RawInventory) => i.quantity < i.lowStockThreshold)
-  const lowStockProductIds = new Set(lowStockRecords.map((i: RawInventory) => i.productId))
   const totalLowStockCount = lowStockRecords.length
 
   // --- Pending Reservations (using pending transactions as proxy) ---

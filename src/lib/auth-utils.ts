@@ -86,14 +86,45 @@ export function verifyToken(token: string): TokenPayload | null {
 // Token extraction from NextRequest
 // ---------------------------------------------------------------------------
 
-/**
- * Extract a Bearer token from a NextRequest's Authorization header.
- * Returns `null` if the header is missing or malformed.
- */
-export function extractToken(request: { headers: { get: (name: string) => string | null } }): string | null {
-  const header = request.headers.get("Authorization")
-  if (!header || !header.startsWith("Bearer ")) {
-    return null
+export interface RequestLike {
+  headers?: {
+    get?: (name: string) => string | null
   }
-  return header.slice(7)
+  cookies?: {
+    get?: (name: string) => { value: string } | string | null | undefined
+  } | Record<string, string>
+}
+
+/**
+ * Extract a Bearer token from a request's Authorization header or HTTP-only cookies.
+ * Returns `null` if the token is missing or malformed.
+ */
+export function extractToken(request: RequestLike): string | null {
+  // 1. Try Authorization header
+  const header = typeof request.headers?.get === "function"
+    ? request.headers.get("Authorization")
+    : (request.headers as Record<string, string | undefined>)?.[
+        "authorization"
+      ]
+
+  if (header && header.startsWith("Bearer ")) {
+    return header.slice(7)
+  }
+
+  // 2. Try Cookies
+  if (request.cookies) {
+    if (typeof request.cookies.get === "function") {
+      const cookie = request.cookies.get("auth_token")
+      if (cookie) {
+        return typeof cookie === "string" ? cookie : cookie.value
+      }
+    } else {
+      const cookiesObj = request.cookies as Record<string, string | undefined>
+      if (cookiesObj["auth_token"]) {
+        return cookiesObj["auth_token"]
+      }
+    }
+  }
+
+  return null
 }

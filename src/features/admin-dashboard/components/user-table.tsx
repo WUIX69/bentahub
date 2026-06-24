@@ -12,7 +12,7 @@ interface User {
   avatarBg: string
   avatarText: string
   email: string
-  role: "Admin" | "Cashier" | "Staff"
+  role: "Admin" | "Employee"
   branch: string
   status: "Active" | "Inactive"
   joinDate: string
@@ -36,7 +36,7 @@ const mockUsers: User[] = [
     avatarBg: "bg-amber-500/10",
     avatarText: "text-amber-600 dark:text-amber-400",
     email: "sarah.c@bentahub.com",
-    role: "Cashier",
+    role: "Employee",
     branch: "Manila Central",
     status: "Active",
     joinDate: "2024-01-05",
@@ -47,12 +47,11 @@ const mockUsers: User[] = [
     avatarBg: "bg-muted/80",
     avatarText: "text-muted-foreground",
     email: "m.reyes@gmail.com",
-    role: "Staff",
+    role: "Employee",
     branch: "Quezon City Hub",
     status: "Inactive",
     joinDate: "2023-11-20",
   },
-
 ]
 
 export function UserTable() {
@@ -64,7 +63,7 @@ export function UserTable() {
   const handleAddUser = (newUser: {
     name: string
     email: string
-    role: "Admin" | "Cashier" | "Staff"
+    role: "Admin" | "Employee"
     branch: string
   }) => {
     const initials = newUser.name
@@ -92,7 +91,7 @@ export function UserTable() {
   const handleEditUser = (updatedUser: {
     name: string
     email: string
-    role: "Admin" | "Cashier" | "Staff"
+    role: "Admin" | "Employee"
     branch: string
   }) => {
     if (!editingUser) return
@@ -123,6 +122,7 @@ export function UserTable() {
     setUsers((prev) => prev.filter((u) => u.email !== email))
     setDeletingUser(null)
   }
+
   return (
     <div className="flex flex-col gap-6">
       {/* Table Action Bar */}
@@ -185,10 +185,8 @@ export function UserTable() {
                   switch (user.role) {
                     case "Admin":
                       return "bg-primary/10 text-primary border border-primary/20"
-                    case "Cashier":
-                      return "bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20"
-                    case "Staff":
-                      return "bg-muted/80 text-muted-foreground border border-border"
+                    case "Employee":
+                      return "bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20"
                     default:
                       return "bg-muted text-muted-foreground"
                   }
@@ -207,7 +205,7 @@ export function UserTable() {
                   >
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div
+                      <div
                           className={`w-9 h-9 rounded-full ${user.avatarBg} ${user.avatarText} flex items-center justify-center font-bold text-sm`}
                         >
                           {user.initials}

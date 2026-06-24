@@ -30,9 +30,31 @@ export function useCart() {
       })
       if (!response.ok) throw new Error("Failed to fetch cart")
 
+      interface ApiCartItem {
+        id: string
+        productId: string
+        productName: string
+        price: string | number
+        quantity: number
+        subtotal: string | number
+        image: string
+        category: string
+        branch: string
+        addedAt: string
+        updatedAt: string
+      }
+
       const data = await response.json()
-      const items: CartItem[] = data.data.items.map((item: any) => ({
-        ...item,
+      const items: CartItem[] = data.data.items.map((item: ApiCartItem) => ({
+        id: item.id,
+        productId: item.productId,
+        productName: item.productName,
+        price: Number(item.price),
+        quantity: Number(item.quantity),
+        subtotal: Number(item.subtotal),
+        image: item.image,
+        category: item.category,
+        branch: item.branch,
         addedAt: new Date(item.addedAt),
         updatedAt: new Date(item.updatedAt),
       }))

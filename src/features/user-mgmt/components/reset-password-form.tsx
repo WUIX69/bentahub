@@ -25,6 +25,7 @@ export function ResetPasswordForm() {
     // Get email from search params or session storage
     const paramEmail = searchParams.get("email")
     const sessionEmail = typeof window !== "undefined" ? sessionStorage.getItem("pendingResetEmail") : ""
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setEmail(paramEmail || sessionEmail || "")
   }, [searchParams])
 

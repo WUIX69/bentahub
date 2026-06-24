@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { db } from "@/servers/db"
-import { cartItems, orders, orderItems } from "@/servers/schemas"
+import { db } from "@/drizzle/db"
+import { cartItems, orders, orderItems } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { generateId, extractToken, verifyToken } from "@/lib/auth-utils"
 

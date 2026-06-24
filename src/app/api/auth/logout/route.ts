@@ -1,13 +1,15 @@
 import { NextResponse } from "next/server"
+import { cookies } from "next/headers"
 
 /**
  * POST /api/auth/logout
  *
- * Since auth is now JWT-based (no server-side session), logout
- * is handled client-side by discarding the stored token.
- * This endpoint exists as a no-op for any server-side cleanup.
+ * Clears the server-side HTTP-only auth cookie and returns a success response.
  */
 export async function POST() {
+  const cookieStore = await cookies()
+  cookieStore.delete("auth_token")
+
   return NextResponse.json(
     { success: true, message: "Logged out successfully" },
     { status: 200 }

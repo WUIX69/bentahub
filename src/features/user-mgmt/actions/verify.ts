@@ -1,9 +1,9 @@
 "use server"
 
 import { z } from "zod"
-import { db } from "@/servers/db"
-import { users, emailVerifications } from "@/servers/schemas"
-import { eq, and } from "drizzle-orm"
+import { db } from "@/drizzle/db"
+import { users, emailVerifications } from "@/drizzle/schema"
+import { eq } from "drizzle-orm"
 import { generateId, generateVerificationCode, hashVerificationCode } from "@/lib/auth-utils"
 import { sendVerificationEmail } from "@/lib/email-service"
 import type { AuthResponse } from "@/types/auth"
