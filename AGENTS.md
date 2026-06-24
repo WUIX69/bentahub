@@ -38,11 +38,18 @@ Always run `lint -> typecheck` (or `pnpm validate`) before committing. There are
 
 ## Schema & DB
 
-- Schema: `src/drizzle/schema/` (Drizzle ORM with `postgres-js` driver)
+- Schema: `src/drizzle/schema/` (Drizzle ORM with `postgres-js` driver, `postgres` connection pool)
+- 10 tables: users, email-verification, password-reset, branches, branch-inventory, products, transactions, cart-items, notifications, orders
 - Migration SQL: `src/drizzle/migrations/`
 - DB client: `src/drizzle/db.ts` — reads `DATABASE_URL`, falls back to `postgresql://postgres:postgres@localhost:5432/bentahub`
-- Seed (`pnpm db:seed`): auto-parses `.env.local`, **clears all tables first** (branches, products, branchInventory, transactions)
+- Seed (`pnpm db:seed`): auto-parses `.env.local`, **clears all tables** (users, branches, products, branchInventory, transactions), creates 6 test accounts (2 per role), 3 branches, 28 products, inventory, and 12 months of transactions
 - Both `drizzle.config.ts` and `src/drizzle/db.ts` independently parse `.env.local` at runtime
+- `drizzle.config.ts` sets `strict: false`
+- `tsconfig.json` `rootDir` is `.` (not `src`)
+
+## Test accounts
+
+Run `pnpm db:seed` to reset everything. Credentials printed at end of seed run. See `docs/RUNBOOK.md` for the account table.
 
 ## Architecture & FSD rules
 
@@ -53,8 +60,10 @@ Feature-Sliced Design. Strict isolation rules:
 - Cross-feature import = refactor into a global directory.
 - `src/app/` — Next.js App Router pages, layouts, API routes.
 - For feature-specific server actions, use `src/features/[name]/actions/` (not separate API routes unless third-party needed).
-
-Actual shared dirs are sparser than docs suggest: `src/data/` is empty, `src/contexts/` is empty. The aspirational patterns in `docs/FEATURE-SLICED-DESIGN.md` (dbCache, t3-env, subscriptions) do not exist in this codebase.
+- **No import-boundary enforcement** in ESLint config (only `eslint-config-next/core-web-vitals` + typescript).
+- Actual shared dirs are sparser than docs suggest: `src/data/`, `src/contexts/`, `src/server/` do not exist.
+- `docs/FEATURE-SLICED-DESIGN.md` describes aspirational patterns (dbCache, t3-env, subscriptions, permissions.ts) that do **not** exist in code.
+- `docs/BENTAHUB.md` is stale — references `cashier`/`staff` roles and old `src/servers/` paths.
 
 ## App structure
 
@@ -62,11 +71,16 @@ Route groups under `src/app/`:
 
 - `/(landing)/` — public landing
 - `/(auth)/` — login, register, verify-email, forgot/reset-password
-- `/(dashboard)/admin/` — global cross-branch admin panel
-- `/(dashboard)/employee/` — branch-locked POS + inventory + pickup (role replaces former "cashier" + "staff")
-- `/(dashboard)/customer/` — catalog, cart, checkout, reservations (pickup only, no delivery)
+- `/(dashboard)/shared/` — role-adaptive cross-role pages (notifications, transactions, history, monitoring, payments, pickups, reservations, settings). Sidebar/topbar adapts to `useAuth().user.role`. Created to eliminate duplicated role-specific pages.
+- `/(dashboard)/admin/` — global cross-branch admin panel + admin-specific pages (sales, users)
+- `/(dashboard)/employee/` — branch-locked pages that remain role-specific (pos, inventory, stock-check)
+- `/(dashboard)/customer/` — customer-only pages that remain specific (catalog, cart, checkout)
+
+Old role-specific pages for shared concepts (notifications, settings, transactions, etc.) redirect to `/shared/*` via `useEffect` or `redirect()`.
 
 ## Roles & constraints
+
+DB enum `user_role` values: `"admin"`, `"employee"`, `"customer"` (not `cashier` or `staff`).
 
 - **admin** — global cross-branch access, user mgmt, analytics
 - **employee** — branch-locked (never query/mutate other branches). Unified role: cashier + staff functionality merged
@@ -84,17 +98,17 @@ Route groups under `src/app/`:
 
 ## Style
 
-- **Prettier**: no semicolons, double quotes, trailing commas, LF line endings, printWidth 80, `prettier-plugin-tailwindcss`
+- **Prettier**: no semicolons, double quotes, trailing commas, LF line endings, printWidth 80, `prettier-plugin-tailwindcss` with `tailwindStylesheet: "src/app/globals.css"` and `tailwindFunctions: ["cn", "cva"]`
 - **ESLint**: flat config via `eslint-config-next/core-web-vitals` + `typescript`
 - **Tailwind CSS v4**: `@import "tailwindcss"` (no `@tailwind` directives), `@theme inline` for CSS variables
 - **Types**: `@/*` path alias maps to `src/*`, strict mode
 
 ## Known gotchas
 
-- Seed script hardcodes DATABASE_URL fallback `postgresql://postgres:postgres@localhost:5432/bentahub`
+- Seed script and `drizzle.config.ts` hardcode DATABASE_URL fallback `postgresql://postgres:postgres@localhost:5432/bentahub`
 - `src/proxy.ts` is dead/unwired middleware — was intended for route protection but auth is done client-side in each dashboard layout
-- Customer Zustand stores (`src/stores/`, `src/hooks/`) are global but conceptually customer-only — don't import into employee/admin features unless promoted to shared abstractions
+- Customer Zustand stores (`src/stores/`, `src/hooks/`) are in global dirs but conceptually customer-only — don't import into employee/admin features unless promoted to shared
 - No CI workflows or test suites exist
 - `.graphifyignore` excludes `node_modules/`, `package.json`, config files, test files, `src/lib/utils.ts`, `src/components/ui/`
-- `tsconfig.json` excludes `ECC` and `everything-claude-code` directories
+- `tsconfig.json` and ESLint both exclude `ECC` and `everything-claude-code` directories
 - `.gitignore` excludes `.github`, `.vscode`, `.claude`, `.data`

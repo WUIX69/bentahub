@@ -2,8 +2,8 @@
 
 import { useState, useMemo } from "react"
 import Image from "next/image"
-import { StaffKpiCards } from "@/features/staff-dashboard/components/staff-kpi-cards"
-import { staffProducts, getStockStatus } from "@/features/staff-dashboard/data/products"
+import { StaffKpiCards } from "@/features/employee-dashboard/components/staff-kpi-cards"
+import { staffProducts, getStockStatus } from "@/features/employee-dashboard/data/products"
 import { AlertTriangle, Package } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { Product } from "@/types/cashier"

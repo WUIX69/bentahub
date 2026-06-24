@@ -36,7 +36,7 @@ export function AdminTopbar({ pathname = "/admin", onToggleSidebar }: AdminTopba
   } else if (pathname.includes("/admin/pickups")) {
     title = "Pickup Management"
     subtitle = "Monitor and confirm pickups across all branches in real-time."
-  } else if (pathname.includes("/admin/notifications")) {
+  } else if (pathname.includes("/shared/notifications")) {
     title = "Notifications"
     subtitle = "Manage and review recent system, inventory, and user activities."
   } else if (pathname.includes("/admin/settings")) {
@@ -76,7 +76,7 @@ export function AdminTopbar({ pathname = "/admin", onToggleSidebar }: AdminTopba
         <ThemeToggle />
 
         {/* Notifications */}
-        <button onClick={() => router.push("/admin/notifications")} className="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-900 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors border border-slate-200 dark:border-slate-800 relative flex-shrink-0">
+        <button onClick={() => router.push("/shared/notifications")} className="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-900 flex items-center justify-center text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors border border-slate-200 dark:border-slate-800 relative flex-shrink-0">
           <Bell className="w-5 h-5" />
           <span className="absolute top-2 right-2 w-2.5 h-2.5 bg-red-500 rounded-full ring-2 ring-white dark:ring-slate-900"></span>
         </button>

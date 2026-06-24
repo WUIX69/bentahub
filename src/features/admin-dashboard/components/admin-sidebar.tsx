@@ -50,19 +50,19 @@ export function AdminSidebar({ activePath, isOpen, onClose }: AdminSidebarProps)
     {
       title: "Management",
       items: [
-        { label: "Monitoring", icon: Activity, path: "/admin/monitoring" },
-        { label: "Notifications", icon: Bell, path: "/admin/notifications" },
+        { label: "Monitoring", icon: Activity, path: "/shared/monitoring" },
+        { label: "Notifications", icon: Bell, path: "/shared/notifications" },
         { label: "Sales", icon: Tag, path: "/admin/sales" },
-        { label: "Reservations", icon: Calendar, path: "/admin/reservations" },
+        { label: "Reservations", icon: Calendar, path: "/shared/reservations" },
         { label: "User Management", icon: Users, path: "/admin/users" },
       ]
     },
     {
       title: "Operations",
       items: [
-        { label: "Payments", icon: CreditCard, path: "/admin/payments" },
-        { label: "Transaction History", icon: History, path: "/admin/history" },
-        { label: "Pickups", icon: Truck, path: "/admin/pickups" },
+        { label: "Payments", icon: CreditCard, path: "/shared/payments" },
+        { label: "Transaction History", icon: History, path: "/shared/history" },
+        { label: "Pickups", icon: Truck, path: "/shared/pickups" },
       ]
     }
   ]
@@ -128,11 +128,11 @@ export function AdminSidebar({ activePath, isOpen, onClose }: AdminSidebarProps)
         <div className="p-4 mt-auto">
           <nav className="space-y-1">
             <Link
-              href="/admin/settings"
+              href="/shared/settings"
               onClick={onClose}
               className={cn(
                 "flex items-center gap-3 px-4 py-2 rounded-lg transition-all text-sm font-medium",
-                activePath === "/admin/settings"
+                activePath === "/shared/settings"
                   ? "bg-primary text-white"
                   : "text-slate-400 hover:text-white hover:bg-slate-800"
               )}

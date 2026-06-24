@@ -1,7 +1,7 @@
 "use client"
 
-import { StockSummaryCards } from "@/features/cashier-dashboard/components/stock-summary-cards"
-import { StockTable } from "@/features/cashier-dashboard/components/stock-table"
+import { StockSummaryCards } from "@/features/employee-dashboard/components/stock-summary-cards"
+import { StockTable } from "@/features/employee-dashboard/components/stock-table"
 
 export default function EmployeeStockCheckPage() {
   return (

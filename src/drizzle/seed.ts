@@ -1,11 +1,13 @@
 import fs from "fs"
 import path from "path"
+import bcrypt from "bcryptjs"
 import { db } from "./db"
 import {
   branches,
   products,
   branchInventory,
   transactions,
+  users,
 } from "./schema"
 
 const envPath = path.resolve(process.cwd(), ".env.local")
@@ -38,6 +40,15 @@ const BRANCHES = [
   { name: "Lourdes Main Branch", location: "123 Main St, Lourdes", capacity: 500 },
   { name: "Lourdes Second Branch", location: "456 Oak Ave, Lourdes", capacity: 400 },
   { name: "Lourdes Third Branch", location: "789 Pine Rd, Lourdes", capacity: 350 },
+]
+
+const USERS: Array<{ email: string; password: string; fullName: string; phone: string; role: "admin" | "employee" | "customer"; branch?: string }> = [
+  { email: "admin@bentahub.com", password: "admin123", fullName: "Admin User", phone: "09171234567", role: "admin" },
+  { email: "superadmin@bentahub.com", password: "super123", fullName: "Super Admin", phone: "09179876543", role: "admin" },
+  { email: "employee1@bentahub.com", password: "emp123", fullName: "Maria Santos", phone: "09175678901", role: "employee", branch: "Lourdes Main Branch" },
+  { email: "employee2@bentahub.com", password: "emp123", fullName: "Juan Dela Cruz", phone: "09172345678", role: "employee", branch: "Lourdes Second Branch" },
+  { email: "customer1@bentahub.com", password: "cust123", fullName: "Ana Gonzales", phone: "09173456789", role: "customer" },
+  { email: "customer2@bentahub.com", password: "cust123", fullName: "Pedro Reyes", phone: "09174567890", role: "customer" },
 ]
 
 const PRODUCTS: Array<{ name: string; sku: string; price: number; category: string }> = [
@@ -77,9 +88,29 @@ async function seedData(): Promise<void> {
   await db.delete(branchInventory)
   await db.delete(products)
   await db.delete(branches)
+  await db.delete(users)
 
   const now = new Date()
   const branchIds: string[] = []
+
+  console.log("Seeding users...")
+  const salt = await bcrypt.genSalt(10)
+  for (const u of USERS) {
+    const hashed = await bcrypt.hash(u.password, salt)
+    await db.insert(users).values({
+      id: generateId(),
+      email: u.email,
+      password: hashed,
+      fullName: u.fullName,
+      phone: u.phone,
+      role: u.role,
+      branch: u.branch ?? null,
+      isEmailVerified: true,
+      isActive: true,
+      createdAt: new Date(now.getFullYear() - 1, 0, 1),
+      updatedAt: now,
+    })
+  }
 
   console.log("Seeding branches...")
   for (const b of BRANCHES) {
@@ -186,11 +217,17 @@ async function seedData(): Promise<void> {
     }
   }
 
-  console.log(`✅ Seeded admin data:`)
+  console.log(`✅ Seeded data:`)
+  console.log(`   - ${USERS.length} users (2 admin, 2 employee, 2 customer)`)
   console.log(`   - ${BRANCHES.length} branches`)
   console.log(`   - ${PRODUCTS.length} products`)
   console.log(`   - ${inventoryCount} inventory records`)
   console.log(`   - ${transactionCount} transactions`)
+  console.log(``)
+  console.log(`📋 Test Accounts:`)
+  for (const u of USERS) {
+    console.log(`   ${u.role.padEnd(10)} ${u.email.padEnd(35)} ${u.password}`)
+  }
   console.log(`\nDatabase: postgresql://postgres:postgres@localhost:5432/bentahub`)
 }
 

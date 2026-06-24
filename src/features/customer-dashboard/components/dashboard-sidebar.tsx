@@ -31,7 +31,7 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
     {
       label: "Notifications",
       icon: Bell,
-      path: "/customer/notifications",
+      path: "/shared/notifications",
     },
     {
       label: "Browse Catalog",
@@ -46,7 +46,7 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
     {
       label: "Transaction History",
       icon: Receipt,
-      path: "/customer/transactions",
+      path: "/shared/transactions",
     },
   ]
 
