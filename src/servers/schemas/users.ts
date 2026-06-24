@@ -1,7 +1,7 @@
 import { pgTable, timestamp, varchar, boolean, pgEnum, index } from "drizzle-orm/pg-core"
 import { createInsertSchema, createSelectSchema } from "drizzle-zod"
 
-export const userRoleEnum = pgEnum("user_role", ["admin", "cashier", "staff", "customer"])
+export const userRoleEnum = pgEnum("user_role", ["admin", "employee", "customer"])
 
 export const users = pgTable("users", {
   id: varchar("id", { length: 36 }).primaryKey(),

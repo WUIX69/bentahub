@@ -13,6 +13,7 @@ import {
 } from "lucide-react"
 import { APP_NAME } from "@/config"
 import { cn } from "@/lib/utils"
+import { useAuth } from "@/hooks/useAuth"
 
 interface DashboardSidebarProps {
   activePath: string
@@ -49,9 +50,11 @@ export function DashboardSidebar({ activePath }: DashboardSidebarProps) {
     },
   ]
 
+  const { logout } = useAuth()
+
   const handleLogout = async () => {
     try {
-      await fetch("/api/auth/logout", { method: "POST" })
+      await logout()
     } catch {
       // proceed
     }

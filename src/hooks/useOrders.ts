@@ -9,6 +9,31 @@ function authHeaders(token: string): HeadersInit {
   }
 }
 
+interface ApiOrderItem {
+  id: string
+  productId: string
+  productName: string
+  quantity: number
+  price: string | number
+  subtotal: string | number
+  createdAt: string
+}
+
+interface ApiOrder {
+  id: string
+  userId: string
+  status: Order["status"]
+  paymentMethod: Order["paymentMethod"]
+  totalAmount: string | number
+  branch: string
+  notes: string
+  isPaid: boolean
+  paidAt: string | null
+  items?: ApiOrderItem[]
+  createdAt: string
+  updatedAt: string
+}
+
 export function useOrders() {
   const { user, token } = useAuth()
   const ordersStore = useOrdersStore()
@@ -31,13 +56,25 @@ export function useOrders() {
       if (!response.ok) throw new Error("Failed to fetch orders")
 
       const data = await response.json()
-      const orders: Order[] = (data.data ?? []).map((o: any) => ({
-        ...o,
+      const orders: Order[] = (data.data ?? []).map((o: ApiOrder) => ({
+        id: o.id,
+        userId: o.userId,
+        status: o.status,
+        paymentMethod: o.paymentMethod,
+        totalAmount: Number(o.totalAmount),
+        branch: o.branch,
+        notes: o.notes,
+        isPaid: o.isPaid,
         paidAt: o.paidAt ? new Date(o.paidAt) : null,
         createdAt: new Date(o.createdAt),
         updatedAt: new Date(o.updatedAt),
-        items: o.items?.map((item: any) => ({
-          ...item,
+        items: o.items?.map((item: ApiOrderItem) => ({
+          id: item.id,
+          productId: item.productId,
+          productName: item.productName,
+          quantity: Number(item.quantity),
+          price: Number(item.price),
+          subtotal: Number(item.subtotal),
           createdAt: new Date(item.createdAt),
         })) || [],
       }))
@@ -85,14 +122,26 @@ export function useOrders() {
 
         const data = await response.json()
         const payload = data.data ?? {}
-        const orderPayload = payload.order ?? {}
+        const orderPayload = (payload.order ?? {}) as ApiOrder
         const order: Order = {
-          ...orderPayload,
+          id: orderPayload.id,
+          userId: orderPayload.userId,
+          status: orderPayload.status,
+          paymentMethod: orderPayload.paymentMethod,
+          totalAmount: Number(orderPayload.totalAmount),
+          branch: orderPayload.branch,
+          notes: orderPayload.notes,
+          isPaid: orderPayload.isPaid,
           paidAt: orderPayload.paidAt ? new Date(orderPayload.paidAt) : null,
           createdAt: new Date(orderPayload.createdAt),
           updatedAt: new Date(orderPayload.updatedAt),
-          items: orderPayload.items?.map((item: any) => ({
-            ...item,
+          items: orderPayload.items?.map((item: ApiOrderItem) => ({
+            id: item.id,
+            productId: item.productId,
+            productName: item.productName,
+            quantity: Number(item.quantity),
+            price: Number(item.price),
+            subtotal: Number(item.subtotal),
             createdAt: new Date(item.createdAt),
           })) || [],
         }

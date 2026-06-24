@@ -18,6 +18,7 @@ import {
   X
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useAuth } from "@/hooks/useAuth"
 
 interface AdminSidebarProps {
   activePath: string
@@ -28,9 +29,11 @@ interface AdminSidebarProps {
 export function AdminSidebar({ activePath, isOpen, onClose }: AdminSidebarProps) {
   const router = useRouter()
 
+  const { logout } = useAuth()
+
   const handleLogout = async () => {
     try {
-      await fetch("/api/auth/logout", { method: "POST" })
+      await logout()
     } catch {
       // Proceed even if API call fails
     }
