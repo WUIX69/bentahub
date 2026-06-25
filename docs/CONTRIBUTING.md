@@ -64,14 +64,18 @@ For more details, see [FEATURE-SLICED-DESIGN.md](file:///c:/projects/bentahub/do
 | `dev` | `next dev --turbopack` | Start the development server with Turbopack enabled |
 | `build` | `next build` | Build the Next.js application for production |
 | `start` | `next start` | Start the production Next.js server |
-| `lint` | `eslint` | Run ESLint to check for code style issues |
+| `lint` | `eslint` | Run ESLint flat config to check for code style issues |
 | `format` | `prettier --write "**/*.{ts,tsx}"` | Format code files with Prettier |
 | `typecheck` | `tsc --noEmit` | Run TypeScript compiler to verify types |
 | `validate` | `npm run lint && npm run typecheck` | Run both linting and type checking validation |
-| `db:generate` | `drizzle-kit generate:pg` | Generate Drizzle database migration schema files |
-| `db:push` | `drizzle-kit push:pg` | Push schema changes directly to the PostgreSQL database |
+| `db:generate` | `drizzle-kit generate` | Generate Drizzle database migration schema files |
+| `db:push` | `drizzle-kit push` | Push schema changes directly to the PostgreSQL database |
 | `db:studio` | `drizzle-kit studio` | Start Drizzle Studio database UI client |
-| `db:seed` | `npx tsx scripts/seed-admin-data.ts` | Seed the database with default admin accounts and mock products |
+| `db:seed` | `npx tsx src/drizzle/seed.ts` | Seed the database with initial test accounts, branches, and 12 months of transactions |
+| `docker:up` | `docker compose up -d` | Start the database and services container in the background |
+| `docker:down` | `docker compose down` | Stop and remove the Docker containers |
+| `docker:logs` | `docker compose logs -f` | Follow log output from Docker containers |
+| `docker:reset` | `docker compose down -v` | Stop the Docker containers and delete volumes (factory reset database) |
 
 <!-- AUTO-GENERATED END -->
 
