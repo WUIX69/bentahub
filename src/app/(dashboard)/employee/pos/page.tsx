@@ -1,9 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { ProductCatalog } from "@/features/cashier-dashboard/components/product-catalog"
-import { CartSidebar } from "@/features/cashier-dashboard/components/cart-sidebar"
-import { useCart } from "@/features/cashier-dashboard/hooks/use-cart"
+import { ProductCatalog } from "@/features/employee-dashboard/components/product-catalog"
+import { CartSidebar } from "@/features/employee-dashboard/components/cart-sidebar"
+import { useCart } from "@/features/employee-dashboard/hooks/use-cart"
 import { ShoppingCart } from "lucide-react"
 
 export default function EmployeePosPage() {

@@ -1,5 +1,5 @@
-import { AdminNotificationsFeed } from "@/features/admin-dashboard"
+import { redirect } from "next/navigation"
 
-export default function AdminNotificationsPage() {
-  return <AdminNotificationsFeed />
+export default function AdminNotificationsRedirect() {
+  redirect("/shared/notifications")
 }

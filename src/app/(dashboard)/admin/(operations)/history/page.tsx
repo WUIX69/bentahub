@@ -1,13 +1,5 @@
-import { HistoryMetrics, HistoryTable } from "@/features/admin-dashboard"
+import { redirect } from "next/navigation"
 
-export default function HistoryPage() {
-  return (
-    <div className="flex flex-col gap-6 max-w-7xl mx-auto w-full pb-8">
-      {/* KPI Cards */}
-      <HistoryMetrics />
-
-      {/* All Branch Transactions Table */}
-      <HistoryTable />
-    </div>
-  )
+export default function AdminHistoryRedirect() {
+  redirect("/shared/history")
 }

@@ -60,6 +60,21 @@ When database schemas change:
 - **Cause**: A developer violated the FSD architecture by importing a module from `src/features/feature-a` into `src/features/feature-b`.
 - **Fix**: Move the common component or helper to a global shared directory (`src/components/`, `src/hooks/`, or `src/utils/`).
 
+## 🧪 Test Accounts
+
+After running `pnpm db:seed`, the following accounts are available:
+
+| Role     | Email                   | Password  |
+|----------|-------------------------|-----------|
+| admin    | admin@bentahub.com      | admin123  |
+| admin    | superadmin@bentahub.com | super123  |
+| employee | employee1@bentahub.com  | emp123    |
+| employee | employee2@bentahub.com  | emp123    |
+| customer | customer1@bentahub.com  | cust123   |
+| customer | customer2@bentahub.com  | cust123   |
+
+All accounts have verified email and are active. Employees are assigned to specific branches.
+
 ## 🔄 Rollback Procedures
 
 To roll back a deployment:

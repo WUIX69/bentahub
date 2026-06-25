@@ -1,5 +1,5 @@
-import { CustomerNotificationsFeed } from "@/features/customer-dashboard"
+import { redirect } from "next/navigation"
 
-export default function CustomerNotificationsPage() {
-  return <CustomerNotificationsFeed />
+export default function CustomerNotificationsRedirect() {
+  redirect("/shared/notifications")
 }

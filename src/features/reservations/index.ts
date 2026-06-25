@@ -1,13 +1,12 @@
 /**
- * Payment & Pick-Up Module (Reservations) Feature Slice
+ * Reservations Feature Slice
  *
  * Responsible for:
- * - Managing product reservations
- * - GCash/Cash payment flow logic
- * - Pickup status tracking
+ * - Admin: reservation metrics + filters + table
+ * - Customer: reservation cards with tab filtering
  *
- * Consumed by: src/app/customer/, src/app/staff/
+ * Consumed by: src/app/admin/, src/app/customer/
  */
 
-// Export actions, components, hooks, and types as they are built
-export {}
+export * from "./components/reservations-manager"
+export * from "./server/db/get-reservations"

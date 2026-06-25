@@ -14,7 +14,7 @@ const ROUTE_TITLES: Record<string, string> = {
   "/employee/pickup": "Payments & Pickups",
   "/employee/stock-check": "Stock Checking",
   "/employee/monitoring": "Live Monitoring",
-  "/employee/notifications": "Notifications",
+  "/shared/notifications": "Notifications",
 }
 
 interface EmployeeTopbarProps {
@@ -52,7 +52,7 @@ export function EmployeeTopbar({ onToggleSidebar }: EmployeeTopbarProps) {
         <ThemeToggle />
 
         <button
-          onClick={() => router.push("/employee/notifications")}
+          onClick={() => router.push("/shared/notifications")}
           className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-muted-foreground hover:text-primary transition-colors border border-border relative flex-shrink-0"
         >
           <Bell className="w-5 h-5" />

@@ -17,18 +17,18 @@ const NAV_ITEMS = [
     category: "POS & Sales",
     links: [
       { href: "/employee/pos", label: "POS System", icon: Monitor },
-      { href: "/employee/payments", label: "Payments", icon: Coins },
-      { href: "/employee/transactions", label: "POS Transactions", icon: History },
+      { href: "/shared/payments", label: "Payments", icon: Coins },
+      { href: "/shared/transactions", label: "POS Transactions", icon: History },
     ],
   },
   {
     category: "Inventory & Fulfillment",
     links: [
       { href: "/employee/inventory", label: "Inventory Stock", icon: PackageSearch },
-      { href: "/employee/pickup", label: "Payments & Pickups", icon: CheckCircle2 },
+      { href: "/shared/pickups", label: "Payments & Pickups", icon: CheckCircle2 },
       { href: "/employee/stock-check", label: "Stock Check", icon: ClipboardList },
-      { href: "/employee/monitoring", label: "Live Monitoring", icon: Activity },
-      { href: "/employee/notifications", label: "Notifications", icon: Bell },
+      { href: "/shared/monitoring", label: "Live Monitoring", icon: Activity },
+      { href: "/shared/notifications", label: "Notifications", icon: Bell },
     ],
   },
 ]

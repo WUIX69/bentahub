@@ -1,5 +1,10 @@
-import { StaffNotificationsFeed } from "@/features/staff-dashboard/components/staff-notifications-feed"
+"use client"
 
-export default function EmployeeNotificationsPage() {
-  return <StaffNotificationsFeed />
+import { useEffect } from "react"
+import { useRouter } from "next/navigation"
+
+export default function EmployeeNotificationsRedirect() {
+  const router = useRouter()
+  useEffect(() => { router.replace("/shared/notifications") }, [router])
+  return null
 }

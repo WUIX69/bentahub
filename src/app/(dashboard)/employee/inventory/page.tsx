@@ -1,9 +1,9 @@
 "use client"
 
 import { useState, useEffect, useMemo } from "react"
-import { InventoryUpdateTable } from "@/features/staff-dashboard/components/inventory-update-table"
-import { staffProducts } from "@/features/staff-dashboard/data/products"
-import { getStockStatus } from "@/features/staff-dashboard/data/products"
+import { InventoryUpdateTable } from "@/features/employee-dashboard/components/inventory-update-table"
+import { staffProducts } from "@/features/employee-dashboard/data/products"
+import { getStockStatus } from "@/features/employee-dashboard/data/products"
 import type { Product } from "@/types/cashier"
 
 const STORAGE_KEY = "bentahub-staff-products"
