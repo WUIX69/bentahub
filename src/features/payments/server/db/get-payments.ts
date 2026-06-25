@@ -30,6 +30,7 @@ export interface GetPaymentsResult {
 export async function getPayments(
   _params: GetPaymentsParams,
 ): Promise<GetPaymentsResult> {
+  void _params;
   return {
     payments: [],
     total: 0,

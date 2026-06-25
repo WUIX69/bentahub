@@ -29,6 +29,7 @@ export interface GetReservationsResult {
 export async function getReservations(
   _params: GetReservationsParams,
 ): Promise<GetReservationsResult> {
+  void _params;
   return {
     reservations: [],
     total: 0,

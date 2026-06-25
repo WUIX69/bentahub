@@ -19,8 +19,8 @@ import { useCart } from "@/hooks/useCart"
 export default function CartPage() {
   const router = useRouter()
   const { items, total, isLoading, error, fetchCart, updateCartItem, removeFromCart } = useCart()
-  const [selectedBranch, setSelectedBranch] = useState<string>("Main Branch")
-  const [isProcessing, setIsProcessing] = useState(false)
+  const [selectedBranch] = useState<string>("Main Branch")
+  const [isProcessing] = useState(false)
 
   // Fetch cart on mount
   useEffect(() => {

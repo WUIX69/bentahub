@@ -81,7 +81,7 @@ export function useNotifications() {
         notificationsStore.setLoading(false)
       }
     },
-    [user, token]
+    [user, token, notificationsStore]
   )
 
   /**
@@ -110,7 +110,7 @@ export function useNotifications() {
         throw error
       }
     },
-    [user, token]
+    [user, token, notificationsStore]
   )
 
   /**
@@ -126,7 +126,7 @@ export function useNotifications() {
       console.error("Failed to mark all notifications as read:", error)
       throw error
     }
-  }, [user])
+  }, [user, notificationsStore])
 
   return {
     // State

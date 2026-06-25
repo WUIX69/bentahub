@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 import { db } from "@/drizzle/db"
 import { products } from "@/drizzle/schema"
 import { generateId } from "@/lib/auth-utils"
@@ -8,7 +8,7 @@ import { generateId } from "@/lib/auth-utils"
  * Seeds the database with initial product data
  * WARNING: Only use this once, in development!
  */
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     const productData = [
       // Coffee Category
@@ -748,7 +748,7 @@ export async function POST(request: NextRequest) {
     ];
 
     // Insert all products
-    const results = await db.insert(products).values(
+    await db.insert(products).values(
       productData.map((p) => ({
         ...p,
         id: generateId(),

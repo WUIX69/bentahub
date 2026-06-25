@@ -26,9 +26,7 @@ export async function markNotificationsRead(
   }
 }
 
-export async function markAllNotificationsRead(
-  _unused: NotificationRole,
-): Promise<MarkReadResult> {
+export async function markAllNotificationsRead(): Promise<MarkReadResult> {
   // Stub: real implementation will UPDATE notifications SET is_read = true
   // WHERE user_unused = role
   //

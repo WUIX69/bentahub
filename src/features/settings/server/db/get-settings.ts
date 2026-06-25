@@ -18,5 +18,6 @@ export interface SettingsData {
 export async function getSettings(
   _params: GetSettingsParams,
 ): Promise<SettingsData | null> {
+  void _params;
   return null
 }

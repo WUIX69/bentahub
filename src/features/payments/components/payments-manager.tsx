@@ -314,6 +314,98 @@ export function PaymentsManager() {
           </div>
         </div>
       </div>
+
+      {/* Payment Details Modal */}
+      {selectedPayment && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
+          <div className="bg-card border border-border rounded-xl shadow-xl max-w-md w-full overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="p-4 border-b border-border flex justify-between items-center bg-muted/20">
+              <div className="flex items-center gap-2">
+                <div className={cn(
+                  "w-2 h-2 rounded-full",
+                  selectedPayment.status === "verified" ? "bg-emerald-500" : selectedPayment.status === "pending" ? "bg-amber-500 animate-pulse" : "bg-red-500"
+                )} />
+                <h3 className="font-black text-sm text-foreground uppercase tracking-wider">Payment Info</h3>
+              </div>
+              <button 
+                onClick={() => setSelectedPayment(null)}
+                className="text-muted-foreground hover:text-foreground text-xs font-bold px-2 py-1 rounded-md hover:bg-muted transition-colors"
+              >
+                Close
+              </button>
+            </div>
+            <div className="p-5 space-y-4">
+              <div className="grid grid-cols-2 gap-y-4 gap-x-2 text-xs">
+                <div>
+                  <span className="text-[10px] uppercase font-bold text-muted-foreground block mb-0.5 tracking-wider">Payment ID</span>
+                  <span className="font-mono font-bold text-foreground bg-muted/40 px-1.5 py-0.5 rounded">{selectedPayment.id}</span>
+                </div>
+                <div>
+                  <span className="text-[10px] uppercase font-bold text-muted-foreground block mb-0.5 tracking-wider">Transaction ID</span>
+                  <span className="font-mono text-foreground">{selectedPayment.transactionId}</span>
+                </div>
+                <div className="col-span-2 border-t border-border/40 my-1"></div>
+                <div>
+                  <span className="text-[10px] uppercase font-bold text-muted-foreground block mb-0.5 tracking-wider">Reference Number</span>
+                  <span className="font-mono font-bold text-foreground text-xs">{selectedPayment.referenceNumber}</span>
+                </div>
+                <div>
+                  <span className="text-[10px] uppercase font-bold text-muted-foreground block mb-0.5 tracking-wider">Date / Time</span>
+                  <span className="text-foreground font-medium">
+                    {new Date(selectedPayment.date).toLocaleDateString()} {new Date(selectedPayment.date).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                  </span>
+                </div>
+                <div>
+                  <span className="text-[10px] uppercase font-bold text-muted-foreground block mb-0.5 tracking-wider">Amount</span>
+                  <span className="font-mono font-black text-sm text-foreground">₱{selectedPayment.amount.toFixed(2)}</span>
+                </div>
+                <div>
+                  <span className="text-[10px] uppercase font-bold text-muted-foreground block mb-0.5 tracking-wider">Method</span>
+                  <span className={cn(
+                    "inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider border",
+                    selectedPayment.method === "gcash" ? "bg-emerald-500/10 text-emerald-600 border-emerald-200 dark:border-emerald-800" : "bg-amber-500/10 text-amber-600 border-amber-200 dark:border-amber-800"
+                  )}>
+                    {selectedPayment.method}
+                  </span>
+                </div>
+                <div className="col-span-2 border-t border-border/40 my-1"></div>
+                <div>
+                  <span className="text-[10px] uppercase font-bold text-muted-foreground block mb-0.5 tracking-wider">Customer</span>
+                  <span className="text-foreground font-bold">{selectedPayment.customerName || "—"}</span>
+                </div>
+                {selectedPayment.branchName && (
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-muted-foreground block mb-0.5 tracking-wider">Branch</span>
+                    <span className="text-foreground">{selectedPayment.branchName}</span>
+                  </div>
+                )}
+                {selectedPayment.verifiedBy && (
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-muted-foreground block mb-0.5 tracking-wider">Verified By</span>
+                    <span className="text-foreground">{selectedPayment.verifiedBy}</span>
+                  </div>
+                )}
+                {selectedPayment.verifiedAt && (
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-muted-foreground block mb-0.5 tracking-wider">Verified At</span>
+                    <span className="text-foreground">
+                      {new Date(selectedPayment.verifiedAt).toLocaleDateString()} {new Date(selectedPayment.verifiedAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </div>
+            <div className="bg-muted/10 p-4 border-t border-border flex justify-end">
+              <button 
+                onClick={() => setSelectedPayment(null)}
+                className="px-4 py-1.5 bg-primary text-primary-foreground font-bold text-xs rounded-lg hover:opacity-90 transition-all shadow-sm"
+              >
+                Okay
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

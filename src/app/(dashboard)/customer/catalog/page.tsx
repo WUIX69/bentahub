@@ -12,86 +12,85 @@ import type { ProductCardProps } from "@/features/customer-dashboard/components/
 import Link from "next/link"
 import { useProducts } from "@/hooks/useProducts"
 import { useCart } from "@/hooks/useCart"
+// Demo products fallback
+const demoProducts: ProductCardProps[] = [
+  {
+    id: "1",
+    name: "Kopiko Blanca TWIN",
+    category: "Coffee",
+    price: "₱15.00",
+    image: "/images/dashboard/kopiko-blanca-twin-v2.png",
+    stockStatus: "in-stock",
+    weight: "52g",
+  },
+  {
+    id: "2",
+    name: "Ajinamoto Seasoning",
+    category: "Condiments",
+    price: "₱5.00",
+    image: "/images/dashboard/ajinomoto-seasoning.png",
+    stockStatus: "in-stock",
+    weight: "10g",
+  },
+  {
+    id: "3",
+    name: "Graham Crushed",
+    category: "Baking Ingredients",
+    price: "₱50.00",
+    image: "/images/dashboard/graham-crushed-v2.png",
+    stockStatus: "low-stock",
+    weight: "200g",
+  },
+  {
+    id: "4",
+    name: "Ligo Sardines Red",
+    category: "Canned Goods",
+    price: "₱28.00",
+    image: "/images/dashboard/ligo-sardines-red.png",
+    stockStatus: "out-of-stock",
+    weight: "155g",
+  },
+  {
+    id: "5",
+    name: "Tomato Sauce",
+    category: "Sauces",
+    price: "₱22.00",
+    image: "/images/dashboard/tomato-sauce.png",
+    stockStatus: "in-stock",
+    weight: "250g",
+  },
+  {
+    id: "6",
+    name: "Maxglow Dishwashing",
+    category: "Household Supplies",
+    price: "₱20.00",
+    image: "/images/dashboard/maxglow-dishwashing.png",
+    stockStatus: "in-stock",
+    weight: "500ml",
+  },
+  {
+    id: "7",
+    name: "Datu Toyo",
+    category: "Condiments",
+    price: "₱12.00",
+    image: "/images/dashboard/datu-toyo.png",
+    stockStatus: "in-stock",
+    weight: "340ml",
+  },
+  {
+    id: "8",
+    name: "All-Purpose Flour",
+    category: "Baking Ingredients",
+    price: "₱35.00",
+    image: "/images/dashboard/all-purpose-flour-v2.png",
+    stockStatus: "in-stock",
+    weight: "1kg",
+  },
+]
 
 export default function CatalogPage() {
   const { products: fetchedProducts, fetchProducts, isLoading, error } = useProducts()
   const { itemCount } = useCart()
-
-  // Demo products fallback
-  const demoProducts: ProductCardProps[] = [
-    {
-      id: "1",
-      name: "Kopiko Blanca TWIN",
-      category: "Coffee",
-      price: "₱15.00",
-      image: "/images/dashboard/kopiko-blanca-twin-v2.png",
-      stockStatus: "in-stock",
-      weight: "52g",
-    },
-    {
-      id: "2",
-      name: "Ajinamoto Seasoning",
-      category: "Condiments",
-      price: "₱5.00",
-      image: "/images/dashboard/ajinomoto-seasoning.png",
-      stockStatus: "in-stock",
-      weight: "10g",
-    },
-    {
-      id: "3",
-      name: "Graham Crushed",
-      category: "Baking Ingredients",
-      price: "₱50.00",
-      image: "/images/dashboard/graham-crushed-v2.png",
-      stockStatus: "low-stock",
-      weight: "200g",
-    },
-    {
-      id: "4",
-      name: "Ligo Sardines Red",
-      category: "Canned Goods",
-      price: "₱28.00",
-      image: "/images/dashboard/ligo-sardines-red.png",
-      stockStatus: "out-of-stock",
-      weight: "155g",
-    },
-    {
-      id: "5",
-      name: "Tomato Sauce",
-      category: "Sauces",
-      price: "₱22.00",
-      image: "/images/dashboard/tomato-sauce.png",
-      stockStatus: "in-stock",
-      weight: "250g",
-    },
-    {
-      id: "6",
-      name: "Maxglow Dishwashing",
-      category: "Household Supplies",
-      price: "₱20.00",
-      image: "/images/dashboard/maxglow-dishwashing.png",
-      stockStatus: "in-stock",
-      weight: "500ml",
-    },
-    {
-      id: "7",
-      name: "Datu Toyo",
-      category: "Condiments",
-      price: "₱12.00",
-      image: "/images/dashboard/datu-toyo.png",
-      stockStatus: "in-stock",
-      weight: "340ml",
-    },
-    {
-      id: "8",
-      name: "All-Purpose Flour",
-      category: "Baking Ingredients",
-      price: "₱35.00",
-      image: "/images/dashboard/all-purpose-flour-v2.png",
-      stockStatus: "in-stock",
-      weight: "1kg",
-    },
-  ]
 
   // Fetch products on component mount
   useEffect(() => {
