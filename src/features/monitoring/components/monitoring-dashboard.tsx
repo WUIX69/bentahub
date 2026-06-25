@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, Fragment } from "react"
 import {
   Search,
   CreditCard,
@@ -337,9 +337,8 @@ export function MonitoringDashboard() {
                   const isVoided = t.status === "Voided"
 
                   return (
-                    <>
+                    <Fragment key={t.id}>
                       <tr
-                        key={t.id}
                         className="hover:bg-muted/20 transition-colors cursor-pointer"
                         onClick={() => setExpandedTxn(isExpanded ? null : t.id)}
                       >
@@ -377,7 +376,7 @@ export function MonitoringDashboard() {
                           </td>
                         </tr>
                       )}
-                    </>
+                    </Fragment>
                   )
                 })
               )}
