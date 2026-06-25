@@ -1,4 +1,3 @@
-import { sql } from "drizzle-orm";
 import { Pool } from "pg";
 
 const pool = new Pool({

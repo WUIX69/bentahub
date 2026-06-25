@@ -1,6 +1,6 @@
 # BentaHub — Centralized Inventory Management and POS System
 
-Welcome to **BentaHub**, a unified digital platform built for the Lourdes Sari-Sari Store and its branches. This application replaces manual, paper-based business operations with a modern centralized system that tracks transactions, manages inventory, triggers low-stock alerts, and handles customer-facing product reservations in real time.
+Welcome to **BentaHub**, a unified digital platform built for the Lourdes Sari-Sari Store chain and its branches. This application replaces manual, paper-based business operations with a modern centralized system that tracks transactions, manages inventory, triggers low-stock alerts, and handles customer-facing product reservations in real time.
 
 ---
 
@@ -9,7 +9,7 @@ Welcome to **BentaHub**, a unified digital platform built for the Lourdes Sari-S
 | Category | Technology |
 |---|---|
 | **Framework** | Next.js 16 (App Router, Server Actions) |
-| **Styling & UI** | Tailwind CSS, Shadcn UI |
+| **Styling & UI** | Tailwind CSS v4, Radix UI (shadcn) |
 | **Database** | PostgreSQL |
 | **ORM** | Drizzle ORM |
 | **Language** | TypeScript |
@@ -23,13 +23,14 @@ Welcome to **BentaHub**, a unified digital platform built for the Lourdes Sari-S
 To run the application locally, you will need a running PostgreSQL database.
 
 ### 1. Prerequisites
-- Ensure you have **Node.js 18+** installed.
-- Ensure you have **PostgreSQL 12+** installed and running on your machine.
+- Ensure you have **Node.js 20+** installed.
+- Ensure you have **pnpm** installed.
+- Ensure you have a running PostgreSQL database (either local or via Docker).
 
 ### 2. Configure Environment Variables
-Copy `.env.example` to `.env` (or `.env.local`) and configure your database connection credentials and secrets:
+Copy `.env.example` to `.env.local` (or `.env`) and configure your database connection credentials and secrets:
 ```bash
-cp .env.example .env
+cp .env.example .env.local
 ```
 
 ### 3. Install Dependencies
@@ -52,15 +53,15 @@ powershell -ExecutionPolicy Bypass -File scripts/setup-db.ps1
 #### Option B: Manual Setup
 ```bash
 # Push the schema definitions to PostgreSQL
-pnpm db:push
+pnpm run db:push
 
-# Seed the database with default administrative users, branches, and mock products
-pnpm db:seed
+# Seed the database with test accounts, branches, products, and transaction history
+pnpm run db:seed
 ```
 
 ### 5. Run the Development Server
 ```bash
-pnpm dev
+pnpm run dev
 ```
 Once started, the application will be available at [http://localhost:3000](http://localhost:3000).
 
@@ -70,22 +71,27 @@ Once started, the application will be available at [http://localhost:3000](http:
 
 You can also spin up the application and database instantly using Docker:
 
+### Docker Helper Scripts
+For convenience, helper scripts are defined in `package.json`:
+- **Start Services**: `pnpm run docker:up` (runs `docker compose up -d`)
+- **Stop Services**: `pnpm run docker:down` (runs `docker compose down`)
+- **Follow Logs**: `pnpm run docker:logs` (runs `docker compose logs -f`)
+- **Reset Database / Volumes**: `pnpm run docker:reset` (runs `docker compose down -v`)
+
+### Direct Docker Compose Commands
+Alternatively, you can run direct compose commands:
 1. **Build and Run Containers**:
    ```bash
-   docker-compose up -d --build
+   docker compose up -d --build
    ```
 2. The Next.js application will be exposed at [http://localhost:3000](http://localhost:3000).
 3. The database container is pre-configured with:
    - `POSTGRES_USER=postgres`
    - `POSTGRES_PASSWORD=postgres`
    - `POSTGRES_DB=bentahub`
-4. **Teardown & Clean Volumes**:
-   ```bash
-   docker-compose down -v
-   ```
 
 > [!WARNING]
-> Running the seed script will clear all existing tables (branches, products, inventory, transactions) before inserting fresh mock data. Only run this on a fresh database.
+> Running the seed script (`pnpm run db:seed` or `pnpm run docker:reset`) will clear all existing tables (users, branches, products, inventory, transactions) before inserting fresh mock data.
 
 ---
 

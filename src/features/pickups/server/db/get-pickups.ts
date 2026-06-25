@@ -29,6 +29,7 @@ export interface GetPickupsResult {
 export async function getPickups(
   _params: GetPickupsParams,
 ): Promise<GetPickupsResult> {
+  void _params;
   return {
     pickups: [],
     total: 0,

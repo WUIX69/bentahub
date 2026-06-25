@@ -7,34 +7,34 @@ import { cn } from "@/lib/utils"
 import { useOrders } from "@/hooks/useOrders"
 import { Loader2 } from "lucide-react"
 
+// Demo orders fallback
+const demoOrders = [
+  {
+    id: "#BH-0001",
+    date: "May 15, 2026",
+    total: "₱1,250.00",
+    status: "Ready for Pickup",
+    statusVariant: "primary",
+  },
+  {
+    id: "#BH-0002",
+    date: "May 12, 2026",
+    total: "₱450.50",
+    status: "Completed",
+    statusVariant: "secondary",
+  },
+  {
+    id: "#BH-0003",
+    date: "May 10, 2026",
+    total: "₱890.00",
+    status: "Pending",
+    statusVariant: "warning",
+  },
+]
+
 export function RecentOrdersTable() {
   const router = useRouter()
   const { orders, fetchOrders, isLoading } = useOrders()
-
-  // Demo orders fallback
-  const demoOrders = [
-    {
-      id: "#BH-0001",
-      date: "May 15, 2026",
-      total: "₱1,250.00",
-      status: "Ready for Pickup",
-      statusVariant: "primary",
-    },
-    {
-      id: "#BH-0002",
-      date: "May 12, 2026",
-      total: "₱450.50",
-      status: "Completed",
-      statusVariant: "secondary",
-    },
-    {
-      id: "#BH-0003",
-      date: "May 10, 2026",
-      total: "₱890.00",
-      status: "Pending",
-      statusVariant: "warning",
-    },
-  ]
 
   // Fetch orders on component mount
   useEffect(() => {

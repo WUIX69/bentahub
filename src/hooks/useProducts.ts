@@ -73,7 +73,7 @@ export function useProducts() {
         productsStore.setLoading(false)
       }
     },
-    []
+    [productsStore]
   )
 
   /**
@@ -108,7 +108,7 @@ export function useProducts() {
         productsStore.setLoading(false)
       }
     },
-    []
+    [productsStore]
   )
 
   /**
@@ -118,7 +118,7 @@ export function useProducts() {
     (id: string) => {
       return productsStore.getProductById(id)
     },
-    []
+    [productsStore]
   )
 
   return {

@@ -89,7 +89,7 @@ export function useOrders() {
     } finally {
       ordersStore.setLoading(false)
     }
-  }, [user, token])
+  }, [user, token, ordersStore])
 
   /**
    * Create a new order from cart
@@ -180,7 +180,7 @@ export function useOrders() {
 
         if (!response.ok) throw new Error("Failed to cancel order")
 
-        const data = await response.json()
+        await response.json()
         ordersStore.updateOrder(orderId, { status: "cancelled" })
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
