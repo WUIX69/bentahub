@@ -4,34 +4,20 @@ import { useAuth } from "./useAuth"
 import { getNotifications } from "@/features/notifications/server/db/get-notifications"
 import { markNotificationRead, markAllNotificationsRead } from "@/features/notifications/server/actions/mark-read"
 
-function decodeUserId(token: string): string | null {
-  try {
-    const payload = JSON.parse(atob(token.split(".")[1]))
-    return payload.userId || null
-  } catch {
-    return null
-  }
-}
-
 export function useNotifications() {
-  const { user, token } = useAuth()
+  const { user } = useAuth()
   const notificationsStore = useNotificationsStore()
 
   const fetchNotifications = useCallback(
     async (unreadOnly: boolean = false) => {
       if (!user) return
-      if (!token) return
       if (notificationsStore.isLoading) return
 
       try {
         notificationsStore.setLoading(true)
         notificationsStore.setError(null)
 
-        const userId = decodeUserId(token)
-        if (!userId) throw new Error("Invalid token")
-
         const result = await getNotifications({
-          userId,
           limit: 50,
           offset: 0,
           unreadOnly,
@@ -62,21 +48,16 @@ export function useNotifications() {
         notificationsStore.setLoading(false)
       }
     },
-    [user, token, notificationsStore]
+    [user, notificationsStore]
   )
 
   const markAsRead = useCallback(
     async (notificationId: string) => {
       if (!user) return
-      if (!token) return
 
       try {
-        const userId = decodeUserId(token)
-        if (!userId) throw new Error("Invalid token")
-
         const result = await markNotificationRead({
           notificationId,
-          userId,
           isRead: true,
         })
 
@@ -88,24 +69,20 @@ export function useNotifications() {
         throw error
       }
     },
-    [user, token, notificationsStore]
+    [user, notificationsStore]
   )
 
   const markAllAsRead = useCallback(async () => {
     if (!user) return
-    if (!token) return
 
     try {
-      const userId = decodeUserId(token)
-      if (!userId) throw new Error("Invalid token")
-
-      await markAllNotificationsRead(userId)
+      await markAllNotificationsRead()
       notificationsStore.markAllAsRead()
     } catch (error) {
       console.error("Failed to mark all notifications as read:", error)
       throw error
     }
-  }, [user, token, notificationsStore])
+  }, [user, notificationsStore])
 
   return {
     notifications: notificationsStore.notifications,

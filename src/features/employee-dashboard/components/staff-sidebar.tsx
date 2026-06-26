@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { LayoutGrid, Activity, Bell, PackageSearch, History, CheckCircle2, User, LogOut, X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useAuth } from "@/hooks/useAuth"
 
 const NAV_ITEMS = [
   {
@@ -37,9 +38,11 @@ export function StaffSidebar({ isOpen, onClose }: StaffSidebarProps) {
     onClose()
   }
 
+  const { logout } = useAuth()
+
   const handleLogout = async () => {
     try {
-      await fetch("/api/auth/logout", { method: "POST" })
+      await logout()
     } catch {
       // proceed
     }

@@ -3,12 +3,18 @@
 import { db } from "@/drizzle/db"
 import { cartItems } from "@/drizzle/schema"
 import { eq, and } from "drizzle-orm"
+import { getAuthenticatedUser } from "@/lib/auth-utils"
 
 export async function updateCartItem(
   itemId: string,
-  userId: string,
   quantity: number
 ) {
+  const user = await getAuthenticatedUser()
+  if (!user) {
+    return { success: false, message: "Unauthorized" }
+  }
+  const userId = user.userId
+
   if (quantity === undefined || quantity < 1) {
     return { success: false, message: "Invalid quantity" }
   }

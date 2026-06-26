@@ -3,8 +3,15 @@
 import { db } from "@/drizzle/db"
 import { cartItems } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
+import { getAuthenticatedUser } from "@/lib/auth-utils"
 
-export async function getCart(userId: string) {
+export async function getCart() {
+  const user = await getAuthenticatedUser()
+  if (!user) {
+    throw new Error("Unauthorized")
+  }
+  const userId = user.userId
+
   const items = await db
     .select()
     .from(cartItems)

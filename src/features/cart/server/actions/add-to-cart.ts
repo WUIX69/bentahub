@@ -3,16 +3,19 @@
 import { db } from "@/drizzle/db"
 import { cartItems, products } from "@/drizzle/schema"
 import { eq, and } from "drizzle-orm"
-import { generateId } from "@/lib/auth-utils"
+import { getAuthenticatedUser, generateId } from "@/lib/auth-utils"
 
-export async function addToCart(
-  userId: string,
-  {
-    productId,
-    quantity,
-    branch,
-  }: { productId: string; quantity: number; branch?: string }
-) {
+export async function addToCart({
+  productId,
+  quantity,
+  branch,
+}: { productId: string; quantity: number; branch?: string }) {
+  const user = await getAuthenticatedUser()
+  if (!user) {
+    return { success: false, message: "Unauthorized" }
+  }
+  const userId = user.userId
+
   if (!productId || !quantity || quantity < 1) {
     return { success: false, message: "Invalid product ID or quantity" }
   }

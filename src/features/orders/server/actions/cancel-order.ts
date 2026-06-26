@@ -3,8 +3,14 @@
 import { db } from "@/drizzle/db"
 import { orders } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
+import { getAuthenticatedUser } from "@/lib/auth-utils"
 
-export async function cancelOrder(orderId: string, userId: string) {
+export async function cancelOrder(orderId: string) {
+  const user = await getAuthenticatedUser()
+  if (!user) {
+    return { success: false, message: "Unauthorized" }
+  }
+  const userId = user.userId
   const [order] = await db
     .select()
     .from(orders)

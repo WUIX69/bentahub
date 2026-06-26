@@ -5,31 +5,19 @@ import { getOrders } from "@/features/orders/server/db/get-orders"
 import { createOrder as createOrderAction } from "@/features/orders/server/actions/create-order"
 import { cancelOrder as cancelOrderAction } from "@/features/orders/server/actions/cancel-order"
 
-function decodeUserId(token: string): string | null {
-  try {
-    const payload = JSON.parse(atob(token.split(".")[1]))
-    return payload.userId || null
-  } catch {
-    return null
-  }
-}
-
 export function useOrders() {
-  const { user, token } = useAuth()
+  const { user } = useAuth()
   const ordersStore = useOrdersStore()
 
   const fetchOrders = useCallback(async () => {
-    if (!user || !token) return
+    if (!user) return
     if (ordersStore.isLoading) return
 
     try {
       ordersStore.setLoading(true)
       ordersStore.setError(null)
 
-      const userId = decodeUserId(token)
-      if (!userId) throw new Error("Invalid token")
-
-      const data = await getOrders(userId)
+      const data = await getOrders()
       const orders: Order[] = (data ?? []).map((o) => ({
         id: o.id,
         userId: o.userId,
@@ -55,21 +43,17 @@ export function useOrders() {
     } finally {
       ordersStore.setLoading(false)
     }
-  }, [user, token, ordersStore])
+  }, [user, ordersStore])
 
   const createOrder = useCallback(
     async (paymentMethod: "cash" | "gcash", branch: string, notes?: string) => {
       if (!user) throw new Error("User not authenticated")
-      if (!token) throw new Error("No authentication token found")
 
       try {
         ordersStore.setLoading(true)
         ordersStore.setError(null)
 
-        const userId = decodeUserId(token)
-        if (!userId) throw new Error("Invalid token")
-
-        const result = await createOrderAction(userId, { paymentMethod, branch, notes })
+        const result = await createOrderAction({ paymentMethod, branch, notes })
 
         if (!result.success || !result.data) {
           throw new Error(result.message || "Failed to create order")
@@ -110,22 +94,18 @@ export function useOrders() {
         ordersStore.setLoading(false)
       }
     },
-    [user, token, ordersStore]
+    [user, ordersStore]
   )
 
   const cancelOrder = useCallback(
     async (orderId: string) => {
       if (!user) throw new Error("User not authenticated")
-      if (!token) throw new Error("No authentication token found")
 
       try {
         ordersStore.setLoading(true)
         ordersStore.setError(null)
 
-        const userId = decodeUserId(token)
-        if (!userId) throw new Error("Invalid token")
-
-        const result = await cancelOrderAction(orderId, userId)
+        const result = await cancelOrderAction(orderId)
         if (!result.success) throw new Error("Failed to cancel order")
 
         ordersStore.updateOrder(orderId, { status: "cancelled" })
@@ -138,7 +118,7 @@ export function useOrders() {
         ordersStore.setLoading(false)
       }
     },
-    [user, token, ordersStore]
+    [user, ordersStore]
   )
 
   return {

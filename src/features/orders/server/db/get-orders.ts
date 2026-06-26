@@ -4,7 +4,15 @@ import { db } from "@/drizzle/db"
 import { orders } from "@/drizzle/schema"
 import { eq, desc } from "drizzle-orm"
 
-export async function getOrders(userId: string) {
+import { getAuthenticatedUser } from "@/lib/auth-utils"
+
+export async function getOrders() {
+  const user = await getAuthenticatedUser()
+  if (!user) {
+    throw new Error("Unauthorized")
+  }
+  const userId = user.userId
+
   return await db
     .select()
     .from(orders)
@@ -12,7 +20,13 @@ export async function getOrders(userId: string) {
     .orderBy(desc(orders.createdAt))
 }
 
-export async function getOrderById(orderId: string, userId: string) {
+export async function getOrderById(orderId: string) {
+  const user = await getAuthenticatedUser()
+  if (!user) {
+    return null
+  }
+  const userId = user.userId
+
   const [order] = await db
     .select()
     .from(orders)

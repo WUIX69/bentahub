@@ -3,16 +3,23 @@
 import { db } from "@/drizzle/db"
 import { cartItems, orders, orderItems } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
-import { generateId } from "@/lib/auth-utils"
+import { getAuthenticatedUser, generateId } from "@/lib/auth-utils"
 
-export async function createOrder(
-  userId: string,
-  {
-    paymentMethod,
-    branch,
-    notes,
-  }: { paymentMethod: string; branch: string; notes?: string }
-) {
+export async function createOrder({
+  paymentMethod,
+  branch,
+  notes,
+}: {
+  paymentMethod: string
+  branch: string
+  notes?: string
+}) {
+  const user = await getAuthenticatedUser()
+  if (!user) {
+    return { success: false, message: "Unauthorized" }
+  }
+  const userId = user.userId
+
   if (!paymentMethod || !branch) {
     return { success: false, message: "Payment method and branch are required" }
   }

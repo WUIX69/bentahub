@@ -6,31 +6,19 @@ import { addToCart as addToCartAction } from "@/features/cart/server/actions/add
 import { updateCartItem as updateCartItemAction } from "@/features/cart/server/actions/update-cart-item"
 import { removeCartItem as removeCartItemAction } from "@/features/cart/server/actions/remove-cart-item"
 
-function decodeUserId(token: string): string | null {
-  try {
-    const payload = JSON.parse(atob(token.split(".")[1]))
-    return payload.userId || null
-  } catch {
-    return null
-  }
-}
-
 export function useCart() {
-  const { user, token } = useAuth()
+  const { user } = useAuth()
   const cartStore = useCartStore()
 
   const fetchCart = useCallback(async () => {
-    if (!user || !token) return
+    if (!user) return
     if (cartStore.isLoading) return
 
     try {
       cartStore.setLoading(true)
       cartStore.setError(null)
 
-      const userId = decodeUserId(token)
-      if (!userId) throw new Error("Invalid token")
-
-      const data = await getCart(userId)
+      const data = await getCart()
       const items: CartItem[] = data.items.map((item) => ({
         id: item.id,
         productId: item.productId,
@@ -53,20 +41,17 @@ export function useCart() {
     } finally {
       cartStore.setLoading(false)
     }
-  }, [user, token, cartStore])
+  }, [user, cartStore])
 
   const addToCart = useCallback(
     async (productId: string, quantity: number, branch: string) => {
-      if (!user || !token) return
+      if (!user) return
 
       try {
         cartStore.setLoading(true)
         cartStore.setError(null)
 
-        const userId = decodeUserId(token)
-        if (!userId) throw new Error("Invalid token")
-
-        const result = await addToCartAction(userId, { productId, quantity, branch })
+        const result = await addToCartAction({ productId, quantity, branch })
 
         if (!result.success || !result.data) {
           throw new Error(result.message || "Failed to add item to cart")
@@ -98,22 +83,21 @@ export function useCart() {
         cartStore.setLoading(false)
       }
     },
-    [user, token, cartStore]
+    [user, cartStore]
   )
 
   const updateCartItem = useCallback(
     async (itemId: string, quantity: number) => {
-      if (!user || !token) return
+      if (!user) return
 
       try {
         cartStore.setLoading(true)
         cartStore.setError(null)
 
-        const userId = decodeUserId(token)
-        if (!userId) throw new Error("Invalid token")
-
-        const result = await updateCartItemAction(itemId, userId, quantity)
-        if (!result.success || !result.data) throw new Error("Failed to update cart item")
+        const result = await updateCartItemAction(itemId, quantity)
+        if (!result.success || !result.data) {
+          throw new Error(result.message || "Failed to update cart item")
+        }
 
         cartStore.updateItem(itemId, {
           quantity: result.data.quantity,
@@ -128,22 +112,21 @@ export function useCart() {
         cartStore.setLoading(false)
       }
     },
-    [user, token, cartStore]
+    [user, cartStore]
   )
 
   const removeFromCart = useCallback(
     async (itemId: string) => {
-      if (!user || !token) return
+      if (!user) return
 
       try {
         cartStore.setLoading(true)
         cartStore.setError(null)
 
-        const userId = decodeUserId(token)
-        if (!userId) throw new Error("Invalid token")
-
-        const result = await removeCartItemAction(itemId, userId)
-        if (!result.success) throw new Error("Failed to remove item from cart")
+        const result = await removeCartItemAction(itemId)
+        if (!result.success) {
+          throw new Error(result.message || "Failed to remove item from cart")
+        }
 
         cartStore.removeItem(itemId)
       } catch (error) {
@@ -155,7 +138,7 @@ export function useCart() {
         cartStore.setLoading(false)
       }
     },
-    [user, token, cartStore]
+    [user, cartStore]
   )
 
   return {

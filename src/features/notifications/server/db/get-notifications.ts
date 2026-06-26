@@ -3,9 +3,9 @@
 import { db } from "@/drizzle/db"
 import { notifications } from "@/drizzle/schema"
 import { eq, and, desc } from "drizzle-orm"
+import { getAuthenticatedUser } from "@/lib/auth-utils"
 
 export interface GetNotificationsParams {
-  userId: string
   limit?: number
   offset?: number
   unreadOnly?: boolean
@@ -17,9 +17,14 @@ export interface GetNotificationsResult {
 }
 
 export async function getNotifications(
-  params: GetNotificationsParams,
+  params: GetNotificationsParams = {},
 ): Promise<GetNotificationsResult> {
-  const { userId, limit = 20, offset = 0, unreadOnly = false } = params
+  const user = await getAuthenticatedUser()
+  if (!user) {
+    throw new Error("Unauthorized")
+  }
+  const userId = user.userId
+  const { limit = 20, offset = 0, unreadOnly = false } = params
 
   const conditions = [eq(notifications.userId, userId)]
   if (unreadOnly) {
