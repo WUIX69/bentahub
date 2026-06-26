@@ -61,7 +61,7 @@ Feature-Sliced Design. Strict isolation rules:
 - `src/app/` — Next.js App Router pages, layouts, API routes.
 - For feature-specific server actions, use `src/features/[name]/actions/` (not separate API routes unless third-party needed).
 - **No import-boundary enforcement** in ESLint config (only `eslint-config-next/core-web-vitals` + typescript).
-- Actual shared dirs are sparser than docs suggest: `src/data/`, `src/contexts/`, `src/server/` do not exist.
+- Some shared dirs are empty or sparser than docs suggest: `src/data/` and `src/contexts/` exist but are empty; `src/server/` and `src/utils/` don't exist.
 - `docs/FEATURE-SLICED-DESIGN.md` describes aspirational patterns (dbCache, t3-env, subscriptions, permissions.ts) that do **not** exist in code.
 - `docs/BENTAHUB.md` is stale — references `cashier`/`staff` roles and old `src/servers/` paths.
 
