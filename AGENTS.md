@@ -1,13 +1,16 @@
 ## graphify
 
-Knowledge graph at `graphify-out/` (god nodes, community structure, cross-file relationships). Usage rules:
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
 
-- For architecture questions: `graphify query "..."`, `graphify path "A" "B"`, or `graphify explain "concept"` — returns scoped subgraph, usually smaller than raw grep or GRAPH_REPORT.md
-- Dirty graphify-out/ is expected after hooks; skip only if task is about stale graph output or user says to
-- If `graphify-out/wiki/index.md` exists, prefer it over raw source browsing
-- Read `graphify-out/GRAPH_REPORT.md` only when query/path/explain don't surface enough context
-- After modifying code: `graphify update .` (AST-only, no API cost)
-- `/graphify` command → invoke the `graphify` skill
+When the user types `/graphify`, invoke the `skill` tool with `skill: "graphify"` before doing anything else.
+
+Rules:
+
+- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- Dirty graphify-out/ files are expected after hooks or incremental updates; dirty graph files are not a reason to skip graphify. Only skip graphify if the task is about stale or incorrect graph output, or the user explicitly says not to use it.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
 
 ## Project overview
 
@@ -59,7 +62,7 @@ Feature-Sliced Design. Strict isolation rules:
 - `src/app/` — Next.js App Router pages, layouts, API routes.
 - For feature-specific server actions, use `src/features/[name]/actions/` (not separate API routes unless third-party needed).
 - **No import-boundary enforcement** in ESLint config (only `eslint-config-next/core-web-vitals` + typescript).
-- Actual shared dirs are sparser than docs suggest: `src/data/`, `src/contexts/`, `src/server/` do not exist.
+- Some shared dirs are empty or sparser than docs suggest: `src/data/` and `src/contexts/` exist but are empty; `src/server/` and `src/utils/` don't exist.
 - `docs/FEATURE-SLICED-DESIGN.md` describes aspirational patterns (dbCache, t3-env, subscriptions, permissions.ts) that do **not** exist in code.
 - `docs/BENTAHUB.md` is stale — references `cashier`/`staff` roles and old `src/servers/` paths.
 
