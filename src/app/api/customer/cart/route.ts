@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
-import { db } from "@/drizzle/db"
-import { cartItems, products } from "@/drizzle/schema"
-import { eq, and } from "drizzle-orm"
-import { generateId, extractToken, verifyToken } from "@/lib/auth-utils"
+import { extractToken, verifyToken } from "@/lib/auth-utils"
+import { getCart } from "@/features/cart/server/db/get-cart"
+import { addToCart } from "@/features/cart/server/actions/add-to-cart"
 
 async function getUserIdFromToken(request: NextRequest): Promise<string | null> {
   const token = extractToken(request)
@@ -19,10 +18,6 @@ async function getUserIdFromToken(request: NextRequest): Promise<string | null> 
   return decoded.userId
 }
 
-/**
- * GET /api/customer/cart
- * Retrieve all cart items for the authenticated user
- */
 export async function GET(request: NextRequest) {
   try {
     const userId = await getUserIdFromToken(request)
@@ -34,22 +29,12 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const items = await db
-      .select()
-      .from(cartItems)
-      .where(eq(cartItems.userId, userId))
-
-    const total = items.reduce((sum, item) => sum + Number(item.subtotal), 0)
-    const itemCount = items.reduce((sum, item) => sum + item.quantity, 0)
+    const data = await getCart(userId)
 
     return NextResponse.json(
       {
         success: true,
-        data: {
-          items,
-          itemCount,
-          total: Number(total.toFixed(2)),
-        },
+        data,
       },
       { status: 200 }
     )
@@ -62,11 +47,6 @@ export async function GET(request: NextRequest) {
   }
 }
 
-/**
- * POST /api/customer/cart
- * Add a product to the cart
- * Body: { productId: string, quantity: number, branch: string }
- */
 export async function POST(request: NextRequest) {
   try {
     const userId = await getUserIdFromToken(request)
@@ -81,92 +61,14 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { productId, quantity, branch } = body
 
-    if (!productId || !quantity || quantity < 1) {
-      return NextResponse.json(
-        { success: false, message: "Invalid product ID or quantity" },
-        { status: 400 }
-      )
+    const result = await addToCart(userId, { productId, quantity, branch })
+
+    if (!result.success) {
+      const status = result.message === "Product not found" ? 404 : 400
+      return NextResponse.json(result, { status })
     }
 
-    // Fetch product details
-    const product = await db
-      .select()
-      .from(products)
-      .where(eq(products.id, productId))
-      .limit(1)
-
-    if (!product.length) {
-      return NextResponse.json(
-        { success: false, message: "Product not found" },
-        { status: 404 }
-      )
-    }
-
-    const productData = product[0]
-
-    // Check if item already exists in cart
-    const existingItem = await db
-      .select()
-      .from(cartItems)
-      .where(
-        and(
-          eq(cartItems.userId, userId),
-          eq(cartItems.productId, productId)
-        )
-      )
-      .limit(1)
-
-    const subtotal = (Number(productData.price) * quantity).toFixed(2)
-
-    if (existingItem.length > 0) {
-      // Update quantity
-      const existingCartItem = existingItem[0]
-      const newQuantity = existingCartItem.quantity + quantity
-      const newSubtotal = (Number(productData.price) * newQuantity).toFixed(2)
-
-      const updated = await db
-        .update(cartItems)
-        .set({
-          quantity: newQuantity,
-          subtotal: newSubtotal,
-        })
-        .where(eq(cartItems.id, existingCartItem.id))
-        .returning()
-
-      return NextResponse.json(
-        {
-          success: true,
-          message: "Cart item updated",
-          data: updated[0],
-        },
-        { status: 200 }
-      )
-    } else {
-      // Add new item to cart
-      const newCartItem = {
-        id: generateId(),
-        userId,
-        productId,
-        productName: productData.name,
-        price: productData.price.toString(),
-        quantity,
-        subtotal,
-        image: productData.image || "",
-        category: productData.category,
-        branch: branch || productData.branch,
-      }
-
-      const created = await db.insert(cartItems).values(newCartItem).returning()
-
-      return NextResponse.json(
-        {
-          success: true,
-          message: "Item added to cart",
-          data: created[0],
-        },
-        { status: 201 }
-      )
-    }
+    return NextResponse.json(result, { status: result.message === "Item added to cart" ? 201 : 200 })
   } catch (error) {
     console.error("Error adding to cart:", error)
     return NextResponse.json(

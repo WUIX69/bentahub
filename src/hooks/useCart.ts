@@ -1,21 +1,24 @@
 import { useCallback } from "react"
 import { useCartStore, type CartItem } from "@/stores/cartStore"
 import { useAuth } from "./useAuth"
+import { getCart } from "@/features/cart/server/db/get-cart"
+import { addToCart as addToCartAction } from "@/features/cart/server/actions/add-to-cart"
+import { updateCartItem as updateCartItemAction } from "@/features/cart/server/actions/update-cart-item"
+import { removeCartItem as removeCartItemAction } from "@/features/cart/server/actions/remove-cart-item"
 
-function authHeaders(token: string): HeadersInit {
-  return {
-    Authorization: `Bearer ${token}`,
-    "Content-Type": "application/json",
+function decodeUserId(token: string): string | null {
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]))
+    return payload.userId || null
+  } catch {
+    return null
   }
-  }
+}
 
 export function useCart() {
   const { user, token } = useAuth()
   const cartStore = useCartStore()
 
-  /**
-   * Fetch cart from backend
-   */
   const fetchCart = useCallback(async () => {
     if (!user || !token) return
     if (cartStore.isLoading) return
@@ -24,36 +27,19 @@ export function useCart() {
       cartStore.setLoading(true)
       cartStore.setError(null)
 
-      const response = await fetch("/api/customer/cart", {
-        method: "GET",
-        headers: authHeaders(token),
-      })
-      if (!response.ok) throw new Error("Failed to fetch cart")
+      const userId = decodeUserId(token)
+      if (!userId) throw new Error("Invalid token")
 
-      interface ApiCartItem {
-        id: string
-        productId: string
-        productName: string
-        price: string | number
-        quantity: number
-        subtotal: string | number
-        image: string
-        category: string
-        branch: string
-        addedAt: string
-        updatedAt: string
-      }
-
-      const data = await response.json()
-      const items: CartItem[] = data.data.items.map((item: ApiCartItem) => ({
+      const data = await getCart(userId)
+      const items: CartItem[] = data.items.map((item) => ({
         id: item.id,
         productId: item.productId,
         productName: item.productName,
         price: Number(item.price),
-        quantity: Number(item.quantity),
+        quantity: item.quantity,
         subtotal: Number(item.subtotal),
-        image: item.image,
-        category: item.category,
+        image: item.image || "",
+        category: item.category || "",
         branch: item.branch,
         addedAt: new Date(item.addedAt),
         updatedAt: new Date(item.updatedAt),
@@ -69,9 +55,6 @@ export function useCart() {
     }
   }, [user, token, cartStore])
 
-  /**
-   * Add item to cart
-   */
   const addToCart = useCallback(
     async (productId: string, quantity: number, branch: string) => {
       if (!user || !token) return
@@ -80,22 +63,28 @@ export function useCart() {
         cartStore.setLoading(true)
         cartStore.setError(null)
 
-        const response = await fetch("/api/customer/cart", {
-          method: "POST",
-          headers: authHeaders(token),
-          body: JSON.stringify({ productId, quantity, branch }),
-        })
+        const userId = decodeUserId(token)
+        if (!userId) throw new Error("Invalid token")
 
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => null)
-          throw new Error(errorData?.message || "Failed to add item to cart")
+        const result = await addToCartAction(userId, { productId, quantity, branch })
+
+        if (!result.success || !result.data) {
+          throw new Error(result.message || "Failed to add item to cart")
         }
 
-        const data = await response.json()
+        const d = result.data
         const item: CartItem = {
-          ...data.data,
-          addedAt: new Date(data.data.addedAt),
-          updatedAt: new Date(data.data.updatedAt),
+          id: d.id,
+          productId: d.productId,
+          productName: d.productName,
+          price: Number(d.price),
+          quantity: d.quantity,
+          subtotal: Number(d.subtotal),
+          image: d.image || "",
+          category: d.category || "",
+          branch: d.branch,
+          addedAt: new Date(),
+          updatedAt: new Date(),
         }
 
         cartStore.addItem(item)
@@ -112,9 +101,6 @@ export function useCart() {
     [user, token, cartStore]
   )
 
-  /**
-   * Update cart item quantity
-   */
   const updateCartItem = useCallback(
     async (itemId: string, quantity: number) => {
       if (!user || !token) return
@@ -123,18 +109,15 @@ export function useCart() {
         cartStore.setLoading(true)
         cartStore.setError(null)
 
-        const response = await fetch(`/api/customer/cart/${itemId}`, {
-          method: "PUT",
-          headers: authHeaders(token),
-          body: JSON.stringify({ quantity }),
-        })
+        const userId = decodeUserId(token)
+        if (!userId) throw new Error("Invalid token")
 
-        if (!response.ok) throw new Error("Failed to update cart item")
+        const result = await updateCartItemAction(itemId, userId, quantity)
+        if (!result.success || !result.data) throw new Error("Failed to update cart item")
 
-        const data = await response.json()
         cartStore.updateItem(itemId, {
-          quantity: data.data.quantity,
-          subtotal: data.data.subtotal,
+          quantity: result.data.quantity,
+          subtotal: Number(result.data.subtotal),
         })
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
@@ -148,9 +131,6 @@ export function useCart() {
     [user, token, cartStore]
   )
 
-  /**
-   * Remove item from cart
-   */
   const removeFromCart = useCallback(
     async (itemId: string) => {
       if (!user || !token) return
@@ -159,12 +139,11 @@ export function useCart() {
         cartStore.setLoading(true)
         cartStore.setError(null)
 
-        const response = await fetch(`/api/customer/cart/${itemId}`, {
-          method: "DELETE",
-          headers: authHeaders(token),
-        })
+        const userId = decodeUserId(token)
+        if (!userId) throw new Error("Invalid token")
 
-        if (!response.ok) throw new Error("Failed to remove item from cart")
+        const result = await removeCartItemAction(itemId, userId)
+        if (!result.success) throw new Error("Failed to remove item from cart")
 
         cartStore.removeItem(itemId)
       } catch (error) {
@@ -180,14 +159,11 @@ export function useCart() {
   )
 
   return {
-    // State
     items: cartStore.items,
     itemCount: cartStore.itemCount,
     total: cartStore.total,
     isLoading: cartStore.isLoading,
     error: cartStore.error,
-
-    // Actions
     fetchCart,
     addToCart,
     updateCartItem,

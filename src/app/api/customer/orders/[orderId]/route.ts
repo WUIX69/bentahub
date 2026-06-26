@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { db } from "@/drizzle/db"
-import { orders } from "@/drizzle/schema"
-import { eq } from "drizzle-orm"
 import { extractToken, verifyToken } from "@/lib/auth-utils"
+import { cancelOrder } from "@/features/orders/server/actions/cancel-order"
 
 export async function PATCH(
   request: NextRequest,
@@ -23,21 +21,18 @@ export async function PATCH(
     const body = await request.json()
     const { status: newStatus } = body
 
-    const [order] = await db.select().from(orders).where(eq(orders.id, orderId))
-    if (!order) {
-      return NextResponse.json({ success: false, message: "Order not found" }, { status: 404 })
-    }
-    if (order.userId !== payload.userId) {
-      return NextResponse.json({ success: false, message: "Forbidden" }, { status: 403 })
+    if (newStatus !== "cancelled") {
+      return NextResponse.json({ success: false, message: "Invalid status update" }, { status: 400 })
     }
 
-    const [updated] = await db
-      .update(orders)
-      .set({ status: newStatus })
-      .where(eq(orders.id, orderId))
-      .returning()
+    const result = await cancelOrder(orderId, payload.userId)
 
-    return NextResponse.json({ success: true, data: updated }, { status: 200 })
+    if (!result.success) {
+      const status = result.message === "Order not found" ? 404 : 403
+      return NextResponse.json(result, { status })
+    }
+
+    return NextResponse.json(result, { status: 200 })
   } catch (error) {
     console.error("Error updating order:", error)
     return NextResponse.json(

@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { verifyResetCode } from "@/features/user-mgmt/server/actions/verify-reset-code"
 
 export function ResetPasswordForm() {
   const router = useRouter()
@@ -46,18 +47,10 @@ export function ResetPasswordForm() {
     setIsLoading(true)
 
     try {
-      const response = await fetch("/api/auth/verify-reset-code", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, token }),
-      })
+      const result = await verifyResetCode(email, token)
 
-      const data = await response.json()
-
-      if (!response.ok) {
-        setError(data.message || "Invalid or expired verification code")
+      if (!result.success) {
+        setError(result.message || "Invalid or expired verification code")
         setIsLoading(false)
         return
       }

@@ -1,13 +1,10 @@
 import { useCallback } from "react"
 import { useProductsStore, type Product } from "@/stores/productsStore"
+import { getProducts, getProductById as fetchProductByIdFromDb } from "@/features/products/server/db/get-products"
 
 export function useProducts() {
   const productsStore = useProductsStore()
 
-  /**
-   * Fetch all products from backend
-   * Supports optional filters: category, branch
-   */
   const fetchProducts = useCallback(
     async (filters?: { category?: string; branch?: string }) => {
       if (productsStore.isLoading) return
@@ -15,48 +12,21 @@ export function useProducts() {
         productsStore.setLoading(true)
         productsStore.setError(null)
 
-        const params = new URLSearchParams()
-        if (filters?.category) params.append("category", filters.category)
-        if (filters?.branch) params.append("branch", filters.branch)
+        const data = await getProducts(filters)
 
-        const query = params.toString()
-        const url = `/api/customer/products${query ? `?${query}` : ""}`
-
-        const response = await fetch(url)
-        if (!response.ok) throw new Error("Failed to fetch products")
-
-        interface ApiProduct {
-          id: string
-          name: string
-          description: string
-          category: string
-          price: string | number
-          bulkPrice?: string | number
-          weight: string
-          image: string
-          stockStatus: Product["stockStatus"]
-          quantity: number
-          branch: string
-          sku: string
-          isActive: boolean
-          createdAt: string
-          updatedAt: string
-        }
-
-        const data = await response.json()
-        const products: Product[] = (data.data ?? data ?? []).map((p: ApiProduct) => ({
+        const products: Product[] = (data ?? []).map((p) => ({
           id: p.id,
           name: p.name,
-          description: p.description,
-          category: p.category,
+          description: p.description || "",
+          category: p.category || "",
           price: Number(p.price),
           bulkPrice: p.bulkPrice ? Number(p.bulkPrice) : undefined,
-          weight: p.weight,
-          image: p.image,
-          stockStatus: p.stockStatus,
-          quantity: Number(p.quantity),
-          branch: p.branch,
-          sku: p.sku,
+          weight: p.weight || "",
+          image: p.image || "",
+          stockStatus: (p as { stockStatus?: string }).stockStatus as Product["stockStatus"] || "in_stock",
+          quantity: Number((p as { quantity?: number }).quantity || 0),
+          branch: p.branch || "",
+          sku: p.sku || "",
           isActive: p.isActive,
           createdAt: new Date(p.createdAt),
           updatedAt: new Date(p.updatedAt),
@@ -76,9 +46,6 @@ export function useProducts() {
     [productsStore]
   )
 
-  /**
-   * Fetch a single product by ID
-   */
   const fetchProductById = useCallback(
     async (id: string) => {
       if (productsStore.isLoading) return
@@ -86,15 +53,25 @@ export function useProducts() {
         productsStore.setLoading(true)
         productsStore.setError(null)
 
-        const response = await fetch(`/api/customer/products/${id}`)
-        if (!response.ok) throw new Error("Failed to fetch product")
+        const data = await fetchProductByIdFromDb(id)
 
-        const data = await response.json()
-        const payload = data.data ?? data
+        if (!data) {
+          throw new Error("Product not found")
+        }
+
         const product: Product = {
-          ...payload,
-          createdAt: new Date(payload.createdAt),
-          updatedAt: new Date(payload.updatedAt),
+          ...data,
+          description: data.description || "",
+          category: data.category || "",
+          bulkPrice: data.bulkPrice ? Number(data.bulkPrice) : undefined,
+          weight: data.weight || "",
+          image: data.image || "",
+          stockStatus: (data as { stockStatus?: string }).stockStatus as Product["stockStatus"] || "in_stock",
+          quantity: Number((data as { quantity?: number }).quantity || 0),
+          branch: data.branch || "",
+          sku: data.sku || "",
+          createdAt: new Date(data.createdAt),
+          updatedAt: new Date(data.updatedAt),
         }
 
         productsStore.setCurrentProduct(product)
@@ -111,9 +88,6 @@ export function useProducts() {
     [productsStore]
   )
 
-  /**
-   * Get product from store by ID
-   */
   const getProductById = useCallback(
     (id: string) => {
       return productsStore.getProductById(id)
@@ -122,13 +96,10 @@ export function useProducts() {
   )
 
   return {
-    // State
     products: productsStore.products,
     currentProduct: productsStore.currentProduct,
     isLoading: productsStore.isLoading,
     error: productsStore.error,
-
-    // Actions
     fetchProducts,
     fetchProductById,
     getProductById,

@@ -1,3 +1,5 @@
+"use server"
+
 import { db } from "@/drizzle/db"
 import type { AdminOverviewData, BranchStockData, SalesTrendData } from "@/types/admin"
 
@@ -64,7 +66,6 @@ export async function getAdminOverview(): Promise<AdminOverviewData> {
   const allTransactions = await db.query.transactions.findMany() as RawTransaction[]
   const allInventory = await db.query.branchInventory.findMany() as RawInventory[]
 
-  // --- Revenue KPI ---
   const now = new Date()
   const currentMonthStart = new Date(now.getFullYear(), now.getMonth(), 1)
   const lastMonthStart = new Date(now.getFullYear(), now.getMonth() - 1, 1)
@@ -82,14 +83,12 @@ export async function getAdminOverview(): Promise<AdminOverviewData> {
 
   const revenueTrend = computeTrend(currentMonthRevenue, lastMonthRevenue)
 
-  // --- Inventory KPI ---
   const totalStock = allInventory.reduce((sum: number, i: RawInventory) => sum + i.quantity, 0)
   const uniqueProducts = new Set(allInventory.map((i: RawInventory) => i.productId)).size
 
   const lowStockItems = allInventory.filter((i: RawInventory) => i.quantity < i.lowStockThreshold)
   const lowStockProductCount = new Set(lowStockItems.map((i: RawInventory) => i.productId)).size
 
-  // --- Sales Trend (last 12 months) ---
   const salesTrend: SalesTrendData[] = []
   for (let i = 11; i >= 0; i--) {
     const { start, end } = getMonthRange(i)
@@ -106,7 +105,6 @@ export async function getAdminOverview(): Promise<AdminOverviewData> {
     })
   }
 
-  // --- Branch Stock ---
   const branchStock: BranchStockData[] = allBranches
     .filter((b: RawBranch) => b.isActive)
     .map((b: RawBranch) => {

@@ -1,3 +1,5 @@
+"use server"
+
 import { db } from "@/drizzle/db"
 import type { MonitoringData, InventoryStatusItem, SystemAlertItem } from "@/types/admin"
 
@@ -46,7 +48,6 @@ export async function getMonitoringData(): Promise<MonitoringData> {
   const now = new Date()
   const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate())
 
-  // --- Total Stock Value ---
   const productPriceMap = new Map(allProducts.map((p: RawProduct) => [p.id, parseFloat(p.price)]))
   const productNameMap = new Map(allProducts.map((p: RawProduct) => [p.id, p.name]))
   const productCategoryMap = new Map(allProducts.map((p: RawProduct) => [p.id, p.category || "Uncategorized"]))
@@ -65,17 +66,14 @@ export async function getMonitoringData(): Promise<MonitoringData> {
     productAggregator.set(inv.productId, existing)
   }
 
-  // --- Low Stock Items ---
   const lowStockRecords = allInventory.filter((i: RawInventory) => i.quantity < i.lowStockThreshold)
   const totalLowStockCount = lowStockRecords.length
 
-  // --- Pending Reservations (using pending transactions as proxy) ---
   const pendingTransactions = allTransactions.filter((t: RawTransaction) => t.status === "pending")
   const todayPending = pendingTransactions.filter(
     (t: RawTransaction) => new Date(t.createdAt) >= todayStart
   ).length
 
-  // --- Inventory Status (per product across all branches) ---
   const inventoryStatus: InventoryStatusItem[] = []
   for (const [productId, agg] of productAggregator) {
     const name = productNameMap.get(productId) || "Unknown"
@@ -104,7 +102,6 @@ export async function getMonitoringData(): Promise<MonitoringData> {
     return order[a.status] - order[b.status]
   })
 
-  // --- System Alerts from real low stock data ---
   const alerts: SystemAlertItem[] = []
 
   const criticalProducts = inventoryStatus.filter((i) => i.status === "Critical")
@@ -131,7 +128,6 @@ export async function getMonitoringData(): Promise<MonitoringData> {
     description: `All ${allBranches.length} branches synchronized at ${now.toLocaleTimeString("en-PH", { hour: "2-digit", minute: "2-digit" })}.`,
   })
 
-  // --- Branches for selector ---
   const activeBranches = allBranches
     .filter((b: RawBranch) => b.isActive)
     .map((b: RawBranch) => ({ id: b.id, name: b.name }))

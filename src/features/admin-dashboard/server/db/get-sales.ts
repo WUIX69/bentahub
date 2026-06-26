@@ -1,3 +1,5 @@
+"use server"
+
 import { db } from "@/drizzle/db"
 import { transactions } from "@/drizzle/schema"
 import { eq, and, gte, lte, desc } from "drizzle-orm"

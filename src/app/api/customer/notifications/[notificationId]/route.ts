@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { db } from "@/drizzle/db"
-import { notifications } from "@/drizzle/schema"
-import { eq, and } from "drizzle-orm"
 import { extractToken, verifyToken } from "@/lib/auth-utils"
+import { markNotificationRead } from "@/features/notifications/server/actions/mark-read"
 
 async function getUserIdFromToken(request: NextRequest): Promise<string | null> {
   const token = extractToken(request)
@@ -26,7 +24,7 @@ async function getUserIdFromToken(request: NextRequest): Promise<string | null> 
  */
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: Promise<{ notificationId: string }> }
+  { params }: { params: Promise<{ notificationId: string }> },
 ) {
   try {
     const userId = await getUserIdFromToken(request)
@@ -34,7 +32,7 @@ export async function PATCH(
     if (!userId) {
       return NextResponse.json(
         { success: false, message: "Unauthorized" },
-        { status: 401 }
+        { status: 401 },
       )
     }
 
@@ -45,51 +43,32 @@ export async function PATCH(
     if (isRead === undefined) {
       return NextResponse.json(
         { success: false, message: "isRead flag is required" },
-        { status: 400 }
+        { status: 400 },
       )
     }
 
-    // Verify notification ownership
-    const notification = await db
-      .select()
-      .from(notifications)
-      .where(
-        and(
-          eq(notifications.id, notificationId),
-          eq(notifications.userId, userId)
-        )
-      )
-      .limit(1)
+    const result = await markNotificationRead({ notificationId, userId, isRead })
 
-    if (!notification.length) {
+    if (!result.success) {
       return NextResponse.json(
         { success: false, message: "Notification not found" },
-        { status: 404 }
+        { status: 404 },
       )
     }
-
-    const updated = await db
-      .update(notifications)
-      .set({
-        isRead,
-        readAt: isRead ? new Date() : null,
-      })
-      .where(eq(notifications.id, notificationId))
-      .returning()
 
     return NextResponse.json(
       {
         success: true,
         message: "Notification updated",
-        data: updated[0],
+        data: result.data,
       },
-      { status: 200 }
+      { status: 200 },
     )
   } catch (error) {
     console.error("Error updating notification:", error)
     return NextResponse.json(
       { success: false, message: "Failed to update notification" },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }

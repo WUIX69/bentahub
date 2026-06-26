@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { verifyToken, extractToken } from "@/lib/auth-utils"
-import { getSalesData } from "@/features/admin-dashboard/actions/get-sales"
+import { getSalesData } from "@/features/admin-dashboard/server/db/get-sales"
 import type { AdminApiResponse, SalesApiData } from "@/types/admin"
 
 export async function GET(request: NextRequest): Promise<NextResponse<AdminApiResponse<SalesApiData>>> {

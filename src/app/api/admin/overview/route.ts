@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { verifyToken, extractToken } from "@/lib/auth-utils"
-import { getAdminOverview } from "@/features/admin-dashboard/actions/get-overview"
+import { getAdminOverview } from "@/features/admin-dashboard/server/db/get-overview"
 import type { AdminApiResponse, AdminOverviewData } from "@/types/admin"
 
 export async function GET(request: NextRequest): Promise<NextResponse<AdminApiResponse<AdminOverviewData>>> {

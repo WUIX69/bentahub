@@ -1,46 +1,23 @@
 import { useCallback } from "react"
 import { useOrdersStore, type Order } from "@/stores/ordersStore"
 import { useAuth } from "./useAuth"
+import { getOrders } from "@/features/orders/server/db/get-orders"
+import { createOrder as createOrderAction } from "@/features/orders/server/actions/create-order"
+import { cancelOrder as cancelOrderAction } from "@/features/orders/server/actions/cancel-order"
 
-function authHeaders(token: string): HeadersInit {
-  return {
-    Authorization: `Bearer ${token}`,
-    "Content-Type": "application/json",
+function decodeUserId(token: string): string | null {
+  try {
+    const payload = JSON.parse(atob(token.split(".")[1]))
+    return payload.userId || null
+  } catch {
+    return null
   }
-}
-
-interface ApiOrderItem {
-  id: string
-  productId: string
-  productName: string
-  quantity: number
-  price: string | number
-  subtotal: string | number
-  createdAt: string
-}
-
-interface ApiOrder {
-  id: string
-  userId: string
-  status: Order["status"]
-  paymentMethod: Order["paymentMethod"]
-  totalAmount: string | number
-  branch: string
-  notes: string
-  isPaid: boolean
-  paidAt: string | null
-  items?: ApiOrderItem[]
-  createdAt: string
-  updatedAt: string
 }
 
 export function useOrders() {
   const { user, token } = useAuth()
   const ordersStore = useOrdersStore()
 
-  /**
-   * Fetch user's orders from backend
-   */
   const fetchOrders = useCallback(async () => {
     if (!user || !token) return
     if (ordersStore.isLoading) return
@@ -49,34 +26,23 @@ export function useOrders() {
       ordersStore.setLoading(true)
       ordersStore.setError(null)
 
-      const response = await fetch("/api/customer/orders", {
-        method: "GET",
-        headers: authHeaders(token),
-      })
-      if (!response.ok) throw new Error("Failed to fetch orders")
+      const userId = decodeUserId(token)
+      if (!userId) throw new Error("Invalid token")
 
-      const data = await response.json()
-      const orders: Order[] = (data.data ?? []).map((o: ApiOrder) => ({
+      const data = await getOrders(userId)
+      const orders: Order[] = (data ?? []).map((o) => ({
         id: o.id,
         userId: o.userId,
-        status: o.status,
-        paymentMethod: o.paymentMethod,
+        status: o.status as Order["status"],
+        paymentMethod: o.paymentMethod as Order["paymentMethod"],
         totalAmount: Number(o.totalAmount),
         branch: o.branch,
-        notes: o.notes,
+        notes: o.notes || "",
         isPaid: o.isPaid,
         paidAt: o.paidAt ? new Date(o.paidAt) : null,
         createdAt: new Date(o.createdAt),
         updatedAt: new Date(o.updatedAt),
-        items: o.items?.map((item: ApiOrderItem) => ({
-          id: item.id,
-          productId: item.productId,
-          productName: item.productName,
-          quantity: Number(item.quantity),
-          price: Number(item.price),
-          subtotal: Number(item.subtotal),
-          createdAt: new Date(item.createdAt),
-        })) || [],
+        items: [],
       }))
 
       ordersStore.setOrders(orders)
@@ -91,59 +57,46 @@ export function useOrders() {
     }
   }, [user, token, ordersStore])
 
-  /**
-   * Create a new order from cart
-   * @param paymentMethod - "cash" or "gcash"
-   * @param branch - Customer's selected branch
-   * @param notes - Optional order notes
-   */
   const createOrder = useCallback(
     async (paymentMethod: "cash" | "gcash", branch: string, notes?: string) => {
       if (!user) throw new Error("User not authenticated")
-
       if (!token) throw new Error("No authentication token found")
 
       try {
         ordersStore.setLoading(true)
         ordersStore.setError(null)
 
-        const response = await fetch("/api/customer/orders", {
-          method: "POST",
-          headers: authHeaders(token),
-          body: JSON.stringify({ paymentMethod, branch, notes }),
-        })
+        const userId = decodeUserId(token)
+        if (!userId) throw new Error("Invalid token")
 
-        if (!response.ok) {
-          const errorData = await response.json()
-          throw new Error(
-            errorData.message || "Failed to create order"
-          )
+        const result = await createOrderAction(userId, { paymentMethod, branch, notes })
+
+        if (!result.success || !result.data) {
+          throw new Error(result.message || "Failed to create order")
         }
 
-        const data = await response.json()
-        const payload = data.data ?? {}
-        const orderPayload = (payload.order ?? {}) as ApiOrder
+        const payload = result.data
         const order: Order = {
-          id: orderPayload.id,
-          userId: orderPayload.userId,
-          status: orderPayload.status,
-          paymentMethod: orderPayload.paymentMethod,
-          totalAmount: Number(orderPayload.totalAmount),
-          branch: orderPayload.branch,
-          notes: orderPayload.notes,
-          isPaid: orderPayload.isPaid,
-          paidAt: orderPayload.paidAt ? new Date(orderPayload.paidAt) : null,
-          createdAt: new Date(orderPayload.createdAt),
-          updatedAt: new Date(orderPayload.updatedAt),
-          items: orderPayload.items?.map((item: ApiOrderItem) => ({
+          id: payload.order.id,
+          userId: payload.order.userId,
+          status: payload.order.status as Order["status"],
+          paymentMethod: payload.order.paymentMethod as Order["paymentMethod"],
+          totalAmount: Number(payload.order.totalAmount),
+          branch: payload.order.branch,
+          notes: payload.order.notes || "",
+          isPaid: payload.order.isPaid,
+          paidAt: payload.order.paidAt ? new Date(payload.order.paidAt) : null,
+          createdAt: new Date(payload.order.createdAt),
+          updatedAt: new Date(payload.order.updatedAt),
+          items: (payload.items ?? []).map((item) => ({
             id: item.id,
             productId: item.productId,
             productName: item.productName,
             quantity: Number(item.quantity),
             price: Number(item.price),
             subtotal: Number(item.subtotal),
-            createdAt: new Date(item.createdAt),
-          })) || [],
+            createdAt: new Date(),
+          })),
         }
 
         ordersStore.addOrder(order)
@@ -160,9 +113,6 @@ export function useOrders() {
     [user, token, ordersStore]
   )
 
-  /**
-   * Cancel an order
-   */
   const cancelOrder = useCallback(
     async (orderId: string) => {
       if (!user) throw new Error("User not authenticated")
@@ -172,15 +122,12 @@ export function useOrders() {
         ordersStore.setLoading(true)
         ordersStore.setError(null)
 
-        const response = await fetch(`/api/customer/orders/${orderId}`, {
-          method: "PATCH",
-          headers: authHeaders(token ?? ""),
-          body: JSON.stringify({ status: "cancelled" }),
-        })
+        const userId = decodeUserId(token)
+        if (!userId) throw new Error("Invalid token")
 
-        if (!response.ok) throw new Error("Failed to cancel order")
+        const result = await cancelOrderAction(orderId, userId)
+        if (!result.success) throw new Error("Failed to cancel order")
 
-        await response.json()
         ordersStore.updateOrder(orderId, { status: "cancelled" })
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
@@ -195,13 +142,10 @@ export function useOrders() {
   )
 
   return {
-    // State
     orders: ordersStore.orders,
     currentOrder: ordersStore.currentOrder,
     isLoading: ordersStore.isLoading,
     error: ordersStore.error,
-
-    // Actions
     fetchOrders,
     createOrder,
     cancelOrder,

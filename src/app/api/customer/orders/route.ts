@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
-import { db } from "@/drizzle/db"
-import { cartItems, orders, orderItems } from "@/drizzle/schema"
-import { eq } from "drizzle-orm"
-import { generateId, extractToken, verifyToken } from "@/lib/auth-utils"
+import { extractToken, verifyToken } from "@/lib/auth-utils"
+import { getOrders } from "@/features/orders/server/db/get-orders"
+import { createOrder } from "@/features/orders/server/actions/create-order"
 
 async function getUserIdFromToken(request: NextRequest): Promise<string | null> {
   const token = extractToken(request)
@@ -19,10 +18,6 @@ async function getUserIdFromToken(request: NextRequest): Promise<string | null> 
   return decoded.userId
 }
 
-/**
- * GET /api/customer/orders
- * Retrieve all orders for the authenticated user
- */
 export async function GET(request: NextRequest) {
   try {
     const userId = await getUserIdFromToken(request)
@@ -34,15 +29,12 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const userOrders = await db
-      .select()
-      .from(orders)
-      .where(eq(orders.userId, userId))
+    const data = await getOrders(userId)
 
     return NextResponse.json(
       {
         success: true,
-        data: userOrders,
+        data,
       },
       { status: 200 }
     )
@@ -55,11 +47,6 @@ export async function GET(request: NextRequest) {
   }
 }
 
-/**
- * POST /api/customer/orders
- * Create a new order from cart items (checkout)
- * Body: { paymentMethod: "cash" | "gcash", branch: string, notes?: string }
- */
 export async function POST(request: NextRequest) {
   try {
     const userId = await getUserIdFromToken(request)
@@ -74,85 +61,16 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { paymentMethod, branch, notes } = body
 
-    if (!paymentMethod || !branch) {
+    const result = await createOrder(userId, { paymentMethod, branch, notes })
+
+    if (!result.success) {
       return NextResponse.json(
-        { success: false, message: "Payment method and branch are required" },
+        { success: false, message: result.message },
         { status: 400 }
       )
     }
 
-    if (!["cash", "gcash"].includes(paymentMethod)) {
-      return NextResponse.json(
-        { success: false, message: "Invalid payment method" },
-        { status: 400 }
-      )
-    }
-
-    // Fetch user's cart items
-    const userCartItems = await db
-      .select()
-      .from(cartItems)
-      .where(eq(cartItems.userId, userId))
-
-    if (userCartItems.length === 0) {
-      return NextResponse.json(
-        { success: false, message: "Cart is empty" },
-        { status: 400 }
-      )
-    }
-
-    // Calculate total amount
-    const totalAmount = userCartItems.reduce(
-      (sum, item) => sum + Number(item.subtotal),
-      0
-    )
-
-    // Create order
-    const orderId = generateId()
-    const newOrder = {
-      id: orderId,
-      userId,
-      status: "pending" as const,
-      paymentMethod: paymentMethod as "cash" | "gcash",
-      totalAmount: totalAmount.toFixed(2),
-      branch,
-      notes: notes || null,
-      isPaid: paymentMethod === "gcash" ? false : false,
-      paidAt: null,
-    }
-
-    const createdOrder = await db
-      .insert(orders)
-      .values(newOrder)
-      .returning()
-
-    // Create order items from cart items
-    const orderItemsData = userCartItems.map((item) => ({
-      id: generateId(),
-      orderId,
-      productId: item.productId,
-      productName: item.productName,
-      quantity: item.quantity,
-      price: item.price,
-      subtotal: item.subtotal,
-    }))
-
-    await db.insert(orderItems).values(orderItemsData)
-
-    // Clear user's cart
-    await db.delete(cartItems).where(eq(cartItems.userId, userId))
-
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Order created successfully",
-        data: {
-          order: createdOrder[0],
-          items: orderItemsData,
-        },
-      },
-      { status: 201 }
-    )
+    return NextResponse.json(result, { status: 201 })
   } catch (error) {
     console.error("Error creating order:", error)
     return NextResponse.json(

@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
-import { db } from "@/drizzle/db"
-import { notifications } from "@/drizzle/schema"
-import { eq, and, desc } from "drizzle-orm"
 import { extractToken, verifyToken } from "@/lib/auth-utils"
+import { getNotifications } from "@/features/notifications/server/db/get-notifications"
 
 async function getUserIdFromToken(request: NextRequest): Promise<string | null> {
   const token = extractToken(request)
@@ -31,7 +29,7 @@ export async function GET(request: NextRequest) {
     if (!userId) {
       return NextResponse.json(
         { success: false, message: "Unauthorized" },
-        { status: 401 }
+        { status: 401 },
       )
     }
 
@@ -40,46 +38,20 @@ export async function GET(request: NextRequest) {
     const offset = parseInt(searchParams.get("offset") || "0")
     const unreadOnly = searchParams.get("unreadOnly") === "true"
 
-    let query = db
-      .select()
-      .from(notifications)
-      .where(eq(notifications.userId, userId))
-
-    if (unreadOnly) {
-      query = db
-        .select()
-        .from(notifications)
-        .where(and(eq(notifications.userId, userId), eq(notifications.isRead, false)))
-    }
-
-    const userNotifications = await query
-      .orderBy(desc(notifications.createdAt))
-      .limit(limit)
-      .offset(offset)
-
-    // Get unread count
-    const unreadNotifications = await db
-      .select()
-      .from(notifications)
-      .where(
-        and(eq(notifications.userId, userId), eq(notifications.isRead, false))
-      )
+    const result = await getNotifications({ userId, limit, offset, unreadOnly })
 
     return NextResponse.json(
       {
         success: true,
-        data: {
-          notifications: userNotifications,
-          unreadCount: unreadNotifications.length,
-        },
+        data: result,
       },
-      { status: 200 }
+      { status: 200 },
     )
   } catch (error) {
     console.error("Error fetching notifications:", error)
     return NextResponse.json(
       { success: false, message: "Failed to fetch notifications" },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }
