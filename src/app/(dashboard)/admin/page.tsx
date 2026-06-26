@@ -5,20 +5,25 @@ import { KPICard, SalesChart, StockTable } from "@/features/admin-dashboard"
 import { BranchStockOverview } from "@/features/analytics"
 import { CreditCard, Package, AlertTriangle } from "lucide-react"
 import type { AdminOverviewData } from "@/types/admin"
+import { useAuth } from "@/hooks/useAuth"
 
 export default function AdminPage() {
   const [data, setData] = useState<AdminOverviewData | null>(null)
   const [loading, setLoading] = useState(true)
+  const { token } = useAuth()
 
   useEffect(() => {
-    fetch("/api/admin/overview")
+    if (!token) return
+    fetch("/api/admin/overview", {
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+    })
       .then((res) => res.json())
       .then((json) => {
         if (json.success && json.data) setData(json.data)
       })
       .catch(console.error)
       .finally(() => setLoading(false))
-  }, [])
+  }, [token])
 
   if (loading) {
     return (

@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server"
+import { NextRequest, NextResponse } from "next/server"
+import { verifyToken, extractToken } from "@/lib/auth-utils"
 import { db } from "@/drizzle/db"
 import { products } from "@/drizzle/schema"
 import { generateId } from "@/lib/auth-utils"
@@ -6,10 +7,21 @@ import { generateId } from "@/lib/auth-utils"
 /**
  * POST /api/admin/seed
  * Seeds the database with initial product data
- * WARNING: Only use this once, in development!
+ * Admin-only — requires valid JWT with admin role
  */
-export async function POST() {
+export async function POST(request: NextRequest) {
   try {
+    const token = extractToken(request)
+    if (!token) {
+      return NextResponse.json({ success: false, message: "Authentication required" }, { status: 401 })
+    }
+    const payload = verifyToken(token)
+    if (!payload) {
+      return NextResponse.json({ success: false, message: "Invalid or expired token" }, { status: 401 })
+    }
+    if (payload.role !== "admin") {
+      return NextResponse.json({ success: false, message: "Admin access required" }, { status: 403 })
+    }
     const productData = [
       // Coffee Category
       {

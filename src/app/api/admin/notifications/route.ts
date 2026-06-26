@@ -57,38 +57,4 @@ export async function GET(request: NextRequest): Promise<NextResponse<AdminApiRe
   }
 }
 
-export async function PATCH(request: NextRequest): Promise<NextResponse<AdminApiResponse>> {
-  try {
-    const token = extractToken(request)
 
-    if (!token) {
-      return NextResponse.json(
-        { success: false, message: "Authentication required" },
-        { status: 401 }
-      )
-    }
-
-    const payload = verifyToken(token)
-
-    if (!payload || payload.role !== "admin") {
-      return NextResponse.json(
-        { success: false, message: "Admin access required" },
-        { status: 403 }
-      )
-    }
-
-    const body = await request.json()
-    const { ids, markAll } = body
-
-    return NextResponse.json({
-      success: true,
-      message: markAll ? "All notifications marked as read" : `${ids?.length || 0} notifications marked as read`,
-    })
-  } catch (error) {
-    console.error("Admin notifications error:", error)
-    return NextResponse.json(
-      { success: false, message: "An error occurred" },
-      { status: 500 }
-    )
-  }
-}

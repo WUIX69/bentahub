@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react"
 import { SalesFilters, SalesMetrics, TransactionDetailsTable } from "@/features/admin-dashboard"
 import type { SalesApiData } from "@/types/admin"
+import { useAuth } from "@/hooks/useAuth"
 
 export default function SalesPage() {
   const [data, setData] = useState<SalesApiData | null>(null)
@@ -11,8 +12,10 @@ export default function SalesPage() {
   const [dateFrom, setDateFrom] = useState("")
   const [dateTo, setDateTo] = useState("")
   const [page, setPage] = useState(1)
+  const { token } = useAuth()
 
   const fetchData = useCallback(async () => {
+    if (!token) return
     setLoading(true)
     try {
       const params = new URLSearchParams({ page: String(page), pageSize: "15" })
@@ -20,7 +23,9 @@ export default function SalesPage() {
       if (dateFrom) params.set("dateFrom", dateFrom)
       if (dateTo) params.set("dateTo", dateTo)
 
-      const res = await fetch(`/api/admin/sales?${params}`)
+      const res = await fetch(`/api/admin/sales?${params}`, {
+        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
+      })
       const json = await res.json()
       if (json.success && json.data) {
         setData(json.data)
@@ -28,7 +33,7 @@ export default function SalesPage() {
     } finally {
       setLoading(false)
     }
-  }, [branchId, dateFrom, dateTo, page])
+  }, [branchId, dateFrom, dateTo, page, token])
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
