@@ -3,14 +3,18 @@ import { useProductsStore, type Product } from "@/stores/productsStore"
 import { getProducts, getProductById as fetchProductByIdFromDb } from "@/features/products/server/db/get-products"
 
 export function useProducts() {
-  const productsStore = useProductsStore()
+  const products = useProductsStore((s) => s.products)
+  const currentProduct = useProductsStore((s) => s.currentProduct)
+  const isLoading = useProductsStore((s) => s.isLoading)
+  const error = useProductsStore((s) => s.error)
 
   const fetchProducts = useCallback(
     async (filters?: { category?: string; branch?: string }) => {
-      if (productsStore.isLoading) return
+      const state = useProductsStore.getState()
+      if (state.isLoading) return
       try {
-        productsStore.setLoading(true)
-        productsStore.setError(null)
+        state.setLoading(true)
+        state.setError(null)
 
         const data = await getProducts(filters)
 
@@ -32,26 +36,27 @@ export function useProducts() {
           updatedAt: new Date(p.updatedAt),
         }))
 
-        productsStore.setProducts(products)
+        state.setProducts(products)
         return products
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
-        productsStore.setError(message)
+        state.setError(message)
         console.error("Failed to fetch products:", error)
         throw error
       } finally {
-        productsStore.setLoading(false)
+        state.setLoading(false)
       }
     },
-    [productsStore]
+    []
   )
 
   const fetchProductById = useCallback(
     async (id: string) => {
-      if (productsStore.isLoading) return
+      const state = useProductsStore.getState()
+      if (state.isLoading) return
       try {
-        productsStore.setLoading(true)
-        productsStore.setError(null)
+        state.setLoading(true)
+        state.setError(null)
 
         const data = await fetchProductByIdFromDb(id)
 
@@ -74,32 +79,32 @@ export function useProducts() {
           updatedAt: new Date(data.updatedAt),
         }
 
-        productsStore.setCurrentProduct(product)
+        state.setCurrentProduct(product)
         return product
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
-        productsStore.setError(message)
+        state.setError(message)
         console.error("Failed to fetch product:", error)
         throw error
       } finally {
-        productsStore.setLoading(false)
+        state.setLoading(false)
       }
     },
-    [productsStore]
+    []
   )
 
   const getProductById = useCallback(
     (id: string) => {
-      return productsStore.getProductById(id)
+      return useProductsStore.getState().getProductById(id)
     },
-    [productsStore]
+    []
   )
 
   return {
-    products: productsStore.products,
-    currentProduct: productsStore.currentProduct,
-    isLoading: productsStore.isLoading,
-    error: productsStore.error,
+    products,
+    currentProduct,
+    isLoading,
+    error,
     fetchProducts,
     fetchProductById,
     getProductById,

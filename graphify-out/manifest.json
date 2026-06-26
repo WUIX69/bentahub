@@ -635,8 +635,8 @@
     "semantic_hash": "0cc80d1695829cdd5bb31ae28add2551"
   },
   "src/hooks/useCart.ts": {
-    "mtime": 1782483222.1325414,
-    "ast_hash": "6d0d81b5117b2e1debd16d8d8d9c7e3c",
+    "mtime": 1782485175.4065022,
+    "ast_hash": "bcf04d8a942fd1cbcc2e0905a210079f",
     "semantic_hash": ""
   },
   "src/hooks/useNotifications.ts": {
@@ -645,13 +645,13 @@
     "semantic_hash": ""
   },
   "src/hooks/useOrders.ts": {
-    "mtime": 1782483241.3117852,
-    "ast_hash": "d0dc5d10749a796eb28280debc6022e7",
+    "mtime": 1782485169.2251275,
+    "ast_hash": "a6ee4da3c97912fb0d44fa7b8ba70266",
     "semantic_hash": ""
   },
   "src/hooks/useProducts.ts": {
-    "mtime": 1782479855.6388485,
-    "ast_hash": "6b5c9d32a34356be9c6f98be0ebc1f4c",
+    "mtime": 1782485148.7181432,
+    "ast_hash": "fda7f7a0b216c5038813eac7da75e8f9",
     "semantic_hash": ""
   },
   "src/lib/auth-utils.ts": {

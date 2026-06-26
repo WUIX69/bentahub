@@ -7,15 +7,19 @@ import { cancelOrder as cancelOrderAction } from "@/features/orders/server/actio
 
 export function useOrders() {
   const { user } = useAuth()
-  const ordersStore = useOrdersStore()
+  const orders = useOrdersStore((s) => s.orders)
+  const currentOrder = useOrdersStore((s) => s.currentOrder)
+  const isLoading = useOrdersStore((s) => s.isLoading)
+  const error = useOrdersStore((s) => s.error)
 
   const fetchOrders = useCallback(async () => {
     if (!user) return
-    if (ordersStore.isLoading) return
+    const state = useOrdersStore.getState()
+    if (state.isLoading) return
 
     try {
-      ordersStore.setLoading(true)
-      ordersStore.setError(null)
+      state.setLoading(true)
+      state.setError(null)
 
       const data = await getOrders()
       const orders: Order[] = (data ?? []).map((o) => ({
@@ -33,25 +37,26 @@ export function useOrders() {
         items: [],
       }))
 
-      ordersStore.setOrders(orders)
+      state.setOrders(orders)
       return orders
     } catch (error) {
       const message = error instanceof Error ? error.message : "Unknown error"
-      ordersStore.setError(message)
+      useOrdersStore.getState().setError(message)
       console.error("Failed to fetch orders:", error)
       throw error
     } finally {
-      ordersStore.setLoading(false)
+      useOrdersStore.getState().setLoading(false)
     }
-  }, [user, ordersStore])
+  }, [user])
 
   const createOrder = useCallback(
     async (paymentMethod: "cash" | "gcash", branch: string, notes?: string) => {
       if (!user) throw new Error("User not authenticated")
 
       try {
-        ordersStore.setLoading(true)
-        ordersStore.setError(null)
+        const state = useOrdersStore.getState()
+        state.setLoading(true)
+        state.setError(null)
 
         const result = await createOrderAction({ paymentMethod, branch, notes })
 
@@ -83,18 +88,18 @@ export function useOrders() {
           })),
         }
 
-        ordersStore.addOrder(order)
+        state.addOrder(order)
         return order
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
-        ordersStore.setError(message)
+        useOrdersStore.getState().setError(message)
         console.error("Failed to create order:", error)
         throw error
       } finally {
-        ordersStore.setLoading(false)
+        useOrdersStore.getState().setLoading(false)
       }
     },
-    [user, ordersStore]
+    [user]
   )
 
   const cancelOrder = useCallback(
@@ -102,30 +107,31 @@ export function useOrders() {
       if (!user) throw new Error("User not authenticated")
 
       try {
-        ordersStore.setLoading(true)
-        ordersStore.setError(null)
+        const state = useOrdersStore.getState()
+        state.setLoading(true)
+        state.setError(null)
 
         const result = await cancelOrderAction(orderId)
         if (!result.success) throw new Error("Failed to cancel order")
 
-        ordersStore.updateOrder(orderId, { status: "cancelled" })
+        state.updateOrder(orderId, { status: "cancelled" })
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
-        ordersStore.setError(message)
+        useOrdersStore.getState().setError(message)
         console.error("Failed to cancel order:", error)
         throw error
       } finally {
-        ordersStore.setLoading(false)
+        useOrdersStore.getState().setLoading(false)
       }
     },
-    [user, ordersStore]
+    [user]
   )
 
   return {
-    orders: ordersStore.orders,
-    currentOrder: ordersStore.currentOrder,
-    isLoading: ordersStore.isLoading,
-    error: ordersStore.error,
+    orders,
+    currentOrder,
+    isLoading,
+    error,
     fetchOrders,
     createOrder,
     cancelOrder,

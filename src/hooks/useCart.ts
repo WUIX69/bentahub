@@ -8,15 +8,20 @@ import { removeCartItem as removeCartItemAction } from "@/features/cart/server/a
 
 export function useCart() {
   const { user } = useAuth()
-  const cartStore = useCartStore()
+  const items = useCartStore((s) => s.items)
+  const itemCount = useCartStore((s) => s.itemCount)
+  const total = useCartStore((s) => s.total)
+  const isLoading = useCartStore((s) => s.isLoading)
+  const error = useCartStore((s) => s.error)
 
   const fetchCart = useCallback(async () => {
     if (!user) return
-    if (cartStore.isLoading) return
+    const state = useCartStore.getState()
+    if (state.isLoading) return
 
     try {
-      cartStore.setLoading(true)
-      cartStore.setError(null)
+      state.setLoading(true)
+      state.setError(null)
 
       const data = await getCart()
       const items: CartItem[] = data.items.map((item) => ({
@@ -33,23 +38,24 @@ export function useCart() {
         updatedAt: new Date(item.updatedAt),
       }))
 
-      cartStore.setItems(items)
+      state.setItems(items)
     } catch (error) {
       const message = error instanceof Error ? error.message : "Unknown error"
-      cartStore.setError(message)
+      state.setError(message)
       console.error("Failed to fetch cart:", error)
     } finally {
-      cartStore.setLoading(false)
+      state.setLoading(false)
     }
-  }, [user, cartStore])
+  }, [user])
 
   const addToCart = useCallback(
     async (productId: string, quantity: number, branch: string) => {
       if (!user) return
 
       try {
-        cartStore.setLoading(true)
-        cartStore.setError(null)
+        const state = useCartStore.getState()
+        state.setLoading(true)
+        state.setError(null)
 
         const result = await addToCartAction({ productId, quantity, branch })
 
@@ -72,18 +78,18 @@ export function useCart() {
           updatedAt: new Date(),
         }
 
-        cartStore.addItem(item)
+        state.addItem(item)
         return item
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
-        cartStore.setError(message)
+        useCartStore.getState().setError(message)
         console.error("Failed to add to cart:", error)
         throw error
       } finally {
-        cartStore.setLoading(false)
+        useCartStore.getState().setLoading(false)
       }
     },
-    [user, cartStore]
+    [user]
   )
 
   const updateCartItem = useCallback(
@@ -91,28 +97,29 @@ export function useCart() {
       if (!user) return
 
       try {
-        cartStore.setLoading(true)
-        cartStore.setError(null)
+        const state = useCartStore.getState()
+        state.setLoading(true)
+        state.setError(null)
 
         const result = await updateCartItemAction(itemId, quantity)
         if (!result.success || !result.data) {
           throw new Error(result.message || "Failed to update cart item")
         }
 
-        cartStore.updateItem(itemId, {
+        state.updateItem(itemId, {
           quantity: result.data.quantity,
           subtotal: Number(result.data.subtotal),
         })
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
-        cartStore.setError(message)
+        useCartStore.getState().setError(message)
         console.error("Failed to update cart item:", error)
         throw error
       } finally {
-        cartStore.setLoading(false)
+        useCartStore.getState().setLoading(false)
       }
     },
-    [user, cartStore]
+    [user]
   )
 
   const removeFromCart = useCallback(
@@ -120,37 +127,38 @@ export function useCart() {
       if (!user) return
 
       try {
-        cartStore.setLoading(true)
-        cartStore.setError(null)
+        const state = useCartStore.getState()
+        state.setLoading(true)
+        state.setError(null)
 
         const result = await removeCartItemAction(itemId)
         if (!result.success) {
           throw new Error(result.message || "Failed to remove item from cart")
         }
 
-        cartStore.removeItem(itemId)
+        state.removeItem(itemId)
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
-        cartStore.setError(message)
+        useCartStore.getState().setError(message)
         console.error("Failed to remove from cart:", error)
         throw error
       } finally {
-        cartStore.setLoading(false)
+        useCartStore.getState().setLoading(false)
       }
     },
-    [user, cartStore]
+    [user]
   )
 
   return {
-    items: cartStore.items,
-    itemCount: cartStore.itemCount,
-    total: cartStore.total,
-    isLoading: cartStore.isLoading,
-    error: cartStore.error,
+    items,
+    itemCount,
+    total,
+    isLoading,
+    error,
     fetchCart,
     addToCart,
     updateCartItem,
     removeFromCart,
-    clearCart: () => cartStore.clearCart(),
+    clearCart: () => useCartStore.getState().clearCart(),
   }
 }
