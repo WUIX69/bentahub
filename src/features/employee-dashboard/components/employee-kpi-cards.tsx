@@ -1,17 +1,17 @@
 "use client"
 
 import { Package, AlertTriangle, ShoppingBag, TrendingUp } from "lucide-react"
-import type { Product } from "@/types/cashier"
+import type { Product } from "@/types/employee"
 import { getStockStatus } from "@/features/employee-dashboard/data/products"
 
-interface StaffKpiCardsProps {
+interface EmployeeKpiCardsProps {
   products: Product[]
   lowStockCount: number
   pendingPickups: number
   todayRevenue: number
 }
 
-export function StaffKpiCards({ products, lowStockCount, pendingPickups, todayRevenue }: StaffKpiCardsProps) {
+export function EmployeeKpiCards({ products, lowStockCount, pendingPickups, todayRevenue }: EmployeeKpiCardsProps) {
   const metrics = [
     {
       label: "Total Products Managed",

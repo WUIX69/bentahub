@@ -4,21 +4,17 @@ import { db } from "@/drizzle/db"
 import { users, passwordResetTokens } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { hashPassword } from "@/lib/auth-utils"
+import { resetPasswordSchema } from "@/features/user-mgmt/schemas/auth"
 
-const MIN_PASSWORD_LENGTH = 8
 const MAX_RESET_ATTEMPTS = 5
 
 export async function resetPassword(token: string, password: string): Promise<{ success: boolean; message: string }> {
   try {
-    if (!token || !password) {
-      return { success: false, message: "Token and password are required" }
-    }
-
-    if (password.length < MIN_PASSWORD_LENGTH) {
-      return {
-        success: false,
-        message: `Password must be at least ${MIN_PASSWORD_LENGTH} characters long`,
-      }
+    const parsed = resetPasswordSchema.safeParse({ token, password })
+    if (!parsed.success) {
+      const errorMap = parsed.error.flatten().fieldErrors
+      const firstError = Object.values(errorMap)[0]?.[0] || "Validation failed"
+      return { success: false, message: firstError }
     }
 
     const resetToken = await db.query.passwordResetTokens.findFirst({

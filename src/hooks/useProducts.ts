@@ -1,6 +1,6 @@
 import { useCallback } from "react"
 import { useProductsStore, type Product } from "@/stores/productsStore"
-import { getProducts, getProductById as fetchProductByIdFromDb } from "@/features/products/server/db/get-products"
+import { getProducts, getProductById as fetchProductByIdFromDb } from "@/server/db/get-products"
 
 export function useProducts() {
   const products = useProductsStore((s) => s.products)

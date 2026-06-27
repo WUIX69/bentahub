@@ -1,8 +1,8 @@
-"use client"
+﻿"use client"
 
 import { useState, useMemo, Fragment } from "react"
 import { Search, ChevronDown, ChevronUp, CreditCard, Banknote } from "lucide-react"
-import type { Transaction } from "@/types/cashier"
+import type { Transaction } from "@/types/employee"
 import { cn } from "@/lib/utils"
 
 interface LiveTransactionFeedProps {

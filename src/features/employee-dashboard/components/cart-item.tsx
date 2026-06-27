@@ -1,7 +1,7 @@
-"use client"
+﻿"use client"
 
 import { Plus, Minus, Trash2, Package } from "lucide-react"
-import type { CartItem as CartItemType } from "@/types/cashier"
+import type { CartItem as CartItemType } from "@/types/employee"
 
 interface CartItemProps {
   item: CartItemType

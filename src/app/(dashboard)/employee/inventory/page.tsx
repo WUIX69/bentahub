@@ -1,25 +1,25 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect, useMemo } from "react"
 import { InventoryUpdateTable } from "@/features/employee-dashboard/components/inventory-update-table"
-import { staffProducts } from "@/features/employee-dashboard/data/products"
+import { employeeProducts } from "@/features/employee-dashboard/data/products"
 import { getStockStatus } from "@/features/employee-dashboard/data/products"
-import type { Product } from "@/types/cashier"
+import type { Product } from "@/types/employee"
 
-const STORAGE_KEY = "bentahub-staff-products"
+const STORAGE_KEY = "bentahub-employee-products"
 
 function loadFromStorage(): Product[] {
-  if (typeof window === "undefined") return staffProducts
+  if (typeof window === "undefined") return employeeProducts
   const stored = localStorage.getItem(STORAGE_KEY)
   if (stored) {
     try { return JSON.parse(stored) as Product[] }
-    catch { return staffProducts }
+    catch { return employeeProducts }
   }
-  return staffProducts
+  return employeeProducts
 }
 
 export default function EmployeeInventoryPage() {
-  const [products, setProducts] = useState<Product[]>(staffProducts)
+  const [products, setProducts] = useState<Product[]>(employeeProducts)
   const [hydrated, setHydrated] = useState(false)
 
   // Hydrate from localStorage after mount — prevents SSR mismatch

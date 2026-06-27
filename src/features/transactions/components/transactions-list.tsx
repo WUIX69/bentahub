@@ -1,4 +1,4 @@
-"use client"
+﻿"use client"
 
 import { useState, useMemo } from "react"
 import {
@@ -11,7 +11,7 @@ import {
 import { useAuth } from "@/hooks/useAuth"
 import { cn } from "@/lib/utils"
 import { ReceiptModal } from "./receipt-modal"
-import type { Transaction } from "@/types/cashier"
+import type { Transaction } from "@/types/employee"
 
 const EMPLOYEE_ITEMS_PER_PAGE = 5
 const CUSTOMER_ITEMS_PER_PAGE = 10

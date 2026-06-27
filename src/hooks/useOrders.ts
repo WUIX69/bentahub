@@ -1,9 +1,9 @@
 import { useCallback } from "react"
 import { useOrdersStore, type Order } from "@/stores/ordersStore"
 import { useAuth } from "./useAuth"
-import { getOrders } from "@/features/orders/server/db/get-orders"
-import { createOrder as createOrderAction } from "@/features/orders/server/actions/create-order"
-import { cancelOrder as cancelOrderAction } from "@/features/orders/server/actions/cancel-order"
+import { getOrders } from "@/server/db/get-orders"
+import { createOrder as createOrderAction } from "@/server/actions/create-order"
+import { cancelOrder as cancelOrderAction } from "@/server/actions/cancel-order"
 
 export function useOrders() {
   const { user } = useAuth()

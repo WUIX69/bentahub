@@ -1,22 +1,12 @@
 "use server"
 
-import { z } from "zod"
 import { db } from "@/drizzle/db"
 import { users, emailVerifications } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { generateId, generateVerificationCode, hashPassword, hashVerificationCode } from "@/lib/auth-utils"
 import { sendVerificationEmail } from "@/lib/email-service"
+import { registerSchema } from "@/features/user-mgmt/schemas/auth"
 import type { AuthResponse, RegisterPayload } from "@/types/auth"
-
-const registerSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(8, "Password must be at least 8 characters long"),
-  confirmPassword: z.string(),
-  fullName: z.string().min(2, "Full name must be at least 2 characters long"),
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords do not match",
-  path: ["confirmPassword"],
-})
 
 export async function registerUser(payload: RegisterPayload): Promise<AuthResponse> {
   try {

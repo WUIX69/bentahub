@@ -4,6 +4,7 @@ import { db } from "@/drizzle/db"
 import { cartItems } from "@/drizzle/schema"
 import { eq, and } from "drizzle-orm"
 import { getAuthenticatedUser } from "@/lib/auth-utils"
+import { removeCartItemSchema } from "@/features/cart/schemas/cart"
 
 export async function removeCartItem(itemId: string) {
   const user = await getAuthenticatedUser()
@@ -11,6 +12,12 @@ export async function removeCartItem(itemId: string) {
     return { success: false, message: "Unauthorized" }
   }
   const userId = user.userId
+
+  const parsed = removeCartItemSchema.safeParse({ itemId })
+  if (!parsed.success) {
+    return { success: false, message: "Invalid item ID" }
+  }
+
   const [item] = await db
     .select()
     .from(cartItems)

@@ -4,11 +4,7 @@ import { db } from "@/drizzle/db"
 import { notifications } from "@/drizzle/schema"
 import { eq, and } from "drizzle-orm"
 import { getAuthenticatedUser } from "@/lib/auth-utils"
-
-export interface MarkNotificationReadParams {
-  notificationId: string
-  isRead: boolean
-}
+import { markNotificationReadSchema } from "@/features/notifications/schemas/notifications"
 
 export interface MarkNotificationReadResult {
   success: boolean
@@ -16,14 +12,20 @@ export interface MarkNotificationReadResult {
 }
 
 export async function markNotificationRead(
-  params: MarkNotificationReadParams,
+  params: { notificationId: string; isRead: boolean },
 ): Promise<MarkNotificationReadResult> {
   const user = await getAuthenticatedUser()
   if (!user) {
     return { success: false }
   }
   const userId = user.userId
-  const { notificationId, isRead } = params
+
+  const parsed = markNotificationReadSchema.safeParse(params)
+  if (!parsed.success) {
+    return { success: false }
+  }
+
+  const { notificationId, isRead } = parsed.data
 
   const notification = await db
     .select()

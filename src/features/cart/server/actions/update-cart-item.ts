@@ -4,6 +4,7 @@ import { db } from "@/drizzle/db"
 import { cartItems } from "@/drizzle/schema"
 import { eq, and } from "drizzle-orm"
 import { getAuthenticatedUser } from "@/lib/auth-utils"
+import { updateCartItemSchema } from "@/features/cart/schemas/cart"
 
 export async function updateCartItem(
   itemId: string,
@@ -15,7 +16,8 @@ export async function updateCartItem(
   }
   const userId = user.userId
 
-  if (quantity === undefined || quantity < 1) {
+  const parsed = updateCartItemSchema.safeParse({ itemId, quantity })
+  if (!parsed.success) {
     return { success: false, message: "Invalid quantity" }
   }
 

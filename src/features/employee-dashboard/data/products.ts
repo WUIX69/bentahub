@@ -1,4 +1,4 @@
-import type { Product } from "@/types/cashier"
+import type { Product } from "@/types/employee"
 
 export function getStockStatus(product: Product): "in-stock" | "low-stock" | "out-of-stock" {
   if (product.stock === 0) return "out-of-stock"
@@ -25,4 +25,4 @@ const allProducts: Product[] = [
   { id: "prod-016", sku: "HYG-460", name: "Dish Soap (500ml)", price: 68.0, category: "Household", stock: 37, reorderLevel: 10, image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?w=400&auto=format&fit=crop&q=80", unit: "bottle" },
 ]
 
-export { allProducts as products, allProducts as staffProducts }
+export { allProducts as products, allProducts as employeeProducts }

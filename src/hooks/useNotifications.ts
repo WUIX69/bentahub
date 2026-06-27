@@ -1,8 +1,8 @@
 import { useCallback } from "react"
 import { useNotificationsStore, type Notification } from "@/stores/notificationsStore"
 import { useAuth } from "./useAuth"
-import { getNotifications } from "@/features/notifications/server/db/get-notifications"
-import { markNotificationRead, markAllNotificationsRead } from "@/features/notifications/server/actions/mark-read"
+import { getNotifications } from "@/server/db/get-notifications"
+import { markNotificationRead, markAllNotificationsRead } from "@/server/actions/mark-read"
 
 export function useNotifications() {
   const { user } = useAuth()

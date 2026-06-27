@@ -1,4 +1,4 @@
-import type { Payment } from "@/types/cashier"
+﻿import type { Payment } from "@/types/employee"
 
 export const payments: Payment[] = [
   {

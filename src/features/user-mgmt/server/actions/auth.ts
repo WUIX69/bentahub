@@ -5,14 +5,19 @@ import { db } from "@/drizzle/db"
 import { users } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { verifyPassword, generateToken, extractToken, verifyToken } from "@/lib/auth-utils"
+import { loginSchema } from "@/features/user-mgmt/schemas/auth"
 import type { AuthResponse, LoginResponseData } from "@/types/auth"
 
 export async function loginAction(payload: Record<string, string>): Promise<AuthResponse<LoginResponseData>> {
   try {
-    const { email, password } = payload
-    if (!email || !password) {
-      return { success: false, message: "Email and password are required" }
+    const parsed = loginSchema.safeParse(payload)
+    if (!parsed.success) {
+      const errorMap = parsed.error.flatten().fieldErrors
+      const firstError = Object.values(errorMap)[0]?.[0] || "Validation failed"
+      return { success: false, message: firstError }
     }
+
+    const { email, password } = parsed.data
 
     const user = await db.query.users.findFirst({
       where: eq(users.email, email),

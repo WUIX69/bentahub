@@ -6,7 +6,7 @@ import {
   ChevronRight, Filter, Download, Clock
 } from "lucide-react"
 
-interface StaffNotificationItem {
+interface EmployeeNotificationItem {
   id: string
   title: string
   description?: string
@@ -20,7 +20,7 @@ interface StaffNotificationItem {
   actions?: { label: string; variant: "primary" | "outline" | "ghost"; href?: string }[]
 }
 
-const mockNotifications: StaffNotificationItem[] = [
+const mockNotifications: EmployeeNotificationItem[] = [
   {
     id: "s1",
     title: "New Reservation: #BH-99128 Ready for Prep",
@@ -85,7 +85,7 @@ const mockNotifications: StaffNotificationItem[] = [
   },
 ]
 
-export function StaffNotificationsFeed() {
+export function EmployeeNotificationsFeed() {
   const [notifications] = useState(mockNotifications)
 
   const progressValue = 95
@@ -93,7 +93,7 @@ export function StaffNotificationsFeed() {
   return (
     <div className="space-y-6">
       <section>
-        <h1 className="text-3xl font-bold text-foreground">Staff Notifications</h1>
+        <h1 className="text-3xl font-bold text-foreground">Employee Notifications</h1>
         <p className="text-sm text-muted-foreground mt-1">
           Manage operational alerts and system synchronization.
         </p>

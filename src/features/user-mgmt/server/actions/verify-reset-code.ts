@@ -3,12 +3,14 @@
 import { db } from "@/drizzle/db"
 import { passwordResetTokens } from "@/drizzle/schema"
 import { eq, and } from "drizzle-orm"
+import { verifyResetCodeSchema } from "@/features/user-mgmt/schemas/auth"
 
 const MAX_RESET_ATTEMPTS = 5
 
 export async function verifyResetCode(email: string, token: string): Promise<{ success: boolean; message: string }> {
   try {
-    if (!email || !token) {
+    const parsed = verifyResetCodeSchema.safeParse({ email, token })
+    if (!parsed.success) {
       return { success: false, message: "Email and verification code are required" }
     }
 

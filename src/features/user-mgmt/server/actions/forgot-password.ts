@@ -6,12 +6,14 @@ import { users, passwordResetTokens } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { generateId } from "@/lib/auth-utils"
 import { sendPasswordResetEmail } from "@/lib/email-service"
+import { forgotPasswordSchema } from "@/features/user-mgmt/schemas/auth"
 
 const RESET_TOKEN_EXPIRY_HOURS = 1
 
 export async function forgotPassword(email: string): Promise<{ success: boolean; message: string }> {
   try {
-    if (!email) {
+    const parsed = forgotPasswordSchema.safeParse({ email })
+    if (!parsed.success) {
       return { success: false, message: "Email is required" }
     }
 

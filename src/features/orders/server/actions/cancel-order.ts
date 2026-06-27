@@ -4,6 +4,7 @@ import { db } from "@/drizzle/db"
 import { orders } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { getAuthenticatedUser } from "@/lib/auth-utils"
+import { cancelOrderSchema } from "@/features/orders/schemas/orders"
 
 export async function cancelOrder(orderId: string) {
   const user = await getAuthenticatedUser()
@@ -11,6 +12,12 @@ export async function cancelOrder(orderId: string) {
     return { success: false, message: "Unauthorized" }
   }
   const userId = user.userId
+
+  const parsed = cancelOrderSchema.safeParse({ orderId })
+  if (!parsed.success) {
+    return { success: false, message: "Invalid order ID" }
+  }
+
   const [order] = await db
     .select()
     .from(orders)

@@ -1,21 +1,12 @@
 "use server"
 
-import { z } from "zod"
 import { db } from "@/drizzle/db"
 import { users, emailVerifications } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { generateId, generateVerificationCode, hashVerificationCode } from "@/lib/auth-utils"
 import { sendVerificationEmail } from "@/lib/email-service"
+import { verifyEmailSchema, resendCodeSchema } from "@/features/user-mgmt/schemas/auth"
 import type { AuthResponse } from "@/types/auth"
-
-const verifyEmailSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  code: z.string().length(6, "Verification code must be exactly 6 digits"),
-})
-
-const resendCodeSchema = z.object({
-  email: z.string().email("Invalid email address"),
-})
 
 /**
  * Server Action to verify a user's email using a 6-digit OTP code.

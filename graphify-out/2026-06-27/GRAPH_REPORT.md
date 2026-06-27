@@ -1,16 +1,16 @@
-# Graph Report - bentahub  (2026-06-26)
+# Graph Report - bentahub  (2026-06-27)
 
 ## Corpus Check
-- 239 files · ~82,588 words
+- 238 files · ~80,729 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 900 nodes · 1454 edges · 91 communities (77 shown, 14 thin omitted)
+- 896 nodes · 1464 edges · 83 communities (70 shown, 13 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.89)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `b1e176c6`
+- Built from commit: `2f0fcb6d`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -67,8 +67,6 @@
 - [[_COMMUNITY_Notification Types & Severity|Notification Types & Severity]]
 - [[_COMMUNITY_Unwired Middleware Auth|Unwired Middleware Auth]]
 - [[_COMMUNITY_Auth Layout Styling|Auth Layout Styling]]
-- [[_COMMUNITY_Cashier Notifications Feed|Cashier Notifications Feed]]
-- [[_COMMUNITY_Employee Topbar UI|Employee Topbar UI]]
 - [[_COMMUNITY_Database Client & Seeding|Database Client & Seeding]]
 - [[_COMMUNITY_Drizzle Kit Configuration|Drizzle Kit Configuration]]
 - [[_COMMUNITY_ESLint Configuration|ESLint Configuration]]
@@ -86,24 +84,18 @@
 - [[_COMMUNITY_Community 73|Community 73]]
 - [[_COMMUNITY_Community 74|Community 74]]
 - [[_COMMUNITY_Community 75|Community 75]]
-- [[_COMMUNITY_Community 76|Community 76]]
-- [[_COMMUNITY_Community 77|Community 77]]
 - [[_COMMUNITY_Community 78|Community 78]]
 - [[_COMMUNITY_Community 79|Community 79]]
-- [[_COMMUNITY_Community 80|Community 80]]
 - [[_COMMUNITY_Community 81|Community 81]]
 - [[_COMMUNITY_Community 82|Community 82]]
 - [[_COMMUNITY_Community 83|Community 83]]
-- [[_COMMUNITY_Community 84|Community 84]]
 - [[_COMMUNITY_Community 85|Community 85]]
-- [[_COMMUNITY_Community 86|Community 86]]
-- [[_COMMUNITY_Community 87|Community 87]]
 - [[_COMMUNITY_Community 88|Community 88]]
 - [[_COMMUNITY_Community 89|Community 89]]
 - [[_COMMUNITY_Community 90|Community 90]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `useAuth()` - 50 edges
+1. `useAuth()` - 46 edges
 2. `getAuthenticatedUser()` - 23 edges
 3. `db` - 22 edges
 4. `Feature Sliced Design (FSD) Architecture Guidelines` - 18 edges
@@ -133,23 +125,23 @@
 - **FSD Core Architectural Principles** — docs_feature_sliced_design_architecture, docs_feature_sliced_design_rule_of_promotion, docs_feature_sliced_design_import_boundary_rules [EXTRACTED 1.00]
 - **Permissions and Access Control Flow** — docs_feature_sliced_design_permission_system_pattern, lib_permissions_cancreateproduct, components_haspermission_haspermission [EXTRACTED 1.00]
 
-## Communities (91 total, 14 thin omitted)
+## Communities (83 total, 13 thin omitted)
 
 ### Community 0 - "User Registration & Verification"
-Cohesion: 0.06
-Nodes (58): addToCart(), loginAction(), verifySessionAction(), cancelOrder(), createOrder(), markAllNotificationsRead(), markNotificationRead(), MarkNotificationReadParams (+50 more)
+Cohesion: 0.05
+Nodes (66): addToCart(), loginAction(), verifySessionAction(), cancelOrder(), createOrder(), markAllNotificationsRead(), markNotificationRead(), MarkNotificationReadResult (+58 more)
 
 ### Community 1 - "Admin Monitoring & Data Overview"
-Cohesion: 0.18
-Nodes (12): SalesMetrics(), SalesMetricsProps, TransactionDetailsTable(), TransactionDetailsTableProps, SalesPage(), AdminApiResponse, BranchStockData, KpiData (+4 more)
+Cohesion: 0.17
+Nodes (13): MonitoringMetrics(), MonitoringMetricsProps, SalesMetrics(), SalesMetricsProps, TransactionDetailsTable(), TransactionDetailsTableProps, SalesPage(), AdminApiResponse (+5 more)
 
 ### Community 2 - "Sidebar & Mobile Navigation UI"
-Cohesion: 0.14
-Nodes (14): AdminLayout(), AdminSidebar(), AdminSidebarProps, DashboardSidebar(), DashboardSidebarProps, EmployeeSidebar(), EmployeeSidebarProps, NAV_ITEMS (+6 more)
+Cohesion: 0.16
+Nodes (13): AdminLayout(), AdminSidebar(), AdminSidebarProps, AdminTopbar(), DashboardSidebar(), DashboardSidebarProps, EmployeeSidebar(), EmployeeSidebarProps (+5 more)
 
 ### Community 3 - "Auth & Password Forms"
 Cohesion: 0.08
-Nodes (22): App structure, Architecture & FSD rules, Auth & security, Commands, graphify, Known gotchas, Project overview, Roles & constraints (+14 more)
+Nodes (23): App structure, Architecture & FSD rules, Auth & security, Commands, graphify, Known gotchas, Project overview, Research (+15 more)
 
 ### Community 4 - "FSD Architecture & App Docs"
 Cohesion: 0.36
@@ -157,51 +149,51 @@ Nodes (5): Environment Variables Reference, Feature Sliced Design Architecture, 
 
 ### Community 5 - "Root Layout & Global CSS"
 Cohesion: 0.13
-Nodes (13): logoutAction(), fontMono, fontSans, fontSerif, metadata, AuthContext, AuthContextValue, AuthProvider() (+5 more)
+Nodes (13): logoutAction(), fontMono, fontSans, fontSerif, metadata, ThemeProvider(), AuthContext, AuthContextValue (+5 more)
 
 ### Community 6 - "Staff KPI & Stock Status"
-Cohesion: 0.15
-Nodes (11): InventoryUpdateTableProps, ProductCatalogProps, QuickStockModalProps, StaffKpiCards(), StaffKpiCardsProps, StockSummaryCards(), allProducts, getStockStatus() (+3 more)
+Cohesion: 0.16
+Nodes (10): EmployeeKpiCards(), EmployeeKpiCardsProps, InventoryUpdateTableProps, QuickStockModalProps, StockSummaryCards(), allProducts, getStockStatus(), ProductCard() (+2 more)
 
 ### Community 7 - "Stock Management UI"
 Cohesion: 0.13
-Nodes (16): AddStockModal(), AddStockModalProps, CATEGORIES, ProductForm, InventoryUpdateTable(), PaymentItem, PaymentPickupList(), PaymentPickupListProps (+8 more)
+Nodes (16): AddStockModal(), AddStockModalProps, CATEGORIES, ProductForm, EmployeeNotificationItem, EmployeeNotificationsFeed(), mockNotifications, InventoryUpdateTable() (+8 more)
 
 ### Community 8 - "Live Transaction Feed UI"
 Cohesion: 0.10
-Nodes (18): LiveTransactionFeed(), LiveTransactionFeedProps, StaffTransactionTable(), StaffTransactionTableProps, allTransactions, staffPayments, staffPickups, GetTransactionsParams (+10 more)
+Nodes (18): EmployeeTransactionTable(), EmployeeTransactionTableProps, LiveTransactionFeed(), LiveTransactionFeedProps, allTransactions, employeePayments, employeePickups, GetTransactionsParams (+10 more)
 
 ### Community 9 - "Notification Feed & Read Actions"
-Cohesion: 0.21
-Nodes (5): FilterTab, NotificationItem, NotificationsFeed(), roleLabels, roleToBuilder
+Cohesion: 0.22
+Nodes (4): FilterTab, NotificationsFeed(), roleLabels, roleToBuilder
 
 ### Community 10 - "Branch Grid & Footer Layout"
 Cohesion: 0.11
 Nodes (10): branches, BranchGrid(), CtaBanner(), Footer(), HeroSection(), Navbar(), ProductGrid(), products (+2 more)
 
 ### Community 11 - "Dashboard Metrics & Charts"
-Cohesion: 0.18
-Nodes (8): HistoryMetrics(), InventoryFlowTrend(), KPICard(), KPICardProps, PaymentMetrics(), PickupMetrics(), ReservationFilters(), ReservationMetrics()
+Cohesion: 0.12
+Nodes (14): HistoryMetrics(), InventoryFlowTrend(), KPICard(), KPICardProps, PaymentMetrics(), PickupMetrics(), ReservationFilters(), ReservationMetrics() (+6 more)
 
 ### Community 12 - "Sales Data & Overview Retrieval"
-Cohesion: 0.24
-Nodes (10): AdminPage(), computeTrend(), formatCurrency(), getAdminOverview(), getMonthRange(), MONTH_NAMES, RawBranch, RawInventory (+2 more)
+Cohesion: 0.14
+Nodes (16): AdminPage(), BranchStockItem, BranchStockOverview(), BranchStockOverviewProps, STATUS_COLORS, computeTrend(), formatCurrency(), getAdminOverview() (+8 more)
 
 ### Community 13 - "Product Details & UI Actions"
 Cohesion: 0.13
 Nodes (13): ProductActions(), ProductActionsProps, ProductBreadcrumb(), ProductBreadcrumbProps, ProductDetailsSection(), ProductDetailsSectionProps, ProductImageGallery(), ProductImageGalleryProps (+5 more)
 
 ### Community 14 - "Cart Sidebar UI Components"
-Cohesion: 0.23
-Nodes (10): CartItem(), CartItemProps, CartSidebar(), CartSidebarProps, CATEGORIES, ProductCatalog(), useCart(), UseCartReturn (+2 more)
+Cohesion: 0.21
+Nodes (11): CartItem(), CartItemProps, CartSidebar(), CartSidebarProps, CATEGORIES, ProductCatalog(), ProductCatalogProps, useCart() (+3 more)
 
 ### Community 15 - "Dashboard Monitoring Mock Data"
-Cohesion: 0.18
-Nodes (9): AlertItem, InventoryRow, LiveTransaction, mockAlerts, mockBranches, mockInventory, mockLiveTransactions, MonitoringDashboard() (+1 more)
+Cohesion: 0.16
+Nodes (10): AlertItem, InventoryRow, LiveTransaction, mockAlerts, mockBranches, mockInventory, mockLiveTransactions, MonitoringDashboard() (+2 more)
 
 ### Community 16 - "Checkout & Cart Pages"
-Cohesion: 0.33
-Nodes (4): CartPage(), useCart(), ProductDetailPage(), ProductCardProps
+Cohesion: 0.28
+Nodes (5): CartPage(), CheckoutPage(), useCart(), ProductDetailPage(), ProductCardProps
 
 ### Community 17 - "Pickup Modal & Order Details"
 Cohesion: 0.15
@@ -212,8 +204,8 @@ Cohesion: 0.14
 Nodes (9): mockPayments, mockPickups, PaymentItem, PickupItem, PickupsManager(), Tab, GetPickupsParams, GetPickupsResult (+1 more)
 
 ### Community 19 - "Recent Orders & Transactions Tables"
-Cohesion: 0.36
-Nodes (5): CheckoutPage(), demoOrders, RecentOrdersTable(), TransactionTable(), useOrders()
+Cohesion: 0.22
+Nodes (8): demoOrders, RecentOrdersTable(), TransactionTable(), useOrders(), Order, OrderItem, OrdersState, useOrdersStore
 
 ### Community 20 - "Reservations Manager UI"
 Cohesion: 0.14
@@ -241,7 +233,7 @@ Nodes (5): InsertProduct, insertProductSchema, Product, productStockStatusEnum, 
 
 ### Community 27 - "Email Verification Schema"
 Cohesion: 0.07
-Nodes (22): verifyResetCode(), verifyEmailAction(), AuthHeader(), AuthHeaderProps, CreateNewPasswordForm(), ForgotPasswordForm(), RegisterForm(), ResetPasswordForm() (+14 more)
+Nodes (21): verifyResetCode(), AuthHeader(), AuthHeaderProps, CreateNewPasswordForm(), ForgotPasswordForm(), RegisterForm(), ResetPasswordForm(), VerifyEmailForm() (+13 more)
 
 ### Community 28 - "Orders Schema & Types"
 Cohesion: 0.15
@@ -256,8 +248,8 @@ Cohesion: 0.20
 Nodes (4): customerOrders, employeeTransactions, MockTransaction, TransactionsList()
 
 ### Community 31 - "Admin Dashboard Sidebar Layout"
-Cohesion: 0.17
-Nodes (10): AdminTopbar(), AdminTopbarProps, DashboardTopbar(), getInitials(), EmployeeTopbar(), EmployeeTopbarProps, ROUTE_TITLES, ROUTE_TITLES (+2 more)
+Cohesion: 0.25
+Nodes (7): AdminTopbarProps, DashboardTopbar(), getInitials(), EmployeeTopbar(), EmployeeTopbarProps, ROUTE_TITLES, ThemeToggle()
 
 ### Community 32 - "Transaction Details Modals"
 Cohesion: 0.25
@@ -272,8 +264,8 @@ Cohesion: 0.29
 Nodes (6): PaymentDetailsModal(), PaymentDetailsModalProps, PaymentRecord, mockPayments, PaymentRecord, PaymentTable()
 
 ### Community 35 - "Transactions Schema & Types"
-Cohesion: 0.25
-Nodes (7): paymentMethodEnum, InsertTransaction, insertTransactionSchema, selectTransactionSchema, Transaction, transactionRelations, transactionStatusEnum
+Cohesion: 0.15
+Nodes (12): Branch, branches, InsertBranch, insertBranchSchema, selectBranchSchema, paymentMethodEnum, InsertTransaction, insertTransactionSchema (+4 more)
 
 ### Community 36 - "Admin Notifications Feed"
 Cohesion: 0.29
@@ -304,8 +296,8 @@ Cohesion: 0.14
 Nodes (14): 1. Prerequisites, 2. Configure Environment Variables, 3. Install Dependencies, 4. Database Setup, 5. Run the Development Server, BentaHub — Centralized Inventory Management and POS System, Direct Docker Compose Commands, Docker Helper Scripts (+6 more)
 
 ### Community 44 - "Cashier Navigation Sidebar"
-Cohesion: 0.50
-Nodes (3): CashierSidebar(), CashierSidebarProps, NAV_ITEMS
+Cohesion: 0.29
+Nodes (6): BranchInventory, branchInventoryRelations, InsertBranchInventory, insertBranchInventorySchema, selectBranchInventorySchema, transactions
 
 ### Community 45 - "Monitoring Metrics UI"
 Cohesion: 0.25
@@ -314,10 +306,6 @@ Nodes (8): formatCurrency(), getSalesData(), MONTH_NAMES, SalesFilterOptions, Sa
 ### Community 46 - "Sales Trend Charts"
 Cohesion: 0.18
 Nodes (10): Build-Time Bypass, 📂 Directory Structure Overview, 🔒 Environment Variable Validation, 🏗️ Feature-First Mini-Applications, Feature Sliced Design (FSD) Architecture Guidelines, Key Rules, Snippet: Form Zod Schemas with Transformations & Refinement, 📖 Table of Contents (+2 more)
-
-### Community 47 - "Staff Navigation Sidebar"
-Cohesion: 0.50
-Nodes (3): NAV_ITEMS, StaffSidebar(), StaffSidebarProps
 
 ### Community 49 - "Notification Types & Severity"
 Cohesion: 0.50
@@ -332,8 +320,8 @@ Cohesion: 0.67
 Nodes (3): Adminer DB Client Service, PostgreSQL DB Service, Database Seeding & Reset
 
 ### Community 57 - "API Post Route Handlers"
-Cohesion: 0.29
-Nodes (7): formatCurrency(), getMonitoringData(), RawBranch, RawInventory, RawProduct, RawTransaction, MonitoringData
+Cohesion: 0.20
+Nodes (10): SystemAlerts(), SystemAlertsProps, formatCurrency(), getMonitoringData(), RawBranch, RawInventory, RawProduct, RawTransaction (+2 more)
 
 ### Community 68 - "Community 68"
 Cohesion: 0.24
@@ -344,16 +332,16 @@ Cohesion: 0.25
 Nodes (8): 💻 Available Development Commands, BentaHub Contributing Guide, Core Folder Structure, 🏗️ Feature-Sliced Design (FSD) Guidelines, 🛠️ Local Setup, 📝 Pull Request Checklist, The Isolation Principle, 🚦 Verification & Code Style
 
 ### Community 70 - "Community 70"
-Cohesion: 0.22
-Nodes (9): MonitoringSummary, BRANCHES, envPath, generateId(), PRODUCTS, seedData(), USERS, BranchInventory (+1 more)
+Cohesion: 0.33
+Nodes (6): BRANCHES, envPath, generateId(), PRODUCTS, seedData(), USERS
 
 ### Community 71 - "Community 71"
 Cohesion: 0.33
 Nodes (7): getProducts, getProductsInternal, 1. Caching Strategy & Public/Internal Split, 2. Cache Tagging Levels, 3. Mutations & Revalidation Pattern, ⚡ DB Caching & Query Patterns, dbCache
 
 ### Community 72 - "Community 72"
-Cohesion: 0.29
-Nodes (6): EmailVerificationCode, emailVerificationRelations, emailVerifications, InsertEmailVerificationCode, insertEmailVerificationSchema, selectEmailVerificationSchema
+Cohesion: 0.33
+Nodes (5): EmailVerificationCode, emailVerificationRelations, InsertEmailVerificationCode, insertEmailVerificationSchema, selectEmailVerificationSchema
 
 ### Community 73 - "Community 73"
 Cohesion: 0.33
@@ -367,14 +355,6 @@ Nodes (4): createCustomerPortalSession, Good Practice: Returning `void`, Handlin
 Cohesion: 0.50
 Nodes (4): RootLayout(), Key Rules, 🎨 Layout & Provider Pattern, Snippet: Root Layout configuration
 
-### Community 76 - "Community 76"
-Cohesion: 0.50
-Nodes (3): mockReservations, Reservation, ReservationTable()
-
-### Community 77 - "Community 77"
-Cohesion: 0.20
-Nodes (9): branchInventoryRelations, InsertBranchInventory, insertBranchInventorySchema, selectBranchInventorySchema, Branch, branches, InsertBranch, insertBranchSchema (+1 more)
-
 ### Community 78 - "Community 78"
 Cohesion: 0.50
 Nodes (4): 🌐 API Route Patterns, Key Rules, Snippet: Cryptographic Webhook Handler (Clerk Webhook), Snippet: Edge API Route (discount banner script generator)
@@ -382,10 +362,6 @@ Nodes (4): 🌐 API Route Patterns, Key Rules, Snippet: Cryptographic Webhook Ha
 ### Community 79 - "Community 79"
 Cohesion: 0.50
 Nodes (4): Key Rules, 🛡️ Middleware Pattern, Snippet: Route Authorization Middleware, middleware.ts
-
-### Community 80 - "Community 80"
-Cohesion: 0.40
-Nodes (4): BranchStockItem, BranchStockOverview(), BranchStockOverviewProps, STATUS_COLORS
 
 ### Community 82 - "Community 82"
 Cohesion: 0.50
@@ -395,21 +371,9 @@ Nodes (3): InventoryStatusTable(), InventoryStatusTableProps, InventoryStatusIte
 Cohesion: 0.67
 Nodes (3): Key Rules, ⚡ Server Action Patterns, Snippet: Standard Mutation Server Action
 
-### Community 84 - "Community 84"
-Cohesion: 0.67
-Nodes (3): MonitoringMetrics(), MonitoringMetricsProps, MonitoringMetricsData
-
 ### Community 85 - "Community 85"
 Cohesion: 0.67
 Nodes (3): SalesChart(), SalesChartProps, SalesTrendPointData
-
-### Community 86 - "Community 86"
-Cohesion: 0.50
-Nodes (3): BranchOption, SalesFilters(), SalesFiltersProps
-
-### Community 87 - "Community 87"
-Cohesion: 0.67
-Nodes (3): SystemAlerts(), SystemAlertsProps, SystemAlertItem
 
 ### Community 88 - "Community 88"
 Cohesion: 0.50
@@ -424,24 +388,24 @@ Cohesion: 0.67
 Nodes (3): 🧩 Feature Component Patterns, Key Rules, Snippet: Standard Client Form Component
 
 ## Knowledge Gaps
-- **337 isolated node(s):** `envPath`, `eslintConfig`, `config`, `metadata`, `demoProducts` (+332 more)
+- **328 isolated node(s):** `envPath`, `eslintConfig`, `config`, `metadata`, `demoProducts` (+323 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `RootLayout()` connect `Community 75` to `Root Layout & Global CSS`?**
-  _High betweenness centrality (0.219) - this node is a cross-community bridge._
-- **Why does `useAuth()` connect `Sidebar & Mobile Navigation UI` to `User Registration & Verification`, `System Settings & Configuration`, `Admin Monitoring & Data Overview`, `Community 68`, `Notification Feed & Read Actions`, `Sales Data & Overview Retrieval`, `Cashier Navigation Sidebar`, `Dashboard Monitoring Mock Data`, `Staff Navigation Sidebar`, `Checkout & Cart Pages`, `Pickup & Payment Management`, `Recent Orders & Transactions Tables`, `Reservations Manager UI`, `Payments Manager Mock Data`, `Transaction History Lists`, `Admin Dashboard Sidebar Layout`?**
-  _High betweenness centrality (0.219) - this node is a cross-community bridge._
+  _High betweenness centrality (0.224) - this node is a cross-community bridge._
 - **Why does `🎨 Layout & Provider Pattern` connect `Community 75` to `FSD Architecture & App Docs`, `Sales Trend Charts`?**
-  _High betweenness centrality (0.219) - this node is a cross-community bridge._
+  _High betweenness centrality (0.223) - this node is a cross-community bridge._
+- **Why does `useAuth()` connect `Sidebar & Mobile Navigation UI` to `User Registration & Verification`, `System Settings & Configuration`, `Admin Monitoring & Data Overview`, `Community 68`, `Notification Feed & Read Actions`, `Sales Data & Overview Retrieval`, `Dashboard Monitoring Mock Data`, `Checkout & Cart Pages`, `Staff Navigation Sidebar`, `Pickup & Payment Management`, `Recent Orders & Transactions Tables`, `Reservations Manager UI`, `Payments Manager Mock Data`, `Transaction History Lists`, `Admin Dashboard Sidebar Layout`?**
+  _High betweenness centrality (0.213) - this node is a cross-community bridge._
 - **What connects `envPath`, `eslintConfig`, `config` to the rest of the system?**
-  _339 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _330 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `User Registration & Verification` be split into smaller, more focused modules?**
-  _Cohesion score 0.05880780539962577 - nodes in this community are weakly interconnected._
-- **Should `Sidebar & Mobile Navigation UI` be split into smaller, more focused modules?**
-  _Cohesion score 0.14 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05240549828178694 - nodes in this community are weakly interconnected._
 - **Should `Auth & Password Forms` be split into smaller, more focused modules?**
-  _Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+- **Should `Root Layout & Global CSS` be split into smaller, more focused modules?**
+  _Cohesion score 0.1286549707602339 - nodes in this community are weakly interconnected._

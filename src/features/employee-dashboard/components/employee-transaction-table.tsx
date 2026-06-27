@@ -2,17 +2,17 @@
 
 import { useState, useMemo } from "react"
 import { Search, ChevronLeft, ChevronRight, FileText } from "lucide-react"
-import type { Transaction } from "@/types/cashier"
+import type { Transaction } from "@/types/employee"
 import { ReceiptModal } from "./receipt-modal"
 import { cn } from "@/lib/utils"
 
 const ITEMS_PER_PAGE = 5
 
-interface StaffTransactionTableProps {
+interface EmployeeTransactionTableProps {
   transactions: Transaction[]
 }
 
-export function StaffTransactionTable({ transactions }: StaffTransactionTableProps) {
+export function EmployeeTransactionTable({ transactions }: EmployeeTransactionTableProps) {
   const [searchQuery, setSearchQuery] = useState("")
   const [methodFilter, setMethodFilter] = useState("All")
   const [statusFilter, setStatusFilter] = useState("All")

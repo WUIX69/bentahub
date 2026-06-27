@@ -1,10 +1,10 @@
 import { useCallback } from "react"
 import { useCartStore, type CartItem } from "@/stores/cartStore"
 import { useAuth } from "./useAuth"
-import { getCart } from "@/features/cart/server/db/get-cart"
-import { addToCart as addToCartAction } from "@/features/cart/server/actions/add-to-cart"
-import { updateCartItem as updateCartItemAction } from "@/features/cart/server/actions/update-cart-item"
-import { removeCartItem as removeCartItemAction } from "@/features/cart/server/actions/remove-cart-item"
+import { getCart } from "@/server/db/get-cart"
+import { addToCart as addToCartAction } from "@/server/actions/add-to-cart"
+import { updateCartItem as updateCartItemAction } from "@/server/actions/update-cart-item"
+import { removeCartItem as removeCartItemAction } from "@/server/actions/remove-cart-item"
 
 export function useCart() {
   const { user } = useAuth()

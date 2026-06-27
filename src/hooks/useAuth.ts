@@ -1,4 +1,4 @@
-import { useAuth as useAuthContext } from "@/components/auth-provider"
+import { useAuth as useAuthContext } from "@/contexts/auth-context"
 
 export function useAuth() {
   return useAuthContext()

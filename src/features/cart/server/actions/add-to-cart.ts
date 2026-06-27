@@ -4,21 +4,21 @@ import { db } from "@/drizzle/db"
 import { cartItems, products } from "@/drizzle/schema"
 import { eq, and } from "drizzle-orm"
 import { getAuthenticatedUser, generateId } from "@/lib/auth-utils"
+import { addToCartSchema } from "@/features/cart/schemas/cart"
 
-export async function addToCart({
-  productId,
-  quantity,
-  branch,
-}: { productId: string; quantity: number; branch?: string }) {
+export async function addToCart(data: { productId: string; quantity: number; branch?: string }) {
   const user = await getAuthenticatedUser()
   if (!user) {
     return { success: false, message: "Unauthorized" }
   }
   const userId = user.userId
 
-  if (!productId || !quantity || quantity < 1) {
+  const parsed = addToCartSchema.safeParse(data)
+  if (!parsed.success) {
     return { success: false, message: "Invalid product ID or quantity" }
   }
+
+  const { productId, quantity, branch } = parsed.data
 
   const product = await db
     .select()

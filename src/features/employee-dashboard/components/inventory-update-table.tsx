@@ -1,9 +1,9 @@
-"use client"
+﻿"use client"
 
 import { useState, useMemo } from "react"
 import Image from "next/image"
 import { Search, ChevronLeft, ChevronRight, Edit3, Plus, Package } from "lucide-react"
-import type { Product } from "@/types/cashier"
+import type { Product } from "@/types/employee"
 import { getStockStatus } from "@/features/employee-dashboard/data/products"
 import { QuickStockModal } from "./quick-stock-modal"
 import { AddStockModal } from "./add-stock-modal"
