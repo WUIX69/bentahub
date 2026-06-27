@@ -1,7 +1,7 @@
-"use client"
+﻿"use client"
 
 import { X, Printer } from "lucide-react"
-import type { Transaction } from "@/types/cashier"
+import type { Transaction } from "@/types/employee"
 import { cn } from "@/lib/utils"
 
 interface ReceiptModalProps {

@@ -1,10 +1,10 @@
-"use client"
+﻿"use client"
 
 import { useState, useMemo } from "react"
 import { Search, ChevronLeft, ChevronRight, FileText } from "lucide-react"
 import { transactions } from "@/features/employee-dashboard/data/transactions"
 import { ReceiptModal } from "./receipt-modal"
-import type { Transaction } from "@/types/cashier"
+import type { Transaction } from "@/types/employee"
 import { cn } from "@/lib/utils"
 
 const ITEMS_PER_PAGE = 5

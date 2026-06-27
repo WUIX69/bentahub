@@ -1,7 +1,7 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
-import type { Product, CartItem } from "@/types/cashier"
+import type { Product, CartItem } from "@/types/employee"
 
 export function useCart() {
   const [items, setItems] = useState<CartItem[]>([])

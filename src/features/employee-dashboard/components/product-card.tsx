@@ -1,4 +1,4 @@
-import type { Product } from "@/types/cashier"
+﻿import type { Product } from "@/types/employee"
 import { getStockStatus } from "@/features/employee-dashboard/data/products"
 import { cn } from "@/lib/utils"
 import { Package } from "lucide-react"

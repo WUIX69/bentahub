@@ -1,15 +1,10 @@
 "use server"
 
-import { db } from "@/drizzle/db"
-import { cartItems, orders, orderItems } from "@/drizzle/schema"
-import { eq } from "drizzle-orm"
 import { getAuthenticatedUser, generateId } from "@/lib/auth-utils"
+import { createOrderSchema } from "@/features/orders/schemas/orders"
+import { getCartItemsByUserId, createOrderTransaction } from "@/features/orders/server/db/mutations"
 
-export async function createOrder({
-  paymentMethod,
-  branch,
-  notes,
-}: {
+export async function createOrder(data: {
   paymentMethod: string
   branch: string
   notes?: string
@@ -20,18 +15,16 @@ export async function createOrder({
   }
   const userId = user.userId
 
-  if (!paymentMethod || !branch) {
-    return { success: false, message: "Payment method and branch are required" }
+  const parsed = createOrderSchema.safeParse(data)
+  if (!parsed.success) {
+    const errorMap = parsed.error.flatten().fieldErrors
+    const firstError = Object.values(errorMap)[0]?.[0] || "Validation failed"
+    return { success: false, message: firstError }
   }
 
-  if (!["cash", "gcash"].includes(paymentMethod)) {
-    return { success: false, message: "Invalid payment method" }
-  }
+  const { paymentMethod, branch, notes } = parsed.data
 
-  const userCartItems = await db
-    .select()
-    .from(cartItems)
-    .where(eq(cartItems.userId, userId))
+  const userCartItems = await getCartItemsByUserId(userId)
 
   if (userCartItems.length === 0) {
     return { success: false, message: "Cart is empty" }
@@ -55,11 +48,6 @@ export async function createOrder({
     paidAt: null,
   }
 
-  const createdOrder = await db
-    .insert(orders)
-    .values(newOrder)
-    .returning()
-
   const orderItemsData = userCartItems.map((item) => ({
     id: generateId(),
     orderId,
@@ -70,15 +58,13 @@ export async function createOrder({
     subtotal: item.subtotal,
   }))
 
-  await db.insert(orderItems).values(orderItemsData)
-
-  await db.delete(cartItems).where(eq(cartItems.userId, userId))
+  const createdOrder = await createOrderTransaction(newOrder, orderItemsData)
 
   return {
     success: true,
     message: "Order created successfully",
     data: {
-      order: createdOrder[0],
+      order: createdOrder,
       items: orderItemsData,
     },
   }

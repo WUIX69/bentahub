@@ -1,10 +1,10 @@
-"use client"
+﻿"use client"
 
 import { useState, useMemo, useEffect, useRef } from "react"
 import { Search } from "lucide-react"
 import { products } from "@/features/employee-dashboard/data/products"
 import { ProductCard } from "./product-card"
-import type { Product } from "@/types/cashier"
+import type { Product } from "@/types/employee"
 import { cn } from "@/lib/utils"
 
 interface ProductCatalogProps {

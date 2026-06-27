@@ -1,5 +1,5 @@
 import { Suspense } from "react"
-import { CreateNewPasswordForm } from "@/features/user-mgmt/components/create-new-password-form"
+import { CreateNewPasswordForm } from "@/features/auth"
 
 export default function CreateNewPasswordPage() {
   return (

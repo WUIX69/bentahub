@@ -1,14 +1,13 @@
 "use server"
 
-import { db } from "@/drizzle/db"
 import { notifications } from "@/drizzle/schema"
-import { eq, and } from "drizzle-orm"
 import { getAuthenticatedUser } from "@/lib/auth-utils"
-
-export interface MarkNotificationReadParams {
-  notificationId: string
-  isRead: boolean
-}
+import { markNotificationReadSchema } from "@/features/notifications/schemas/notifications"
+import {
+  getNotificationByUserAndId,
+  updateNotificationReadStatus,
+  markAllUserNotificationsRead,
+} from "@/features/notifications/server/db/mutations"
 
 export interface MarkNotificationReadResult {
   success: boolean
@@ -16,37 +15,30 @@ export interface MarkNotificationReadResult {
 }
 
 export async function markNotificationRead(
-  params: MarkNotificationReadParams,
+  params: { notificationId: string; isRead: boolean },
 ): Promise<MarkNotificationReadResult> {
   const user = await getAuthenticatedUser()
   if (!user) {
     return { success: false }
   }
   const userId = user.userId
-  const { notificationId, isRead } = params
 
-  const notification = await db
-    .select()
-    .from(notifications)
-    .where(
-      and(eq(notifications.id, notificationId), eq(notifications.userId, userId)),
-    )
-    .limit(1)
-
-  if (!notification.length) {
+  const parsed = markNotificationReadSchema.safeParse(params)
+  if (!parsed.success) {
     return { success: false }
   }
 
-  const updated = await db
-    .update(notifications)
-    .set({
-      isRead,
-      readAt: isRead ? new Date() : null,
-    })
-    .where(eq(notifications.id, notificationId))
-    .returning()
+  const { notificationId, isRead } = parsed.data
 
-  return { success: true, data: updated[0] }
+  const notification = await getNotificationByUserAndId(userId, notificationId)
+
+  if (!notification) {
+    return { success: false }
+  }
+
+  const updated = await updateNotificationReadStatus(notificationId, isRead)
+
+  return { success: true, data: updated }
 }
 
 export async function markAllNotificationsRead(): Promise<{ success: boolean; updatedCount: number }> {
@@ -56,16 +48,7 @@ export async function markAllNotificationsRead(): Promise<{ success: boolean; up
   }
   const userId = user.userId
 
-  const updated = await db
-    .update(notifications)
-    .set({
-      isRead: true,
-      readAt: new Date(),
-    })
-    .where(
-      and(eq(notifications.userId, userId), eq(notifications.isRead, false)),
-    )
-    .returning()
+  const updatedCount = await markAllUserNotificationsRead(userId)
 
-  return { success: true, updatedCount: updated.length }
+  return { success: true, updatedCount }
 }

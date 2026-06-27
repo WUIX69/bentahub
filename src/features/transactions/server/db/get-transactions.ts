@@ -1,11 +1,11 @@
-/**
+﻿/**
  * Transaction data access stub.
  *
  * Will be replaced with real Drizzle queries once the API layer is wired.
  * Currently returns empty arrays — the UI uses inline mock data.
  */
 
-import type { Transaction } from "@/types/cashier"
+import type { Transaction } from "@/types/employee"
 
 export interface GetTransactionsParams {
   branchId?: string

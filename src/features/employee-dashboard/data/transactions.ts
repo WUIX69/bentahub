@@ -1,4 +1,4 @@
-import type { Transaction } from "@/types/cashier"
+import type { Transaction } from "@/types/employee"
 
 const allTransactions: Transaction[] = [
   {
@@ -77,16 +77,16 @@ const allTransactions: Transaction[] = [
   }
 ]
 
-export { allTransactions as transactions, allTransactions as staffTransactions }
+export { allTransactions as transactions, allTransactions as employeeTransactions }
 
-export const staffPayments = [
+export const employeePayments = [
   { id: "PAY-001", transactionId: "TXN-1002", referenceNumber: "GC-REF-8821", method: "gcash" as const, amount: 385.0, status: "pending" as const, date: "2026-05-22T08:42:10Z", customerName: "Maria Santos" },
   { id: "PAY-002", transactionId: "TXN-1005", referenceNumber: "GC-REF-7734", method: "gcash" as const, amount: 342.0, status: "pending" as const, date: "2026-05-22T10:12:15Z", customerName: "Juan Dela Cruz" },
   { id: "PAY-003", transactionId: "TXN-1007", referenceNumber: "GC-REF-6652", method: "gcash" as const, amount: 500.0, status: "verified" as const, date: "2026-05-22T13:20:18Z", customerName: "Ana Gonzales" },
   { id: "PAY-004", transactionId: "TXN-1001", referenceNumber: "CASH-001", method: "cash" as const, amount: 1000.0, status: "verified" as const, date: "2026-05-22T08:15:30Z", customerName: "Pedro Reyes" },
 ]
 
-export const staffPickups = [
+export const employeePickups = [
   { id: "PKP-001", transactionId: "TXN-1002", customerName: "Maria Santos", code: "PK-8821", date: "2026-05-22T08:42:10Z", status: "ready" as const },
   { id: "PKP-002", transactionId: "TXN-1005", customerName: "Juan Dela Cruz", code: "PK-7734", date: "2026-05-22T10:12:15Z", status: "ready" as const },
   { id: "PKP-003", transactionId: "TXN-1007", customerName: "Ana Gonzales", code: "PK-6652", date: "2026-05-22T13:20:18Z", status: "completed" as const },

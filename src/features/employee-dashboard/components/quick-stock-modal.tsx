@@ -1,9 +1,9 @@
-"use client"
+﻿"use client"
 
 import { useState } from "react"
 import Image from "next/image"
 import { X, Plus, Minus, Package } from "lucide-react"
-import type { Product } from "@/types/cashier"
+import type { Product } from "@/types/employee"
 import { cn } from "@/lib/utils"
 
 interface QuickStockModalProps {

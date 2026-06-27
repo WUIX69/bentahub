@@ -1,23 +1,23 @@
-"use client"
+﻿"use client"
 
 import { useState, useMemo } from "react"
 import Image from "next/image"
-import { StaffKpiCards } from "@/features/employee-dashboard/components/staff-kpi-cards"
-import { staffProducts, getStockStatus } from "@/features/employee-dashboard/data/products"
+import { EmployeeKpiCards } from "@/features/employee-dashboard/components/employee-kpi-cards"
+import { employeeProducts, getStockStatus } from "@/features/employee-dashboard/data/products"
 import { AlertTriangle, Package } from "lucide-react"
 import { cn } from "@/lib/utils"
-import type { Product } from "@/types/cashier"
+import type { Product } from "@/types/employee"
 
-const STORAGE_KEY = "bentahub-staff-products"
+const STORAGE_KEY = "bentahub-employee-products"
 
 function loadProducts() {
-  if (typeof window === "undefined") return staffProducts
+  if (typeof window === "undefined") return employeeProducts
   const stored = localStorage.getItem(STORAGE_KEY)
   if (stored) {
     try { return JSON.parse(stored) }
-    catch { return staffProducts }
+    catch { return employeeProducts }
   }
-  return staffProducts
+  return employeeProducts
 }
 
 export default function EmployeePage() {
@@ -31,7 +31,7 @@ export default function EmployeePage() {
 
   return (
     <div className="space-y-6">
-      <StaffKpiCards
+          <EmployeeKpiCards
         products={products}
         lowStockCount={lowStockCount}
         pendingPickups={3}
