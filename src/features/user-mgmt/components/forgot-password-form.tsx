@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { forgotPassword } from "@/features/user-mgmt/server/actions/forgot-password"
 
 export function ForgotPasswordForm() {
   const router = useRouter()
@@ -22,18 +23,10 @@ export function ForgotPasswordForm() {
     setIsLoading(true)
 
     try {
-      const response = await fetch("/api/auth/forgot-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      })
+      const result = await forgotPassword(email)
 
-      const data = await response.json()
-
-      if (!response.ok) {
-        setError(data.message || "Failed to send reset email")
+      if (!result.success) {
+        setError(result.message || "Failed to send reset email")
         setIsLoading(false)
         return
       }

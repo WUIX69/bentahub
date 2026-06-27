@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import { SalesFilters, SalesMetrics, TransactionDetailsTable } from "@/features/admin-dashboard"
 import type { SalesApiData } from "@/types/admin"
 import { useAuth } from "@/hooks/useAuth"
+import { getSalesData } from "@/features/admin-dashboard/server/db/get-sales"
 
 export default function SalesPage() {
   const [data, setData] = useState<SalesApiData | null>(null)
@@ -12,28 +13,30 @@ export default function SalesPage() {
   const [dateFrom, setDateFrom] = useState("")
   const [dateTo, setDateTo] = useState("")
   const [page, setPage] = useState(1)
-  const { token } = useAuth()
+  const { user } = useAuth()
 
   const fetchData = useCallback(async () => {
-    if (!token) return
+    if (!user) return
     setLoading(true)
     try {
-      const params = new URLSearchParams({ page: String(page), pageSize: "15" })
-      if (branchId) params.set("branchId", branchId)
-      if (dateFrom) params.set("dateFrom", dateFrom)
-      if (dateTo) params.set("dateTo", dateTo)
-
-      const res = await fetch(`/api/admin/sales?${params}`, {
-        headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-      })
-      const json = await res.json()
-      if (json.success && json.data) {
-        setData(json.data)
+      const filters = {
+        page,
+        pageSize: 15,
+        branchId: branchId || undefined,
+        dateFrom: dateFrom || undefined,
+        dateTo: dateTo || undefined,
       }
+
+      const result = await getSalesData(filters)
+      if (result) {
+        setData(result)
+      }
+    } catch (error) {
+      console.error("Failed to fetch sales data:", error)
     } finally {
       setLoading(false)
     }
-  }, [branchId, dateFrom, dateTo, page, token])
+  }, [branchId, dateFrom, dateTo, page, user])
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect

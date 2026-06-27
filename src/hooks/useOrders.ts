@@ -1,207 +1,137 @@
 import { useCallback } from "react"
 import { useOrdersStore, type Order } from "@/stores/ordersStore"
 import { useAuth } from "./useAuth"
-
-function authHeaders(token: string): HeadersInit {
-  return {
-    Authorization: `Bearer ${token}`,
-    "Content-Type": "application/json",
-  }
-}
-
-interface ApiOrderItem {
-  id: string
-  productId: string
-  productName: string
-  quantity: number
-  price: string | number
-  subtotal: string | number
-  createdAt: string
-}
-
-interface ApiOrder {
-  id: string
-  userId: string
-  status: Order["status"]
-  paymentMethod: Order["paymentMethod"]
-  totalAmount: string | number
-  branch: string
-  notes: string
-  isPaid: boolean
-  paidAt: string | null
-  items?: ApiOrderItem[]
-  createdAt: string
-  updatedAt: string
-}
+import { getOrders } from "@/features/orders/server/db/get-orders"
+import { createOrder as createOrderAction } from "@/features/orders/server/actions/create-order"
+import { cancelOrder as cancelOrderAction } from "@/features/orders/server/actions/cancel-order"
 
 export function useOrders() {
-  const { user, token } = useAuth()
-  const ordersStore = useOrdersStore()
+  const { user } = useAuth()
+  const orders = useOrdersStore((s) => s.orders)
+  const currentOrder = useOrdersStore((s) => s.currentOrder)
+  const isLoading = useOrdersStore((s) => s.isLoading)
+  const error = useOrdersStore((s) => s.error)
 
-  /**
-   * Fetch user's orders from backend
-   */
   const fetchOrders = useCallback(async () => {
-    if (!user || !token) return
-    if (ordersStore.isLoading) return
+    if (!user) return
+    const state = useOrdersStore.getState()
+    if (state.isLoading) return
 
     try {
-      ordersStore.setLoading(true)
-      ordersStore.setError(null)
+      state.setLoading(true)
+      state.setError(null)
 
-      const response = await fetch("/api/customer/orders", {
-        method: "GET",
-        headers: authHeaders(token),
-      })
-      if (!response.ok) throw new Error("Failed to fetch orders")
-
-      const data = await response.json()
-      const orders: Order[] = (data.data ?? []).map((o: ApiOrder) => ({
+      const data = await getOrders()
+      const orders: Order[] = (data ?? []).map((o) => ({
         id: o.id,
         userId: o.userId,
-        status: o.status,
-        paymentMethod: o.paymentMethod,
+        status: o.status as Order["status"],
+        paymentMethod: o.paymentMethod as Order["paymentMethod"],
         totalAmount: Number(o.totalAmount),
         branch: o.branch,
-        notes: o.notes,
+        notes: o.notes || "",
         isPaid: o.isPaid,
         paidAt: o.paidAt ? new Date(o.paidAt) : null,
         createdAt: new Date(o.createdAt),
         updatedAt: new Date(o.updatedAt),
-        items: o.items?.map((item: ApiOrderItem) => ({
-          id: item.id,
-          productId: item.productId,
-          productName: item.productName,
-          quantity: Number(item.quantity),
-          price: Number(item.price),
-          subtotal: Number(item.subtotal),
-          createdAt: new Date(item.createdAt),
-        })) || [],
+        items: [],
       }))
 
-      ordersStore.setOrders(orders)
+      state.setOrders(orders)
       return orders
     } catch (error) {
       const message = error instanceof Error ? error.message : "Unknown error"
-      ordersStore.setError(message)
+      useOrdersStore.getState().setError(message)
       console.error("Failed to fetch orders:", error)
       throw error
     } finally {
-      ordersStore.setLoading(false)
+      useOrdersStore.getState().setLoading(false)
     }
-  }, [user, token, ordersStore])
+  }, [user])
 
-  /**
-   * Create a new order from cart
-   * @param paymentMethod - "cash" or "gcash"
-   * @param branch - Customer's selected branch
-   * @param notes - Optional order notes
-   */
   const createOrder = useCallback(
     async (paymentMethod: "cash" | "gcash", branch: string, notes?: string) => {
       if (!user) throw new Error("User not authenticated")
 
-      if (!token) throw new Error("No authentication token found")
-
       try {
-        ordersStore.setLoading(true)
-        ordersStore.setError(null)
+        const state = useOrdersStore.getState()
+        state.setLoading(true)
+        state.setError(null)
 
-        const response = await fetch("/api/customer/orders", {
-          method: "POST",
-          headers: authHeaders(token),
-          body: JSON.stringify({ paymentMethod, branch, notes }),
-        })
+        const result = await createOrderAction({ paymentMethod, branch, notes })
 
-        if (!response.ok) {
-          const errorData = await response.json()
-          throw new Error(
-            errorData.message || "Failed to create order"
-          )
+        if (!result.success || !result.data) {
+          throw new Error(result.message || "Failed to create order")
         }
 
-        const data = await response.json()
-        const payload = data.data ?? {}
-        const orderPayload = (payload.order ?? {}) as ApiOrder
+        const payload = result.data
         const order: Order = {
-          id: orderPayload.id,
-          userId: orderPayload.userId,
-          status: orderPayload.status,
-          paymentMethod: orderPayload.paymentMethod,
-          totalAmount: Number(orderPayload.totalAmount),
-          branch: orderPayload.branch,
-          notes: orderPayload.notes,
-          isPaid: orderPayload.isPaid,
-          paidAt: orderPayload.paidAt ? new Date(orderPayload.paidAt) : null,
-          createdAt: new Date(orderPayload.createdAt),
-          updatedAt: new Date(orderPayload.updatedAt),
-          items: orderPayload.items?.map((item: ApiOrderItem) => ({
+          id: payload.order.id,
+          userId: payload.order.userId,
+          status: payload.order.status as Order["status"],
+          paymentMethod: payload.order.paymentMethod as Order["paymentMethod"],
+          totalAmount: Number(payload.order.totalAmount),
+          branch: payload.order.branch,
+          notes: payload.order.notes || "",
+          isPaid: payload.order.isPaid,
+          paidAt: payload.order.paidAt ? new Date(payload.order.paidAt) : null,
+          createdAt: new Date(payload.order.createdAt),
+          updatedAt: new Date(payload.order.updatedAt),
+          items: (payload.items ?? []).map((item) => ({
             id: item.id,
             productId: item.productId,
             productName: item.productName,
             quantity: Number(item.quantity),
             price: Number(item.price),
             subtotal: Number(item.subtotal),
-            createdAt: new Date(item.createdAt),
-          })) || [],
+            createdAt: new Date(),
+          })),
         }
 
-        ordersStore.addOrder(order)
+        state.addOrder(order)
         return order
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
-        ordersStore.setError(message)
+        useOrdersStore.getState().setError(message)
         console.error("Failed to create order:", error)
         throw error
       } finally {
-        ordersStore.setLoading(false)
+        useOrdersStore.getState().setLoading(false)
       }
     },
-    [user, token, ordersStore]
+    [user]
   )
 
-  /**
-   * Cancel an order
-   */
   const cancelOrder = useCallback(
     async (orderId: string) => {
       if (!user) throw new Error("User not authenticated")
-      if (!token) throw new Error("No authentication token found")
 
       try {
-        ordersStore.setLoading(true)
-        ordersStore.setError(null)
+        const state = useOrdersStore.getState()
+        state.setLoading(true)
+        state.setError(null)
 
-        const response = await fetch(`/api/customer/orders/${orderId}`, {
-          method: "PATCH",
-          headers: authHeaders(token ?? ""),
-          body: JSON.stringify({ status: "cancelled" }),
-        })
+        const result = await cancelOrderAction(orderId)
+        if (!result.success) throw new Error("Failed to cancel order")
 
-        if (!response.ok) throw new Error("Failed to cancel order")
-
-        await response.json()
-        ordersStore.updateOrder(orderId, { status: "cancelled" })
+        state.updateOrder(orderId, { status: "cancelled" })
       } catch (error) {
         const message = error instanceof Error ? error.message : "Unknown error"
-        ordersStore.setError(message)
+        useOrdersStore.getState().setError(message)
         console.error("Failed to cancel order:", error)
         throw error
       } finally {
-        ordersStore.setLoading(false)
+        useOrdersStore.getState().setLoading(false)
       }
     },
-    [user, token, ordersStore]
+    [user]
   )
 
   return {
-    // State
-    orders: ordersStore.orders,
-    currentOrder: ordersStore.currentOrder,
-    isLoading: ordersStore.isLoading,
-    error: ordersStore.error,
-
-    // Actions
+    orders,
+    currentOrder,
+    isLoading,
+    error,
     fetchOrders,
     createOrder,
     cancelOrder,

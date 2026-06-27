@@ -8,6 +8,7 @@ import { AuthHeader, PasswordInput } from "@/features/user-mgmt"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { resetPassword } from "@/features/user-mgmt/server/actions/reset-password"
 
 export function CreateNewPasswordForm() {
   const router = useRouter()
@@ -45,18 +46,10 @@ export function CreateNewPasswordForm() {
     setIsLoading(true)
 
     try {
-      const response = await fetch("/api/auth/reset-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ token, password }),
-      })
+      const result = await resetPassword(token, password)
 
-      const data = await response.json()
-
-      if (!response.ok) {
-        setError(data.message || "Failed to reset password")
+      if (!result.success) {
+        setError(result.message || "Failed to reset password")
         setIsLoading(false)
         return
       }

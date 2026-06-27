@@ -1,6 +1,7 @@
 import crypto from "crypto"
 import bcryptjs from "bcryptjs"
 import jwt from "jsonwebtoken"
+import { cookies } from "next/headers"
 
 function getJwtSecret(): string {
   const secret = process.env.JWT_SECRET
@@ -127,4 +128,11 @@ export function extractToken(request: RequestLike): string | null {
   }
 
   return null
+}
+
+export async function getAuthenticatedUser(): Promise<TokenPayload | null> {
+  const cookieStore = await cookies()
+  const token = extractToken({ cookies: cookieStore })
+  if (!token) return null
+  return verifyToken(token)
 }

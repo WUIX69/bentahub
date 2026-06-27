@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { LayoutGrid, ClipboardList, Coins, History, User, LogOut, Monitor, X, Bell } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useAuth } from "@/hooks/useAuth"
 
 const NAV_ITEMS = [
   {
@@ -36,9 +37,11 @@ export function CashierSidebar({ isOpen, onClose }: CashierSidebarProps) {
     onClose()
   }
 
+  const { logout } = useAuth()
+
   const handleLogout = async () => {
     try {
-      await fetch("/api/auth/logout", { method: "POST" })
+      await logout()
     } catch {
       // proceed
     }

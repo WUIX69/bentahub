@@ -6,24 +6,22 @@ import { BranchStockOverview } from "@/features/analytics"
 import { CreditCard, Package, AlertTriangle } from "lucide-react"
 import type { AdminOverviewData } from "@/types/admin"
 import { useAuth } from "@/hooks/useAuth"
+import { getAdminOverview } from "@/features/admin-dashboard/server/db/get-overview"
 
 export default function AdminPage() {
   const [data, setData] = useState<AdminOverviewData | null>(null)
   const [loading, setLoading] = useState(true)
-  const { token } = useAuth()
+  const { user } = useAuth()
 
   useEffect(() => {
-    if (!token) return
-    fetch("/api/admin/overview", {
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json" },
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.success && json.data) setData(json.data)
+    if (!user) return
+    getAdminOverview()
+      .then((res) => {
+        if (res) setData(res)
       })
       .catch(console.error)
       .finally(() => setLoading(false))
-  }, [token])
+  }, [user])
 
   if (loading) {
     return (

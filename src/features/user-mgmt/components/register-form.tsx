@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { registerUser } from "@/features/user-mgmt/actions/register"
+import { registerUser } from "@/features/user-mgmt/server/actions/register"
 import type { RegisterPayload } from "@/types/auth"
 
 export function RegisterForm() {

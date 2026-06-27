@@ -1,69 +1,36 @@
 import { useCallback } from "react"
 import { useNotificationsStore, type Notification } from "@/stores/notificationsStore"
 import { useAuth } from "./useAuth"
-
-function authHeaders(token: string): HeadersInit {
-  return {
-    Authorization: `Bearer ${token}`,
-    "Content-Type": "application/json",
-  }
-}
+import { getNotifications } from "@/features/notifications/server/db/get-notifications"
+import { markNotificationRead, markAllNotificationsRead } from "@/features/notifications/server/actions/mark-read"
 
 export function useNotifications() {
-  const { user, token } = useAuth()
+  const { user } = useAuth()
   const notificationsStore = useNotificationsStore()
 
-  /**
-   * Fetch user's notifications from backend
-   */
   const fetchNotifications = useCallback(
     async (unreadOnly: boolean = false) => {
       if (!user) return
-      if (!token) return
       if (notificationsStore.isLoading) return
 
       try {
         notificationsStore.setLoading(true)
         notificationsStore.setError(null)
 
-        const params = new URLSearchParams()
-        params.append("limit", "50")
-        params.append("offset", "0")
-        if (unreadOnly) params.append("unreadOnly", "true")
+        const result = await getNotifications({
+          limit: 50,
+          offset: 0,
+          unreadOnly,
+        })
 
-        const response = await fetch(
-          `/api/customer/notifications?${params.toString()}`,
-          {
-            method: "GET",
-            headers: authHeaders(token),
-          }
-        )
-        if (!response.ok) throw new Error("Failed to fetch notifications")
-
-        const data = await response.json()
-        const payload = data.data ?? {}
-        interface ApiNotification {
-          id: string
-          userId: string
-          type: Notification["type"]
-          title: string
-          message: string
-          relatedOrderId?: string
-          relatedProductId?: string
-          isRead: boolean
-          readAt: string | null
-          createdAt: string
-          expiresAt: string | null
-        }
-
-        const notifications: Notification[] = (payload.notifications ?? []).map((n: ApiNotification) => ({
+        const notifications: Notification[] = (result.notifications ?? []).map((n) => ({
           id: n.id,
           userId: n.userId,
-          type: n.type,
+          type: n.type as Notification["type"],
           title: n.title,
           message: n.message,
-          relatedOrderId: n.relatedOrderId,
-          relatedProductId: n.relatedProductId,
+          relatedOrderId: n.relatedOrderId || undefined,
+          relatedProductId: n.relatedProductId || undefined,
           isRead: n.isRead,
           readAt: n.readAt ? new Date(n.readAt) : null,
           createdAt: new Date(n.createdAt),
@@ -81,28 +48,20 @@ export function useNotifications() {
         notificationsStore.setLoading(false)
       }
     },
-    [user, token, notificationsStore]
+    [user, notificationsStore]
   )
 
-  /**
-   * Mark a notification as read
-   */
   const markAsRead = useCallback(
     async (notificationId: string) => {
       if (!user) return
-      if (!token) return
 
       try {
-        const response = await fetch(
-          `/api/customer/notifications/${notificationId}`,
-          {
-            method: "PATCH",
-            headers: authHeaders(token),
-            body: JSON.stringify({ isRead: true }),
-          }
-        )
+        const result = await markNotificationRead({
+          notificationId,
+          isRead: true,
+        })
 
-        if (!response.ok) throw new Error("Failed to mark notification as read")
+        if (!result.success) throw new Error("Failed to mark notification as read")
 
         notificationsStore.markAsRead(notificationId)
       } catch (error) {
@@ -110,18 +69,15 @@ export function useNotifications() {
         throw error
       }
     },
-    [user, token, notificationsStore]
+    [user, notificationsStore]
   )
 
-  /**
-   * Mark all notifications as read
-   */
   const markAllAsRead = useCallback(async () => {
     if (!user) return
 
     try {
+      await markAllNotificationsRead()
       notificationsStore.markAllAsRead()
-      // Optionally sync with backend if needed
     } catch (error) {
       console.error("Failed to mark all notifications as read:", error)
       throw error
@@ -129,13 +85,10 @@ export function useNotifications() {
   }, [user, notificationsStore])
 
   return {
-    // State
     notifications: notificationsStore.notifications,
     unreadCount: notificationsStore.unreadCount,
     isLoading: notificationsStore.isLoading,
     error: notificationsStore.error,
-
-    // Actions
     fetchNotifications,
     markAsRead,
     markAllAsRead,
