@@ -309,7 +309,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "admin_page",
-      "community": 80,
+      "community": 12,
       "norm_label": "page.tsx"
     },
     {
@@ -319,7 +319,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "admin_page_adminpage",
-      "community": 80,
+      "community": 12,
       "norm_label": "adminpage()"
     },
     {
@@ -369,7 +369,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "catalog_page",
-      "community": 16,
+      "community": 23,
       "norm_label": "page.tsx"
     },
     {
@@ -379,7 +379,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "catalog_page_demoproducts",
-      "community": 16,
+      "community": 23,
       "norm_label": "demoproducts"
     },
     {
@@ -389,7 +389,7 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "catalog_page_catalogpage",
-      "community": 16,
+      "community": 23,
       "norm_label": "catalogpage()"
     },
     {
@@ -1209,7 +1209,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "schema_branch_inventory",
-      "community": 26,
+      "community": 77,
       "norm_label": "branch-inventory.ts"
     },
     {
@@ -1229,7 +1229,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "schema_branch_inventory_branchinventoryrelations",
-      "community": 26,
+      "community": 77,
       "norm_label": "branchinventoryrelations"
     },
     {
@@ -1239,7 +1239,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "schema_branch_inventory_insertbranchinventoryschema",
-      "community": 26,
+      "community": 77,
       "norm_label": "insertbranchinventoryschema"
     },
     {
@@ -1249,7 +1249,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "schema_branch_inventory_selectbranchinventoryschema",
-      "community": 26,
+      "community": 77,
       "norm_label": "selectbranchinventoryschema"
     },
     {
@@ -1259,7 +1259,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "schema_branch_inventory_insertbranchinventory",
-      "community": 26,
+      "community": 77,
       "norm_label": "insertbranchinventory"
     },
     {
@@ -1269,7 +1269,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "schema_branches",
-      "community": 35,
+      "community": 77,
       "norm_label": "branches.ts"
     },
     {
@@ -1279,7 +1279,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "schema_branches_branches",
-      "community": 35,
+      "community": 77,
       "norm_label": "branches"
     },
     {
@@ -1289,7 +1289,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "schema_branches_insertbranchschema",
-      "community": 35,
+      "community": 77,
       "norm_label": "insertbranchschema"
     },
     {
@@ -1299,7 +1299,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "schema_branches_selectbranchschema",
-      "community": 35,
+      "community": 77,
       "norm_label": "selectbranchschema"
     },
     {
@@ -1309,7 +1309,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "schema_branches_branch",
-      "community": 35,
+      "community": 77,
       "norm_label": "branch"
     },
     {
@@ -1319,7 +1319,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "schema_branches_insertbranch",
-      "community": 35,
+      "community": 77,
       "norm_label": "insertbranch"
     },
     {
@@ -1409,7 +1409,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "schema_email_verification_emailverifications",
-      "community": 0,
+      "community": 72,
       "norm_label": "emailverifications"
     },
     {
@@ -1729,7 +1729,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "schema_products_products",
-      "community": 26,
+      "community": 23,
       "norm_label": "products"
     },
     {
@@ -3509,7 +3509,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_category_sidebar",
-      "community": 16,
+      "community": 25,
       "norm_label": "category-sidebar.tsx"
     },
     {
@@ -3519,7 +3519,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_category_sidebar_categorysidebar",
-      "community": 16,
+      "community": 25,
       "norm_label": "categorysidebar()"
     },
     {
@@ -3709,7 +3709,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_pagination",
-      "community": 16,
+      "community": 25,
       "norm_label": "pagination.tsx"
     },
     {
@@ -3719,7 +3719,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_pagination_pagination",
-      "community": 16,
+      "community": 25,
       "norm_label": "pagination()"
     },
     {
@@ -4249,7 +4249,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_cashier_sidebar",
-      "community": 2,
+      "community": 44,
       "norm_label": "cashier-sidebar.tsx"
     },
     {
@@ -4259,7 +4259,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "components_cashier_sidebar_nav_items",
-      "community": 2,
+      "community": 44,
       "norm_label": "nav_items"
     },
     {
@@ -4269,7 +4269,7 @@
       "source_location": "L27",
       "_origin": "ast",
       "id": "components_cashier_sidebar_cashiersidebarprops",
-      "community": 2,
+      "community": 44,
       "norm_label": "cashiersidebarprops"
     },
     {
@@ -4279,7 +4279,7 @@
       "source_location": "L32",
       "_origin": "ast",
       "id": "components_cashier_sidebar_cashiersidebar",
-      "community": 2,
+      "community": 44,
       "norm_label": "cashiersidebar()"
     },
     {
@@ -4319,7 +4319,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_employee_sidebar",
-      "community": 44,
+      "community": 2,
       "norm_label": "employee-sidebar.tsx"
     },
     {
@@ -4329,7 +4329,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "components_employee_sidebar_nav_items",
-      "community": 44,
+      "community": 2,
       "norm_label": "nav_items"
     },
     {
@@ -4339,7 +4339,7 @@
       "source_location": "L36",
       "_origin": "ast",
       "id": "components_employee_sidebar_employeesidebarprops",
-      "community": 44,
+      "community": 2,
       "norm_label": "employeesidebarprops"
     },
     {
@@ -4349,7 +4349,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "components_employee_sidebar_employeesidebar",
-      "community": 44,
+      "community": 2,
       "norm_label": "employeesidebar()"
     },
     {
@@ -5469,7 +5469,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "db_get_monitoring_monitoringsummary",
-      "community": 15,
+      "community": 70,
       "norm_label": "monitoringsummary"
     },
     {
@@ -5479,7 +5479,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "db_get_monitoring_getmonitoring",
-      "community": 70,
+      "community": 15,
       "norm_label": "getmonitoring()"
     },
     {
@@ -5499,7 +5499,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "components_notifications_feed_notificationitem",
-      "community": 0,
+      "community": 9,
       "norm_label": "notificationitem"
     },
     {
@@ -6689,7 +6689,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "actions_verify_verifyemailaction",
-      "community": 0,
+      "community": 27,
       "norm_label": "verifyemailaction()"
     },
     {
@@ -6839,7 +6839,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "hooks_useproducts_useproducts",
-      "community": 16,
+      "community": 23,
       "norm_label": "useproducts()"
     },
     {
@@ -7279,7 +7279,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "types_admin_branchstockdata",
-      "community": 12,
+      "community": 1,
       "norm_label": "branchstockdata"
     },
     {
@@ -7289,7 +7289,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "types_admin_salestrenddata",
-      "community": 12,
+      "community": 1,
       "norm_label": "salestrenddata"
     },
     {
@@ -7299,7 +7299,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "types_admin_adminoverviewdata",
-      "community": 80,
+      "community": 12,
       "norm_label": "adminoverviewdata"
     },
     {
@@ -7663,20 +7663,10 @@
       "norm_label": "graphify"
     },
     {
-      "label": "Research",
-      "file_type": "document",
-      "source_file": "AGENTS.md",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "agents_research",
-      "community": 3,
-      "norm_label": "research"
-    },
-    {
       "label": "Project overview",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L19",
+      "source_location": "L15",
       "_origin": "ast",
       "id": "agents_project_overview",
       "community": 3,
@@ -7686,7 +7676,7 @@
       "label": "Commands",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L23",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "agents_commands",
       "community": 3,
@@ -7696,7 +7686,7 @@
       "label": "Schema & DB",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L44",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "agents_schema_db",
       "community": 3,
@@ -7706,7 +7696,7 @@
       "label": "Test accounts",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L55",
+      "source_location": "L51",
       "_origin": "ast",
       "id": "agents_test_accounts",
       "community": 3,
@@ -7716,7 +7706,7 @@
       "label": "Architecture & FSD rules",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L59",
+      "source_location": "L55",
       "_origin": "ast",
       "id": "agents_architecture_fsd_rules",
       "community": 3,
@@ -7726,7 +7716,7 @@
       "label": "App structure",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L73",
+      "source_location": "L69",
       "_origin": "ast",
       "id": "agents_app_structure",
       "community": 3,
@@ -7736,7 +7726,7 @@
       "label": "Roles & constraints",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L84",
+      "source_location": "L82",
       "_origin": "ast",
       "id": "agents_roles_constraints",
       "community": 3,
@@ -7746,7 +7736,7 @@
       "label": "Auth & security",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L93",
+      "source_location": "L91",
       "_origin": "ast",
       "id": "agents_auth_security",
       "community": 3,
@@ -7756,7 +7746,7 @@
       "label": "Style",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L102",
+      "source_location": "L100",
       "_origin": "ast",
       "id": "agents_style",
       "community": 3,
@@ -7766,7 +7756,7 @@
       "label": "Known gotchas",
       "file_type": "document",
       "source_file": "AGENTS.md",
-      "source_location": "L109",
+      "source_location": "L107",
       "_origin": "ast",
       "id": "agents_known_gotchas",
       "community": 3,
@@ -9258,9 +9248,9 @@
       "source_file": "src/app/(auth)/login/page.tsx",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "login_page",
-      "target": "actions_auth"
+      "target": "actions_auth",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9269,9 +9259,9 @@
       "source_file": "src/app/(auth)/login/page.tsx",
       "source_location": "L13",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "login_page",
-      "target": "actions_auth_loginaction"
+      "target": "actions_auth_loginaction",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9485,9 +9475,9 @@
       "source_file": "src/app/(dashboard)/admin/(management)/sales/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "sales_page",
-      "target": "db_get_sales"
+      "target": "db_get_sales",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9496,9 +9486,9 @@
       "source_file": "src/app/(dashboard)/admin/(management)/sales/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "sales_page",
-      "target": "db_get_sales_getsalesdata"
+      "target": "db_get_sales_getsalesdata",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -9756,9 +9746,9 @@
       "source_file": "src/app/(dashboard)/admin/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "admin_page",
-      "target": "db_get_overview"
+      "target": "db_get_overview",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9767,9 +9757,9 @@
       "source_file": "src/app/(dashboard)/admin/page.tsx",
       "source_location": "L9",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "admin_page",
-      "target": "db_get_overview_getadminoverview"
+      "target": "db_get_overview_getadminoverview",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -11423,9 +11413,9 @@
       "source_file": "src/components/auth-provider.tsx",
       "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_auth_provider",
-      "target": "actions_auth"
+      "target": "actions_auth",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -11434,9 +11424,9 @@
       "source_file": "src/components/auth-provider.tsx",
       "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_auth_provider",
-      "target": "actions_auth_logoutaction"
+      "target": "actions_auth_logoutaction",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -11445,9 +11435,9 @@
       "source_file": "src/components/auth-provider.tsx",
       "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_auth_provider",
-      "target": "actions_auth_verifysessionaction"
+      "target": "actions_auth_verifysessionaction",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -11913,9 +11903,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "drizzle_db"
+      "target": "drizzle_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -12195,9 +12185,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L4",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "drizzle_db_db"
+      "target": "drizzle_db_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -12426,9 +12416,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "drizzle_schema"
+      "target": "drizzle_schema",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -13816,9 +13806,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L5",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "schema_users_users"
+      "target": "schema_users_users",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16182,9 +16172,9 @@
       "source_file": "src/features/cart/server/actions/add-to-cart.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_add_to_cart",
-      "target": "lib_auth_utils_getauthenticateduser"
+      "target": "lib_auth_utils_getauthenticateduser",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -16247,9 +16237,9 @@
       "source_file": "src/features/cart/server/actions/remove-cart-item.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_remove_cart_item",
-      "target": "lib_auth_utils"
+      "target": "lib_auth_utils",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16258,9 +16248,9 @@
       "source_file": "src/features/cart/server/actions/remove-cart-item.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_remove_cart_item",
-      "target": "lib_auth_utils_getauthenticateduser"
+      "target": "lib_auth_utils_getauthenticateduser",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -16312,9 +16302,9 @@
       "source_file": "src/features/cart/server/actions/update-cart-item.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_update_cart_item",
-      "target": "lib_auth_utils"
+      "target": "lib_auth_utils",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16323,9 +16313,9 @@
       "source_file": "src/features/cart/server/actions/update-cart-item.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_update_cart_item",
-      "target": "lib_auth_utils_getauthenticateduser"
+      "target": "lib_auth_utils_getauthenticateduser",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -16377,9 +16367,9 @@
       "source_file": "src/features/cart/server/db/get-cart.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "db_get_cart",
-      "target": "lib_auth_utils"
+      "target": "lib_auth_utils",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -16388,9 +16378,9 @@
       "source_file": "src/features/cart/server/db/get-cart.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "db_get_cart",
-      "target": "lib_auth_utils_getauthenticateduser"
+      "target": "lib_auth_utils_getauthenticateduser",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -17469,9 +17459,9 @@
       "source_file": "src/features/employee-dashboard/components/cashier-sidebar.tsx",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_cashier_sidebar",
-      "target": "hooks_useauth"
+      "target": "hooks_useauth",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -17480,9 +17470,9 @@
       "source_file": "src/features/employee-dashboard/components/cashier-sidebar.tsx",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_cashier_sidebar",
-      "target": "hooks_useauth_useauth"
+      "target": "hooks_useauth_useauth",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -18544,9 +18534,9 @@
       "source_file": "src/features/employee-dashboard/components/staff-sidebar.tsx",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_staff_sidebar",
-      "target": "hooks_useauth"
+      "target": "hooks_useauth",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -18555,9 +18545,9 @@
       "source_file": "src/features/employee-dashboard/components/staff-sidebar.tsx",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "components_staff_sidebar",
-      "target": "hooks_useauth_useauth"
+      "target": "hooks_useauth_useauth",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -19678,9 +19668,9 @@
       "source_file": "src/features/notifications/server/actions/mark-read.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_mark_read",
-      "target": "lib_auth_utils"
+      "target": "lib_auth_utils",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -19689,9 +19679,9 @@
       "source_file": "src/features/notifications/server/actions/mark-read.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_mark_read",
-      "target": "lib_auth_utils_getauthenticateduser"
+      "target": "lib_auth_utils_getauthenticateduser",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -19785,9 +19775,9 @@
       "source_file": "src/features/notifications/server/db/get-notifications.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "db_get_notifications",
-      "target": "lib_auth_utils"
+      "target": "lib_auth_utils",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -19796,9 +19786,9 @@
       "source_file": "src/features/notifications/server/db/get-notifications.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "db_get_notifications",
-      "target": "lib_auth_utils_getauthenticateduser"
+      "target": "lib_auth_utils_getauthenticateduser",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -19850,9 +19840,9 @@
       "source_file": "src/features/orders/server/actions/cancel-order.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_cancel_order",
-      "target": "lib_auth_utils"
+      "target": "lib_auth_utils",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -19861,9 +19851,9 @@
       "source_file": "src/features/orders/server/actions/cancel-order.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_cancel_order",
-      "target": "lib_auth_utils_getauthenticateduser"
+      "target": "lib_auth_utils_getauthenticateduser",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -19937,9 +19927,9 @@
       "source_file": "src/features/orders/server/actions/create-order.ts",
       "source_location": "L6",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_create_order",
-      "target": "lib_auth_utils_getauthenticateduser"
+      "target": "lib_auth_utils_getauthenticateduser",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -20012,9 +20002,9 @@
       "source_file": "src/features/orders/server/db/get-orders.ts",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "db_get_orders",
-      "target": "lib_auth_utils"
+      "target": "lib_auth_utils",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -20023,9 +20013,9 @@
       "source_file": "src/features/orders/server/db/get-orders.ts",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "db_get_orders",
-      "target": "lib_auth_utils_getauthenticateduser"
+      "target": "lib_auth_utils_getauthenticateduser",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -21299,9 +21289,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L10",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "actions_auth_loginaction"
+      "target": "actions_auth_loginaction",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -21309,9 +21299,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L70",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "actions_auth_logoutaction"
+      "target": "actions_auth_logoutaction",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -21319,9 +21309,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L81",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "actions_auth_verifysessionaction"
+      "target": "actions_auth_verifysessionaction",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -21330,9 +21320,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "lib_auth_utils"
+      "target": "lib_auth_utils",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -21341,9 +21331,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "lib_auth_utils_extracttoken"
+      "target": "lib_auth_utils_extracttoken",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -21352,9 +21342,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "lib_auth_utils_generatetoken"
+      "target": "lib_auth_utils_generatetoken",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -21363,9 +21353,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "lib_auth_utils_verifypassword"
+      "target": "lib_auth_utils_verifypassword",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -21374,9 +21364,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L7",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "lib_auth_utils_verifytoken"
+      "target": "lib_auth_utils_verifytoken",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -21385,9 +21375,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "types_auth"
+      "target": "types_auth",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -21396,9 +21386,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "types_auth_authresponse"
+      "target": "types_auth_authresponse",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -21407,9 +21397,9 @@
       "source_file": "src/features/user-mgmt/server/actions/auth.ts",
       "source_location": "L8",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "actions_auth",
-      "target": "types_auth_loginresponsedata"
+      "target": "types_auth_loginresponsedata",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -22298,9 +22288,9 @@
       "source_file": "src/lib/auth-utils.ts",
       "source_location": "L133",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_auth_utils",
-      "target": "lib_auth_utils_getauthenticateduser"
+      "target": "lib_auth_utils_getauthenticateduser",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -22389,9 +22379,9 @@
       "source_file": "src/lib/auth-utils.ts",
       "source_location": "L137",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_auth_utils_getauthenticateduser",
-      "target": "lib_auth_utils_verifytoken"
+      "target": "lib_auth_utils_verifytoken",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -22400,9 +22390,9 @@
       "source_file": "src/lib/auth-utils.ts",
       "source_location": "L135",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "lib_auth_utils_getauthenticateduser",
-      "target": "lib_auth_utils_extracttoken"
+      "target": "lib_auth_utils_extracttoken",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -23059,16 +23049,6 @@
       "confidence_score": 1.0,
       "source": "agents",
       "target": "agents_project_overview"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "AGENTS.md",
-      "source_location": "L15",
-      "weight": 1.0,
-      "source": "agents",
-      "target": "agents_research",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -24489,5 +24469,5 @@
       "source_file": "docs/FEATURE-SLICED-DESIGN.md"
     }
   ],
-  "built_at_commit": "69114b2d8079b362b9bbe5b711dfb21bf6a0d1e2"
+  "built_at_commit": "b1e176c6332128cb23b094b943789722cd2e6db2"
 }

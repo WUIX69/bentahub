@@ -12,6 +12,10 @@ Rules:
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
 
+## Research
+
+When the user asks to research/search/find anything on the web or social platforms, use the **agent-reach** skill (supports web search, Twitter/X, Reddit, B站, Xiaohongshu, V2EX, LinkedIn, GitHub, YouTube, RSS). Run `agent-reach doctor --json` first to check which backends are available.
+
 ## Project overview
 
 Next.js 16 (App Router) + React 19 + TypeScript POS/inventory system for a sari-sari store chain. Drizzle ORM on PostgreSQL, Tailwind CSS v4, Shadcn UI (radix-nova), Zustand state, pnpm, Docker.
@@ -76,8 +80,6 @@ Route groups under `src/app/`:
 - `/(dashboard)/admin/` — global cross-branch admin panel + admin-specific pages (sales, users)
 - `/(dashboard)/employee/` — branch-locked pages that remain role-specific (pos, inventory, stock-check)
 - `/(dashboard)/customer/` — customer-only pages that remain specific (catalog, cart, checkout)
-
-Old role-specific pages for shared concepts (notifications, settings, transactions, etc.) redirect to `/shared/*` via `useEffect` or `redirect()`.
 
 ## Roles & constraints
 
