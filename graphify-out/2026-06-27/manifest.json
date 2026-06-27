@@ -630,13 +630,13 @@
     "semantic_hash": ""
   },
   "src/hooks/useCart.ts": {
-    "mtime": 1782546202.6782467,
-    "ast_hash": "4f7199c5f0ed9aa4232738cfbcb63d82",
+    "mtime": 1782552133.9137635,
+    "ast_hash": "bcf04d8a942fd1cbcc2e0905a210079f",
     "semantic_hash": ""
   },
   "src/hooks/useOrders.ts": {
-    "mtime": 1782546200.6892445,
-    "ast_hash": "e481ae0df09c7ee9efbbf19c1c14062e",
+    "mtime": 1782552135.006379,
+    "ast_hash": "a6ee4da3c97912fb0d44fa7b8ba70266",
     "semantic_hash": ""
   },
   "src/lib/auth-utils.ts": {
@@ -3245,8 +3245,8 @@
     "semantic_hash": ""
   },
   "src/contexts/auth-context.tsx": {
-    "mtime": 1782546199.2072437,
-    "ast_hash": "b993a5706af2815dcbcb215fed5bda8e",
+    "mtime": 1782552132.4421842,
+    "ast_hash": "450002303cbfd8602aa27d9c8b58049d",
     "semantic_hash": ""
   },
   "src/features/employee-dashboard/components/employee-kpi-cards.tsx": {
@@ -3287,46 +3287,6 @@
   "src/features/user-mgmt/schemas/auth.ts": {
     "mtime": 1782544895.2146244,
     "ast_hash": "6fd115166da9c45b90607c76a9ee0b55",
-    "semantic_hash": ""
-  },
-  "src/server/actions/add-to-cart.ts": {
-    "mtime": 1782546194.1902497,
-    "ast_hash": "9135183f8d279c2c1ef33379888b373b",
-    "semantic_hash": ""
-  },
-  "src/server/actions/auth.ts": {
-    "mtime": 1782546192.532245,
-    "ast_hash": "5af5fc8e718edec4e731400cf010341a",
-    "semantic_hash": ""
-  },
-  "src/server/actions/cancel-order.ts": {
-    "mtime": 1782546193.2692475,
-    "ast_hash": "73a0757a894a8c7c0ac1fa6d75ec9e43",
-    "semantic_hash": ""
-  },
-  "src/server/actions/create-order.ts": {
-    "mtime": 1782546192.908245,
-    "ast_hash": "691a4bb4347ef23a54577ce098385c0a",
-    "semantic_hash": ""
-  },
-  "src/server/actions/remove-cart-item.ts": {
-    "mtime": 1782546194.9892445,
-    "ast_hash": "314ebda6fc2202921884c5d2b6c52557",
-    "semantic_hash": ""
-  },
-  "src/server/actions/update-cart-item.ts": {
-    "mtime": 1782546194.591246,
-    "ast_hash": "5f41733ad4b9f17bf342b0dc85fa05c6",
-    "semantic_hash": ""
-  },
-  "src/server/db/get-cart.ts": {
-    "mtime": 1782546192.2862437,
-    "ast_hash": "424c6e5017adc918fc33c1b6a7ab035d",
-    "semantic_hash": ""
-  },
-  "src/server/db/get-orders.ts": {
-    "mtime": 1782546191.2402453,
-    "ast_hash": "bee659ad962f9973737abc5352afc025",
     "semantic_hash": ""
   },
   "src/features/products/hooks/use-products.ts": {

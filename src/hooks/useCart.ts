@@ -1,5 +1,5 @@
 import { useCallback } from "react"
-import { useCartStore, type CartItem } from "@/stores/cartStore"
+import { useCartStore, type CartItem } from "@/features/cart/hooks/use-cart-store"
 import { useAuth } from "./useAuth"
 import { getCart } from "@/features/cart/server/db/get-cart"
 import { addToCart as addToCartAction } from "@/features/cart/server/actions/add-to-cart"
