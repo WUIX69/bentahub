@@ -257,6 +257,29 @@ export async function updateProduct(
 }
 ```
 
+### 4. Code Reuse vs. Coupling: The Promotion Pattern
+
+To maintain strict horizontal boundaries, features are forbidden from importing queries or mutations from other features. However, when database operations are generic and required across multiple features, they must be **promoted to the global shared layer** under `src/server/db/`.
+
+#### Rule of Promotion for DB Operations
+1. **Feature-to-Feature Isolation**: If feature `cart` needs product information, it must **never** import a DB helper from `src/features/products/server/db/`.
+2. **Global Promotion**: If the query is generic (e.g. fetching a product by ID), promote it to a global shared file like `src/server/db/products.ts`.
+3. **Consumption**: Both the `products` feature and the `cart` feature are allowed to import from `src/server/db/` because it resides in the lower, global shared layer.
+
+#### Example: Promoted Shared User Query
+```typescript
+// SOURCE: src/server/db/users.ts
+import { db } from "@/drizzle/db";
+import { users } from "@/drizzle/schema";
+import { eq } from "drizzle-orm";
+
+export async function getSharedUserById(id: string) {
+  return db.query.users.findFirst({
+    where: eq(users.id, id),
+  });
+}
+```
+
 ---
 
 ## 🌐 API Route Patterns
