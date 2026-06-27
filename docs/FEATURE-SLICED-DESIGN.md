@@ -259,12 +259,18 @@ export async function updateProduct(
 
 ### 4. Code Reuse vs. Coupling: The Promotion Pattern
 
-To maintain strict horizontal boundaries, features are forbidden from importing queries or mutations from other features. However, when database operations are generic and required across multiple features, they must be **promoted to the global shared layer** under `src/server/db/`.
+Like all other layers in the codebase (UI components, hooks, validation schemas, and types), database queries and mutations follow the general [Rule of Promotion](#-the-rule-of-promotion). To maintain strict horizontal boundaries, features are strictly forbidden from importing *any* code directly from other features.
 
-#### Rule of Promotion for DB Operations
-1. **Feature-to-Feature Isolation**: If feature `cart` needs product information, it must **never** import a DB helper from `src/features/products/server/db/`.
-2. **Global Promotion**: If the query is generic (e.g. fetching a product by ID), promote it to a global shared file like `src/server/db/products.ts`.
-3. **Consumption**: Both the `products` feature and the `cart` feature are allowed to import from `src/server/db/` because it resides in the lower, global shared layer.
+When an operation, component, or utility is generic and required by multiple features, it must be **promoted to the global shared layer**.
+
+#### Promotion Analogy across Layers:
+| Artifact Type | Local First (Feature Scope) | Promoted Location (Shared Scope) |
+|---|---|---|
+| **Database Helpers** | `src/features/[feature]/server/db/` | `src/server/db/` (Global query layer) |
+| **React Components** | `src/features/[feature]/components/` | `src/components/` (Global shared components) |
+| **Custom Hooks** | `src/features/[feature]/hooks/` | `src/hooks/` (Global shared hooks) |
+| **Zod Schemas** | `src/features/[feature]/schemas/` | `src/schemas/` or `src/lib/` (Global shared schemas) |
+| **TypeScript Types** | Local interfaces/types in feature file | `src/types/` (Global ambient types) |
 
 #### Example: Promoted Shared User Query
 ```typescript
