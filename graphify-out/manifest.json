@@ -634,19 +634,9 @@
     "ast_hash": "4f7199c5f0ed9aa4232738cfbcb63d82",
     "semantic_hash": ""
   },
-  "src/hooks/useNotifications.ts": {
-    "mtime": 1782546201.4382448,
-    "ast_hash": "5bdd435834a3e24eb87e5ed1c308a9cb",
-    "semantic_hash": ""
-  },
   "src/hooks/useOrders.ts": {
     "mtime": 1782546200.6892445,
     "ast_hash": "e481ae0df09c7ee9efbbf19c1c14062e",
-    "semantic_hash": ""
-  },
-  "src/hooks/useProducts.ts": {
-    "mtime": 1782546199.8282437,
-    "ast_hash": "f458161aafb715515f775bd2a1226e4f",
     "semantic_hash": ""
   },
   "src/lib/auth-utils.ts": {
@@ -2730,9 +2720,9 @@
     "semantic_hash": "89b7e1dd997500aac8d178f497dbd05b"
   },
   "src/app/(dashboard)/customer/catalog/page.tsx": {
-    "mtime": 1782360523.5525627,
-    "ast_hash": "3a02801d8b3ec816cddd2ee4f6e59794",
-    "semantic_hash": "3a02801d8b3ec816cddd2ee4f6e59794"
+    "mtime": 1782550737.137473,
+    "ast_hash": "52ddbcb989e4652dfe37a3f59b48abc3",
+    "semantic_hash": ""
   },
   "src/app/(dashboard)/customer/checkout/page.tsx": {
     "mtime": 1782224214.3584056,
@@ -3319,11 +3309,6 @@
     "ast_hash": "691a4bb4347ef23a54577ce098385c0a",
     "semantic_hash": ""
   },
-  "src/server/actions/mark-read.ts": {
-    "mtime": 1782546193.8052435,
-    "ast_hash": "9654cbad05aa34149838ef29514f8261",
-    "semantic_hash": ""
-  },
   "src/server/actions/remove-cart-item.ts": {
     "mtime": 1782546194.9892445,
     "ast_hash": "314ebda6fc2202921884c5d2b6c52557",
@@ -3339,19 +3324,14 @@
     "ast_hash": "424c6e5017adc918fc33c1b6a7ab035d",
     "semantic_hash": ""
   },
-  "src/server/db/get-notifications.ts": {
-    "mtime": 1782546191.7292464,
-    "ast_hash": "cc0466eee47c6f2755315106f5337001",
-    "semantic_hash": ""
-  },
   "src/server/db/get-orders.ts": {
     "mtime": 1782546191.2402453,
     "ast_hash": "bee659ad962f9973737abc5352afc025",
     "semantic_hash": ""
   },
-  "src/server/db/get-products.ts": {
-    "mtime": 1782546190.8472495,
-    "ast_hash": "33ef13e234c5cf82644985f972b1ca8f",
+  "src/features/products/hooks/use-products.ts": {
+    "mtime": 1782550736.6894693,
+    "ast_hash": "fda7f7a0b216c5038813eac7da75e8f9",
     "semantic_hash": ""
   }
 }
