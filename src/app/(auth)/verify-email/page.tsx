@@ -1,5 +1,5 @@
 import * as React from "react"
-import { VerifyEmailForm } from "@/features/user-mgmt"
+import { VerifyEmailForm } from "@/features/auth"
 
 export default function VerifyEmailPage() {
   return (

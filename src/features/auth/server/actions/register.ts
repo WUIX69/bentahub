@@ -5,7 +5,7 @@ import { users, emailVerifications } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { generateId, generateVerificationCode, hashPassword, hashVerificationCode } from "@/lib/auth-utils"
 import { sendVerificationEmail } from "@/lib/email-service"
-import { registerSchema } from "@/features/user-mgmt/schemas/auth"
+import { registerSchema } from "@/features/auth/schemas/auth"
 import type { AuthResponse, RegisterPayload } from "@/types/auth"
 
 export async function registerUser(payload: RegisterPayload): Promise<AuthResponse> {

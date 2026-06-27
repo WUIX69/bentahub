@@ -6,7 +6,7 @@ import { users, passwordResetTokens } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { generateId } from "@/lib/auth-utils"
 import { sendPasswordResetEmail } from "@/lib/email-service"
-import { forgotPasswordSchema } from "@/features/user-mgmt/schemas/auth"
+import { forgotPasswordSchema } from "@/features/auth/schemas/auth"
 
 const RESET_TOKEN_EXPIRY_HOURS = 1
 

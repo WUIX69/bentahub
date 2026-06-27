@@ -4,7 +4,7 @@ import { db } from "@/drizzle/db"
 import { users, passwordResetTokens } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { hashPassword } from "@/lib/auth-utils"
-import { resetPasswordSchema } from "@/features/user-mgmt/schemas/auth"
+import { resetPasswordSchema } from "@/features/auth/schemas/auth"
 
 const MAX_RESET_ATTEMPTS = 5
 

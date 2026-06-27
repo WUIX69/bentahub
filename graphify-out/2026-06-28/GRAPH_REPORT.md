@@ -1,7 +1,7 @@
 # Graph Report - bentahub  (2026-06-28)
 
 ## Corpus Check
-- 236 files · ~80,198 words
+- 236 files · ~80,030 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f1534798`
+- Built from commit: `a1550d23`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -124,7 +124,7 @@ Nodes (21): logoutAction(), verifyResetCode(), fontMono, fontSans, fontSerif, me
 
 ### Community 3 - "Project System & Agent Rules"
 Cohesion: 0.05
-Nodes (39): App structure, Architecture & FSD rules, Auth & security, Commands, Feature-Sliced Design Rules, graphify, Graphify Instructions, Known gotchas (+31 more)
+Nodes (39): App structure (`src/app/`), Architecture & FSD rules, Auth & security, Commands, Feature-Sliced Design Rules, graphify, Graphify Instructions, Known gotchas (+31 more)
 
 ### Community 4 - "Dashboard Sidebar Layouts"
 Cohesion: 0.15

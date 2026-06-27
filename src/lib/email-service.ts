@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer"
-import { getVerificationEmailHtml } from "@/features/user-mgmt/components/email-template"
+import { getVerificationEmailHtml } from "@/lib/email-templates"
 
 const DEMO_EMAIL_FROM = "noreply@bentahub.local"
 

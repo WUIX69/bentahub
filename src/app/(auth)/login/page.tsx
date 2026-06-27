@@ -4,13 +4,13 @@ import * as React from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { LogIn, Mail } from "lucide-react"
-import { AuthHeader, PasswordInput } from "@/features/user-mgmt"
+import { AuthHeader, PasswordInput } from "@/features/auth"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { useAuth } from "@/contexts/auth-context"
-import { loginAction } from "@/features/user-mgmt/server/actions/auth"
+import { loginAction } from "@/features/auth/server/actions/auth"
 
 export default function LoginPage() {
   const router = useRouter()

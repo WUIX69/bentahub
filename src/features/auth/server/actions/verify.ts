@@ -5,7 +5,7 @@ import { users, emailVerifications } from "@/drizzle/schema"
 import { eq } from "drizzle-orm"
 import { generateId, generateVerificationCode, hashVerificationCode } from "@/lib/auth-utils"
 import { sendVerificationEmail } from "@/lib/email-service"
-import { verifyEmailSchema, resendCodeSchema } from "@/features/user-mgmt/schemas/auth"
+import { verifyEmailSchema, resendCodeSchema } from "@/features/auth/schemas/auth"
 import type { AuthResponse } from "@/types/auth"
 
 /**

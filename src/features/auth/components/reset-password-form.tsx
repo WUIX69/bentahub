@@ -4,12 +4,12 @@ import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { KeyRound, ArrowLeft } from "lucide-react"
-import { AuthHeader } from "@/features/user-mgmt"
+import { AuthHeader } from "@/features/auth"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { verifyResetCode } from "@/features/user-mgmt/server/actions/verify-reset-code"
+import { verifyResetCode } from "@/features/auth/server/actions/verify-reset-code"
 
 export function ResetPasswordForm() {
   const router = useRouter()

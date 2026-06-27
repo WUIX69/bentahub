@@ -4,11 +4,11 @@ import * as React from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import { Lock, LogIn } from "lucide-react"
-import { AuthHeader, PasswordInput } from "@/features/user-mgmt"
+import { AuthHeader, PasswordInput } from "@/features/auth"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { resetPassword } from "@/features/user-mgmt/server/actions/reset-password"
+import { resetPassword } from "@/features/auth/server/actions/reset-password"
 
 export function CreateNewPasswordForm() {
   const router = useRouter()

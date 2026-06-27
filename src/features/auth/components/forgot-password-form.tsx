@@ -4,12 +4,12 @@ import * as React from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { Mail, ArrowLeft } from "lucide-react"
-import { AuthHeader } from "@/features/user-mgmt"
+import { AuthHeader } from "@/features/auth"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { forgotPassword } from "@/features/user-mgmt/server/actions/forgot-password"
+import { forgotPassword } from "@/features/auth/server/actions/forgot-password"
 
 export function ForgotPasswordForm() {
   const router = useRouter()

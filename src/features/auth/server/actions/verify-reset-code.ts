@@ -3,7 +3,7 @@
 import { db } from "@/drizzle/db"
 import { passwordResetTokens } from "@/drizzle/schema"
 import { eq, and } from "drizzle-orm"
-import { verifyResetCodeSchema } from "@/features/user-mgmt/schemas/auth"
+import { verifyResetCodeSchema } from "@/features/auth/schemas/auth"
 
 const MAX_RESET_ATTEMPTS = 5
 

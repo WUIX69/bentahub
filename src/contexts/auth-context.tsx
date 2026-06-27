@@ -1,7 +1,7 @@
 "use client"
 
 import React, { createContext, useContext, useState, useCallback, useEffect } from "react"
-import { logoutAction, verifySessionAction } from "@/features/user-mgmt/server/actions/auth"
+import { logoutAction, verifySessionAction } from "@/server/actions/auth"
 
 // ---------------------------------------------------------------------------
 // Types

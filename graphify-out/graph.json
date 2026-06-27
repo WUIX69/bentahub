@@ -172,7 +172,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "login_page",
-      "community": 2,
+      "community": 8,
       "norm_label": "page.tsx"
     },
     {
@@ -182,7 +182,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "login_page_loginpage",
-      "community": 2,
+      "community": 8,
       "norm_label": "loginpage()"
     },
     {
@@ -312,7 +312,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "admin_page",
-      "community": 11,
+      "community": 45,
       "norm_label": "page.tsx"
     },
     {
@@ -322,7 +322,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "admin_page_adminpage",
-      "community": 11,
+      "community": 45,
       "norm_label": "adminpage()"
     },
     {
@@ -372,7 +372,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "catalog_page",
-      "community": 40,
+      "community": 38,
       "norm_label": "page.tsx"
     },
     {
@@ -382,7 +382,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "catalog_page_demoproducts",
-      "community": 40,
+      "community": 38,
       "norm_label": "demoproducts"
     },
     {
@@ -392,7 +392,7 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "catalog_page_catalogpage",
-      "community": 40,
+      "community": 38,
       "norm_label": "catalogpage()"
     },
     {
@@ -402,7 +402,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "checkout_page",
-      "community": 21,
+      "community": 0,
       "norm_label": "page.tsx"
     },
     {
@@ -412,7 +412,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "checkout_page_checkoutpage",
-      "community": 21,
+      "community": 0,
       "norm_label": "checkoutpage()"
     },
     {
@@ -442,7 +442,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "customer_page",
-      "community": 4,
+      "community": 52,
       "norm_label": "page.tsx"
     },
     {
@@ -452,7 +452,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "customer_page_customerpage",
-      "community": 4,
+      "community": 52,
       "norm_label": "customerpage()"
     },
     {
@@ -882,7 +882,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "app_layout",
-      "community": 2,
+      "community": 8,
       "norm_label": "layout.tsx"
     },
     {
@@ -892,7 +892,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "app_layout_fontsans",
-      "community": 2,
+      "community": 8,
       "norm_label": "fontsans"
     },
     {
@@ -902,7 +902,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "app_layout_fontserif",
-      "community": 2,
+      "community": 8,
       "norm_label": "fontserif"
     },
     {
@@ -912,7 +912,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "app_layout_fontmono",
-      "community": 2,
+      "community": 8,
       "norm_label": "fontmono"
     },
     {
@@ -922,7 +922,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "app_layout_metadata",
-      "community": 2,
+      "community": 8,
       "norm_label": "metadata"
     },
     {
@@ -932,7 +932,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "app_layout_rootlayout",
-      "community": 42,
+      "community": 54,
       "norm_label": "rootlayout()"
     },
     {
@@ -942,7 +942,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_theme_provider",
-      "community": 2,
+      "community": 8,
       "norm_label": "theme-provider.tsx"
     },
     {
@@ -952,7 +952,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_theme_provider_themeprovider",
-      "community": 2,
+      "community": 8,
       "norm_label": "themeprovider()"
     },
     {
@@ -962,7 +962,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "components_theme_provider_istypingtarget",
-      "community": 2,
+      "community": 8,
       "norm_label": "istypingtarget()"
     },
     {
@@ -972,7 +972,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "components_theme_provider_themehotkey",
-      "community": 2,
+      "community": 8,
       "norm_label": "themehotkey()"
     },
     {
@@ -1082,7 +1082,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "contexts_auth_context",
-      "community": 2,
+      "community": 8,
       "norm_label": "auth-context.tsx"
     },
     {
@@ -1092,7 +1092,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "contexts_auth_context_authuser",
-      "community": 2,
+      "community": 8,
       "norm_label": "authuser"
     },
     {
@@ -1102,7 +1102,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "contexts_auth_context_authcontextvalue",
-      "community": 2,
+      "community": 8,
       "norm_label": "authcontextvalue"
     },
     {
@@ -1112,7 +1112,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "contexts_auth_context_authcontext",
-      "community": 2,
+      "community": 8,
       "norm_label": "authcontext"
     },
     {
@@ -1122,7 +1122,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "contexts_auth_context_authproviderprops",
-      "community": 2,
+      "community": 8,
       "norm_label": "authproviderprops"
     },
     {
@@ -1132,7 +1132,7 @@
       "source_location": "L51",
       "_origin": "ast",
       "id": "contexts_auth_context_authprovider",
-      "community": 2,
+      "community": 8,
       "norm_label": "authprovider()"
     },
     {
@@ -1142,7 +1142,7 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "contexts_auth_context_useauth",
-      "community": 2,
+      "community": 8,
       "norm_label": "useauth()"
     },
     {
@@ -1222,7 +1222,7 @@
       "source_location": "L40",
       "_origin": "ast",
       "id": "schema_branch_inventory_branchinventory",
-      "community": 18,
+      "community": 13,
       "norm_label": "branchinventory"
     },
     {
@@ -1272,7 +1272,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "schema_branches",
-      "community": 24,
+      "community": 18,
       "norm_label": "branches.ts"
     },
     {
@@ -1282,7 +1282,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "schema_branches_branches",
-      "community": 24,
+      "community": 18,
       "norm_label": "branches"
     },
     {
@@ -1292,7 +1292,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "schema_branches_insertbranchschema",
-      "community": 24,
+      "community": 18,
       "norm_label": "insertbranchschema"
     },
     {
@@ -1302,7 +1302,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "schema_branches_selectbranchschema",
-      "community": 24,
+      "community": 18,
       "norm_label": "selectbranchschema"
     },
     {
@@ -1312,7 +1312,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "schema_branches_branch",
-      "community": 24,
+      "community": 18,
       "norm_label": "branch"
     },
     {
@@ -1322,7 +1322,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "schema_branches_insertbranch",
-      "community": 24,
+      "community": 18,
       "norm_label": "insertbranch"
     },
     {
@@ -1412,7 +1412,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "schema_email_verification_emailverifications",
-      "community": 0,
+      "community": 27,
       "norm_label": "emailverifications"
     },
     {
@@ -1472,7 +1472,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "schema_index",
-      "community": 7,
+      "community": 18,
       "norm_label": "index.ts"
     },
     {
@@ -1802,7 +1802,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "schema_transactions_transactions",
-      "community": 18,
+      "community": 13,
       "norm_label": "transactions"
     },
     {
@@ -1882,7 +1882,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "schema_users_users",
-      "community": 0,
+      "community": 7,
       "norm_label": "users"
     },
     {
@@ -2152,7 +2152,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "components_admin_topbar_admintopbar",
-      "community": 30,
+      "community": 4,
       "norm_label": "admintopbar()"
     },
     {
@@ -2412,7 +2412,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_kpi_card",
-      "community": 38,
+      "community": 6,
       "norm_label": "kpi-card.tsx"
     },
     {
@@ -2422,7 +2422,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "components_kpi_card_kpicardprops",
-      "community": 38,
+      "community": 6,
       "norm_label": "kpicardprops"
     },
     {
@@ -2432,7 +2432,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "components_kpi_card_kpicard",
-      "community": 38,
+      "community": 6,
       "norm_label": "kpicard()"
     },
     {
@@ -2802,7 +2802,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_sales_filters",
-      "community": 6,
+      "community": 55,
       "norm_label": "sales-filters.tsx"
     },
     {
@@ -2812,7 +2812,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "components_sales_filters_branchoption",
-      "community": 6,
+      "community": 55,
       "norm_label": "branchoption"
     },
     {
@@ -2822,7 +2822,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "components_sales_filters_salesfiltersprops",
-      "community": 6,
+      "community": 55,
       "norm_label": "salesfiltersprops"
     },
     {
@@ -2832,7 +2832,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "components_sales_filters_salesfilters",
-      "community": 6,
+      "community": 55,
       "norm_label": "salesfilters()"
     },
     {
@@ -2842,7 +2842,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_sales_metrics",
-      "community": 8,
+      "community": 11,
       "norm_label": "sales-metrics.tsx"
     },
     {
@@ -2852,7 +2852,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "components_sales_metrics_salesmetricsprops",
-      "community": 8,
+      "community": 11,
       "norm_label": "salesmetricsprops"
     },
     {
@@ -2862,7 +2862,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "components_sales_metrics_salesmetrics",
-      "community": 8,
+      "community": 11,
       "norm_label": "salesmetrics()"
     },
     {
@@ -3082,7 +3082,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "admin_dashboard_index",
-      "community": 4,
+      "community": 45,
       "norm_label": "index.ts"
     },
     {
@@ -3342,7 +3342,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_branch_stock_overview",
-      "community": 11,
+      "community": 45,
       "norm_label": "branch-stock-overview.tsx"
     },
     {
@@ -3352,7 +3352,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "components_branch_stock_overview_branchstockitem",
-      "community": 11,
+      "community": 45,
       "norm_label": "branchstockitem"
     },
     {
@@ -3362,7 +3362,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "components_branch_stock_overview_branchstockoverviewprops",
-      "community": 11,
+      "community": 45,
       "norm_label": "branchstockoverviewprops"
     },
     {
@@ -3372,7 +3372,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "components_branch_stock_overview_status_colors",
-      "community": 11,
+      "community": 45,
       "norm_label": "status_colors"
     },
     {
@@ -3382,7 +3382,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "components_branch_stock_overview_branchstockoverview",
-      "community": 11,
+      "community": 45,
       "norm_label": "branchstockoverview()"
     },
     {
@@ -3392,8 +3392,368 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "analytics_index",
-      "community": 11,
+      "community": 45,
       "norm_label": "index.ts"
+    },
+    {
+      "label": "auth-header.tsx",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/auth-header.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_auth_header",
+      "community": 2,
+      "norm_label": "auth-header.tsx"
+    },
+    {
+      "label": "AuthHeaderProps",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/auth-header.tsx",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "components_auth_header_authheaderprops",
+      "community": 2,
+      "norm_label": "authheaderprops"
+    },
+    {
+      "label": "AuthHeader()",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/auth-header.tsx",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "components_auth_header_authheader",
+      "community": 2,
+      "norm_label": "authheader()"
+    },
+    {
+      "label": "create-new-password-form.tsx",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/create-new-password-form.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_create_new_password_form",
+      "community": 2,
+      "norm_label": "create-new-password-form.tsx"
+    },
+    {
+      "label": "CreateNewPasswordForm()",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/create-new-password-form.tsx",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "components_create_new_password_form_createnewpasswordform",
+      "community": 2,
+      "norm_label": "createnewpasswordform()"
+    },
+    {
+      "label": "forgot-password-form.tsx",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/forgot-password-form.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_forgot_password_form",
+      "community": 2,
+      "norm_label": "forgot-password-form.tsx"
+    },
+    {
+      "label": "ForgotPasswordForm()",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/forgot-password-form.tsx",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "components_forgot_password_form_forgotpasswordform",
+      "community": 2,
+      "norm_label": "forgotpasswordform()"
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/index.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_features_auth_components_index_ts_components_index",
+      "community": 2,
+      "norm_label": "index.ts"
+    },
+    {
+      "label": "register-form.tsx",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/register-form.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_register_form",
+      "community": 2,
+      "norm_label": "register-form.tsx"
+    },
+    {
+      "label": "RegisterForm()",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/register-form.tsx",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "components_register_form_registerform",
+      "community": 2,
+      "norm_label": "registerform()"
+    },
+    {
+      "label": "reset-password-form.tsx",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/reset-password-form.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_reset_password_form",
+      "community": 2,
+      "norm_label": "reset-password-form.tsx"
+    },
+    {
+      "label": "ResetPasswordForm()",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/reset-password-form.tsx",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "components_reset_password_form_resetpasswordform",
+      "community": 2,
+      "norm_label": "resetpasswordform()"
+    },
+    {
+      "label": "verify-email-form.tsx",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/verify-email-form.tsx",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "components_verify_email_form",
+      "community": 2,
+      "norm_label": "verify-email-form.tsx"
+    },
+    {
+      "label": "VerifyEmailForm()",
+      "file_type": "code",
+      "source_file": "src/features/auth/components/verify-email-form.tsx",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "components_verify_email_form_verifyemailform",
+      "community": 2,
+      "norm_label": "verifyemailform()"
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "src/features/auth/index.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "auth_index",
+      "community": 2,
+      "norm_label": "index.ts"
+    },
+    {
+      "label": "auth.ts",
+      "file_type": "code",
+      "source_file": "src/features/auth/schemas/auth.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "schemas_auth",
+      "community": 2,
+      "norm_label": "auth.ts"
+    },
+    {
+      "label": "registerSchema",
+      "file_type": "code",
+      "source_file": "src/features/auth/schemas/auth.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "schemas_auth_registerschema",
+      "community": 2,
+      "norm_label": "registerschema"
+    },
+    {
+      "label": "loginSchema",
+      "file_type": "code",
+      "source_file": "src/features/auth/schemas/auth.ts",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "schemas_auth_loginschema",
+      "community": 2,
+      "norm_label": "loginschema"
+    },
+    {
+      "label": "verifyEmailSchema",
+      "file_type": "code",
+      "source_file": "src/features/auth/schemas/auth.ts",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "schemas_auth_verifyemailschema",
+      "community": 2,
+      "norm_label": "verifyemailschema"
+    },
+    {
+      "label": "resendCodeSchema",
+      "file_type": "code",
+      "source_file": "src/features/auth/schemas/auth.ts",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "schemas_auth_resendcodeschema",
+      "community": 2,
+      "norm_label": "resendcodeschema"
+    },
+    {
+      "label": "forgotPasswordSchema",
+      "file_type": "code",
+      "source_file": "src/features/auth/schemas/auth.ts",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "schemas_auth_forgotpasswordschema",
+      "community": 2,
+      "norm_label": "forgotpasswordschema"
+    },
+    {
+      "label": "resetPasswordSchema",
+      "file_type": "code",
+      "source_file": "src/features/auth/schemas/auth.ts",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "schemas_auth_resetpasswordschema",
+      "community": 2,
+      "norm_label": "resetpasswordschema"
+    },
+    {
+      "label": "verifyResetCodeSchema",
+      "file_type": "code",
+      "source_file": "src/features/auth/schemas/auth.ts",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "schemas_auth_verifyresetcodeschema",
+      "community": 2,
+      "norm_label": "verifyresetcodeschema"
+    },
+    {
+      "label": "auth.ts",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "community": 2,
+      "norm_label": "auth.ts"
+    },
+    {
+      "label": "loginAction()",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "actions_auth_loginaction",
+      "community": 2,
+      "norm_label": "loginaction()"
+    },
+    {
+      "label": "register.ts",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/actions/register.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "actions_register",
+      "community": 2,
+      "norm_label": "register.ts"
+    },
+    {
+      "label": "registerUser()",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/actions/register.ts",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "actions_register_registeruser",
+      "community": 2,
+      "norm_label": "registeruser()"
+    },
+    {
+      "label": "verify-reset-code.ts",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/actions/verify-reset-code.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "actions_verify_reset_code",
+      "community": 0,
+      "norm_label": "verify-reset-code.ts"
+    },
+    {
+      "label": "verifyResetCode()",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/actions/verify-reset-code.ts",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "actions_verify_reset_code_verifyresetcode",
+      "community": 2,
+      "norm_label": "verifyresetcode()"
+    },
+    {
+      "label": "verify.ts",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/actions/verify.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "actions_verify",
+      "community": 2,
+      "norm_label": "verify.ts"
+    },
+    {
+      "label": "verifyEmailAction()",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/actions/verify.ts",
+      "source_location": "L14",
+      "_origin": "ast",
+      "id": "actions_verify_verifyemailaction",
+      "community": 2,
+      "norm_label": "verifyemailaction()"
+    },
+    {
+      "label": "resendVerificationCodeAction()",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/actions/verify.ts",
+      "source_location": "L103",
+      "_origin": "ast",
+      "id": "actions_verify_resendverificationcodeaction",
+      "community": 2,
+      "norm_label": "resendverificationcodeaction()"
+    },
+    {
+      "label": "get-user.ts",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/db/get-user.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "db_get_user",
+      "community": 7,
+      "norm_label": "get-user.ts"
+    },
+    {
+      "label": "getUserByEmail()",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/db/get-user.ts",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "db_get_user_getuserbyemail",
+      "community": 7,
+      "norm_label": "getuserbyemail()"
+    },
+    {
+      "label": "getUserById()",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/db/get-user.ts",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "db_get_user_getuserbyid",
+      "community": 7,
+      "norm_label": "getuserbyid()"
+    },
+    {
+      "label": "updatePassword()",
+      "file_type": "code",
+      "source_file": "src/features/auth/server/db/get-user.ts",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "db_get_user_updatepassword",
+      "community": 7,
+      "norm_label": "updatepassword()"
     },
     {
       "label": "use-cart-store.ts",
@@ -3572,7 +3932,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_catalog_toolbar",
-      "community": 37,
+      "community": 38,
       "norm_label": "catalog-toolbar.tsx"
     },
     {
@@ -3582,7 +3942,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_catalog_toolbar_catalogtoolbar",
-      "community": 37,
+      "community": 38,
       "norm_label": "catalogtoolbar()"
     },
     {
@@ -3592,7 +3952,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_category_sidebar",
-      "community": 37,
+      "community": 38,
       "norm_label": "category-sidebar.tsx"
     },
     {
@@ -3602,7 +3962,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_category_sidebar_categorysidebar",
-      "community": 37,
+      "community": 38,
       "norm_label": "categorysidebar()"
     },
     {
@@ -3772,7 +4132,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_nearby_branches",
-      "community": 37,
+      "community": 52,
       "norm_label": "nearby-branches.tsx"
     },
     {
@@ -3782,7 +4142,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_nearby_branches_nearbybranches",
-      "community": 37,
+      "community": 52,
       "norm_label": "nearbybranches()"
     },
     {
@@ -3792,7 +4152,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_pagination",
-      "community": 37,
+      "community": 38,
       "norm_label": "pagination.tsx"
     },
     {
@@ -3802,7 +4162,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "components_pagination_pagination",
-      "community": 37,
+      "community": 38,
       "norm_label": "pagination()"
     },
     {
@@ -3902,7 +4262,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_product_details_section",
-      "community": 12,
+      "community": 58,
       "norm_label": "product-details-section.tsx"
     },
     {
@@ -3912,7 +4272,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "components_product_details_section_productdetailssectionprops",
-      "community": 12,
+      "community": 58,
       "norm_label": "productdetailssectionprops"
     },
     {
@@ -3922,7 +4282,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "components_product_details_section_productdetailssection",
-      "community": 12,
+      "community": 58,
       "norm_label": "productdetailssection()"
     },
     {
@@ -4032,7 +4392,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_recent_orders_table",
-      "community": 9,
+      "community": 0,
       "norm_label": "recent-orders-table.tsx"
     },
     {
@@ -4042,7 +4402,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "components_recent_orders_table_demoorders",
-      "community": 9,
+      "community": 0,
       "norm_label": "demoorders"
     },
     {
@@ -4052,7 +4412,7 @@
       "source_location": "L35",
       "_origin": "ast",
       "id": "components_recent_orders_table_recentorderstable",
-      "community": 9,
+      "community": 0,
       "norm_label": "recentorderstable()"
     },
     {
@@ -4162,7 +4522,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "components_transaction_table",
-      "community": 9,
+      "community": 0,
       "norm_label": "transaction-table.tsx"
     },
     {
@@ -4172,7 +4532,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "components_transaction_table_transactiontable",
-      "community": 9,
+      "community": 0,
       "norm_label": "transactiontable()"
     },
     {
@@ -4182,7 +4542,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "customer_dashboard_index",
-      "community": 4,
+      "community": 52,
       "norm_label": "index.ts"
     },
     {
@@ -5362,7 +5722,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_features_monitoring_server_db_get_monitoring_ts_db_get_monitoring",
-      "community": 18,
+      "community": 13,
       "norm_label": "get-monitoring.ts"
     },
     {
@@ -5592,7 +5952,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "hooks_use_orders_store",
-      "community": 9,
+      "community": 0,
       "norm_label": "use-orders-store.ts"
     },
     {
@@ -5602,7 +5962,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "hooks_use_orders_store_orderitem",
-      "community": 9,
+      "community": 0,
       "norm_label": "orderitem"
     },
     {
@@ -5612,7 +5972,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "hooks_use_orders_store_order",
-      "community": 9,
+      "community": 0,
       "norm_label": "order"
     },
     {
@@ -5622,7 +5982,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "hooks_use_orders_store_ordersstate",
-      "community": 9,
+      "community": 0,
       "norm_label": "ordersstate"
     },
     {
@@ -5632,7 +5992,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "hooks_use_orders_store_useordersstore",
-      "community": 9,
+      "community": 0,
       "norm_label": "useordersstore"
     },
     {
@@ -6042,7 +6402,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "hooks_use_products_useproducts",
-      "community": 40,
+      "community": 38,
       "norm_label": "useproducts()"
     },
     {
@@ -6446,406 +6806,6 @@
       "norm_label": "gettransactions()"
     },
     {
-      "label": "auth-header.tsx",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/auth-header.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_auth_header",
-      "community": 5,
-      "norm_label": "auth-header.tsx"
-    },
-    {
-      "label": "AuthHeaderProps",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/auth-header.tsx",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "components_auth_header_authheaderprops",
-      "community": 5,
-      "norm_label": "authheaderprops"
-    },
-    {
-      "label": "AuthHeader()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/auth-header.tsx",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "components_auth_header_authheader",
-      "community": 2,
-      "norm_label": "authheader()"
-    },
-    {
-      "label": "create-new-password-form.tsx",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/create-new-password-form.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_create_new_password_form",
-      "community": 2,
-      "norm_label": "create-new-password-form.tsx"
-    },
-    {
-      "label": "CreateNewPasswordForm()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/create-new-password-form.tsx",
-      "source_location": "L13",
-      "_origin": "ast",
-      "id": "components_create_new_password_form_createnewpasswordform",
-      "community": 2,
-      "norm_label": "createnewpasswordform()"
-    },
-    {
-      "label": "email-template.ts",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/email-template.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_email_template",
-      "community": 0,
-      "norm_label": "email-template.ts"
-    },
-    {
-      "label": "getVerificationEmailHtml()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/email-template.ts",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "components_email_template_getverificationemailhtml",
-      "community": 0,
-      "norm_label": "getverificationemailhtml()"
-    },
-    {
-      "label": "forgot-password-form.tsx",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/forgot-password-form.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_forgot_password_form",
-      "community": 2,
-      "norm_label": "forgot-password-form.tsx"
-    },
-    {
-      "label": "ForgotPasswordForm()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/forgot-password-form.tsx",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "components_forgot_password_form_forgotpasswordform",
-      "community": 2,
-      "norm_label": "forgotpasswordform()"
-    },
-    {
-      "label": "index.ts",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/index.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_features_user_mgmt_components_index_ts_components_index",
-      "community": 2,
-      "norm_label": "index.ts"
-    },
-    {
-      "label": "register-form.tsx",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/register-form.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_register_form",
-      "community": 2,
-      "norm_label": "register-form.tsx"
-    },
-    {
-      "label": "RegisterForm()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/register-form.tsx",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "components_register_form_registerform",
-      "community": 2,
-      "norm_label": "registerform()"
-    },
-    {
-      "label": "reset-password-form.tsx",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/reset-password-form.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_reset_password_form",
-      "community": 2,
-      "norm_label": "reset-password-form.tsx"
-    },
-    {
-      "label": "ResetPasswordForm()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/reset-password-form.tsx",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "components_reset_password_form_resetpasswordform",
-      "community": 2,
-      "norm_label": "resetpasswordform()"
-    },
-    {
-      "label": "verify-email-form.tsx",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "components_verify_email_form",
-      "community": 2,
-      "norm_label": "verify-email-form.tsx"
-    },
-    {
-      "label": "VerifyEmailForm()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "components_verify_email_form_verifyemailform",
-      "community": 2,
-      "norm_label": "verifyemailform()"
-    },
-    {
-      "label": "index.ts",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/index.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "user_mgmt_index",
-      "community": 2,
-      "norm_label": "index.ts"
-    },
-    {
-      "label": "auth.ts",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "schemas_auth",
-      "community": 0,
-      "norm_label": "auth.ts"
-    },
-    {
-      "label": "registerSchema",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L3",
-      "_origin": "ast",
-      "id": "schemas_auth_registerschema",
-      "community": 0,
-      "norm_label": "registerschema"
-    },
-    {
-      "label": "loginSchema",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L15",
-      "_origin": "ast",
-      "id": "schemas_auth_loginschema",
-      "community": 0,
-      "norm_label": "loginschema"
-    },
-    {
-      "label": "verifyEmailSchema",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L20",
-      "_origin": "ast",
-      "id": "schemas_auth_verifyemailschema",
-      "community": 0,
-      "norm_label": "verifyemailschema"
-    },
-    {
-      "label": "resendCodeSchema",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "schemas_auth_resendcodeschema",
-      "community": 0,
-      "norm_label": "resendcodeschema"
-    },
-    {
-      "label": "forgotPasswordSchema",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L29",
-      "_origin": "ast",
-      "id": "schemas_auth_forgotpasswordschema",
-      "community": 0,
-      "norm_label": "forgotpasswordschema"
-    },
-    {
-      "label": "resetPasswordSchema",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "schemas_auth_resetpasswordschema",
-      "community": 0,
-      "norm_label": "resetpasswordschema"
-    },
-    {
-      "label": "verifyResetCodeSchema",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L40",
-      "_origin": "ast",
-      "id": "schemas_auth_verifyresetcodeschema",
-      "community": 0,
-      "norm_label": "verifyresetcodeschema"
-    },
-    {
-      "label": "auth.ts",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "actions_auth",
-      "community": 0,
-      "norm_label": "auth.ts"
-    },
-    {
-      "label": "loginAction()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "actions_auth_loginaction",
-      "community": 0,
-      "norm_label": "loginaction()"
-    },
-    {
-      "label": "logoutAction()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L75",
-      "_origin": "ast",
-      "id": "actions_auth_logoutaction",
-      "community": 2,
-      "norm_label": "logoutaction()"
-    },
-    {
-      "label": "verifySessionAction()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L86",
-      "_origin": "ast",
-      "id": "actions_auth_verifysessionaction",
-      "community": 0,
-      "norm_label": "verifysessionaction()"
-    },
-    {
-      "label": "register.ts",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "actions_register",
-      "community": 0,
-      "norm_label": "register.ts"
-    },
-    {
-      "label": "registerUser()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L11",
-      "_origin": "ast",
-      "id": "actions_register_registeruser",
-      "community": 0,
-      "norm_label": "registeruser()"
-    },
-    {
-      "label": "verify-reset-code.ts",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/actions/verify-reset-code.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "actions_verify_reset_code",
-      "community": 2,
-      "norm_label": "verify-reset-code.ts"
-    },
-    {
-      "label": "verifyResetCode()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/actions/verify-reset-code.ts",
-      "source_location": "L10",
-      "_origin": "ast",
-      "id": "actions_verify_reset_code_verifyresetcode",
-      "community": 2,
-      "norm_label": "verifyresetcode()"
-    },
-    {
-      "label": "verify.ts",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "actions_verify",
-      "community": 0,
-      "norm_label": "verify.ts"
-    },
-    {
-      "label": "verifyEmailAction()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "actions_verify_verifyemailaction",
-      "community": 0,
-      "norm_label": "verifyemailaction()"
-    },
-    {
-      "label": "resendVerificationCodeAction()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L103",
-      "_origin": "ast",
-      "id": "actions_verify_resendverificationcodeaction",
-      "community": 0,
-      "norm_label": "resendverificationcodeaction()"
-    },
-    {
-      "label": "get-user.ts",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/db/get-user.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "db_get_user",
-      "community": 0,
-      "norm_label": "get-user.ts"
-    },
-    {
-      "label": "getUserByEmail()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/db/get-user.ts",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "db_get_user_getuserbyemail",
-      "community": 0,
-      "norm_label": "getuserbyemail()"
-    },
-    {
-      "label": "getUserById()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/db/get-user.ts",
-      "source_location": "L14",
-      "_origin": "ast",
-      "id": "db_get_user_getuserbyid",
-      "community": 0,
-      "norm_label": "getuserbyid()"
-    },
-    {
-      "label": "updatePassword()",
-      "file_type": "code",
-      "source_file": "src/features/user-mgmt/server/db/get-user.ts",
-      "source_location": "L20",
-      "_origin": "ast",
-      "id": "db_get_user_updatepassword",
-      "community": 0,
-      "norm_label": "updatepassword()"
-    },
-    {
       "label": "useAuth.ts",
       "file_type": "code",
       "source_file": "src/hooks/useAuth.ts",
@@ -6902,7 +6862,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "hooks_useorders_useorders",
-      "community": 9,
+      "community": 0,
       "norm_label": "useorders()"
     },
     {
@@ -6992,7 +6952,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "lib_auth_utils_generateverificationcode",
-      "community": 0,
+      "community": 2,
       "norm_label": "generateverificationcode()"
     },
     {
@@ -7002,7 +6962,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "lib_auth_utils_hashverificationcode",
-      "community": 0,
+      "community": 2,
       "norm_label": "hashverificationcode()"
     },
     {
@@ -7012,7 +6972,7 @@
       "source_location": "L58",
       "_origin": "ast",
       "id": "lib_auth_utils_hashpassword",
-      "community": 0,
+      "community": 2,
       "norm_label": "hashpassword()"
     },
     {
@@ -7022,7 +6982,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "lib_auth_utils_verifypassword",
-      "community": 0,
+      "community": 2,
       "norm_label": "verifypassword()"
     },
     {
@@ -7032,7 +6992,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "lib_auth_utils_generatetoken",
-      "community": 0,
+      "community": 2,
       "norm_label": "generatetoken()"
     },
     {
@@ -7082,7 +7042,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "lib_email_service",
-      "community": 0,
+      "community": 2,
       "norm_label": "email-service.ts"
     },
     {
@@ -7092,7 +7052,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "lib_email_service_gettransporter",
-      "community": 0,
+      "community": 2,
       "norm_label": "gettransporter()"
     },
     {
@@ -7102,7 +7062,7 @@
       "source_location": "L125",
       "_origin": "ast",
       "id": "lib_email_service_sendverificationemail",
-      "community": 0,
+      "community": 2,
       "norm_label": "sendverificationemail()"
     },
     {
@@ -7112,8 +7072,28 @@
       "source_location": "L161",
       "_origin": "ast",
       "id": "lib_email_service_sendpasswordresetemail",
-      "community": 0,
+      "community": 2,
       "norm_label": "sendpasswordresetemail()"
+    },
+    {
+      "label": "email-templates.ts",
+      "file_type": "code",
+      "source_file": "src/lib/email-templates.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "lib_email_templates",
+      "community": 2,
+      "norm_label": "email-templates.ts"
+    },
+    {
+      "label": "getVerificationEmailHtml()",
+      "file_type": "code",
+      "source_file": "src/lib/email-templates.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "lib_email_templates_getverificationemailhtml",
+      "community": 2,
+      "norm_label": "getverificationemailhtml()"
     },
     {
       "label": "proxy.ts",
@@ -7144,6 +7124,36 @@
       "id": "src_proxy_proxy",
       "community": 3,
       "norm_label": "proxy()"
+    },
+    {
+      "label": "auth.ts",
+      "file_type": "code",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_server_actions_auth_ts_actions_auth",
+      "community": 0,
+      "norm_label": "auth.ts"
+    },
+    {
+      "label": "logoutAction()",
+      "file_type": "code",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "actions_auth_logoutaction",
+      "community": 8,
+      "norm_label": "logoutaction()"
+    },
+    {
+      "label": "verifySessionAction()",
+      "file_type": "code",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "actions_auth_verifysessionaction",
+      "community": 0,
+      "norm_label": "verifysessionaction()"
     },
     {
       "label": "admin.ts",
@@ -7242,7 +7252,7 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "types_admin_salesoverviewdata",
-      "community": 8,
+      "community": 11,
       "norm_label": "salesoverviewdata"
     },
     {
@@ -7272,7 +7282,7 @@
       "source_location": "L84",
       "_origin": "ast",
       "id": "types_admin_salesapidata",
-      "community": 4,
+      "community": 11,
       "norm_label": "salesapidata"
     },
     {
@@ -7292,7 +7302,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "types_auth",
-      "community": 5,
+      "community": 2,
       "norm_label": "auth.ts"
     },
     {
@@ -7302,7 +7312,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "types_auth_user",
-      "community": 5,
+      "community": 2,
       "norm_label": "user"
     },
     {
@@ -7312,7 +7322,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "types_auth_session",
-      "community": 5,
+      "community": 2,
       "norm_label": "session"
     },
     {
@@ -7322,7 +7332,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "types_auth_authcontext",
-      "community": 5,
+      "community": 2,
       "norm_label": "authcontext"
     },
     {
@@ -7332,7 +7342,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "types_auth_authresponse",
-      "community": 0,
+      "community": 2,
       "norm_label": "authresponse"
     },
     {
@@ -7352,7 +7362,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "types_auth_verifyemailpayload",
-      "community": 5,
+      "community": 2,
       "norm_label": "verifyemailpayload"
     },
     {
@@ -7362,7 +7372,7 @@
       "source_location": "L60",
       "_origin": "ast",
       "id": "types_auth_loginpayload",
-      "community": 5,
+      "community": 2,
       "norm_label": "loginpayload"
     },
     {
@@ -7372,7 +7382,7 @@
       "source_location": "L66",
       "_origin": "ast",
       "id": "types_auth_loginresponsedata",
-      "community": 5,
+      "community": 2,
       "norm_label": "loginresponsedata"
     },
     {
@@ -7492,7 +7502,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "types_index",
-      "community": 5,
+      "community": 2,
       "norm_label": "index.ts"
     },
     {
@@ -7672,7 +7682,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "readme",
-      "community": 3,
+      "community": 43,
       "norm_label": "readme.md"
     },
     {
@@ -7822,7 +7832,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_bentahub",
-      "community": 3,
+      "community": 9,
       "norm_label": "bentahub.md"
     },
     {
@@ -7982,7 +7992,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_contributing",
-      "community": 3,
+      "community": 43,
       "norm_label": "contributing.md"
     },
     {
@@ -7992,7 +8002,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_contributing_bentahub_contributing_guide",
-      "community": 3,
+      "community": 47,
       "norm_label": "bentahub contributing guide"
     },
     {
@@ -8002,7 +8012,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "docs_contributing_local_setup",
-      "community": 3,
+      "community": 47,
       "norm_label": "\ud83d\udee0\ufe0f local setup"
     },
     {
@@ -8012,7 +8022,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "docs_contributing_feature_sliced_design_fsd_guidelines",
-      "community": 3,
+      "community": 47,
       "norm_label": "\ud83c\udfd7\ufe0f feature-sliced design (fsd) guidelines"
     },
     {
@@ -8022,7 +8032,7 @@
       "source_location": "L37",
       "_origin": "ast",
       "id": "docs_contributing_core_folder_structure",
-      "community": 3,
+      "community": 47,
       "norm_label": "core folder structure"
     },
     {
@@ -8032,7 +8042,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "docs_contributing_the_isolation_principle",
-      "community": 3,
+      "community": 47,
       "norm_label": "the isolation principle"
     },
     {
@@ -8042,7 +8052,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "docs_contributing_available_development_commands",
-      "community": 3,
+      "community": 47,
       "norm_label": "\ud83d\udcbb available development commands"
     },
     {
@@ -8052,7 +8062,7 @@
       "source_location": "L82",
       "_origin": "ast",
       "id": "docs_contributing_verification_code_style",
-      "community": 3,
+      "community": 47,
       "norm_label": "\ud83d\udea6 verification & code style"
     },
     {
@@ -8062,7 +8072,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "docs_contributing_pull_request_checklist",
-      "community": 3,
+      "community": 47,
       "norm_label": "\ud83d\udcdd pull request checklist"
     },
     {
@@ -8072,7 +8082,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_env",
-      "community": 3,
+      "community": 43,
       "norm_label": "env.md"
     },
     {
@@ -8082,7 +8092,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_env_environment_variables_reference",
-      "community": 3,
+      "community": 43,
       "norm_label": "environment variables reference"
     },
     {
@@ -8092,7 +8102,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_feature_sliced_design",
-      "community": 3,
+      "community": 9,
       "norm_label": "feature-sliced-design.md"
     },
     {
@@ -8102,7 +8112,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_feature_sliced_design_fsd_architecture_guidelines",
-      "community": 42,
+      "community": 9,
       "norm_label": "feature sliced design (fsd) architecture guidelines"
     },
     {
@@ -8112,7 +8122,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_table_of_contents",
-      "community": 42,
+      "community": 9,
       "norm_label": "\ud83d\udcd6 table of contents"
     },
     {
@@ -8122,7 +8132,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_directory_structure_overview",
-      "community": 42,
+      "community": 9,
       "norm_label": "\ud83d\udcc2 directory structure overview"
     },
     {
@@ -8132,7 +8142,7 @@
       "source_location": "L89",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_feature_first_mini_applications",
-      "community": 42,
+      "community": 9,
       "norm_label": "\ud83c\udfd7\ufe0f feature-first mini-applications"
     },
     {
@@ -8142,7 +8152,7 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_the_rule_of_promotion",
-      "community": 42,
+      "community": 9,
       "norm_label": "\ud83d\udcc8 the rule of promotion"
     },
     {
@@ -8152,7 +8162,7 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_import_boundary_rules",
-      "community": 42,
+      "community": 43,
       "norm_label": "\ud83d\uded1 import boundary rules"
     },
     {
@@ -8162,7 +8172,7 @@
       "source_location": "L138",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_react_form_action_type_safety",
-      "community": 42,
+      "community": 9,
       "norm_label": "\ud83d\udcdd react form action type-safety"
     },
     {
@@ -8172,7 +8182,7 @@
       "source_location": "L142",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_good_practice_returning_void",
-      "community": 42,
+      "community": 9,
       "norm_label": "good practice: returning `void`"
     },
     {
@@ -8182,7 +8192,7 @@
       "source_location": "L154",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_handling_action_state_feedback",
-      "community": 42,
+      "community": 9,
       "norm_label": "handling action state & feedback"
     },
     {
@@ -8192,7 +8202,7 @@
       "source_location": "L179",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_db_caching_query_patterns",
-      "community": 42,
+      "community": 48,
       "norm_label": "\u26a1 db caching & query patterns"
     },
     {
@@ -8202,7 +8212,7 @@
       "source_location": "L183",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_1_caching_strategy_public_internal_split",
-      "community": 42,
+      "community": 48,
       "norm_label": "1. caching strategy & public/internal split"
     },
     {
@@ -8212,7 +8222,7 @@
       "source_location": "L218",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_2_cache_tagging_levels",
-      "community": 42,
+      "community": 48,
       "norm_label": "2. cache tagging levels"
     },
     {
@@ -8222,7 +8232,7 @@
       "source_location": "L228",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_3_mutations_revalidation_pattern",
-      "community": 42,
+      "community": 48,
       "norm_label": "3. mutations & revalidation pattern"
     },
     {
@@ -8272,7 +8282,7 @@
       "source_location": "L372",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_zod_schema_patterns",
-      "community": 42,
+      "community": 60,
       "norm_label": "\ud83d\udccb zod schema patterns"
     },
     {
@@ -8282,7 +8292,7 @@
       "source_location": "L376",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_key_rules_376",
-      "community": 42,
+      "community": 60,
       "norm_label": "key rules"
     },
     {
@@ -8292,7 +8302,7 @@
       "source_location": "L386",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_snippet_form_zod_schemas_with_transformations_refinement",
-      "community": 42,
+      "community": 60,
       "norm_label": "snippet: form zod schemas with transformations & refinement"
     },
     {
@@ -8302,7 +8312,7 @@
       "source_location": "L429",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_server_action_patterns",
-      "community": 42,
+      "community": 61,
       "norm_label": "\u26a1 server action patterns"
     },
     {
@@ -8312,7 +8322,7 @@
       "source_location": "L433",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_key_rules_433",
-      "community": 42,
+      "community": 61,
       "norm_label": "key rules"
     },
     {
@@ -8322,7 +8332,7 @@
       "source_location": "L447",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_snippet_standard_mutation_server_action",
-      "community": 42,
+      "community": 61,
       "norm_label": "snippet: standard mutation server action"
     },
     {
@@ -8332,7 +8342,7 @@
       "source_location": "L478",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_drizzle_schema_definition_patterns",
-      "community": 42,
+      "community": 59,
       "norm_label": "\ud83c\udfd7\ufe0f drizzle schema definition patterns"
     },
     {
@@ -8342,7 +8352,7 @@
       "source_location": "L482",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_key_rules_482",
-      "community": 42,
+      "community": 59,
       "norm_label": "key rules"
     },
     {
@@ -8352,7 +8362,7 @@
       "source_location": "L494",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_snippet_schema_and_relationships_definitions",
-      "community": 42,
+      "community": 59,
       "norm_label": "snippet: schema and relationships definitions"
     },
     {
@@ -8392,7 +8402,7 @@
       "source_location": "L655",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_permission_system_pattern",
-      "community": 42,
+      "community": 49,
       "norm_label": "\ud83d\udd10 permission system pattern"
     },
     {
@@ -8402,7 +8412,7 @@
       "source_location": "L659",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_key_rules_659",
-      "community": 42,
+      "community": 49,
       "norm_label": "key rules"
     },
     {
@@ -8412,7 +8422,7 @@
       "source_location": "L665",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_snippet_centralized_permissions_checking",
-      "community": 42,
+      "community": 49,
       "norm_label": "snippet: centralized permissions checking"
     },
     {
@@ -8422,7 +8432,7 @@
       "source_location": "L679",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_snippet_conditional_layout_wrapper_component",
-      "community": 42,
+      "community": 49,
       "norm_label": "snippet: conditional layout wrapper component"
     },
     {
@@ -8462,7 +8472,7 @@
       "source_location": "L744",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_task_script_pattern",
-      "community": 42,
+      "community": 57,
       "norm_label": "\u2699\ufe0f task script pattern"
     },
     {
@@ -8472,7 +8482,7 @@
       "source_location": "L748",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_key_rules_748",
-      "community": 42,
+      "community": 57,
       "norm_label": "key rules"
     },
     {
@@ -8482,7 +8492,7 @@
       "source_location": "L754",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_snippet_cli_seeder_script_updatecountrygroups",
-      "community": 42,
+      "community": 57,
       "norm_label": "snippet: cli seeder script (updatecountrygroups)"
     },
     {
@@ -8492,7 +8502,7 @@
       "source_location": "L788",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_layout_provider_pattern",
-      "community": 42,
+      "community": 54,
       "norm_label": "\ud83c\udfa8 layout & provider pattern"
     },
     {
@@ -8502,7 +8512,7 @@
       "source_location": "L792",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_key_rules_792",
-      "community": 42,
+      "community": 54,
       "norm_label": "key rules"
     },
     {
@@ -8512,7 +8522,7 @@
       "source_location": "L798",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_snippet_root_layout_configuration",
-      "community": 42,
+      "community": 54,
       "norm_label": "snippet: root layout configuration"
     },
     {
@@ -8522,7 +8532,7 @@
       "source_location": "L828",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_environment_variable_validation",
-      "community": 42,
+      "community": 43,
       "norm_label": "\ud83d\udd12 environment variable validation"
     },
     {
@@ -8532,7 +8542,7 @@
       "source_location": "L837",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_build_time_bypass",
-      "community": 42,
+      "community": 43,
       "norm_label": "build-time bypass"
     },
     {
@@ -8808,7 +8818,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 42,
+      "community": 43,
       "norm_label": "feature sliced design (fsd) guidelines",
       "id": "docs_feature_sliced_design_document"
     },
@@ -8822,7 +8832,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Maintain a clean separation between global shared components and business-logic feature domains. Prevents spaghetti code and tight coupling in React/Next.js projects by restricting cross-feature imports.",
-      "community": 42,
+      "community": 43,
       "norm_label": "feature sliced design architecture",
       "id": "docs_feature_sliced_design_architecture"
     },
@@ -8836,7 +8846,7 @@
       "author": null,
       "contributor": null,
       "rationale": "Starts all code as local-first to prevent premature abstraction. Features are only promoted to the global shared layer once there is an explicit requirement from another feature.",
-      "community": 42,
+      "community": 43,
       "norm_label": "rule of promotion",
       "id": "docs_feature_sliced_design_rule_of_promotion"
     },
@@ -8849,7 +8859,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 42,
+      "community": 49,
       "norm_label": "cancreateproduct",
       "id": "lib_permissions_cancreateproduct"
     },
@@ -8862,7 +8872,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 42,
+      "community": 49,
       "norm_label": "haspermission",
       "id": "components_haspermission_haspermission"
     },
@@ -8875,7 +8885,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 42,
+      "community": 48,
       "norm_label": "dbcache",
       "id": "lib_cache_dbcache"
     },
@@ -8888,7 +8898,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 42,
+      "community": 48,
       "norm_label": "getproducts",
       "id": "db_products_getproducts"
     },
@@ -8901,7 +8911,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 42,
+      "community": 48,
       "norm_label": "getproductsinternal",
       "id": "db_products_getproductsinternal"
     },
@@ -8914,7 +8924,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 42,
+      "community": 9,
       "norm_label": "createcustomerportalsession",
       "id": "actions_stripe_createcustomerportalsession"
     },
@@ -8940,7 +8950,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 42,
+      "community": 57,
       "norm_label": "updatecountrygroups",
       "id": "tasks_updatecountrygroups_updatecountrygroups"
     },
@@ -8976,7 +8986,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 3,
+      "community": 9,
       "norm_label": "feature-sliced design rules",
       "id": "agents_fsd_rules"
     },
@@ -9041,6 +9051,17 @@
       "source_file": "src/app/(auth)/create-new-password/page.tsx",
       "source_location": "L2",
       "weight": 1.0,
+      "source": "create_new_password_page",
+      "target": "auth_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(auth)/create-new-password/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "create_new_password_page",
       "target": "components_create_new_password_form"
@@ -9065,6 +9086,17 @@
       "confidence_score": 1.0,
       "source": "create_new_password_page",
       "target": "create_new_password_page_createnewpasswordpage"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(auth)/forgot-password/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "forgot_password_page",
+      "target": "auth_index",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -9119,17 +9151,6 @@
       "target": "auth_layout_metadata"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/(auth)/login/page.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "login_page",
-      "target": "actions_auth"
-    },
-    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -9139,6 +9160,17 @@
       "confidence_score": 1.0,
       "source": "login_page",
       "target": "actions_auth_loginaction"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(auth)/login/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "login_page",
+      "target": "auth_index",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -9184,17 +9216,6 @@
       "target": "login_page_loginpage"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/(auth)/login/page.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "login_page",
-      "target": "user_mgmt_index"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -9204,6 +9225,17 @@
       "weight": 1.0,
       "source": "login_page_loginpage",
       "target": "contexts_auth_context_useauth"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(auth)/register/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "register_page",
+      "target": "auth_index",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -9244,6 +9276,17 @@
       "source_file": "src/app/(auth)/reset-password/page.tsx",
       "source_location": "L2",
       "weight": 1.0,
+      "source": "reset_password_page",
+      "target": "auth_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(auth)/reset-password/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
       "confidence_score": 1.0,
       "source": "reset_password_page",
       "target": "components_reset_password_form"
@@ -9270,6 +9313,17 @@
       "target": "reset_password_page_resetpasswordpage"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/app/(auth)/verify-email/page.tsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "verify_email_page",
+      "target": "auth_index",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -9279,17 +9333,6 @@
       "confidence_score": 1.0,
       "source": "verify_email_page",
       "target": "components_verify_email_form_verifyemailform"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/app/(auth)/verify-email/page.tsx",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "verify_email_page",
-      "target": "user_mgmt_index"
     },
     {
       "relation": "contains",
@@ -11626,17 +11669,6 @@
       "target": "config_index"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/contexts/auth-context.tsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "contexts_auth_context",
-      "target": "actions_auth"
-    },
-    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -11749,17 +11781,6 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "actions_add_to_cart",
-      "target": "drizzle_db"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
       "target": "drizzle_db"
     },
     {
@@ -12025,12 +12046,34 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "drizzle_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/features/monitoring/server/db/get-monitoring.ts",
       "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_features_monitoring_server_db_get_monitoring_ts_db_get_monitoring",
       "target": "drizzle_db"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_server_actions_auth_ts_actions_auth",
+      "target": "drizzle_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -12041,17 +12084,6 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "actions_add_to_cart",
-      "target": "drizzle_db_db"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
       "target": "drizzle_db_db"
     },
     {
@@ -12256,12 +12288,34 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "drizzle_db_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/features/monitoring/server/db/get-monitoring.ts",
       "source_location": "L1",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "src_features_monitoring_server_db_get_monitoring_ts_db_get_monitoring",
       "target": "drizzle_db_db"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_server_actions_auth_ts_actions_auth",
+      "target": "drizzle_db_db",
+      "confidence_score": 1.0
     },
     {
       "relation": "imports_from",
@@ -12272,17 +12326,6 @@
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "actions_add_to_cart",
-      "target": "drizzle_schema"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
       "target": "drizzle_schema"
     },
     {
@@ -12470,6 +12513,28 @@
       "confidence_score": 1.0,
       "source": "drizzle_seed",
       "target": "drizzle_schema"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "drizzle_schema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_server_actions_auth_ts_actions_auth",
+      "target": "drizzle_schema",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13678,17 +13743,6 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "schema_users_users"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
       "source_file": "src/features/user-mgmt/actions/register.ts",
       "source_location": "L5",
       "weight": 1.0,
@@ -13728,6 +13782,28 @@
       "confidence_score": 1.0,
       "source": "drizzle_seed",
       "target": "schema_users_users"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "schema_users_users",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_server_actions_auth_ts_actions_auth",
+      "target": "schema_users_users",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -16017,6 +16093,996 @@
       "confidence_score": 1.0,
       "source": "analytics_index",
       "target": "components_branch_stock_overview_branchstockoverview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/auth-header.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_auth_header",
+      "target": "components_auth_header_authheader"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/auth-header.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_auth_header",
+      "target": "components_auth_header_authheaderprops"
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/index.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_features_auth_components_index_ts_components_index",
+      "target": "components_auth_header",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/create-new-password-form.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_create_new_password_form",
+      "target": "components_auth_header_authheader"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/forgot-password-form.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_forgot_password_form",
+      "target": "components_auth_header_authheader"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/register-form.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_register_form",
+      "target": "components_auth_header_authheader"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/reset-password-form.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_reset_password_form",
+      "target": "components_auth_header_authheader"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_verify_email_form",
+      "target": "components_auth_header_authheader"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/create-new-password-form.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "components_create_new_password_form",
+      "target": "auth_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/create-new-password-form.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_create_new_password_form",
+      "target": "components_create_new_password_form_createnewpasswordform"
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/index.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_features_auth_components_index_ts_components_index",
+      "target": "components_create_new_password_form",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/forgot-password-form.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "components_forgot_password_form",
+      "target": "auth_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/forgot-password-form.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_forgot_password_form",
+      "target": "components_forgot_password_form_forgotpasswordform"
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/index.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_features_auth_components_index_ts_components_index",
+      "target": "components_forgot_password_form",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/index.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_features_auth_components_index_ts_components_index",
+      "target": "components_register_form",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/index.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_features_auth_components_index_ts_components_index",
+      "target": "components_reset_password_form",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/index.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_features_auth_components_index_ts_components_index",
+      "target": "components_verify_email_form",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/register-form.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_register_form",
+      "target": "actions_register"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/register-form.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_register_form",
+      "target": "actions_register_registeruser"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/register-form.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "components_register_form",
+      "target": "auth_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/register-form.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_register_form",
+      "target": "components_register_form_registerform"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/register-form.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_register_form",
+      "target": "types_auth"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/register-form.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_register_form",
+      "target": "types_auth_registerpayload"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/reset-password-form.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_reset_password_form",
+      "target": "actions_verify_reset_code"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/reset-password-form.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_reset_password_form",
+      "target": "actions_verify_reset_code_verifyresetcode"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/reset-password-form.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "components_reset_password_form",
+      "target": "auth_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/reset-password-form.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_reset_password_form",
+      "target": "components_reset_password_form_resetpasswordform"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_verify_email_form",
+      "target": "actions_verify"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_verify_email_form",
+      "target": "actions_verify_resendverificationcodeaction"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_verify_email_form",
+      "target": "actions_verify_verifyemailaction"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/components/verify-email-form.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "components_verify_email_form",
+      "target": "auth_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "components_verify_email_form",
+      "target": "components_verify_email_form_verifyemailform"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "schemas_auth"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "schemas_auth"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify-reset-code.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify_reset_code",
+      "target": "schemas_auth"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/schemas/auth.ts",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "schemas_auth",
+      "target": "schemas_auth_forgotpasswordschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/schemas/auth.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "schemas_auth",
+      "target": "schemas_auth_loginschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/schemas/auth.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "schemas_auth",
+      "target": "schemas_auth_registerschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/schemas/auth.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "schemas_auth",
+      "target": "schemas_auth_resendcodeschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/schemas/auth.ts",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "schemas_auth",
+      "target": "schemas_auth_resetpasswordschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/schemas/auth.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "schemas_auth",
+      "target": "schemas_auth_verifyemailschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/schemas/auth.ts",
+      "source_location": "L40",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "schemas_auth",
+      "target": "schemas_auth_verifyresetcodeschema"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "schemas_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "schemas_auth_registerschema"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "schemas_auth_loginschema",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "schemas_auth_verifyemailschema"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "schemas_auth_resendcodeschema"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify-reset-code.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify_reset_code",
+      "target": "schemas_auth_verifyresetcodeschema"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "actions_auth_loginaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "lib_auth_utils",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "lib_auth_utils_generatetoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "lib_auth_utils_verifypassword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "types_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "types_auth_authresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/auth/server/actions/auth.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "src_features_auth_server_actions_auth_ts_actions_auth",
+      "target": "types_auth_loginresponsedata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "actions_auth_loginaction",
+      "target": "lib_auth_utils_generatetoken"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "actions_auth_loginaction",
+      "target": "lib_auth_utils_verifypassword"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "actions_register_registeruser"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "lib_auth_utils"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "lib_auth_utils_generateid"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "lib_auth_utils_generateverificationcode"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "lib_auth_utils_hashpassword"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "lib_auth_utils_hashverificationcode"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/actions/register.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "lib_email_service"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "lib_email_service_sendverificationemail"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/actions/register.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "types_auth"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "types_auth_authresponse"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_register",
+      "target": "types_auth_registerpayload"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "actions_register_registeruser",
+      "target": "lib_auth_utils_generateid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "actions_register_registeruser",
+      "target": "lib_auth_utils_generateverificationcode"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "actions_register_registeruser",
+      "target": "lib_auth_utils_hashpassword"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/server/actions/register.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "actions_register_registeruser",
+      "target": "lib_auth_utils_hashverificationcode"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/actions/register.ts",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "actions_register_registeruser",
+      "target": "lib_email_service_sendverificationemail"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify-reset-code.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify_reset_code",
+      "target": "actions_verify_reset_code_verifyresetcode"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L103",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "actions_verify_resendverificationcodeaction"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "actions_verify_verifyemailaction"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "lib_auth_utils"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "lib_auth_utils_generateid"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "lib_auth_utils_generateverificationcode"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "lib_auth_utils_hashverificationcode"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/actions/verify.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "lib_email_service"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "lib_email_service_sendverificationemail"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/actions/verify.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "types_auth"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "actions_verify",
+      "target": "types_auth_authresponse"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "actions_verify_verifyemailaction",
+      "target": "lib_auth_utils_hashverificationcode"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L154",
+      "weight": 1.0,
+      "source": "actions_verify_resendverificationcodeaction",
+      "target": "lib_auth_utils_generateid"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L149",
+      "weight": 1.0,
+      "source": "actions_verify_resendverificationcodeaction",
+      "target": "lib_auth_utils_generateverificationcode"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
+      "source_location": "L150",
+      "weight": 1.0,
+      "source": "actions_verify_resendverificationcodeaction",
+      "target": "lib_auth_utils_hashverificationcode"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/actions/verify.ts",
+      "source_location": "L172",
+      "weight": 1.0,
+      "source": "actions_verify_resendverificationcodeaction",
+      "target": "lib_email_service_sendverificationemail"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/db/get-user.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "db_get_user",
+      "target": "db_get_user_getuserbyemail"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/db/get-user.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "db_get_user",
+      "target": "db_get_user_getuserbyid"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/user-mgmt/server/db/get-user.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "db_get_user",
+      "target": "db_get_user_updatepassword"
     },
     {
       "relation": "contains",
@@ -20910,1103 +21976,6 @@
       "target": "types_employee_transaction"
     },
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/auth-header.tsx",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_auth_header",
-      "target": "components_auth_header_authheader"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/auth-header.tsx",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_auth_header",
-      "target": "components_auth_header_authheaderprops"
-    },
-    {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/index.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_features_user_mgmt_components_index_ts_components_index",
-      "target": "components_auth_header"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/create-new-password-form.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_create_new_password_form",
-      "target": "components_auth_header_authheader"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/forgot-password-form.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_forgot_password_form",
-      "target": "components_auth_header_authheader"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/register-form.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_register_form",
-      "target": "components_auth_header_authheader"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/reset-password-form.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_reset_password_form",
-      "target": "components_auth_header_authheader"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_verify_email_form",
-      "target": "components_auth_header_authheader"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/create-new-password-form.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_create_new_password_form",
-      "target": "components_create_new_password_form_createnewpasswordform"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/create-new-password-form.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_create_new_password_form",
-      "target": "user_mgmt_index"
-    },
-    {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/index.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_features_user_mgmt_components_index_ts_components_index",
-      "target": "components_create_new_password_form"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/email-template.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_email_template",
-      "target": "components_email_template_getverificationemailhtml"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/email-service.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_email_service",
-      "target": "components_email_template"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/lib/email-service.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "lib_email_service",
-      "target": "components_email_template_getverificationemailhtml"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/lib/email-service.ts",
-      "source_location": "L140",
-      "weight": 1.0,
-      "source": "lib_email_service_sendverificationemail",
-      "target": "components_email_template_getverificationemailhtml"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/forgot-password-form.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_forgot_password_form",
-      "target": "components_forgot_password_form_forgotpasswordform"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/forgot-password-form.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_forgot_password_form",
-      "target": "user_mgmt_index"
-    },
-    {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/index.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_features_user_mgmt_components_index_ts_components_index",
-      "target": "components_forgot_password_form"
-    },
-    {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/index.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_features_user_mgmt_components_index_ts_components_index",
-      "target": "components_register_form"
-    },
-    {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/index.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_features_user_mgmt_components_index_ts_components_index",
-      "target": "components_reset_password_form"
-    },
-    {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/index.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_features_user_mgmt_components_index_ts_components_index",
-      "target": "components_verify_email_form"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/register-form.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_register_form",
-      "target": "actions_register"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/register-form.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_register_form",
-      "target": "actions_register_registeruser"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/register-form.tsx",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_register_form",
-      "target": "components_register_form_registerform"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/register-form.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_register_form",
-      "target": "types_auth"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/register-form.tsx",
-      "source_location": "L13",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_register_form",
-      "target": "types_auth_registerpayload"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/register-form.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_register_form",
-      "target": "user_mgmt_index"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/reset-password-form.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_reset_password_form",
-      "target": "actions_verify_reset_code"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/reset-password-form.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_reset_password_form",
-      "target": "actions_verify_reset_code_verifyresetcode"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/reset-password-form.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_reset_password_form",
-      "target": "components_reset_password_form_resetpasswordform"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/reset-password-form.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_reset_password_form",
-      "target": "user_mgmt_index"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_verify_email_form",
-      "target": "actions_verify"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_verify_email_form",
-      "target": "actions_verify_resendverificationcodeaction"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
-      "source_location": "L12",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_verify_email_form",
-      "target": "actions_verify_verifyemailaction"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_verify_email_form",
-      "target": "components_verify_email_form_verifyemailform"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/components/verify-email-form.tsx",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "components_verify_email_form",
-      "target": "user_mgmt_index"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "schemas_auth"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "schemas_auth"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "schemas_auth"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify-reset-code.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify_reset_code",
-      "target": "schemas_auth"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L29",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "schemas_auth",
-      "target": "schemas_auth_forgotpasswordschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L15",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "schemas_auth",
-      "target": "schemas_auth_loginschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "schemas_auth",
-      "target": "schemas_auth_registerschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L25",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "schemas_auth",
-      "target": "schemas_auth_resendcodeschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L33",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "schemas_auth",
-      "target": "schemas_auth_resetpasswordschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "schemas_auth",
-      "target": "schemas_auth_verifyemailschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/schemas/auth.ts",
-      "source_location": "L40",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "schemas_auth",
-      "target": "schemas_auth_verifyresetcodeschema"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "schemas_auth_registerschema"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "schemas_auth_loginschema"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "schemas_auth_verifyemailschema"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "schemas_auth_resendcodeschema"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify-reset-code.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify_reset_code",
-      "target": "schemas_auth_verifyresetcodeschema"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "actions_auth_loginaction"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L75",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "actions_auth_logoutaction"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L86",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "actions_auth_verifysessionaction"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "lib_auth_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "lib_auth_utils_extracttoken"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "lib_auth_utils_generatetoken"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "lib_auth_utils_verifypassword"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "lib_auth_utils_verifytoken"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "types_auth"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "types_auth_authresponse"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_auth",
-      "target": "types_auth_loginresponsedata"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L39",
-      "weight": 1.0,
-      "source": "actions_auth_loginaction",
-      "target": "lib_auth_utils_generatetoken"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L34",
-      "weight": 1.0,
-      "source": "actions_auth_loginaction",
-      "target": "lib_auth_utils_verifypassword"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L89",
-      "weight": 1.0,
-      "source": "actions_auth_verifysessionaction",
-      "target": "lib_auth_utils_extracttoken"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
-      "source_location": "L95",
-      "weight": 1.0,
-      "source": "actions_auth_verifysessionaction",
-      "target": "lib_auth_utils_verifytoken"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L11",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "actions_register_registeruser"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "lib_auth_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "lib_auth_utils_generateid"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "lib_auth_utils_generateverificationcode"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "lib_auth_utils_hashpassword"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "lib_auth_utils_hashverificationcode"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/actions/register.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "lib_email_service"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "lib_email_service_sendverificationemail"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/actions/register.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "types_auth"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "types_auth_authresponse"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_register",
-      "target": "types_auth_registerpayload"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L43",
-      "weight": 1.0,
-      "source": "actions_register_registeruser",
-      "target": "lib_auth_utils_generateid"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L38",
-      "weight": 1.0,
-      "source": "actions_register_registeruser",
-      "target": "lib_auth_utils_generateverificationcode"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L72",
-      "weight": 1.0,
-      "source": "actions_register_registeruser",
-      "target": "lib_auth_utils_hashpassword"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/server/actions/register.ts",
-      "source_location": "L39",
-      "weight": 1.0,
-      "source": "actions_register_registeruser",
-      "target": "lib_auth_utils_hashverificationcode"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/actions/register.ts",
-      "source_location": "L62",
-      "weight": 1.0,
-      "source": "actions_register_registeruser",
-      "target": "lib_email_service_sendverificationemail"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify-reset-code.ts",
-      "source_location": "L10",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify_reset_code",
-      "target": "actions_verify_reset_code_verifyresetcode"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L103",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "actions_verify_resendverificationcodeaction"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "actions_verify_verifyemailaction"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "lib_auth_utils"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "lib_auth_utils_generateid"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "lib_auth_utils_generateverificationcode"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "lib_auth_utils_hashverificationcode"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/actions/verify.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "lib_email_service"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "lib_email_service_sendverificationemail"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/actions/verify.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "types_auth"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "actions_verify",
-      "target": "types_auth_authresponse"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L66",
-      "weight": 1.0,
-      "source": "actions_verify_verifyemailaction",
-      "target": "lib_auth_utils_hashverificationcode"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L154",
-      "weight": 1.0,
-      "source": "actions_verify_resendverificationcodeaction",
-      "target": "lib_auth_utils_generateid"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L149",
-      "weight": 1.0,
-      "source": "actions_verify_resendverificationcodeaction",
-      "target": "lib_auth_utils_generateverificationcode"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/server/actions/verify.ts",
-      "source_location": "L150",
-      "weight": 1.0,
-      "source": "actions_verify_resendverificationcodeaction",
-      "target": "lib_auth_utils_hashverificationcode"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/features/user-mgmt/actions/verify.ts",
-      "source_location": "L172",
-      "weight": 1.0,
-      "source": "actions_verify_resendverificationcodeaction",
-      "target": "lib_email_service_sendverificationemail"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/db/get-user.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "db_get_user",
-      "target": "db_get_user_getuserbyemail"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/db/get-user.ts",
-      "source_location": "L14",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "db_get_user",
-      "target": "db_get_user_getuserbyid"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/user-mgmt/server/db/get-user.ts",
-      "source_location": "L20",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "db_get_user",
-      "target": "db_get_user_updatepassword"
-    },
-    {
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -22337,6 +22306,28 @@
       "target": "lib_auth_utils_verifytoken"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_server_actions_auth_ts_actions_auth",
+      "target": "lib_auth_utils",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "actions_auth_verifysessionaction",
+      "target": "lib_auth_utils_verifytoken"
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -22348,6 +22339,28 @@
       "target": "lib_auth_utils_verifytoken"
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_server_actions_auth_ts_actions_auth",
+      "target": "lib_auth_utils_verifytoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/features/user-mgmt/server/actions/auth.ts",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "actions_auth_verifysessionaction",
+      "target": "lib_auth_utils_extracttoken"
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -22357,6 +22370,17 @@
       "confidence_score": 1.0,
       "source": "lib_auth_utils_getauthenticateduser",
       "target": "lib_auth_utils_extracttoken"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_server_actions_auth_ts_actions_auth",
+      "target": "lib_auth_utils_extracttoken",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -22399,6 +22423,28 @@
       "target": "lib_email_service_sendverificationemail"
     },
     {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/email-service.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "lib_email_service",
+      "target": "lib_email_templates",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/email-service.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "lib_email_service",
+      "target": "lib_email_templates_getverificationemailhtml",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -22419,6 +22465,27 @@
       "confidence_score": 1.0,
       "source": "lib_email_service_sendverificationemail",
       "target": "lib_email_service_gettransporter"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/lib/email-service.ts",
+      "source_location": "L140",
+      "weight": 1.0,
+      "source": "lib_email_service_sendverificationemail",
+      "target": "lib_email_templates_getverificationemailhtml"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/lib/email-templates.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "lib_email_templates",
+      "target": "lib_email_templates_getverificationemailhtml",
+      "confidence_score": 1.0
     },
     {
       "relation": "references",
@@ -22469,6 +22536,48 @@
       "confidence_score": 1.0,
       "source": "src_proxy",
       "target": "src_proxy_public_routes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "src_server_actions_auth_ts_actions_auth",
+      "target": "actions_auth_logoutaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "src_server_actions_auth_ts_actions_auth",
+      "target": "actions_auth_verifysessionaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_server_actions_auth_ts_actions_auth",
+      "target": "types_auth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/server/actions/auth.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_server_actions_auth_ts_actions_auth",
+      "target": "types_auth_authresponse",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -22860,9 +22969,9 @@
       "source_file": "AGENTS.md",
       "source_location": "L68",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agents",
-      "target": "agents_app_structure_src_app",
-      "confidence_score": 1.0
+      "target": "agents_app_structure_src_app"
     },
     {
       "relation": "contains",
@@ -24436,5 +24545,5 @@
       "source_file": "AGENTS.md"
     }
   ],
-  "built_at_commit": "a1550d2358905fe9eb5eb5aaaf890e4c27c92169"
+  "built_at_commit": "54a361721ff87b645a8ab04b4d5396236631a7d3"
 }
