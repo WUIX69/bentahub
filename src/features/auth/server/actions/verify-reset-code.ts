@@ -1,9 +1,7 @@
 "use server"
 
-import { db } from "@/drizzle/db"
-import { passwordResetTokens } from "@/drizzle/schema"
-import { eq, and } from "drizzle-orm"
 import { verifyResetCodeSchema } from "@/features/auth/schemas/auth"
+import { getPasswordResetTokenByEmailAndToken, incrementResetAttempts } from "@/features/auth/server/db/password-reset"
 
 const MAX_RESET_ATTEMPTS = 5
 
@@ -14,12 +12,7 @@ export async function verifyResetCode(email: string, token: string): Promise<{ s
       return { success: false, message: "Email and verification code are required" }
     }
 
-    const resetToken = await db.query.passwordResetTokens.findFirst({
-      where: and(
-        eq(passwordResetTokens.token, token),
-        eq(passwordResetTokens.email, email)
-      ),
-    })
+    const resetToken = await getPasswordResetTokenByEmailAndToken(email, token)
 
     if (!resetToken) {
       return { success: false, message: "Invalid verification code" }
@@ -37,10 +30,7 @@ export async function verifyResetCode(email: string, token: string): Promise<{ s
       return { success: false, message: "Too many attempts. Please request a new code." }
     }
 
-    await db
-      .update(passwordResetTokens)
-      .set({ attempts: resetToken.attempts + 1 })
-      .where(eq(passwordResetTokens.id, resetToken.id))
+    await incrementResetAttempts(resetToken.id, resetToken.attempts)
 
     return { success: true, message: "Code verified successfully" }
   } catch (error) {

@@ -1,10 +1,9 @@
 "use server"
 
-import { db } from "@/drizzle/db"
-import { cartItems } from "@/drizzle/schema"
-import { eq, and } from "drizzle-orm"
 import { getAuthenticatedUser } from "@/lib/auth-utils"
 import { updateCartItemSchema } from "@/features/cart/schemas/cart"
+import { getCartItemByUserAndId } from "@/features/cart/server/db/get-product-for-cart"
+import { updateCartItemQuantity } from "@/features/cart/server/db/mutations"
 
 export async function updateCartItem(
   itemId: string,
@@ -21,16 +20,7 @@ export async function updateCartItem(
     return { success: false, message: "Invalid quantity" }
   }
 
-  const [item] = await db
-    .select()
-    .from(cartItems)
-    .where(
-      and(
-        eq(cartItems.id, itemId),
-        eq(cartItems.userId, userId)
-      )
-    )
-    .limit(1)
+  const item = await getCartItemByUserAndId(userId, itemId)
 
   if (!item) {
     return { success: false, message: "Cart item not found" }
@@ -38,14 +28,7 @@ export async function updateCartItem(
 
   const newSubtotal = (Number(item.price) * quantity).toFixed(2)
 
-  const [updated] = await db
-    .update(cartItems)
-    .set({
-      quantity,
-      subtotal: newSubtotal,
-    })
-    .where(eq(cartItems.id, itemId))
-    .returning()
+  const updated = await updateCartItemQuantity(itemId, quantity, newSubtotal)
 
   return { success: true, message: "Cart item updated", data: updated }
 }

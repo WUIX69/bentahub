@@ -70,6 +70,7 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL(fallback, request.url))
   }
 
+  // Branch inventory and other POS routes are protected for employees/admins
   if (pathname.startsWith("/employee") && role !== "employee") {
     const fallback = role === "admin" ? "/admin" : "/customer"
     return NextResponse.redirect(new URL(fallback, request.url))
@@ -90,4 +91,11 @@ export async function proxy(request: NextRequest) {
   }
 
   return NextResponse.next()
+}
+
+export const config = {
+  matcher: [
+    // Match all routing paths except static assets
+    "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
+  ],
 }

@@ -1,11 +1,10 @@
 "use server"
 
-import { db } from "@/drizzle/db"
-import { users, emailVerifications } from "@/drizzle/schema"
-import { eq } from "drizzle-orm"
 import { generateId, generateVerificationCode, hashPassword, hashVerificationCode } from "@/lib/auth-utils"
 import { sendVerificationEmail } from "@/lib/email-service"
 import { registerSchema } from "@/features/auth/schemas/auth"
+import { getUserByEmail, createUser } from "@/features/auth/server/db/get-user"
+import { deleteVerificationCodesByUserId, createVerificationCode } from "@/features/auth/server/db/verification"
 import type { AuthResponse, RegisterPayload } from "@/types/auth"
 
 export async function registerUser(payload: RegisterPayload): Promise<AuthResponse> {
@@ -24,22 +23,20 @@ export async function registerUser(payload: RegisterPayload): Promise<AuthRespon
     const { email, password, fullName } = parsed.data
 
     // 2. Check if email already exists
-    const existingUser = await db.query.users.findFirst({
-      where: eq(users.email, email),
-    })
+    const existingUser = await getUserByEmail(email)
 
     if (existingUser) {
       if (!existingUser.isEmailVerified) {
         // If user registered before but didn't verify, we reuse their user record
         // Invalidate old verification codes
-        await db.delete(emailVerifications).where(eq(emailVerifications.userId, existingUser.id))
+        await deleteVerificationCodesByUserId(existingUser.id)
 
         // Create new verification code
         const verificationCode = generateVerificationCode()
         const hashedCode = hashVerificationCode(verificationCode)
         const expiresAt = new Date(Date.now() + 5 * 60 * 1000) // 5 minutes expiration
 
-        await db.insert(emailVerifications).values({
+        await createVerificationCode({
           id: generateId(),
           userId: existingUser.id,
           code: hashedCode,
@@ -73,7 +70,7 @@ export async function registerUser(payload: RegisterPayload): Promise<AuthRespon
 
     // 4. Create user
     const userId = generateId()
-    await db.insert(users).values({
+    await createUser({
       id: userId,
       email,
       password: hashedPassword,
@@ -87,7 +84,7 @@ export async function registerUser(payload: RegisterPayload): Promise<AuthRespon
     const hashedCode = hashVerificationCode(verificationCode)
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000)
 
-    await db.insert(emailVerifications).values({
+    await createVerificationCode({
       id: generateId(),
       userId,
       code: hashedCode,

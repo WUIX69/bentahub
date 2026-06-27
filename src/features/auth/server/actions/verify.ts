@@ -1,11 +1,16 @@
 "use server"
 
-import { db } from "@/drizzle/db"
-import { users, emailVerifications } from "@/drizzle/schema"
-import { eq } from "drizzle-orm"
 import { generateId, generateVerificationCode, hashVerificationCode } from "@/lib/auth-utils"
 import { sendVerificationEmail } from "@/lib/email-service"
 import { verifyEmailSchema, resendCodeSchema } from "@/features/auth/schemas/auth"
+import { getUserByEmail } from "@/features/auth/server/db/get-user"
+import {
+  getVerificationCodeByUserId,
+  incrementVerificationAttempts,
+  verifyUserEmail,
+  deleteVerificationCodesByUserId,
+  createVerificationCode,
+} from "@/features/auth/server/db/verification"
 import type { AuthResponse } from "@/types/auth"
 
 /**
@@ -24,9 +29,7 @@ export async function verifyEmailAction(payload: { email: string; code: string }
     const { email, code } = parsed.data
 
     // 2. Lookup the user
-    const user = await db.query.users.findFirst({
-      where: eq(users.email, email),
-    })
+    const user = await getUserByEmail(email)
 
     if (!user) {
       return { success: false, message: "User not found" }
@@ -37,9 +40,7 @@ export async function verifyEmailAction(payload: { email: string; code: string }
     }
 
     // 3. Find verification record
-    const verification = await db.query.emailVerifications.findFirst({
-      where: eq(emailVerifications.userId, user.id),
-    })
+    const verification = await getVerificationCodeByUserId(user.id)
 
     if (!verification) {
       return { success: false, message: "No verification request found. Please request a new code." }
@@ -52,10 +53,7 @@ export async function verifyEmailAction(payload: { email: string; code: string }
     }
 
     // Increment attempt count immediately to prevent brute-forcing
-    await db
-      .update(emailVerifications)
-      .set({ attempts: verification.attempts + 1 })
-      .where(eq(emailVerifications.id, verification.id))
+    await incrementVerificationAttempts(verification.id, verification.attempts)
 
     // 5. Expiry Check (5 minutes)
     if (new Date() > verification.expiresAt) {
@@ -75,16 +73,8 @@ export async function verifyEmailAction(payload: { email: string; code: string }
       }
     }
 
-    // 7. Update User's verification status
-    await db
-      .update(users)
-      .set({ isEmailVerified: true })
-      .where(eq(users.id, user.id))
-
-    // 8. Delete verification record
-    await db
-      .delete(emailVerifications)
-      .where(eq(emailVerifications.id, verification.id))
+    // 7. Update User's verification status and delete verification record inside transaction
+    await verifyUserEmail(user.id, verification.id)
 
     return {
       success: true,
@@ -113,9 +103,7 @@ export async function resendVerificationCodeAction(payload: { email: string }): 
     const { email } = parsed.data
 
     // 2. Lookup user
-    const user = await db.query.users.findFirst({
-      where: eq(users.email, email),
-    })
+    const user = await getUserByEmail(email)
 
     if (!user) {
       return { success: false, message: "User not found" }
@@ -126,9 +114,7 @@ export async function resendVerificationCodeAction(payload: { email: string }): 
     }
 
     // 3. Rate-limiting check: 60-second resend cooldown
-    const existingCode = await db.query.emailVerifications.findFirst({
-      where: eq(emailVerifications.userId, user.id),
-    })
+    const existingCode = await getVerificationCodeByUserId(user.id)
 
     if (existingCode) {
       const timePassedMs = Date.now() - new Date(existingCode.createdAt).getTime()
@@ -143,14 +129,14 @@ export async function resendVerificationCodeAction(payload: { email: string }): 
     }
 
     // 4. Invalidate old codes (clean database)
-    await db.delete(emailVerifications).where(eq(emailVerifications.userId, user.id))
+    await deleteVerificationCodesByUserId(user.id)
 
     // 5. Generate secure random OTP and hash it
     const newCode = generateVerificationCode()
     const hashedCode = hashVerificationCode(newCode)
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000) // 5 minutes expiry
 
-    await db.insert(emailVerifications).values({
+    await createVerificationCode({
       id: generateId(),
       userId: user.id,
       code: hashedCode,

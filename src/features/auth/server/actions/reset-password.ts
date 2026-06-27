@@ -1,10 +1,13 @@
 "use server"
 
-import { db } from "@/drizzle/db"
-import { users, passwordResetTokens } from "@/drizzle/schema"
-import { eq } from "drizzle-orm"
 import { hashPassword } from "@/lib/auth-utils"
 import { resetPasswordSchema } from "@/features/auth/schemas/auth"
+import { getUserById, updatePassword } from "@/features/auth/server/db/get-user"
+import {
+  getPasswordResetToken,
+  incrementResetAttempts,
+  markPasswordResetTokenAsUsed,
+} from "@/features/auth/server/db/password-reset"
 
 const MAX_RESET_ATTEMPTS = 5
 
@@ -17,9 +20,7 @@ export async function resetPassword(token: string, password: string): Promise<{ 
       return { success: false, message: firstError }
     }
 
-    const resetToken = await db.query.passwordResetTokens.findFirst({
-      where: eq(passwordResetTokens.token, token),
-    })
+    const resetToken = await getPasswordResetToken(token)
 
     if (!resetToken) {
       return { success: false, message: "Invalid or expired reset token" }
@@ -37,14 +38,9 @@ export async function resetPassword(token: string, password: string): Promise<{ 
       return { success: false, message: "Too many attempts. Please request a new reset link." }
     }
 
-    await db
-      .update(passwordResetTokens)
-      .set({ attempts: resetToken.attempts + 1 })
-      .where(eq(passwordResetTokens.id, resetToken.id))
+    await incrementResetAttempts(resetToken.id, resetToken.attempts)
 
-    const user = await db.query.users.findFirst({
-      where: eq(users.id, resetToken.userId),
-    })
+    const user = await getUserById(resetToken.userId)
 
     if (!user) {
       return { success: false, message: "User not found" }
@@ -52,15 +48,9 @@ export async function resetPassword(token: string, password: string): Promise<{ 
 
     const hashedPassword = await hashPassword(password)
 
-    await db
-      .update(users)
-      .set({ password: hashedPassword, updatedAt: new Date() })
-      .where(eq(users.id, user.id))
+    await updatePassword(user.id, hashedPassword)
 
-    await db
-      .update(passwordResetTokens)
-      .set({ usedAt: new Date() })
-      .where(eq(passwordResetTokens.id, resetToken.id))
+    await markPasswordResetTokenAsUsed(resetToken.id)
 
     return { success: true, message: "Password reset successfully" }
   } catch (error) {

@@ -1,10 +1,8 @@
 "use server"
 
 import { cookies } from "next/headers"
-import { db } from "@/drizzle/db"
-import { users } from "@/drizzle/schema"
-import { eq } from "drizzle-orm"
 import { extractToken, verifyToken } from "@/lib/auth-utils"
+import { getSharedUserById } from "@/server/db/users"
 import type { AuthResponse } from "@/types/auth"
 
 export async function logoutAction(): Promise<{ success: boolean; message: string }> {
@@ -32,9 +30,7 @@ export async function verifySessionAction(): Promise<AuthResponse> {
       return { success: false, message: "Invalid or expired token" }
     }
 
-    const user = await db.query.users.findFirst({
-      where: eq(users.id, decoded.userId),
-    })
+    const user = await getSharedUserById(decoded.userId)
 
     if (!user || !user.isActive) {
       return { success: false, message: "User not found or deactivated" }

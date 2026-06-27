@@ -135,14 +135,14 @@
     "semantic_hash": "c6f45e24d54bd01ce45ce74900025e3e"
   },
   "src/app/(auth)/create-new-password/page.tsx": {
-    "mtime": 1782224214.339406,
-    "ast_hash": "c071eca973f2209ce181d441226847c3",
-    "semantic_hash": "c071eca973f2209ce181d441226847c3"
+    "mtime": 1782581755.5624247,
+    "ast_hash": "88e09c4f19a719ff6d6ac9f6ed925fe4",
+    "semantic_hash": ""
   },
   "src/app/(auth)/forgot-password/page.tsx": {
-    "mtime": 1782224214.339406,
-    "ast_hash": "1119b8ed4f6c9e18ce263b42a728e0c5",
-    "semantic_hash": "1119b8ed4f6c9e18ce263b42a728e0c5"
+    "mtime": 1782581745.612301,
+    "ast_hash": "60f3354c8f74a12447e6572fb277417b",
+    "semantic_hash": ""
   },
   "src/app/(auth)/layout.tsx": {
     "mtime": 1779263791.5769749,
@@ -150,24 +150,24 @@
     "semantic_hash": "973e2f93d1ca21834a6cff2665b6af64"
   },
   "src/app/(auth)/login/page.tsx": {
-    "mtime": 1782544090.111219,
-    "ast_hash": "8434b47cfbc931e38119092c06b3c063",
-    "semantic_hash": "8434b47cfbc931e38119092c06b3c063"
+    "mtime": 1782581737.357225,
+    "ast_hash": "8ef0c2eef06edd71739321748f6738e5",
+    "semantic_hash": ""
   },
   "src/app/(auth)/register/page.tsx": {
-    "mtime": 1782224214.3404055,
-    "ast_hash": "12c14380f80d167ff2a14d7b4ab05344",
-    "semantic_hash": "12c14380f80d167ff2a14d7b4ab05344"
+    "mtime": 1782581741.332475,
+    "ast_hash": "4e69c26566cac60c354825469d089fd7",
+    "semantic_hash": ""
   },
   "src/app/(auth)/reset-password/page.tsx": {
-    "mtime": 1782224214.3414066,
-    "ast_hash": "66537570827a4e41fd4a575bb3e6c7e6",
-    "semantic_hash": "66537570827a4e41fd4a575bb3e6c7e6"
+    "mtime": 1782581749.22659,
+    "ast_hash": "6362ece21d2f5d8d53508c326806a4cf",
+    "semantic_hash": ""
   },
   "src/app/(auth)/verify-email/page.tsx": {
-    "mtime": 1782224214.3414066,
-    "ast_hash": "7c4ad67d1fcce03c766a3c5c46a50416",
-    "semantic_hash": "7c4ad67d1fcce03c766a3c5c46a50416"
+    "mtime": 1782581752.4408412,
+    "ast_hash": "489324002d4383e2196c76502735720f",
+    "semantic_hash": ""
   },
   "src/app/(landing)/layout.tsx": {
     "mtime": 1779263791.5789738,
@@ -579,51 +579,6 @@
     "ast_hash": "d5f0000ca9e477e50ad129c7e82f47e0",
     "semantic_hash": "d5f0000ca9e477e50ad129c7e82f47e0"
   },
-  "src/features/user-mgmt/components/auth-header.tsx": {
-    "mtime": 1779263791.6119745,
-    "ast_hash": "e01a88c28a167bf9b97f6d9382df7701",
-    "semantic_hash": "e01a88c28a167bf9b97f6d9382df7701"
-  },
-  "src/features/user-mgmt/components/create-new-password-form.tsx": {
-    "mtime": 1782479641.4743516,
-    "ast_hash": "6f0990ff7b23d795bc0942cba1b33449",
-    "semantic_hash": "6f0990ff7b23d795bc0942cba1b33449"
-  },
-  "src/features/user-mgmt/components/email-template.ts": {
-    "mtime": 1782224214.374407,
-    "ast_hash": "df455cb7320437b5baa56c3b95fcc041",
-    "semantic_hash": "df455cb7320437b5baa56c3b95fcc041"
-  },
-  "src/features/user-mgmt/components/forgot-password-form.tsx": {
-    "mtime": 1782479629.6933513,
-    "ast_hash": "f2f9ba649a52ab0ee2c154ea16a3c638",
-    "semantic_hash": "f2f9ba649a52ab0ee2c154ea16a3c638"
-  },
-  "src/features/user-mgmt/components/index.ts": {
-    "mtime": 1782224214.3754067,
-    "ast_hash": "35e117595b73f066b0b212852a4cf409",
-    "semantic_hash": "35e117595b73f066b0b212852a4cf409"
-  },
-  "src/features/user-mgmt/components/register-form.tsx": {
-    "mtime": 1782479609.410804,
-    "ast_hash": "88fed8b0659718efd9a0285d51b110f9",
-    "semantic_hash": "88fed8b0659718efd9a0285d51b110f9"
-  },
-  "src/features/user-mgmt/components/reset-password-form.tsx": {
-    "mtime": 1782479635.639245,
-    "ast_hash": "09be975d5c7650e0c039d2f55d79f198",
-    "semantic_hash": "09be975d5c7650e0c039d2f55d79f198"
-  },
-  "src/features/user-mgmt/components/verify-email-form.tsx": {
-    "mtime": 1782479610.182884,
-    "ast_hash": "cfefd3b6eb14f283876ad2983f02b36d",
-    "semantic_hash": "cfefd3b6eb14f283876ad2983f02b36d"
-  },
-  "src/features/user-mgmt/index.ts": {
-    "mtime": 1779263791.612974,
-    "ast_hash": "7926a246950b6be3835a9a0221eb9ee2",
-    "semantic_hash": "7926a246950b6be3835a9a0221eb9ee2"
-  },
   "src/hooks/useAuth.ts": {
     "mtime": 1782544089.0102172,
     "ast_hash": "f4fd421ef890b25ce3fcacb3edf639ec",
@@ -645,9 +600,9 @@
     "semantic_hash": "7e93dfa0ca8f51387511ee987af5059a"
   },
   "src/lib/email-service.ts": {
-    "mtime": 1782360591.9028735,
-    "ast_hash": "97678aac019ac122c83c04474178a451",
-    "semantic_hash": "97678aac019ac122c83c04474178a451"
+    "mtime": 1782581605.0219755,
+    "ast_hash": "c11d095f29748cf42497770c15cd28b5",
+    "semantic_hash": ""
   },
   "src/proxy.ts": {
     "mtime": 1782306350.6432862,
@@ -3199,35 +3154,10 @@
     "ast_hash": "6026aa6c2e0f6cb07f051b9697fb36d9",
     "semantic_hash": "6026aa6c2e0f6cb07f051b9697fb36d9"
   },
-  "src/features/user-mgmt/server/actions/register.ts": {
-    "mtime": 1782544910.2066226,
-    "ast_hash": "c63420e0b2e00c22c137ff86f423ef3c",
-    "semantic_hash": "c63420e0b2e00c22c137ff86f423ef3c"
-  },
-  "src/features/user-mgmt/server/actions/verify-reset-code.ts": {
-    "mtime": 1782544937.488627,
-    "ast_hash": "70055a5e2bacf1719b24c03e8b66522b",
-    "semantic_hash": "70055a5e2bacf1719b24c03e8b66522b"
-  },
-  "src/features/user-mgmt/server/actions/verify.ts": {
-    "mtime": 1782544916.7426224,
-    "ast_hash": "37edc472500d5a74fc660290c376ba46",
-    "semantic_hash": "37edc472500d5a74fc660290c376ba46"
-  },
-  "src/features/user-mgmt/server/db/get-user.ts": {
-    "mtime": 1782479666.4605994,
-    "ast_hash": "1cc342da18e5c2b5056691a8629a8236",
-    "semantic_hash": "1cc342da18e5c2b5056691a8629a8236"
-  },
-  "src/features/user-mgmt/server/actions/auth.ts": {
-    "mtime": 1782544922.0226238,
-    "ast_hash": "581d6a87c94e828ed45d0aa4f39905e4",
-    "semantic_hash": "581d6a87c94e828ed45d0aa4f39905e4"
-  },
   "src/contexts/auth-context.tsx": {
-    "mtime": 1782552132.4421842,
-    "ast_hash": "450002303cbfd8602aa27d9c8b58049d",
-    "semantic_hash": "450002303cbfd8602aa27d9c8b58049d"
+    "mtime": 1782581735.5276778,
+    "ast_hash": "b993a5706af2815dcbcb215fed5bda8e",
+    "semantic_hash": ""
   },
   "src/features/employee-dashboard/components/employee-kpi-cards.tsx": {
     "mtime": 1782544142.9062197,
@@ -3264,11 +3194,6 @@
     "ast_hash": "5ca46d51360b47a72820543dbb2f1daf",
     "semantic_hash": "5ca46d51360b47a72820543dbb2f1daf"
   },
-  "src/features/user-mgmt/schemas/auth.ts": {
-    "mtime": 1782544895.2146244,
-    "ast_hash": "6fd115166da9c45b90607c76a9ee0b55",
-    "semantic_hash": "6fd115166da9c45b90607c76a9ee0b55"
-  },
   "src/features/products/hooks/use-products.ts": {
     "mtime": 1782553363.0700376,
     "ast_hash": "f05148176e2fd3600849c106cdb6fc91",
@@ -3288,5 +3213,85 @@
     "mtime": 1782553350.6983373,
     "ast_hash": "a85fdede9fa99768f203b49ab59b9738",
     "semantic_hash": "a85fdede9fa99768f203b49ab59b9738"
+  },
+  "src/features/auth/components/auth-header.tsx": {
+    "mtime": 1782581690.5201719,
+    "ast_hash": "b3386b4397ce1914446bd2da047f13c6",
+    "semantic_hash": ""
+  },
+  "src/features/auth/components/create-new-password-form.tsx": {
+    "mtime": 1782581719.7565758,
+    "ast_hash": "b40abf9f35494be7ef0fc7c5f8d307e8",
+    "semantic_hash": ""
+  },
+  "src/features/auth/components/forgot-password-form.tsx": {
+    "mtime": 1782581704.4241471,
+    "ast_hash": "a810eecb7aab3831184a31043e842eae",
+    "semantic_hash": ""
+  },
+  "src/features/auth/components/index.ts": {
+    "mtime": 1782581726.8051598,
+    "ast_hash": "01f7f2739f4290396fb13fdacd0c5d28",
+    "semantic_hash": ""
+  },
+  "src/features/auth/components/register-form.tsx": {
+    "mtime": 1782581697.443724,
+    "ast_hash": "60dcf51e6cef8687f9ee538024e7e14e",
+    "semantic_hash": ""
+  },
+  "src/features/auth/components/reset-password-form.tsx": {
+    "mtime": 1782581715.502036,
+    "ast_hash": "bf6edf0b87f6ec482e11590e6eb53cfa",
+    "semantic_hash": ""
+  },
+  "src/features/auth/components/verify-email-form.tsx": {
+    "mtime": 1782581723.7029572,
+    "ast_hash": "59128176aec0e8446df49687fe7640aa",
+    "semantic_hash": ""
+  },
+  "src/features/auth/index.ts": {
+    "mtime": 1782581729.7949305,
+    "ast_hash": "0e3d6000ebeba8d9d570c4478e9518e6",
+    "semantic_hash": ""
+  },
+  "src/features/auth/schemas/auth.ts": {
+    "mtime": 1782581581.3992221,
+    "ast_hash": "6fd115166da9c45b90607c76a9ee0b55",
+    "semantic_hash": ""
+  },
+  "src/features/auth/server/actions/auth.ts": {
+    "mtime": 1782581656.2797878,
+    "ast_hash": "85b4322f83f49e302203801d840a31bf",
+    "semantic_hash": ""
+  },
+  "src/features/auth/server/actions/register.ts": {
+    "mtime": 1782581658.8639107,
+    "ast_hash": "2a4166ce4b115a2847e6adb3fff919d9",
+    "semantic_hash": ""
+  },
+  "src/features/auth/server/actions/verify-reset-code.ts": {
+    "mtime": 1782581668.1559002,
+    "ast_hash": "53a43906eff693c50b39491a2b85839c",
+    "semantic_hash": ""
+  },
+  "src/features/auth/server/actions/verify.ts": {
+    "mtime": 1782581678.8615959,
+    "ast_hash": "e3fbfef78a4440677e7b6c889b375b7c",
+    "semantic_hash": ""
+  },
+  "src/features/auth/server/db/get-user.ts": {
+    "mtime": 1782581683.4088194,
+    "ast_hash": "86492697db93a901f606fe02ecd99719",
+    "semantic_hash": ""
+  },
+  "src/lib/email-templates.ts": {
+    "mtime": 1782581585.949133,
+    "ast_hash": "8da2924521a6a671c4d44406cb52c69d",
+    "semantic_hash": ""
+  },
+  "src/server/actions/auth.ts": {
+    "mtime": 1782581651.3107014,
+    "ast_hash": "8ee3b9c70cfe5a1834056ef1a24d4148",
+    "semantic_hash": ""
   }
 }

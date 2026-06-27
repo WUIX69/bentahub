@@ -1,10 +1,8 @@
 "use server"
 
-import { db } from "@/drizzle/db"
-import { orders } from "@/drizzle/schema"
-import { eq } from "drizzle-orm"
 import { getAuthenticatedUser } from "@/lib/auth-utils"
 import { cancelOrderSchema } from "@/features/orders/schemas/orders"
+import { getOrderByIdAndUserId, cancelOrderById } from "@/features/orders/server/db/mutations"
 
 export async function cancelOrder(orderId: string) {
   const user = await getAuthenticatedUser()
@@ -18,24 +16,13 @@ export async function cancelOrder(orderId: string) {
     return { success: false, message: "Invalid order ID" }
   }
 
-  const [order] = await db
-    .select()
-    .from(orders)
-    .where(eq(orders.id, orderId))
-    .limit(1)
+  const order = await getOrderByIdAndUserId(orderId, userId)
 
   if (!order) {
-    return { success: false, message: "Order not found" }
+    return { success: false, message: "Order not found or forbidden" }
   }
 
-  if (order.userId !== userId) {
-    return { success: false, message: "Forbidden" }
-  }
-
-  await db
-    .update(orders)
-    .set({ status: "cancelled" })
-    .where(eq(orders.id, orderId))
+  await cancelOrderById(orderId)
 
   return { success: true, message: "Order cancelled successfully" }
 }

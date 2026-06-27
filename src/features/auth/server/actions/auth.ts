@@ -1,11 +1,9 @@
 "use server"
 
 import { cookies } from "next/headers"
-import { db } from "@/drizzle/db"
-import { users } from "@/drizzle/schema"
-import { eq } from "drizzle-orm"
 import { verifyPassword, generateToken } from "@/lib/auth-utils"
 import { loginSchema } from "@/features/auth/schemas/auth"
+import { getUserByEmail } from "@/features/auth/server/db/get-user"
 import type { AuthResponse, LoginResponseData } from "@/types/auth"
 
 export async function loginAction(payload: Record<string, string>): Promise<AuthResponse<LoginResponseData>> {
@@ -19,9 +17,7 @@ export async function loginAction(payload: Record<string, string>): Promise<Auth
 
     const { email, password } = parsed.data
 
-    const user = await db.query.users.findFirst({
-      where: eq(users.email, email),
-    })
+    const user = await getUserByEmail(email)
 
     if (!user) {
       return { success: false, message: "Invalid email or password" }

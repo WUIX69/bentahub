@@ -1,10 +1,13 @@
 "use server"
 
-import { db } from "@/drizzle/db"
 import { notifications } from "@/drizzle/schema"
-import { eq, and } from "drizzle-orm"
 import { getAuthenticatedUser } from "@/lib/auth-utils"
 import { markNotificationReadSchema } from "@/features/notifications/schemas/notifications"
+import {
+  getNotificationByUserAndId,
+  updateNotificationReadStatus,
+  markAllUserNotificationsRead,
+} from "@/features/notifications/server/db/mutations"
 
 export interface MarkNotificationReadResult {
   success: boolean
@@ -27,28 +30,15 @@ export async function markNotificationRead(
 
   const { notificationId, isRead } = parsed.data
 
-  const notification = await db
-    .select()
-    .from(notifications)
-    .where(
-      and(eq(notifications.id, notificationId), eq(notifications.userId, userId)),
-    )
-    .limit(1)
+  const notification = await getNotificationByUserAndId(userId, notificationId)
 
-  if (!notification.length) {
+  if (!notification) {
     return { success: false }
   }
 
-  const updated = await db
-    .update(notifications)
-    .set({
-      isRead,
-      readAt: isRead ? new Date() : null,
-    })
-    .where(eq(notifications.id, notificationId))
-    .returning()
+  const updated = await updateNotificationReadStatus(notificationId, isRead)
 
-  return { success: true, data: updated[0] }
+  return { success: true, data: updated }
 }
 
 export async function markAllNotificationsRead(): Promise<{ success: boolean; updatedCount: number }> {
@@ -58,16 +48,7 @@ export async function markAllNotificationsRead(): Promise<{ success: boolean; up
   }
   const userId = user.userId
 
-  const updated = await db
-    .update(notifications)
-    .set({
-      isRead: true,
-      readAt: new Date(),
-    })
-    .where(
-      and(eq(notifications.userId, userId), eq(notifications.isRead, false)),
-    )
-    .returning()
+  const updatedCount = await markAllUserNotificationsRead(userId)
 
-  return { success: true, updatedCount: updated.length }
+  return { success: true, updatedCount }
 }
