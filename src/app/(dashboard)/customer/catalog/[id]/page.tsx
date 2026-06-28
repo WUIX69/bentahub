@@ -8,7 +8,7 @@ import { ProductDetailsSection } from "@/features/customer-dashboard/components/
 import { ProductSidebarSection } from "@/features/customer-dashboard/components/product-sidebar-section"
 import { Heart } from "lucide-react"
 import { useState, use } from "react"
-import { useCart } from "@/hooks/useCart"
+import { useCart } from "@/features/cart/hooks/useCart"
 
 export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)

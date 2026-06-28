@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bec18a44`
+- Built from commit: `eeec2ab1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -293,11 +293,11 @@ Nodes (8): formatCurrency(), getSalesData(), MONTH_NAMES, SalesFilterOptions, Sa
 
 ### Community 42 - "FSD Architecture Guidelines"
 Cohesion: 0.20
-Nodes (10): 🌐 API Route Patterns, 🏗️ Drizzle Schema Definition Patterns, Key Rules, Key Rules, Key Rules, ⚡ Server Action Patterns, Snippet: Cryptographic Webhook Handler (Clerk Webhook), Snippet: Edge API Route (discount banner script generator) (+2 more)
+Nodes (10): 🏗️ Drizzle Schema Definition Patterns, 🧩 Feature Component Patterns, Key Rules, Key Rules, Key Rules, Key Rules, Snippet: Form Zod Schemas with Transformations & Refinement, Snippet: Schema and Relationships Definitions (+2 more)
 
 ### Community 43 - "Community 43"
 Cohesion: 0.38
-Nodes (7): Feature Sliced Design Architecture, Feature Sliced Design (FSD) Guidelines, 🧩 Feature Component Patterns, 🛑 Import Boundary Rules, Key Rules, Rule of Promotion, Snippet: Standard Client Form Component
+Nodes (7): 🌐 API Route Patterns, Feature Sliced Design Architecture, Feature Sliced Design (FSD) Guidelines, 🛑 Import Boundary Rules, Rule of Promotion, Snippet: Cryptographic Webhook Handler (Clerk Webhook), Snippet: Edge API Route (discount banner script generator)
 
 ### Community 44 - "Payment Details Tables"
 Cohesion: 0.29
@@ -353,7 +353,7 @@ Nodes (4): createCustomerPortalSession, Good Practice: Returning `void`, Handlin
 
 ### Community 60 - "Community 60"
 Cohesion: 0.67
-Nodes (3): Key Rules, Snippet: Form Zod Schemas with Transformations & Refinement, 📋 Zod Schema Patterns
+Nodes (3): Key Rules, ⚡ Server Action Patterns, Snippet: Standard Mutation Server Action
 
 ### Community 61 - "Community 61"
 Cohesion: 0.50

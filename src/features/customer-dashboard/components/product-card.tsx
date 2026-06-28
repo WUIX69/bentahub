@@ -6,7 +6,7 @@ import Link from "next/link"
 import { ShoppingCart, Bell } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { useCart } from "@/hooks/useCart"
+import { useCart } from "@/features/cart/hooks/useCart"
 
 export interface ProductCardProps {
   id: string

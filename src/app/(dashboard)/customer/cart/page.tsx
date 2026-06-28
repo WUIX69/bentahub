@@ -14,7 +14,7 @@ import {
   ShieldCheck 
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useCart } from "@/hooks/useCart"
+import { useCart } from "@/features/cart/hooks/useCart"
 
 export default function CartPage() {
   const router = useRouter()

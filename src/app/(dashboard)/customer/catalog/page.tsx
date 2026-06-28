@@ -11,7 +11,7 @@ import { ShoppingCart } from "lucide-react"
 import type { ProductCardProps } from "@/features/customer-dashboard/components/product-card"
 import Link from "next/link"
 import { useProducts } from "@/features/products/hooks/use-products"
-import { useCart } from "@/hooks/useCart"
+import { useCart } from "@/features/cart/hooks/useCart"
 // Demo products fallback
 const demoProducts: ProductCardProps[] = [
   {
