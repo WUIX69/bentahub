@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { Search, Download, ChevronLeft, ChevronRight, Package } from "lucide-react"
-import { products, getStockStatus } from "@/features/employee-dashboard/data/products"
+import { employeeProducts as products, getStockStatus } from "@/features/products"
 import { cn } from "@/lib/utils"
 
 const ITEMS_PER_PAGE = 5

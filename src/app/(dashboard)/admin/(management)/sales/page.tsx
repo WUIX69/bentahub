@@ -1,10 +1,11 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
-import { SalesFilters, SalesMetrics, TransactionDetailsTable } from "@/features/admin-dashboard"
+import { SalesFilters, SalesMetrics } from "@/features/analytics"
+import { TransactionDetailsTable } from "@/features/transactions"
 import type { SalesApiData } from "@/types/admin"
 import { useAuth } from "@/hooks/useAuth"
-import { getSalesData } from "@/features/admin-dashboard/server/db/get-sales"
+import { getSalesData } from "@/features/analytics/server/db/get-sales"
 
 export default function SalesPage() {
   const [data, setData] = useState<SalesApiData | null>(null)

@@ -1,15 +1,15 @@
-﻿import type { Product } from "@/types/employee"
-import { getStockStatus } from "@/features/employee-dashboard/data/products"
+import type { Product } from "@/types/employee"
+import { getStockStatus } from "@/features/products"
 import { cn } from "@/lib/utils"
 import { Package } from "lucide-react"
 
-interface ProductCardProps {
+interface PosProductCardProps {
   product: Product
   onAdd: (product: Product) => void
   disabled?: boolean
 }
 
-export function ProductCard({ product, onAdd, disabled }: ProductCardProps) {
+export function PosProductCard({ product, onAdd, disabled }: PosProductCardProps) {
   const stockStatus = getStockStatus(product)
   const isOutOfStock = stockStatus === "out-of-stock"
   const isLowStock = stockStatus === "low-stock"

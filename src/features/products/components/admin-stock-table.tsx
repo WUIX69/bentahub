@@ -5,11 +5,11 @@ interface BranchStockRow {
   status: "Healthy" | "Warning" | "Critical"
 }
 
-interface StockTableProps {
+interface AdminStockTableProps {
   data?: BranchStockRow[]
 }
 
-export function StockTable({ data }: StockTableProps) {
+export function AdminStockTable({ data }: AdminStockTableProps) {
   const branches = data ?? [
     { name: "Lourdes Main Branch", totalItems: 450, lowStockItems: 5, status: "Healthy" as const },
     { name: "Lourdes Second Branch", totalItems: 320, lowStockItems: 12, status: "Warning" as const },

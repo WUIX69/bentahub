@@ -1,5 +1,5 @@
 import { Package, CheckCircle, AlertTriangle } from "lucide-react"
-import { products, getStockStatus } from "@/features/employee-dashboard/data/products"
+import { employeeProducts as products, getStockStatus } from "@/features/products"
 
 export function StockSummaryCards() {
   const totalSKUs = products.length

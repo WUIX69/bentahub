@@ -1,9 +1,9 @@
-﻿"use client"
+"use client"
 
 import { useState, useMemo } from "react"
 import Image from "next/image"
-import { EmployeeKpiCards } from "@/features/employee-dashboard/components/employee-kpi-cards"
-import { employeeProducts, getStockStatus } from "@/features/employee-dashboard/data/products"
+import { EmployeeKpiCards } from "./_components/employee-kpi-cards"
+import { employeeProducts, getStockStatus } from "@/features/products"
 import { AlertTriangle, Package } from "lucide-react"
 import { cn } from "@/lib/utils"
 import type { Product } from "@/types/employee"

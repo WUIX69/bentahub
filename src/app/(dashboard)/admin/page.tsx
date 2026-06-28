@@ -1,12 +1,14 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { KPICard, SalesChart, StockTable } from "@/features/admin-dashboard"
+import { KPICard } from "./_components/kpi-card"
+import { SalesChart } from "./_components/sales-chart"
+import { AdminStockTable } from "@/features/products"
 import { BranchStockOverview } from "@/features/analytics"
 import { CreditCard, Package, AlertTriangle } from "lucide-react"
 import type { AdminOverviewData } from "@/types/admin"
 import { useAuth } from "@/hooks/useAuth"
-import { getAdminOverview } from "@/features/admin-dashboard/server/db/get-overview"
+import { getAdminOverview } from "@/server/db/get-overview"
 
 export default function AdminPage() {
   const [data, setData] = useState<AdminOverviewData | null>(null)
@@ -78,7 +80,7 @@ export default function AdminPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-6">
-        <StockTable data={data?.branchStock} />
+        <AdminStockTable data={data?.branchStock} />
       </div>
     </div>
   )

@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react"
 import { Search, CheckCircle, XCircle, AlertCircle, ChevronLeft, ChevronRight } from "lucide-react"
-import { payments as initialPayments } from "@/features/employee-dashboard/data/payments"
+import { payments as initialPayments } from "@/features/payments"
 import { cn } from "@/lib/utils"
 
 const ITEMS_PER_PAGE = 5

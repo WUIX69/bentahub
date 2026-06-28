@@ -1,5 +1,5 @@
 import { DollarSign, Coins, QrCode, Clock } from "lucide-react"
-import { payments } from "@/features/employee-dashboard/data/payments"
+import { payments } from "@/features/payments"
 
 export function PaymentSummaryCards() {
   const totalVerified = payments

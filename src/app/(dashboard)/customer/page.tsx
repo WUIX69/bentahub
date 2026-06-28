@@ -1,11 +1,9 @@
 "use client"
 
 import { useAuth } from "@/hooks/useAuth"
-import { 
-  SummaryCards, 
-  RecentOrdersTable, 
-  NearbyBranches 
-} from "@/features/customer-dashboard"
+import { SummaryCards } from "./_components/summary-cards"
+import { RecentOrdersTable } from "@/features/orders"
+import { NearbyBranches } from "@/features/products"
 
 export default function CustomerPage() {
   const { user } = useAuth()

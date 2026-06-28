@@ -9,5 +9,9 @@
  * Consumed by: src/app/cashier/
  */
 
-// Export actions, components, hooks, and types as they are built
-export {}
+export { CartItem } from "./components/cart-item"
+export { CartSidebar } from "./components/cart-sidebar"
+export { PosProductCard } from "./components/pos-product-card"
+export { ProductCatalog } from "./components/product-catalog"
+export { useCart } from "./hooks/use-cart"
+

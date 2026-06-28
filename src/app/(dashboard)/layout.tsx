@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils"
 import { useAuth } from "@/hooks/useAuth"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Input } from "@/components/ui/input"
-import { DashboardMobileNav } from "@/features/customer-dashboard/components/dashboard-mobile-nav"
+import { DashboardMobileNav } from "@/components/layout/customer-mobile-nav"
 
 type NavLink = {
   href: string
