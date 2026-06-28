@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { KPICard } from "@/components/ui/kpi-card"
+import { KPICard } from "@/components/kpi-card"
 import { SalesChart } from "@/features/analytics"
 import { AdminStockTable } from "@/features/products"
 import { BranchStockOverview } from "@/features/analytics"

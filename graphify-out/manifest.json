@@ -2350,8 +2350,8 @@
     "semantic_hash": "ab8dab59cf708379c3b11cb8ec71bd58"
   },
   "src/app/(dashboard)/admin/page.tsx": {
-    "mtime": 1782633826.4871879,
-    "ast_hash": "fcdc76301402663683a4e3e5638b2675",
+    "mtime": 1782635347.510719,
+    "ast_hash": "d6594a2095002908a7a2e00a6cf10c0f",
     "semantic_hash": ""
   },
   "src/app/(dashboard)/customer/cart/page.tsx": {
@@ -3255,33 +3255,38 @@
     "semantic_hash": ""
   },
   "src/features/orders/components/orders-count-card.tsx": {
-    "mtime": 1782633778.5220006,
-    "ast_hash": "c6eeb87b1a8c43e2ec61f1b48bcfc0e2",
+    "mtime": 1782635331.5299928,
+    "ast_hash": "a922ea3ff7a19d24020ff2bc70fc6d32",
     "semantic_hash": ""
   },
   "src/features/payments/components/today-revenue-card.tsx": {
-    "mtime": 1782633863.1357594,
-    "ast_hash": "fbd0ddbdf36fb6e3dac4ceb0ec4f9a29",
+    "mtime": 1782635342.7936077,
+    "ast_hash": "5fe5952e1e56fad2133bf014dfe086ab",
     "semantic_hash": ""
   },
   "src/features/pickups/components/pending-pickups-card.tsx": {
-    "mtime": 1782633791.5666165,
-    "ast_hash": "2f5f72e3e07ed0aef6978426dd9a5e3e",
+    "mtime": 1782635340.8671408,
+    "ast_hash": "da67e94d161fe76508f12c63340c0539",
     "semantic_hash": ""
   },
   "src/features/products/components/low-stock-card.tsx": {
-    "mtime": 1782633789.0170448,
-    "ast_hash": "89df2755396c9d16ff4c1cc5a0553863",
+    "mtime": 1782635339.0058684,
+    "ast_hash": "e12f06ade7e5f2218abfef65c114fc25",
     "semantic_hash": ""
   },
   "src/features/products/components/total-products-card.tsx": {
-    "mtime": 1782633785.0530858,
-    "ast_hash": "27077b0f0e006c747d4f5d22ed546347",
+    "mtime": 1782635337.2397358,
+    "ast_hash": "fe5daaec00c8b3ab8f692c39a84c2324",
     "semantic_hash": ""
   },
   "src/features/reservations/components/reservations-count-card.tsx": {
-    "mtime": 1782633781.319387,
-    "ast_hash": "e2b2df93023ac3a3f69b3c2332231576",
+    "mtime": 1782635335.0858767,
+    "ast_hash": "58c22d432f7b5e20b17e945cf75b1ed1",
+    "semantic_hash": ""
+  },
+  "src/components/kpi-card.tsx": {
+    "mtime": 1782635326.2107353,
+    "ast_hash": "fb364e82b8c1a061f75f14040d62fe3f",
     "semantic_hash": ""
   }
 }
