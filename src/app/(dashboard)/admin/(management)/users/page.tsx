@@ -1,4 +1,4 @@
-import { UserMetrics, UserTable } from "@/features/admin-dashboard"
+import { UserMetrics, UserTable } from "@/features/users"
 
 export default function UsersPage() {
   return (

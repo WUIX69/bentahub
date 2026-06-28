@@ -1,11 +1,10 @@
 "use client"
 
 import { useAuth } from "@/hooks/useAuth"
-import { 
-  SummaryCards, 
-  RecentOrdersTable, 
-  NearbyBranches 
-} from "@/features/customer-dashboard"
+import { OrdersCountCard } from "@/features/orders"
+import { ReservationsCountCard } from "@/features/reservations"
+import { RecentOrdersTable } from "@/features/orders"
+import { NearbyBranches } from "@/features/products"
 
 export default function CustomerPage() {
   const { user } = useAuth()
@@ -24,7 +23,10 @@ export default function CustomerPage() {
       </div>
 
       {/* Summary Cards */}
-      <SummaryCards />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+        <OrdersCountCard />
+        <ReservationsCountCard />
+      </div>
 
       {/* Grid Layout for Main Content */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">

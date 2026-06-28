@@ -10,3 +10,9 @@
 
 export * from "./components/reservations-manager"
 export * from "./server/db/get-reservations"
+export { ReservationCard } from "./components/reservation-card"
+export { ReservationSummary } from "./components/reservation-summary"
+export { ReservationFilters } from "./components/reservation-filters"
+export { ReservationMetrics } from "./components/reservation-metrics"
+export { ReservationTable } from "./components/reservation-table"
+export { ReservationsCountCard } from "./components/reservations-count-card"

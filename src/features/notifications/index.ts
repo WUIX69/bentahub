@@ -11,3 +11,6 @@
 
 export { NotificationsFeed } from "./components/notifications-feed"
 export type { NotificationItem } from "./components/notifications-feed"
+export { CustomerNotificationsFeed } from "./components/customer-notifications-feed"
+export { EmployeeNotificationsFeed } from "./components/employee-notifications-feed"
+export { AdminNotificationsFeed } from "./components/admin-notifications-feed"

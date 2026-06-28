@@ -6,9 +6,9 @@ import {
   CategorySidebar,
   ProductCard,
   Pagination
-} from "@/features/customer-dashboard"
+} from "@/features/products"
 import { ShoppingCart } from "lucide-react"
-import type { ProductCardProps } from "@/features/customer-dashboard/components/product-card"
+import type { ProductCardProps } from "@/features/products/components/product-card"
 import Link from "next/link"
 import { useProducts } from "@/features/products/hooks/use-products"
 import { useCart } from "@/features/cart/hooks/useCart"

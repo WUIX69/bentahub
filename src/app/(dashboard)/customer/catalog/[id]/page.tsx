@@ -1,11 +1,12 @@
 "use client"
-
-import { ProductBreadcrumb } from "@/features/customer-dashboard/components/product-breadcrumb"
-import { ProductImageGallery } from "@/features/customer-dashboard/components/product-image-gallery"
-import { ProductPricing } from "@/features/customer-dashboard/components/product-pricing"
-import { ProductActions } from "@/features/customer-dashboard/components/product-actions"
-import { ProductDetailsSection } from "@/features/customer-dashboard/components/product-details-section"
-import { ProductSidebarSection } from "@/features/customer-dashboard/components/product-sidebar-section"
+import {
+  ProductBreadcrumb,
+  ProductImageGallery,
+  ProductPricing,
+  ProductActions,
+  ProductDetailsSection,
+  ProductSidebarSection
+} from "@/features/products"
 import { Heart } from "lucide-react"
 import { useState, use } from "react"
 import { useCart } from "@/features/cart/hooks/useCart"

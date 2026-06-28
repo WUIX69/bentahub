@@ -1,7 +1,6 @@
 "use client"
 
-import { StockSummaryCards } from "@/features/employee-dashboard/components/stock-summary-cards"
-import { StockTable } from "@/features/employee-dashboard/components/stock-table"
+import { StockSummaryCards, StockTable } from "@/features/products"
 
 export default function EmployeeStockCheckPage() {
   return (
