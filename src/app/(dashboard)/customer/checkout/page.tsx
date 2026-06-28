@@ -10,8 +10,8 @@ import {
   Loader2
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { useCart } from "@/hooks/useCart"
-import { useOrders } from "@/hooks/useOrders"
+import { useCart } from "@/features/cart/hooks/useCart"
+import { useOrders } from "@/features/orders/hooks/useOrders"
 import Link from "next/link"
 
 export default function CheckoutPage() {

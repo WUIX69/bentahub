@@ -4,7 +4,7 @@ import { useEffect, useMemo } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { useOrders } from "@/hooks/useOrders"
+import { useOrders } from "@/features/orders/hooks/useOrders"
 import { Loader2 } from "lucide-react"
 
 // Demo orders fallback

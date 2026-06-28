@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { FileText, MoreHorizontal, ChevronLeft, ChevronRight, Loader2 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { useOrders } from "@/hooks/useOrders"
+import { useOrders } from "@/features/orders/hooks/useOrders"
 
 export function TransactionTable() {
   const router = useRouter()

@@ -3866,6 +3866,26 @@
       "norm_label": "usecartstore"
     },
     {
+      "label": "useCart.ts",
+      "file_type": "code",
+      "source_file": "src/features/cart/hooks/useCart.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "hooks_usecart",
+      "community": 0,
+      "norm_label": "usecart.ts"
+    },
+    {
+      "label": "useCart()",
+      "file_type": "code",
+      "source_file": "src/features/cart/hooks/useCart.ts",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "hooks_usecart_usecart",
+      "community": 21,
+      "norm_label": "usecart()"
+    },
+    {
       "label": "cart.ts",
       "file_type": "code",
       "source_file": "src/features/cart/schemas/cart.ts",
@@ -6186,6 +6206,26 @@
       "norm_label": "useordersstore"
     },
     {
+      "label": "useOrders.ts",
+      "file_type": "code",
+      "source_file": "src/features/orders/hooks/useOrders.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "hooks_useorders",
+      "community": 0,
+      "norm_label": "useorders.ts"
+    },
+    {
+      "label": "useOrders()",
+      "file_type": "code",
+      "source_file": "src/features/orders/hooks/useOrders.ts",
+      "source_location": "L8",
+      "_origin": "ast",
+      "id": "hooks_useorders_useorders",
+      "community": 13,
+      "norm_label": "useorders()"
+    },
+    {
       "label": "orders.ts",
       "file_type": "code",
       "source_file": "src/features/orders/schemas/orders.ts",
@@ -7064,46 +7104,6 @@
       "id": "hooks_useauth_useauth",
       "community": 4,
       "norm_label": "useauth()"
-    },
-    {
-      "label": "useCart.ts",
-      "file_type": "code",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "hooks_usecart",
-      "community": 0,
-      "norm_label": "usecart.ts"
-    },
-    {
-      "label": "useCart()",
-      "file_type": "code",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L9",
-      "_origin": "ast",
-      "id": "hooks_usecart_usecart",
-      "community": 21,
-      "norm_label": "usecart()"
-    },
-    {
-      "label": "useOrders.ts",
-      "file_type": "code",
-      "source_file": "src/hooks/useOrders.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "hooks_useorders",
-      "community": 0,
-      "norm_label": "useorders.ts"
-    },
-    {
-      "label": "useOrders()",
-      "file_type": "code",
-      "source_file": "src/hooks/useOrders.ts",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "hooks_useorders_useorders",
-      "community": 13,
-      "norm_label": "useorders()"
     },
     {
       "label": "auth-edge-utils.ts",
@@ -8542,7 +8542,7 @@
       "source_location": "L291",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_api_route_patterns",
-      "community": 42,
+      "community": 43,
       "norm_label": "\ud83c\udf10 api route patterns"
     },
     {
@@ -8562,7 +8562,7 @@
       "source_location": "L305",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_snippet_edge_api_route_discount_banner_script_generator",
-      "community": 42,
+      "community": 43,
       "norm_label": "snippet: edge api route (discount banner script generator)"
     },
     {
@@ -8572,7 +8572,7 @@
       "source_location": "L353",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_snippet_cryptographic_webhook_handler_clerk_webhook",
-      "community": 42,
+      "community": 43,
       "norm_label": "snippet: cryptographic webhook handler (clerk webhook)"
     },
     {
@@ -8582,7 +8582,7 @@
       "source_location": "L401",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_zod_schema_patterns",
-      "community": 60,
+      "community": 42,
       "norm_label": "\ud83d\udccb zod schema patterns"
     },
     {
@@ -8592,7 +8592,7 @@
       "source_location": "L405",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_key_rules_405",
-      "community": 60,
+      "community": 42,
       "norm_label": "key rules"
     },
     {
@@ -8602,7 +8602,7 @@
       "source_location": "L415",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_snippet_form_zod_schemas_with_transformations_refinement",
-      "community": 60,
+      "community": 42,
       "norm_label": "snippet: form zod schemas with transformations & refinement"
     },
     {
@@ -8612,7 +8612,7 @@
       "source_location": "L458",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_server_action_patterns",
-      "community": 42,
+      "community": 60,
       "norm_label": "\u26a1 server action patterns"
     },
     {
@@ -8622,7 +8622,7 @@
       "source_location": "L462",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_key_rules_462",
-      "community": 42,
+      "community": 60,
       "norm_label": "key rules"
     },
     {
@@ -8632,7 +8632,7 @@
       "source_location": "L476",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_snippet_standard_mutation_server_action",
-      "community": 42,
+      "community": 60,
       "norm_label": "snippet: standard mutation server action"
     },
     {
@@ -8672,7 +8672,7 @@
       "source_location": "L587",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_feature_component_patterns",
-      "community": 43,
+      "community": 42,
       "norm_label": "\ud83e\udde9 feature component patterns"
     },
     {
@@ -8682,7 +8682,7 @@
       "source_location": "L591",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_key_rules_591",
-      "community": 43,
+      "community": 42,
       "norm_label": "key rules"
     },
     {
@@ -8692,7 +8692,7 @@
       "source_location": "L606",
       "_origin": "ast",
       "id": "docs_feature_sliced_design_snippet_standard_client_form_component",
-      "community": 43,
+      "community": 42,
       "norm_label": "snippet: standard client form component"
     },
     {
@@ -18149,6 +18149,159 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useCart.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usecart",
+      "target": "actions_add_to_cart"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useCart.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usecart",
+      "target": "actions_add_to_cart_addtocart"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useCart.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usecart",
+      "target": "actions_remove_cart_item"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useCart.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usecart",
+      "target": "actions_remove_cart_item_removecartitem"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useCart.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usecart",
+      "target": "actions_update_cart_item"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useCart.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usecart",
+      "target": "actions_update_cart_item_updatecartitem"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useCart.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usecart",
+      "target": "db_get_cart"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useCart.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usecart",
+      "target": "db_get_cart_getcart"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useCart.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usecart",
+      "target": "hooks_useauth"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useCart.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usecart",
+      "target": "hooks_useauth_useauth"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useCart.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_usecart",
+      "target": "hooks_usecart_usecart"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/customer-dashboard/components/product-card.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_features_customer_dashboard_components_product_card_tsx_components_product_card",
+      "target": "hooks_usecart"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/hooks/useCart.ts",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "hooks_usecart_usecart",
+      "target": "hooks_useauth_useauth"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/features/customer-dashboard/components/product-card.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_features_customer_dashboard_components_product_card_tsx_components_product_card",
+      "target": "hooks_usecart_usecart"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/features/cart/server/actions/add-to-cart.ts",
       "source_location": "L7",
       "weight": 1.0,
@@ -18340,17 +18493,6 @@
       "target": "lib_auth_utils_getauthenticateduser"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_usecart",
-      "target": "actions_add_to_cart"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -18417,17 +18559,6 @@
       "target": "lib_auth_utils_getauthenticateduser"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_usecart",
-      "target": "actions_add_to_cart_addtocart"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/cart/server/actions/remove-cart-item.ts",
@@ -18491,17 +18622,6 @@
       "confidence_score": 1.0,
       "source": "actions_remove_cart_item",
       "target": "lib_auth_utils_getauthenticateduser"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_usecart",
-      "target": "actions_remove_cart_item"
     },
     {
       "relation": "calls",
@@ -18537,17 +18657,6 @@
       "target": "lib_auth_utils_getauthenticateduser"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_usecart",
-      "target": "actions_remove_cart_item_removecartitem"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/cart/server/actions/update-cart-item.ts",
@@ -18613,17 +18722,6 @@
       "target": "lib_auth_utils_getauthenticateduser"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_usecart",
-      "target": "actions_update_cart_item"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -18655,17 +18753,6 @@
       "weight": 1.0,
       "source": "actions_update_cart_item_updatecartitem",
       "target": "lib_auth_utils_getauthenticateduser"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_usecart",
-      "target": "actions_update_cart_item_updatecartitem"
     },
     {
       "relation": "contains",
@@ -18700,17 +18787,6 @@
       "target": "lib_auth_utils_getauthenticateduser"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_usecart",
-      "target": "db_get_cart"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -18720,17 +18796,6 @@
       "weight": 1.0,
       "source": "db_get_cart_getcart",
       "target": "lib_auth_utils_getauthenticateduser"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_usecart",
-      "target": "db_get_cart_getcart"
     },
     {
       "relation": "contains",
@@ -19278,28 +19343,6 @@
       "confidence_score": 1.0,
       "source": "components_product_breadcrumb",
       "target": "components_product_breadcrumb_productbreadcrumbprops"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/customer-dashboard/components/product-card.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_features_customer_dashboard_components_product_card_tsx_components_product_card",
-      "target": "hooks_usecart"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/features/customer-dashboard/components/product-card.tsx",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "src_features_customer_dashboard_components_product_card_tsx_components_product_card",
-      "target": "hooks_usecart_usecart"
     },
     {
       "relation": "contains",
@@ -22111,6 +22154,115 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useOrders.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_useorders",
+      "target": "actions_cancel_order"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useOrders.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_useorders",
+      "target": "actions_cancel_order_cancelorder"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useOrders.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_useorders",
+      "target": "actions_create_order"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useOrders.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_useorders",
+      "target": "actions_create_order_createorder"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useOrders.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_useorders",
+      "target": "db_get_orders"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useOrders.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_useorders",
+      "target": "db_get_orders_getorders"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useOrders.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_useorders",
+      "target": "hooks_useauth"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useOrders.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_useorders",
+      "target": "hooks_useauth_useauth"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/hooks/useOrders.ts",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "hooks_useorders",
+      "target": "hooks_useorders_useorders"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/hooks/useOrders.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "hooks_useorders_useorders",
+      "target": "hooks_useauth_useauth"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/features/orders/server/actions/cancel-order.ts",
       "source_location": "L7",
       "weight": 1.0,
@@ -22226,17 +22378,6 @@
       "target": "lib_auth_utils_getauthenticateduser"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useOrders.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_useorders",
-      "target": "actions_cancel_order"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -22268,17 +22409,6 @@
       "weight": 1.0,
       "source": "actions_cancel_order_cancelorder",
       "target": "lib_auth_utils_getauthenticateduser"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useOrders.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_useorders",
-      "target": "actions_cancel_order_cancelorder"
     },
     {
       "relation": "contains",
@@ -22344,17 +22474,6 @@
       "confidence_score": 1.0,
       "source": "actions_create_order",
       "target": "lib_auth_utils_getauthenticateduser"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useOrders.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_useorders",
-      "target": "actions_create_order"
     },
     {
       "relation": "calls",
@@ -22401,17 +22520,6 @@
       "target": "lib_auth_utils_getauthenticateduser"
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useOrders.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_useorders",
-      "target": "actions_create_order_createorder"
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/features/orders/server/db/get-orders.ts",
@@ -22454,17 +22562,6 @@
       "target": "lib_auth_utils_getauthenticateduser"
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useOrders.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_useorders",
-      "target": "db_get_orders"
-    },
-    {
       "relation": "calls",
       "context": "call",
       "confidence": "EXTRACTED",
@@ -22474,17 +22571,6 @@
       "weight": 1.0,
       "source": "db_get_orders_getorders",
       "target": "lib_auth_utils_getauthenticateduser"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useOrders.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_useorders",
-      "target": "db_get_orders_getorders"
     },
     {
       "relation": "calls",
@@ -23474,92 +23560,6 @@
       "confidence_score": 1.0,
       "source": "hooks_useauth",
       "target": "hooks_useauth_useauth"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_usecart",
-      "target": "hooks_useauth"
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useOrders.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_useorders",
-      "target": "hooks_useauth"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_usecart",
-      "target": "hooks_useauth_useauth"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L10",
-      "weight": 1.0,
-      "source": "hooks_usecart_usecart",
-      "target": "hooks_useauth_useauth"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useOrders.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_useorders",
-      "target": "hooks_useauth_useauth"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/hooks/useOrders.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "source": "hooks_useorders_useorders",
-      "target": "hooks_useauth_useauth"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useCart.ts",
-      "source_location": "L9",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_usecart",
-      "target": "hooks_usecart_usecart"
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/hooks/useOrders.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "confidence_score": 1.0,
-      "source": "hooks_useorders",
-      "target": "hooks_useorders_useorders"
     },
     {
       "relation": "references",
@@ -25422,9 +25422,9 @@
       "source_file": "docs/FEATURE-SLICED-DESIGN.md",
       "source_location": "L260",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_feature_sliced_design_db_caching_query_patterns",
-      "target": "docs_feature_sliced_design_4_code_reuse_vs_coupling_the_promotion_pattern",
-      "confidence_score": 1.0
+      "target": "docs_feature_sliced_design_4_code_reuse_vs_coupling_the_promotion_pattern"
     },
     {
       "relation": "rationale_for",
@@ -25452,9 +25452,9 @@
       "source_file": "docs/FEATURE-SLICED-DESIGN.md",
       "source_location": "L275",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_feature_sliced_design_4_code_reuse_vs_coupling_the_promotion_pattern",
-      "target": "docs_feature_sliced_design_example_promoted_shared_user_query",
-      "confidence_score": 1.0
+      "target": "docs_feature_sliced_design_example_promoted_shared_user_query"
     },
     {
       "relation": "contains",
@@ -25462,9 +25462,9 @@
       "source_file": "docs/FEATURE-SLICED-DESIGN.md",
       "source_location": "L266",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_feature_sliced_design_4_code_reuse_vs_coupling_the_promotion_pattern",
-      "target": "docs_feature_sliced_design_promotion_analogy_across_layers",
-      "confidence_score": 1.0
+      "target": "docs_feature_sliced_design_promotion_analogy_across_layers"
     },
     {
       "relation": "contains",
@@ -25602,9 +25602,9 @@
       "source_file": "docs/FEATURE-SLICED-DESIGN.md",
       "source_location": "L405",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_feature_sliced_design_zod_schema_patterns",
-      "target": "docs_feature_sliced_design_key_rules_405",
-      "confidence_score": 1.0
+      "target": "docs_feature_sliced_design_key_rules_405"
     },
     {
       "relation": "contains",
@@ -25632,9 +25632,9 @@
       "source_file": "docs/FEATURE-SLICED-DESIGN.md",
       "source_location": "L462",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_feature_sliced_design_server_action_patterns",
-      "target": "docs_feature_sliced_design_key_rules_462",
-      "confidence_score": 1.0
+      "target": "docs_feature_sliced_design_key_rules_462"
     },
     {
       "relation": "contains",
@@ -25662,9 +25662,9 @@
       "source_file": "docs/FEATURE-SLICED-DESIGN.md",
       "source_location": "L511",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_feature_sliced_design_drizzle_schema_definition_patterns",
-      "target": "docs_feature_sliced_design_key_rules_511",
-      "confidence_score": 1.0
+      "target": "docs_feature_sliced_design_key_rules_511"
     },
     {
       "relation": "contains",
@@ -25692,9 +25692,9 @@
       "source_file": "docs/FEATURE-SLICED-DESIGN.md",
       "source_location": "L591",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_feature_sliced_design_feature_component_patterns",
-      "target": "docs_feature_sliced_design_key_rules_591",
-      "confidence_score": 1.0
+      "target": "docs_feature_sliced_design_key_rules_591"
     },
     {
       "relation": "contains",
@@ -25732,9 +25732,9 @@
       "source_file": "docs/FEATURE-SLICED-DESIGN.md",
       "source_location": "L688",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_feature_sliced_design_permission_system_pattern",
-      "target": "docs_feature_sliced_design_key_rules_688",
-      "confidence_score": 1.0
+      "target": "docs_feature_sliced_design_key_rules_688"
     },
     {
       "relation": "contains",
@@ -25782,9 +25782,9 @@
       "source_file": "docs/FEATURE-SLICED-DESIGN.md",
       "source_location": "L741",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_feature_sliced_design_middleware_pattern",
-      "target": "docs_feature_sliced_design_key_rules_741",
-      "confidence_score": 1.0
+      "target": "docs_feature_sliced_design_key_rules_741"
     },
     {
       "relation": "contains",
@@ -25822,9 +25822,9 @@
       "source_file": "docs/FEATURE-SLICED-DESIGN.md",
       "source_location": "L777",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_feature_sliced_design_task_script_pattern",
-      "target": "docs_feature_sliced_design_key_rules_777",
-      "confidence_score": 1.0
+      "target": "docs_feature_sliced_design_key_rules_777"
     },
     {
       "relation": "contains",
@@ -25862,9 +25862,9 @@
       "source_file": "docs/FEATURE-SLICED-DESIGN.md",
       "source_location": "L821",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_feature_sliced_design_layout_provider_pattern",
-      "target": "docs_feature_sliced_design_key_rules_821",
-      "confidence_score": 1.0
+      "target": "docs_feature_sliced_design_key_rules_821"
     },
     {
       "relation": "contains",
@@ -26108,5 +26108,5 @@
       "source_file": "AGENTS.md"
     }
   ],
-  "built_at_commit": "bec18a4474f3ba595c8874c74afc21b161a1c35e"
+  "built_at_commit": "eeec2ab1997701b78d63c0390038a03c5c93a069"
 }
