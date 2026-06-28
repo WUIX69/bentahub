@@ -2,7 +2,9 @@
 
 import { useState, useMemo } from "react"
 import Image from "next/image"
-import { EmployeeKpiCards } from "./_components/employee-kpi-cards"
+import { TotalProductsCard, LowStockCard } from "@/features/products"
+import { PendingPickupsCard } from "@/features/pickups"
+import { TodayRevenueCard } from "@/features/payments"
 import { employeeProducts, getStockStatus } from "@/features/products"
 import { AlertTriangle, Package } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -31,12 +33,12 @@ export default function EmployeePage() {
 
   return (
     <div className="space-y-6">
-          <EmployeeKpiCards
-        products={products}
-        lowStockCount={lowStockCount}
-        pendingPickups={3}
-        todayRevenue={3650.50}
-      />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <TotalProductsCard products={products} />
+        <LowStockCard lowStockCount={lowStockCount} />
+        <PendingPickupsCard pendingPickups={3} />
+        <TodayRevenueCard todayRevenue={3650.50} />
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="bg-card rounded-xl border border-border shadow-sm p-6">

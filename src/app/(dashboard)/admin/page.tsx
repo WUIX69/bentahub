@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { KPICard } from "./_components/kpi-card"
-import { SalesChart } from "./_components/sales-chart"
+import { KPICard } from "@/components/ui/kpi-card"
+import { SalesChart } from "@/features/analytics"
 import { AdminStockTable } from "@/features/products"
 import { BranchStockOverview } from "@/features/analytics"
 import { CreditCard, Package, AlertTriangle } from "lucide-react"
